@@ -28,8 +28,8 @@
             }
           },
           "$type": "color",
-          "$value": "{core.color.ink.900}",
-          "$description": "Backdrop behind Modal, Dialog, and full-section Loading overlays. Blocks and dims background interaction."
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.400})",
+          "$description": "Backdrop behind Modal, Dialog, and full-section Loading overlays. Blocks and dims background interaction. Carries its documented opacity: Ink 900 at 32%."
         },
         "group": {
           "$type": "color",
@@ -58,8 +58,8 @@
               }
             },
             "$type": "color",
-            "$value": "{core.color.ink.900}",
-            "$description": "Background for disabled form controls."
+            "$value": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+            "$description": "Background for disabled form controls. Carries its documented opacity: Ink 900 at 8%."
           },
           "readOnly": {
             "$type": "color",
@@ -127,6 +127,11 @@
             "$value": "{core.color.blue.500}",
             "$description": "Link text color, previously visited."
           }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{core.color.teal.900}",
+          "$description": "Brand-colored text and icons on light fills, for example Secondary and Tertiary button labels (visual-design-decisions 4.3, 4.4)."
         }
       },
       "status": {
@@ -163,8 +168,8 @@
             }
           },
           "$type": "color",
-          "$value": "{core.color.ink.900}",
-          "$description": "Softest border weight. Button Primary/Tertiary, Navigation hover/pressed."
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+          "$description": "Softest border weight. Button Primary/Tertiary, Navigation hover/pressed. Carries its documented opacity: Ink 900 at 8%."
         },
         "standard": {
           "$extensions": {
@@ -177,8 +182,8 @@
             }
           },
           "$type": "color",
-          "$value": "{core.color.ink.900}",
-          "$description": "Standard border weight. Button Secondary, dividers, table row divider, suggested prompts."
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.200})",
+          "$description": "Standard border weight. Button Secondary, dividers, table row divider, suggested prompts. Carries its documented opacity: Ink 900 at 16%."
         },
         "disabled": {
           "$extensions": {
@@ -191,8 +196,8 @@
             }
           },
           "$type": "color",
-          "$value": "{core.color.ink.900}",
-          "$description": "Border for disabled components."
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.200})",
+          "$description": "Border for disabled components. Carries its documented opacity: Ink 900 at 16%."
         },
         "strong": {
           "$extensions": {
@@ -205,8 +210,8 @@
             }
           },
           "$type": "color",
-          "$value": "{core.color.ink.900}",
-          "$description": "Strongest border weight. Used where a real, checkable boundary is needed, e.g. neutral badge."
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.300})",
+          "$description": "Strongest border weight. Used where a real, checkable boundary is needed, e.g. neutral badge. Carries its documented opacity: Ink 900 at 24%."
         },
         "control": {
           "default": {
@@ -220,8 +225,8 @@
               }
             },
             "$type": "color",
-            "$value": "{core.color.ink.900}",
-            "$description": "Border for form controls (inputs)."
+            "$value": "rgba({core.color.ink.900},{core.effect.opacity.600})",
+            "$description": "Border for form controls (inputs). Carries its documented opacity: Ink 900 at 64%."
           }
         },
         "highlight": {
@@ -383,8 +388,8 @@
               }
             },
             "$type": "color",
-            "$value": "{core.color.ink.900}",
-            "$description": "Hover fill for the same compact interactive elements."
+            "$value": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+            "$description": "Hover fill for the same compact interactive elements. Carries its documented opacity: Ink 900 at 8%."
           },
           "pressed": {
             "$extensions": {

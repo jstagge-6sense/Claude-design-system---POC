@@ -13,27 +13,18 @@
           },
           "sizeCompact": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.500}",
-            "$description": "24px. No semantic size. Compact (numbers only) marker.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-500"
-            }
+            "$value": "{core.dimension.size.feedback.medium}",
+            "$description": "24px. No semantic size. Compact (numbers only) marker."
           },
           "radius": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Pill or circle radius. No semantic token for a full radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Pill or circle radius. No semantic token for a full radius."
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.200}",
-            "$description": "2px stroke. No semantic border width exists. Active step ring.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-200"
-            }
+            "$value": "{core.dimension.borderWidth.medium}",
+            "$description": "2px stroke. No semantic border width exists. Active step ring."
           },
           "typography": {
             "$type": "typography",

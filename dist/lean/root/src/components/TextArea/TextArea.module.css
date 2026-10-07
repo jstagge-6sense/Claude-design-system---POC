@@ -4,7 +4,7 @@
   align-items: stretch;
   gap: 0;
   padding-block: var(--core-dimension-space-compact);
-  min-block-size: var(--component-textArea-all-container-minHeight);
+  min-block-size: var(--core-dimension-size-feedback-large);
 }
 .areaWrap { position: relative; display: block; inline-size: 100%; min-inline-size: 0; }
 .area {
@@ -45,7 +45,7 @@
   gap: var(--component-textArea-all-actions-gap);
   margin-block-start: var(--component-textArea-all-actions-gap);
   padding-block-start: var(--component-textArea-all-actions-gap);
-  border-block-start: var(--component-input-all-container-borderWidth) solid var(--component-textArea-all-actions-border-default);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
 /* Disabled fieldsets disable every child control natively; dim them with the opacity primitive (allowed for opacity). */
 .slot[disabled] { opacity: var(--core-effect-opacity-500); cursor: not-allowed; }

@@ -5,19 +5,13 @@
         "container": {
           "radius": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Pill or circle radius. No semantic token for full radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Pill or circle radius. No semantic token for full radius."
           },
           "heightMin": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.500}",
-            "$description": "Minimum height, 24px. Count badges use it as their minimum width so one digit is a circle.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-500"
-            }
+            "$value": "{core.dimension.size.feedback.medium}",
+            "$description": "Minimum height, 24px. Count badges use it as their minimum width so one digit is a circle."
           },
           "paddingInline": {
             "$type": "spacing",
@@ -29,11 +23,8 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           }
         },
         "label": {
@@ -154,7 +145,7 @@
           },
           "border": {
             "$type": "color",
-            "$value": "rgba({core.color.border.strong},{core.effect.opacity.300})",
+            "$value": "{core.color.border.strong}",
             "$description": "Ink 900 at 24%. Assumption per contract table (border.strong)."
           }
         },

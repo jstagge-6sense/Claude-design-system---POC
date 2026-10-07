@@ -5,11 +5,8 @@
         "container": {
           "sizeSmall": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.500}",
-            "$description": "24px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-500"
-            }
+            "$value": "{core.dimension.size.feedback.medium}",
+            "$description": "24px."
           },
           "sizeMedium": {
             "$type": "sizing",
@@ -23,37 +20,28 @@
           },
           "sizeXl": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "48px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "48px."
           },
           "radius": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Pill or circle radius. No semantic token for full radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Pill or circle radius. No semantic token for full radius."
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%."
             },
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$value": "{core.color.border.control.default}",
               "$description": "Ink 900 at 64%. Interactive (dropdown trigger) only."
             },
             "pressed": {
@@ -108,11 +96,8 @@
           },
           "ringWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.200}",
-            "$description": "2px ring that separates the dot from the avatar.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-200"
-            }
+            "$value": "{core.dimension.borderWidth.medium}",
+            "$description": "2px ring that separates the dot from the avatar."
           },
           "ringColor": {
             "$type": "color",

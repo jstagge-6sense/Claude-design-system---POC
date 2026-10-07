@@ -1,7 +1,7 @@
 /* Search delta over Input. Tokens: component.search.* plus component.input.* via Field.module.css. */
 .anchor { position: relative; min-inline-size: 0; }
 .global {
-  border-radius: var(--component-search-global-container-radius);
+  border-radius: var(--core-dimension-radius-pill);
   --_shadow: var(--component-search-global-container-shadow-default);
 }
 .contextual { border-radius: var(--component-search-contextual-container-radius); }
@@ -15,7 +15,7 @@
   padding: 0;
   padding-inline-end: var(--core-dimension-space-comfortable);
   border: 0;
-  border-inline-end: var(--component-input-all-container-borderWidth) solid var(--component-search-all-results-border-default);
+  border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   min-inline-size: 0;
 }
 .spinner { display: inline-flex; flex: none; align-items: center; }
@@ -33,7 +33,7 @@
   padding: var(--core-dimension-space-tight);
   list-style: none;
   background: var(--core-color-surface-control-default);
-  border: var(--component-input-all-container-borderWidth) solid var(--component-search-all-results-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-control-medium);
   box-shadow: var(--component-search-all-results-shadow-default);
 }
@@ -46,14 +46,14 @@
   box-sizing: border-box;
   padding-block: var(--core-dimension-space-compact);
   padding-inline: var(--core-dimension-space-comfortable);
-  border-inline-start: var(--component-search-all-option-indicator-width-active) solid transparent;
+  border-inline-start: var(--core-dimension-borderWidth-medium) solid transparent;
   border-radius: var(--core-dimension-radius-control-small);
   font: var(--component-search-all-option-typography-font);
   text-decoration: var(--component-search-all-option-typography-text-decoration);
   color: var(--core-color-content-primary);
   cursor: pointer;
 }
-.option:hover { background: var(--component-search-all-option-fill-hover); }
+.option:hover { background: var(--core-color-action-compact-hover); }
 .option[data-active], .option[aria-selected='true'] {
   background: var(--component-search-all-option-fill-active);
   border-inline-start-color: var(--core-color-action-primary-default);

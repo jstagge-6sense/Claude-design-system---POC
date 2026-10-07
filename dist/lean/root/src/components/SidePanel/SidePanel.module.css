@@ -12,7 +12,7 @@
   inline-size: clamp(16rem, 28%, 22rem);
   background: var(--component-sidePanel-all-container-fill);
   color: var(--core-color-content-primary);
-  border: 0 solid var(--component-sidePanel-all-container-border);
+  border: 0 solid var(--core-color-border-standard);
   overflow: hidden;
 }
 .root[data-side='start'] { border-inline-end-width: var(--component-sidePanel-all-container-borderWidth); }

@@ -13,7 +13,7 @@
   display: flex;
   flex: none;
   align-self: stretch;
-  border-inline-start: var(--component-input-all-container-borderWidth) solid var(--component-numberInput-all-stepper-divider-color-default);
+  border-inline-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
 .stepper {
   --_icon: var(--component-numberInput-all-stepper-icon-color-default);
@@ -30,15 +30,15 @@
   color: var(--_icon);
   cursor: pointer;
 }
-.stepper + .stepper { border-inline-start: var(--component-input-all-container-borderWidth) solid var(--component-numberInput-all-stepper-divider-color-default); }
+.stepper + .stepper { border-inline-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
 .stepper:last-child {
-  border-start-end-radius: calc(var(--core-dimension-radius-control-medium) - var(--component-input-all-container-borderWidth));
-  border-end-end-radius: calc(var(--core-dimension-radius-control-medium) - var(--component-input-all-container-borderWidth));
+  border-start-end-radius: calc(var(--core-dimension-radius-control-medium) - var(--core-dimension-borderWidth-thin));
+  border-end-end-radius: calc(var(--core-dimension-radius-control-medium) - var(--core-dimension-borderWidth-thin));
 }
 /* Extend the hit area vertically to 44px. Steppers are not Tab stops: arrow keys step the value. */
 .stepper::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((100% - var(--ds-hit-min)) / 2); }
 .stepper > svg { inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
-.stepper:hover:not([aria-disabled='true']):not(:disabled), .stepper[data-state='hover'] { --_fill: var(--component-numberInput-all-stepper-fill-hover); --_icon: var(--component-numberInput-all-stepper-icon-color-hover); }
+.stepper:hover:not([aria-disabled='true']):not(:disabled), .stepper[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_icon: var(--component-numberInput-all-stepper-icon-color-hover); }
 .stepper:active:not([aria-disabled='true']):not(:disabled), .stepper[data-state='pressed'] { --_fill: var(--component-numberInput-all-stepper-fill-pressed); }
 .stepper:focus-visible, .stepper[data-state='focus'] { outline: none; box-shadow: var(--component-input-all-container-shadow-focus); }
 .stepper[aria-disabled='true'], .stepper:disabled { --_icon: var(--component-numberInput-all-stepper-icon-color-disabled); cursor: not-allowed; }

@@ -45,14 +45,14 @@ button.step::after { content: ''; position: absolute; inset-inline: 0; inset-blo
   box-sizing: border-box;
   inline-size: var(--component-progressSteps-all-marker-size);
   block-size: var(--component-progressSteps-all-marker-size);
-  border: var(--component-progressSteps-all-marker-borderWidth) solid var(--_marker-border);
-  border-radius: var(--component-progressSteps-all-marker-radius);
+  border: var(--core-dimension-borderWidth-medium) solid var(--_marker-border);
+  border-radius: var(--core-dimension-radius-pill);
   background: var(--_marker-fill);
   color: var(--_marker-color);
   font: var(--component-progressSteps-all-marker-typography-font);
 }
 .marker > svg, .marker > span > svg { inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
-.root[data-compact] .marker { inline-size: var(--component-progressSteps-all-marker-sizeCompact); block-size: var(--component-progressSteps-all-marker-sizeCompact); }
+.root[data-compact] .marker { inline-size: var(--core-dimension-size-feedback-medium); block-size: var(--core-dimension-size-feedback-medium); }
 .root[data-compact] .marker svg { inline-size: calc(var(--core-dimension-size-icon) * 0.75); block-size: calc(var(--core-dimension-size-icon) * 0.75); }
 
 .text { display: flex; flex-direction: column; min-inline-size: 0; padding-block-start: calc((var(--component-progressSteps-all-marker-size) - 1lh) / 2); }
@@ -69,7 +69,7 @@ button.step::after { content: ''; position: absolute; inset-inline: 0; inset-blo
 .connector { flex: 1 1 auto; align-self: flex-start; background: var(--component-progressSteps-all-connector-fill-default); border-radius: var(--component-progressSteps-all-connector-radius); }
 .connector[data-filled] { background: var(--component-progressSteps-all-connector-fill-completed); }
 .root[data-orientation='horizontal'] .connector { min-inline-size: 1rem; block-size: var(--component-progressSteps-all-connector-thickness); margin-block-start: calc((var(--component-progressSteps-all-marker-size) - var(--component-progressSteps-all-connector-thickness)) / 2); }
-.root[data-compact][data-orientation='horizontal'] .connector { margin-block-start: calc((var(--component-progressSteps-all-marker-sizeCompact) - var(--component-progressSteps-all-connector-thickness)) / 2); }
+.root[data-compact][data-orientation='horizontal'] .connector { margin-block-start: calc((var(--core-dimension-size-feedback-medium) - var(--component-progressSteps-all-connector-thickness)) / 2); }
 .root[data-orientation='vertical'] .connector { inline-size: var(--component-progressSteps-all-connector-thickness); min-block-size: 1.5rem; flex: none; margin-inline-start: calc((var(--component-progressSteps-all-marker-size) - var(--component-progressSteps-all-connector-thickness)) / 2); }
 
 /* ---- Interactive (completed, go back): hover, pressed, focus. Real pseudo-classes plus forced twins. ---- */

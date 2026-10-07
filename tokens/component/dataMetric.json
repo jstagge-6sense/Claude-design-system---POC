@@ -69,19 +69,13 @@
           },
           "width": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Base unit for sparkline width. CSS doubles it (96px). 48px primitive.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Base unit for sparkline width. CSS doubles it (96px). 48px primitive."
           },
           "strokeWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.200}",
-            "$description": "2px line.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-200"
-            }
+            "$value": "{core.dimension.borderWidth.medium}",
+            "$description": "2px line."
           },
           "color": {
             "$type": "color",

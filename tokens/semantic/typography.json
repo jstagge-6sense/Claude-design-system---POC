@@ -253,6 +253,19 @@
           },
           "$description": "Secondary navigation text. Items subordinate to primary navigation, nested sidebar items, secondary tabs, breadcrumbs, pagination labels, stepper labels."
         }
+      },
+      "code": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.mono}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Code and inline technical text. Monospace, same size and line height as dense body text."
+        }
       }
     }
   }

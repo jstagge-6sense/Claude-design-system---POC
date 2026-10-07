@@ -7,14 +7,14 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: var(--component-accordion-all-container-borderWidth) solid transparent;
+  border: var(--core-dimension-borderWidth-thin) solid transparent;
   border-radius: var(--core-dimension-radius-surface-medium);
   background:
     linear-gradient(var(--core-color-surface-group), var(--core-color-surface-group)) padding-box,
     var(--core-color-border-group) border-box;
   box-shadow: var(--component-accordion-all-container-shadow);
 }
-.item + .item { border-block-start: var(--component-accordion-all-container-borderWidth) solid var(--component-accordion-all-item-divider); }
+.item + .item { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); }
 
 .heading { margin: 0; display: flex; align-items: center; }
 .check { flex: none; display: inline-flex; padding-inline-start: var(--core-dimension-space-standard); }
@@ -65,7 +65,7 @@
 .item[data-open] .indicator > svg { transform: rotate(180deg); }
 
 /* States. Real pseudo-classes plus [data-state] twins for forced previews. */
-.trigger:hover:not([aria-disabled='true']), .item[data-state='hover'] .trigger { --_fill: var(--component-accordion-all-header-fill-hover); }
+.trigger:hover:not([aria-disabled='true']), .item[data-state='hover'] .trigger { --_fill: var(--core-color-action-compact-hover); }
 .trigger:focus-visible, .item[data-state='focus'] .trigger { outline: none; box-shadow: var(--core-effect-ring-focus); }
 .item[data-disabled] .trigger { --_color: var(--core-color-content-disabled); --_indicator: var(--core-color-content-disabled); cursor: not-allowed; }
 .item[data-disabled] .description { color: var(--core-color-content-disabled); }

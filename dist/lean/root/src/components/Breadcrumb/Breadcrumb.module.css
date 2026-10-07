@@ -47,7 +47,7 @@
 
 /* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
 .link:hover, .link[data-state='hover'] {
-  background: var(--component-breadcrumb-all-link-fill-hover);
+  background: var(--core-color-action-compact-hover);
   color: var(--core-color-content-link-hover);
   text-decoration: underline;
 }

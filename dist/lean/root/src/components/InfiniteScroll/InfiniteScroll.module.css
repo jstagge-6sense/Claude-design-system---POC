@@ -28,7 +28,7 @@
   gap: var(--core-dimension-space-compact);
   margin: 0;
   padding-block-start: var(--core-dimension-space-compact);
-  border-block-start: var(--component-infiniteScroll-all-end-borderWidth) solid var(--component-infiniteScroll-all-end-border-default);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle);
   color: inherit;
 }
 .end:focus-visible { outline: none; box-shadow: var(--component-infiniteScroll-all-end-shadow-focus); }
@@ -40,6 +40,6 @@
   inset-block-end: 0;
   z-index: var(--ds-z-sticky);
   padding: var(--core-dimension-space-standard);
-  border-block-start: var(--component-infiniteScroll-all-end-borderWidth) solid var(--component-infiniteScroll-all-footer-border-default);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   background: var(--core-color-surface-overlay);
 }

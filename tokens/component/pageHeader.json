@@ -31,17 +31,14 @@
           "border": {
             "sticky": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%."
             }
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "shadow": {
             "sticky": {

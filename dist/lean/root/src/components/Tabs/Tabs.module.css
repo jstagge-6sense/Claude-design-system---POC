@@ -9,14 +9,14 @@
   flex-wrap: nowrap;
   gap: var(--core-dimension-space-tight);
   box-sizing: border-box;
-  border-block-end: var(--component-tabs-all-list-borderWidth) solid var(--component-tabs-all-list-border-default);
+  border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
-.root[data-orientation='vertical'] .list { flex-direction: column; flex: none; border-block-end: 0; border-inline-end: var(--component-tabs-all-list-borderWidth) solid var(--component-tabs-all-list-border-default); }
+.root[data-orientation='vertical'] .list { flex-direction: column; flex: none; border-block-end: 0; border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
 
 /* Filled: a grouped container using the shared group border gradient. */
 .root[data-variant='filled'] .list {
   padding: var(--core-dimension-space-tight);
-  border: var(--component-tabs-all-list-borderWidth) solid transparent;
+  border: var(--core-dimension-borderWidth-thin) solid transparent;
   border-radius: var(--core-dimension-radius-control-medium);
   background: linear-gradient(var(--core-color-surface-group), var(--core-color-surface-group)) padding-box, var(--core-color-border-group) border-box;
 }
@@ -66,9 +66,9 @@
 /* Selected indicator bar. Selected is a color and fill change plus the bar, never shadow. */
 .tab::before { content: none; position: absolute; background: var(--core-color-action-primary-default); }
 .tab[aria-selected='true']::before { content: ''; }
-.root[data-orientation='horizontal'] .tab::before { inset-inline: 0; inset-block-end: calc(var(--component-tabs-all-list-borderWidth) * -1); block-size: var(--component-tabs-all-indicator-thickness); }
+.root[data-orientation='horizontal'] .tab::before { inset-inline: 0; inset-block-end: calc(var(--core-dimension-borderWidth-thin) * -1); block-size: var(--core-dimension-borderWidth-medium); }
 .root[data-variant='filled'] .tab::before { inset-block-end: 0; border-end-start-radius: var(--core-dimension-radius-control-small); border-end-end-radius: var(--core-dimension-radius-control-small); }
-.root[data-orientation='vertical'] .tab::before { inset-block: 0; inset-inline-end: calc(var(--component-tabs-all-list-borderWidth) * -1); inline-size: var(--component-tabs-all-indicator-thickness); }
+.root[data-orientation='vertical'] .tab::before { inset-block: 0; inset-inline-end: calc(var(--core-dimension-borderWidth-thin) * -1); inline-size: var(--core-dimension-borderWidth-medium); }
 
 .icon { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .icon > svg { inline-size: 100%; block-size: 100%; }
@@ -77,17 +77,17 @@
 .badge {
   display: inline-flex; align-items: center; justify-content: center; flex: none;
   box-sizing: border-box;
-  min-inline-size: var(--component-tabs-all-badge-size);
-  block-size: var(--component-tabs-all-badge-size);
+  min-inline-size: var(--core-dimension-size-feedback-medium);
+  block-size: var(--core-dimension-size-feedback-medium);
   padding-inline: var(--core-dimension-space-compact);
-  border-radius: var(--component-tabs-all-badge-radius);
+  border-radius: var(--core-dimension-radius-pill);
   background: var(--_badge-fill);
   color: var(--_badge-color);
   font: var(--component-tabs-all-badge-typography-font);
 }
 
 /* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
-.tab:hover:not([aria-disabled='true']), .tab[data-state='hover'] { --_fill: var(--component-tabs-all-tab-fill-hover); --_label: var(--core-color-content-primary); }
+.tab:hover:not([aria-disabled='true']), .tab[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_label: var(--core-color-content-primary); }
 .tab[aria-selected='true'] { --_label: var(--core-color-content-primary); --_badge-fill: var(--core-color-action-primary-default); --_badge-color: var(--core-color-content-inverse); }
 .root[data-variant='filled'] .tab[aria-selected='true'] { --_fill: var(--core-color-action-selected); }
 .tab:focus-visible, .tab[data-state='focus'] { outline: none; box-shadow: var(--component-tabs-all-tab-shadow-focus); }

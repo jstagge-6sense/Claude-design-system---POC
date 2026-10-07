@@ -1,17 +1,17 @@
 /* Badge. Tokens: component.badge.*. Non-interactive: no hover, pressed or focus states. */
 .root {
   --_fill: var(--core-color-surface-chip);
-  --_border: var(--component-badge-neutral-container-border);
+  --_border: var(--core-color-border-strong);
   --_label: var(--core-color-content-primary);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--core-dimension-space-tight);
-  min-block-size: var(--component-badge-all-container-heightMin);
+  min-block-size: var(--core-dimension-size-feedback-medium);
   padding-inline: var(--core-dimension-space-compact);
-  border: var(--component-badge-all-container-borderWidth) solid var(--_border);
-  border-radius: var(--component-badge-all-container-radius);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
+  border-radius: var(--core-dimension-radius-pill);
   background: var(--_fill);
   color: var(--_label);
   font: var(--component-badge-all-label-typography-font);
@@ -25,7 +25,7 @@
 .icon > svg { inline-size: 100%; block-size: 100%; }
 
 /* A single digit is a circle; longer counts stretch into a pill. */
-.root[data-kind='count'] { min-inline-size: var(--component-badge-all-container-heightMin); padding-inline: var(--core-dimension-space-tight); font-variant-numeric: tabular-nums; }
+.root[data-kind='count'] { min-inline-size: var(--core-dimension-size-feedback-medium); padding-inline: var(--core-dimension-space-tight); font-variant-numeric: tabular-nums; }
 
 .root[data-tone='critical'] { --_fill: var(--core-color-surface-badge-critical); --_border: var(--core-color-surface-badge-critical); --_label: var(--core-color-content-inverse); }
 .root[data-tone='warning'] { --_fill: var(--core-color-surface-badge-warning); --_border: var(--core-color-surface-badge-warning); --_label: var(--core-color-content-inverse); }

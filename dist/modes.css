@@ -17,7 +17,7 @@
   --core-color-surface-group: var(--core-color-dark-surface-group);
   --core-color-surface-chip: var(--core-color-dark-surface-chip);
   --core-color-surface-control-default: var(--core-color-dark-surface-control);
-  --core-color-surface-control-disabled: var(--core-color-sage-100);
+  --core-color-surface-control-disabled: color-mix(in srgb, var(--core-color-sage-100) calc(var(--core-effect-opacity-100) * 100%), transparent);
   --core-color-surface-control-readOnly: var(--core-color-dark-surface-card);
   --core-color-surface-badge-critical: var(--core-color-red-200);
   --core-color-surface-badge-warning: var(--core-color-amber-300);
@@ -34,11 +34,11 @@
   --core-color-status-info: var(--core-color-sage-500);
   --core-color-status-warning: var(--core-color-amber-300);
   --core-color-status-critical: var(--core-color-red-200);
-  --core-color-border-subtle: var(--core-color-sage-200);
-  --core-color-border-standard: var(--core-color-sage-200);
-  --core-color-border-disabled: var(--core-color-sage-200);
-  --core-color-border-strong: var(--core-color-sage-200);
-  --core-color-border-control-default: var(--core-color-sage-200);
+  --core-color-border-subtle: color-mix(in srgb, var(--core-color-sage-200) calc(var(--core-effect-opacity-100) * 100%), transparent);
+  --core-color-border-standard: color-mix(in srgb, var(--core-color-sage-200) calc(var(--core-effect-opacity-200) * 100%), transparent);
+  --core-color-border-disabled: color-mix(in srgb, var(--core-color-sage-200) calc(var(--core-effect-opacity-200) * 100%), transparent);
+  --core-color-border-strong: color-mix(in srgb, var(--core-color-sage-200) calc(var(--core-effect-opacity-300) * 100%), transparent);
+  --core-color-border-control-default: color-mix(in srgb, var(--core-color-sage-200) calc(var(--core-effect-opacity-600) * 100%), transparent);
   --core-color-border-highlight: var(--core-color-white);
   --core-color-border-group: var(--core-color-dark-border-group);
   --core-color-border-destructive: var(--core-color-red-200);
@@ -57,7 +57,7 @@
   --core-color-action-tint-hover: var(--core-color-dark-surface-tint);
   --core-color-action-selected: var(--core-color-dark-surface-selected);
   --core-color-action-compact-default: var(--core-color-sage-100);
-  --core-color-action-compact-hover: var(--core-color-sage-100);
+  --core-color-action-compact-hover: color-mix(in srgb, var(--core-color-sage-100) calc(var(--core-effect-opacity-100) * 100%), transparent);
   --core-color-action-compact-pressed: var(--core-color-sage-100);
   --core-color-action-destructive-default: var(--core-color-red-200);
   --core-color-action-destructive-hover: var(--core-color-red-100);

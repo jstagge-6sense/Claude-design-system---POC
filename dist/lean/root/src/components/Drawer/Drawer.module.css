@@ -26,7 +26,7 @@
   background: var(--component-drawer-all-container-fill);
   color: var(--component-drawer-all-body-color);
   box-shadow: var(--component-drawer-all-container-shadow);
-  border: 0 solid var(--component-drawer-all-container-border);
+  border: 0 solid var(--core-color-border-standard);
   overflow: hidden;
 }
 .surface:focus { outline: none; }

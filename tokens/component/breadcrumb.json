@@ -27,7 +27,7 @@
           "fill": {
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$value": "{core.color.action.compact.hover}",
               "$description": "Ink 900 at 8%."
             }
           },

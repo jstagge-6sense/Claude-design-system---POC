@@ -5,11 +5,8 @@
         "container": {
           "minHeight": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Minimum text area height, 48px. Row count sets the rest.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Minimum text area height, 48px. Row count sets the rest."
           },
           "paddingBlock": {
             "$type": "spacing",
@@ -31,7 +28,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%. Separates the inline actions bar from the text."
             }
           }

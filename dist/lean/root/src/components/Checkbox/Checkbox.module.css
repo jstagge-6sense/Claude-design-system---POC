@@ -23,10 +23,10 @@
   /* Unchecked mapping. Checked and indeterminate override the *0 values below. */
   --_f0: var(--core-color-surface-control-default);
   --_fh: linear-gradient(var(--component-checkbox-unchecked-container-fillTint-hover), var(--component-checkbox-unchecked-container-fillTint-hover)), var(--core-color-surface-control-default);
-  --_fd: var(--component-checkbox-unchecked-container-fill-disabled);
-  --_b0: var(--component-checkbox-unchecked-container-border-default);
+  --_fd: var(--core-color-surface-control-disabled);
+  --_b0: var(--core-color-border-control-default);
   --_bh: var(--component-checkbox-unchecked-container-border-hover);
-  --_bd: var(--component-checkbox-unchecked-container-border-disabled);
+  --_bd: var(--core-color-border-disabled);
   --_be: var(--core-color-status-critical);
   --_m: var(--core-color-content-inverse);
   --_f: var(--_f0);
@@ -37,7 +37,7 @@
   block-size: var(--_size);
   box-sizing: border-box;
   border-radius: var(--core-dimension-radius-control-small);
-  border: var(--component-checkbox-all-container-borderWidth) solid var(--_b);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_b);
   background: var(--_f);
   color: var(--_m);
   pointer-events: none;
@@ -57,7 +57,7 @@
   --_fd: var(--component-checkbox-checked-container-fill-disabled);
   --_b0: var(--core-color-action-primary-default);
   --_bh: var(--core-color-action-primary-hover);
-  --_bd: var(--component-checkbox-checked-container-border-disabled);
+  --_bd: var(--core-color-border-disabled);
   --_be: var(--core-color-status-critical);
 }
 

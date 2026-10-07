@@ -14,16 +14,13 @@
           },
           "border": {
             "$type": "color",
-            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$value": "{core.color.border.standard}",
             "$description": "Ink 900 at 16%."
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke."
           }
         },
         "header": {
@@ -37,7 +34,7 @@
           },
           "border": {
             "$type": "color",
-            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$value": "{core.color.border.subtle}",
             "$description": "Ink 900 at 8% under the header row."
           }
         },
@@ -50,11 +47,8 @@
         "code": {
           "typography": {
             "$type": "typography",
-            "$value": "{core.typography.paragraph.2}",
-            "$description": "GAP-codeSnippet-1: no monospace text style or font family token exists. Uses paragraph.2 for size and line height. CSS applies a generic monospace font-family keyword stack.",
-            "$extensions": {
-              "gap": "GAP-codeSnippet-1"
-            }
+            "$value": "{core.typography.code.1}",
+            "$description": "Code text. Monospace via core.typography.code.1."
           },
           "color": {
             "$type": "color",
@@ -99,7 +93,7 @@
             },
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$value": "{core.color.action.compact.hover}",
               "$description": "Ink 900 at 8%."
             },
             "pressed": {
@@ -111,7 +105,7 @@
           "border": {
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$value": "{core.color.border.subtle}",
               "$description": "Ink 900 at 8%."
             }
           },

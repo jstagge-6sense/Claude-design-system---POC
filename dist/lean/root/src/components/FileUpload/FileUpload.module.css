@@ -6,7 +6,7 @@
 
 .zone {
   --_fill: var(--core-color-surface-control-default);
-  --_border: var(--component-fileUpload-all-zone-border-default);
+  --_border: var(--core-color-border-control-default);
   --_title: var(--core-color-content-primary);
   --_hint: var(--core-color-content-secondary);
   --_icon: var(--core-color-content-secondary);
@@ -17,7 +17,7 @@
   gap: var(--core-dimension-space-compact);
   box-sizing: border-box;
   padding: var(--core-dimension-space-spacious);
-  border: var(--component-fileUpload-all-zone-borderWidth) dashed var(--_border);
+  border: var(--core-dimension-borderWidth-medium) dashed var(--_border);
   border-radius: var(--core-dimension-radius-surface-medium);
   background: var(--_fill);
   text-align: center;
@@ -27,8 +27,8 @@
 /* Drag over: solid teal border, selected fill and a different message. Not color alone. */
 .zone[data-drag-over] { --_fill: var(--core-color-action-selected); --_border: var(--core-color-action-primary-default); border-style: solid; }
 .zone[data-disabled] {
-  --_fill: var(--component-fileUpload-all-zone-fill-disabled);
-  --_border: var(--component-fileUpload-all-zone-border-disabled);
+  --_fill: var(--core-color-surface-control-disabled);
+  --_border: var(--core-color-border-disabled);
   --_title: var(--core-color-content-disabled);
   --_hint: var(--core-color-content-disabled);
   --_icon: var(--core-color-content-disabled);
@@ -56,7 +56,7 @@
   gap: var(--core-dimension-space-comfortable);
   box-sizing: border-box;
   padding: var(--core-dimension-space-comfortable);
-  border: var(--component-fileUpload-all-item-borderWidth) solid var(--component-fileUpload-all-item-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-control-medium);
   background: var(--core-color-surface-card);
 }

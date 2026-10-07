@@ -16,7 +16,7 @@
   inline-size: 100%;
   padding: var(--_pad-block) var(--_pad-inline);
   background: linear-gradient(var(--_tint), var(--_tint)), var(--core-color-surface-overlay);
-  border: var(--component-banner-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   border-radius: var(--core-dimension-radius-control-medium);
   color: var(--core-color-content-primary);
 }

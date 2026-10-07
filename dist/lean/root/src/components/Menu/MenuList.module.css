@@ -66,15 +66,15 @@
 .check > svg { inline-size: 100%; block-size: 100%; }
 
 /* ---- States: real pseudo-classes plus [data-state] twins for forced states ---- */
-.item:hover:not([aria-disabled='true']), .item[data-state='hover'], .item:focus-visible, .item[data-state='focus'] { --_fill: var(--component-menu-all-item-fill-hover); }
+.item:hover:not([aria-disabled='true']), .item[data-state='hover'], .item:focus-visible, .item[data-state='focus'] { --_fill: var(--core-color-action-compact-hover); }
 .item:active:not([aria-disabled='true']), .item[data-state='pressed'] { --_fill: var(--component-menu-all-item-fill-pressed); }
 .item:focus-visible, .item[data-state='focus'] { --_shadow: var(--component-menu-all-item-shadow-focus); z-index: var(--ds-z-base); }
-.item[data-open] { --_fill: var(--component-menu-all-item-fill-hover); }
+.item[data-open] { --_fill: var(--core-color-action-compact-hover); }
 
 /* Selected: persistent, carried by fill and a check mark. Hover and focus tint on top of it. */
 .item[data-selected] { --_icon: var(--core-color-content-primary); background: var(--core-color-action-selected); }
 .item[data-selected]:hover:not([aria-disabled='true']), .item[data-selected][data-state='hover'], .item[data-selected]:focus-visible, .item[data-selected][data-state='focus'] {
-  background: linear-gradient(var(--component-menu-all-item-fill-hover), var(--component-menu-all-item-fill-hover)), var(--core-color-action-selected);
+  background: linear-gradient(var(--core-color-action-compact-hover), var(--core-color-action-compact-hover)), var(--core-color-action-selected);
 }
 .item[data-selected]:active:not([aria-disabled='true']), .item[data-selected][data-state='pressed'] {
   background: linear-gradient(var(--component-menu-all-item-fill-pressed), var(--component-menu-all-item-fill-pressed)), var(--core-color-action-selected);
@@ -91,7 +91,7 @@
 .groupItem { display: block; }
 .group { display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); margin: 0; padding: 0; list-style: none; }
 .groupLabel { padding-block: var(--core-dimension-space-compact) 0; padding-inline: var(--core-dimension-space-comfortable); color: var(--core-color-content-secondary); font: var(--component-menu-all-group-label-typography-font); }
-.divider { block-size: var(--component-menu-all-container-borderWidth); margin-block: var(--core-dimension-space-tight); background: var(--component-menu-all-container-border-default); }
+.divider { block-size: var(--core-dimension-borderWidth-thin); margin-block: var(--core-dimension-space-tight); background: var(--core-color-border-standard); }
 
 /* ---- Loading and empty ---- */
 .state { display: flex; align-items: center; gap: var(--core-dimension-space-compact); padding: var(--core-dimension-space-standard); color: var(--core-color-content-secondary); font: var(--component-menu-all-item-description-typography-font); }
@@ -101,7 +101,7 @@
 .subPositioner:not([data-ready]) { visibility: hidden; }
 .subPanel {
   min-inline-size: 10rem;
-  border: var(--component-menu-all-container-borderWidth) solid var(--component-menu-all-container-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-surface-medium);
   background: var(--core-color-surface-overlay);
   box-shadow: var(--component-menu-all-container-shadow-default);

@@ -2,7 +2,7 @@
    (the inline icon action recipe, visual-design-decisions 4.6). Flat icon tools, not a ButtonGroup and not Tabs. */
 .root {
   --_fill: var(--core-color-surface-card);
-  --_border: var(--component-wysiwygToolbar-all-group-divider-color);
+  --_border: var(--core-color-border-standard);
   --_shadow: none;
   --_radius: var(--core-dimension-radius-control-medium);
 
@@ -15,15 +15,15 @@
   min-inline-size: 0;
   padding: var(--core-dimension-space-tight);
   background: var(--_fill);
-  border: var(--component-wysiwygToolbar-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   border-radius: var(--_radius);
   box-shadow: var(--_shadow);
 }
-.root[data-variant='minimal'] { --_fill: var(--core-color-surface-control-default); --_border: var(--component-wysiwygToolbar-minimal-container-border-default); }
+.root[data-variant='minimal'] { --_fill: var(--core-color-surface-control-default); --_border: var(--core-color-border-subtle); }
 /* Floating shrink-wraps its tools, so it cannot be an inline-size container. */
 .root[data-variant='floating'] {
   --_fill: var(--core-color-surface-control-default);
-  --_border: var(--component-wysiwygToolbar-all-group-divider-color);
+  --_border: var(--core-color-border-standard);
   --_shadow: var(--component-wysiwygToolbar-floating-container-shadow-default);
   --_radius: var(--core-dimension-radius-surface-medium);
   container-type: normal;
@@ -33,7 +33,7 @@
 .root[data-variant='minimal'] { inline-size: max-content; container-type: normal; }
 
 .groupWrap { display: flex; align-items: center; gap: var(--core-dimension-space-tight); }
-.groupWrap[data-divided], .more[data-divided] { padding-inline-start: var(--core-dimension-space-compact); border-inline-start: var(--component-wysiwygToolbar-all-container-borderWidth) solid var(--component-wysiwygToolbar-all-group-divider-color); }
+.groupWrap[data-divided], .more[data-divided] { padding-inline-start: var(--core-dimension-space-compact); border-inline-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
 .extended { display: contents; }
 .more { display: none; align-items: center; margin-inline-start: auto; }
 

@@ -23,11 +23,8 @@
           },
           "radius": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Pill or circle radius. No semantic token for a full radius. Radio is circular. Checkbox keeps the small control radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Pill or circle radius. No semantic token for a full radius. Radio is circular. Checkbox keeps the small control radius."
           }
         },
         "label": {
@@ -159,12 +156,12 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%."
             },
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})"
+              "$value": "{core.color.border.control.default}"
             },
             "disabled": {
               "$type": "color",

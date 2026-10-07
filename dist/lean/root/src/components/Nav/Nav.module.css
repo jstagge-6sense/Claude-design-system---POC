@@ -2,7 +2,7 @@
    Interim by design: may be superseded by the Information Architecture redesign (visual-design-decisions 4.5, section 7). */
 .root {
   --_width: 15rem;
-  --_rail: calc(var(--core-dimension-size-control-height-medium) + 2 * var(--core-dimension-space-compact) + 2 * var(--component-nav-all-container-borderWidth));
+  --_rail: calc(var(--core-dimension-size-control-height-medium) + 2 * var(--core-dimension-space-compact) + 2 * var(--core-dimension-borderWidth-thin));
 
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
   padding-inline: var(--core-dimension-space-compact);
   background: var(--core-color-surface-card);
   /* The divider sits on the edge facing the content, so it follows the nav to the end edge in RTL. */
-  border-inline-end: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-container-border-default);
+  border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
 .root[hidden] { display: none; }
 .root[data-collapsed] { inline-size: var(--_rail); }
@@ -52,8 +52,8 @@
 .root[data-collapsed] .scroll { overflow: visible; }
 
 .group { display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); }
-.group[data-divider] { padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-container-border-default); }
-.root[data-collapsed] .group[data-labelled]:not(:first-child) { padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-container-border-default); }
+.group[data-divider] { padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+.root[data-collapsed] .group[data-labelled]:not(:first-child) { padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
 .groupLabel {
   margin: 0;
   padding-inline: var(--core-dimension-space-comfortable);
@@ -82,7 +82,7 @@
   inline-size: 100%;
   min-block-size: var(--core-dimension-size-control-height-medium);
   padding-inline: var(--core-dimension-space-comfortable);
-  border: var(--component-nav-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   border-radius: var(--core-dimension-radius-control-medium);
   background: var(--_fill);
   box-shadow: var(--_shadow);
@@ -112,7 +112,7 @@
 .root[data-collapsed] .item { justify-content: center; padding-inline: 0; }
 
 /* ---- States: pseudo-classes inside :where() keep specificity flat so source order decides. ---- */
-.item:where(:hover:not([aria-disabled='true'])), .item[data-state='hover'] { --_fill: var(--component-nav-all-item-fill-hover); --_border: var(--component-nav-all-item-border-hover); --_shadow: var(--component-nav-all-item-shadow-hover); }
+.item:where(:hover:not([aria-disabled='true'])), .item[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_border: var(--core-color-border-subtle); --_shadow: var(--component-nav-all-item-shadow-hover); }
 .item:where(:active:not([aria-disabled='true'])), .item[data-state='pressed'] { --_fill: var(--component-nav-all-item-fill-pressed); --_border: transparent; --_shadow: var(--component-nav-all-item-shadow-pressed); }
 
 /* Parent whose child is the current page: stronger label and icon, no fill (the child carries the page signal). */

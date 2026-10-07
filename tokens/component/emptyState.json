@@ -24,27 +24,18 @@
         "illustration": {
           "size": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Default illustration disc (48px). No semantic token for this size.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Default illustration disc (48px). No semantic token for this size."
           },
           "iconSize": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.500}",
-            "$description": "Icon inside the default disc (24px). No semantic token.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-500"
-            }
+            "$value": "{core.dimension.size.feedback.medium}",
+            "$description": "Icon inside the default disc (24px). No semantic token."
           },
           "radius": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Circle. No semantic token for full radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Circle. No semantic token for full radius."
           },
           "fill": {
             "$type": "color",

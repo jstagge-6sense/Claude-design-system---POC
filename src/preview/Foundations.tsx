@@ -113,12 +113,15 @@ export function GapsPage() {
     e.tokens.push(g.token); if (!e.note && g.note) e.note = g.note
     gapMap.set(g.id, e)
   }
-  const conflicts = DATA.state.conflicts || []
+  const all = DATA.state.conflicts || []
+  const isClosed = (st?: string) => /^(resolved|decided|allowed|noted)/i.test(st || '')
+  const conflicts = [...all].sort((x, y) => Number(isClosed(x.status)) - Number(isClosed(y.status)))
+  const openCount = all.filter((c) => !isClosed(c.status)).length
   return (
     <>
-      <Section title={`Conflicts (${conflicts.length})`} note="Found while building. Needs a human decision. Nothing was resolved silently.">
+      <Section title={`Conflicts (${openCount} open, ${all.length - openCount} closed)`} note="Found while building. Open ones need a human decision. Closed ones are resolved, decided or noted. Nothing was resolved silently.">
         {conflicts.map((c) => (
-          <div key={c.id} className="pv-card"><strong>{c.id}. {c.title}</strong><p>{c.detail}</p>{c.status ? <span className="pv-pill">{c.status}</span> : null}</div>
+          <div key={c.id} className="pv-card" style={isClosed(c.status) ? { opacity: 0.65 } : undefined}><strong>{c.id}. {c.title}</strong><p>{c.detail}</p>{c.status ? <span className="pv-pill">{c.status}</span> : null}</div>
         ))}
         {!conflicts.length ? <p className="pv-muted">None recorded.</p> : null}
       </Section>

@@ -85,14 +85,14 @@
   box-sizing: border-box;
   inline-size: var(--core-dimension-size-control-height-medium);
   block-size: var(--core-dimension-size-control-height-medium);
-  border: var(--component-datePicker-all-day-borderWidth) solid transparent;
+  border: var(--core-dimension-borderWidth-thin) solid transparent;
   border-radius: var(--core-dimension-radius-control-small);
   background: var(--_fill);
   box-shadow: var(--_ring);
 }
 .day[data-outside] { --_color: var(--core-color-content-placeholder); }
 /* Today: an outline, visible with or without a selection. aria-current="date" carries it for assistive tech. */
-.day[data-today] .dayInner { border-color: var(--component-datePicker-all-day-border-today); }
+.day[data-today] .dayInner { border-color: var(--core-color-border-control-default); }
 .day:hover:not([aria-disabled='true']), .day[data-state='hover'] { --_fill: var(--component-datePicker-all-day-fill-hover); }
 .day:active:not([aria-disabled='true']), .day[data-state='pressed'] { --_fill: var(--component-datePicker-all-day-fill-pressed); }
 .day:focus-visible, .day[data-state='focus'] { outline: none; --_ring: var(--component-datePicker-all-day-shadow-focus); }

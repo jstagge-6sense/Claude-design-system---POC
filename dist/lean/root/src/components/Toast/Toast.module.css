@@ -30,7 +30,7 @@
   max-inline-size: min(26rem, 100%);
   padding: var(--core-dimension-space-comfortable) var(--core-dimension-space-standard);
   background: var(--core-color-surface-overlay);
-  border: var(--component-toast-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   border-radius: var(--core-dimension-radius-control-medium);
   box-shadow: var(--component-toast-all-container-shadow);
   color: var(--core-color-content-primary);

@@ -18,8 +18,8 @@
   display: flex;
   gap: var(--core-dimension-space-tight);
   block-size: var(--component-progressBar-all-track-height);
-  border-radius: var(--component-progressBar-all-track-radius);
-  background: var(--component-progressBar-all-track-fill);
+  border-radius: var(--core-dimension-radius-pill);
+  background: var(--core-color-border-standard);
   overflow: hidden;
   position: relative;
 }
@@ -28,15 +28,15 @@
   flex: 1 1 0;
   position: relative;
   overflow: hidden;
-  border-radius: var(--component-progressBar-all-track-radius);
-  background: var(--component-progressBar-all-track-fill);
+  border-radius: var(--core-dimension-radius-pill);
+  background: var(--core-color-border-standard);
 }
 
 .fill {
   display: block;
   block-size: 100%;
   inline-size: 0;
-  border-radius: var(--component-progressBar-all-track-radius);
+  border-radius: var(--core-dimension-radius-pill);
   background: var(--_fill);
 }
 .track:not([data-steps]) > .fill { position: absolute; inset-block: 0; inset-inline-start: 0; }

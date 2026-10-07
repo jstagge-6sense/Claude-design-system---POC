@@ -14,7 +14,7 @@
   flex-direction: column;
   gap: var(--core-dimension-space-tight);
   padding: var(--core-dimension-space-tight);
-  border: var(--component-timePicker-all-panel-borderWidth) solid var(--component-timePicker-all-panel-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-surface-medium);
   background: var(--core-color-surface-overlay);
   box-shadow: var(--component-timePicker-all-panel-shadow-default);
@@ -36,8 +36,8 @@
   min-block-size: var(--core-dimension-size-control-height-medium);
   padding-inline: var(--core-dimension-space-comfortable);
   border-radius: var(--core-dimension-radius-control-small);
-  outline: var(--component-timePicker-all-option-borderWidthActive) solid transparent;
-  outline-offset: calc(var(--component-timePicker-all-option-borderWidthActive) * -1);
+  outline: var(--core-dimension-borderWidth-medium) solid transparent;
+  outline-offset: calc(var(--core-dimension-borderWidth-medium) * -1);
   background: var(--_fill);
   color: var(--_color);
   font: var(--component-timePicker-all-group-typography-font);
@@ -49,10 +49,10 @@
 .check { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .check > svg { inline-size: 100%; block-size: 100%; }
 
-.option:hover, .option[data-state='hover'] { --_fill: var(--component-timePicker-all-option-fill-hover); }
+.option:hover, .option[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); }
 .option:active, .option[data-state='pressed'] { --_fill: var(--component-timePicker-all-option-fill-pressed); }
 /* Keyboard-active option: focus stays in the input, so the option carries its own indicator. */
-.option[data-active], .option[data-state='focus'] { --_fill: var(--component-timePicker-all-option-fill-hover); outline-color: var(--core-color-border-focus); }
+.option[data-active], .option[data-state='focus'] { --_fill: var(--core-color-action-compact-hover); outline-color: var(--core-color-border-focus); }
 /* Selected: gradient fill plus a check, never color alone. */
 .option[data-selected] { --_fill: var(--core-color-action-selected); --_color: var(--core-color-content-primary); }
 .option[aria-disabled='true'] { --_color: var(--core-color-content-disabled); cursor: not-allowed; }
@@ -65,14 +65,14 @@
   box-sizing: border-box;
   min-block-size: var(--core-dimension-size-control-height-medium);
   padding-inline: var(--core-dimension-space-comfortable);
-  border: var(--component-timePicker-all-panel-borderWidth) solid var(--component-timePicker-all-panel-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-control-small);
   background: var(--_fill);
   color: var(--core-color-content-primary);
   font: var(--component-timePicker-all-group-typography-font);
   cursor: pointer;
 }
-.presetButton:hover, .meridiemButton:hover:not([aria-pressed='true']), .presetButton[data-state='hover'], .meridiemButton[data-state='hover'] { --_fill: var(--component-timePicker-all-option-fill-hover); }
+.presetButton:hover, .meridiemButton:hover:not([aria-pressed='true']), .presetButton[data-state='hover'], .meridiemButton[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); }
 .presetButton:active, .meridiemButton:active, .presetButton[data-state='pressed'], .meridiemButton[data-state='pressed'] { --_fill: var(--component-timePicker-all-option-fill-pressed); }
 .presetButton:focus-visible, .meridiemButton:focus-visible, .presetButton[data-state='focus'], .meridiemButton[data-state='focus'] { outline: none; box-shadow: var(--component-timePicker-all-segment-shadow-focus); }
 .meridiemButton[aria-pressed='true'] { --_fill: var(--core-color-action-selected); color: var(--core-color-content-primary); border-color: var(--core-color-border-focus); }
@@ -83,11 +83,11 @@
 .segmentLabel { font: var(--component-timePicker-all-group-typography-font); text-decoration: var(--component-timePicker-all-group-typography-text-decoration); color: var(--core-color-content-secondary); }
 .segmentInput {
   box-sizing: border-box;
-  inline-size: var(--component-timePicker-all-segment-width);
+  inline-size: var(--core-dimension-size-feedback-large);
   min-block-size: var(--core-dimension-size-control-height-medium);
   margin: 0;
   padding: 0;
-  border: var(--component-timePicker-all-panel-borderWidth) solid var(--component-timePicker-all-segment-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-control-default);
   border-radius: var(--core-dimension-radius-control-small);
   background: var(--core-color-surface-control-default);
   color: var(--core-color-content-primary);
@@ -98,4 +98,4 @@
 }
 .segmentInput:focus-visible, .segmentInput[data-state='focus'] { border-color: var(--core-color-border-focus); box-shadow: var(--component-timePicker-all-segment-shadow-focus); }
 .colon { align-self: end; padding-block-end: var(--core-dimension-space-tight); color: var(--core-color-content-secondary); }
-.footer { display: flex; justify-content: flex-end; gap: var(--core-dimension-space-tight); padding-block-start: var(--core-dimension-space-tight); border-block-start: var(--component-timePicker-all-panel-borderWidth) solid var(--component-timePicker-all-panel-border-default); }
+.footer { display: flex; justify-content: flex-end; gap: var(--core-dimension-space-tight); padding-block-start: var(--core-dimension-space-tight); border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }

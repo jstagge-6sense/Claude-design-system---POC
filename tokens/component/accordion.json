@@ -19,11 +19,8 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke."
           },
           "shadow": {
             "$type": "shadow",
@@ -33,7 +30,7 @@
         "item": {
           "divider": {
             "$type": "color",
-            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$value": "{core.color.border.subtle}",
             "$description": "Ink 900 at 8% between items."
           }
         },
@@ -67,7 +64,7 @@
           "fill": {
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$value": "{core.color.action.compact.hover}",
               "$description": "Ink 900 at 8%."
             }
           }

@@ -5,7 +5,7 @@
         "shape": {
           "fill": {
             "$type": "color",
-            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$value": "{core.color.border.subtle}",
             "$description": "Ink 900 at 8%. Calm placeholder fill."
           },
           "shimmerStart": {
@@ -28,11 +28,8 @@
           },
           "radiusCircle": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Pill or circle radius. No semantic token for full radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Pill or circle radius. No semantic token for full radius."
           },
           "heightText": {
             "$type": "sizing",
@@ -44,11 +41,8 @@
           },
           "heightBlock": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Default block height, 48px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Default block height, 48px."
           }
         },
         "container": {
@@ -68,7 +62,7 @@
           },
           "border": {
             "$type": "color",
-            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})"
+            "$value": "{core.color.border.subtle}"
           },
           "padding": {
             "$type": "spacing",
@@ -84,11 +78,8 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           }
         }
       },
@@ -96,7 +87,7 @@
         "row": {
           "divider": {
             "$type": "color",
-            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})"
+            "$value": "{core.color.border.standard}"
           },
           "paddingBlock": {
             "$type": "spacing",

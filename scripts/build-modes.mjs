@@ -16,7 +16,9 @@ const errors = []
 
 const ext = Object.fromEntries(Object.entries(dark.extend).filter(([k]) => !k.startsWith('$')))
 const known = (n) => tokens[n] || ext[n] !== undefined
-const resolveAlias = (str) => str.replace(/\{([^}]+)\}/g, (m, ref) => { if (!known(ref)) { errors.push(`unknown alias ${ref}`); return m } return `var(${cssVar(ref)})` })
+const RGBA = /rgba\(\s*\{([^}]+)\}\s*,\s*\{([^}]+)\}\s*\)/g
+const resolveAlias = (str0) => { const str = str0.replace(RGBA, (m, c, o) => { if (!known(c) || !known(o)) { errors.push(`unknown alias in ${m}`); return m } return `color-mix(in srgb, var(${cssVar(c)}) calc(var(${cssVar(o)}) * 100%), transparent)` }); return resolveAlias2(str) }
+const resolveAlias2 = (str) => str.replace(/\{([^}]+)\}/g, (m, ref) => { if (!known(ref)) { errors.push(`unknown alias ${ref}`); return m } return `var(${cssVar(ref)})` })
 
 const darkLines = []
 for (const [n, hex] of Object.entries(ext)) { if (!/^#[0-9a-fA-F]{6}$/.test(hex)) errors.push(`extend ${n}: not a 6-digit hex`); darkLines.push(`  ${cssVar(n)}: ${hex};`) }

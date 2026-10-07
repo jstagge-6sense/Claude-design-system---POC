@@ -33,6 +33,11 @@
           "$type": "fontFamilies",
           "$value": "Atkinson Hyperlegible Next",
           "$description": "Defines the foundational font stack for the design system."
+        },
+        "mono": {
+          "$type": "fontFamilies",
+          "$value": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+          "$description": "Monospace stack for code and tabular technical text."
         }
       },
       "fontSize": {

@@ -10,33 +10,21 @@
           },
           "sizeMedium": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.500}",
-            "$description": "Section spinner, 24px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-500"
-            }
+            "$value": "{core.dimension.size.feedback.medium}",
+            "$description": "Section spinner, 24px."
           },
           "sizeLarge": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Page spinner, 48px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Page spinner, 48px."
           },
           "strokeSmall": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.200}",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-200"
-            }
+            "$value": "{core.dimension.borderWidth.medium}"
           },
           "strokeLarge": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.400}",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-400"
-            }
+            "$value": "{core.dimension.borderWidth.thick}"
           },
           "gap": {
             "$type": "spacing",
@@ -46,7 +34,7 @@
         "track": {
           "color": {
             "$type": "color",
-            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$value": "{core.color.border.standard}",
             "$description": "Ink 900 at 16%."
           }
         },
@@ -71,7 +59,7 @@
         "container": {
           "fill": {
             "$type": "color",
-            "$value": "rgba({core.color.surface.scrim},{core.effect.opacity.400})",
+            "$value": "{core.color.surface.scrim}",
             "$description": "Scrim. No scrim opacity is documented; 32% is a proposal. Tune in the preview."
           }
         },
@@ -86,21 +74,15 @@
         "track": {
           "color": {
             "$type": "color",
-            "$value": "rgba({core.color.white},{core.effect.opacity.400})",
-            "$description": "White at 32%. Track for spinners on dark or filled surfaces such as primary and destructive buttons.",
-            "$extensions": {
-              "gap": "GAP-spinner-1"
-            }
+            "$value": "rgba({core.color.content.inverse},{core.effect.opacity.400})",
+            "$description": "content.inverse at 32%. Track for spinners on filled surfaces such as primary and destructive buttons."
           }
         },
         "arc": {
           "color": {
             "$type": "color",
-            "$value": "{core.color.white}",
-            "$description": "White arc for spinners on dark or filled surfaces.",
-            "$extensions": {
-              "gap": "GAP-spinner-1"
-            }
+            "$value": "{core.color.content.inverse}",
+            "$description": "content.inverse, matching the button label, for spinners on filled surfaces."
           }
         }
       }

@@ -5,11 +5,8 @@
         "container": {
           "radius": {
             "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Global search is a pill. Contextual search keeps the input radius. Proposal to make the two visually distinct.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Global search is a pill. Contextual search keeps the input radius. Proposal to make the two visually distinct."
           },
           "shadow": {
             "default": {
@@ -39,7 +36,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%."
             }
           },
@@ -100,7 +97,7 @@
           "fill": {
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$value": "{core.color.action.compact.hover}",
               "$description": "Ink 900 at 8%."
             },
             "active": {
@@ -120,11 +117,8 @@
             "width": {
               "active": {
                 "$type": "borderWidth",
-                "$value": "{core.dimension.borderWidth.200}",
-                "$description": "2px bar.",
-                "$extensions": {
-                  "gap": "GAP-dimension-borderWidth-200"
-                }
+                "$value": "{core.dimension.borderWidth.medium}",
+                "$description": "2px bar."
               }
             }
           }

@@ -17,11 +17,8 @@
           },
           "heightLarge": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Large button height (48px). No semantic token for a large control height.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Large button height (48px). No semantic token for a large control height."
           },
           "paddingInlineSmall": {
             "$type": "spacing",
@@ -45,11 +42,8 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "fill": {
             "disabled": {
@@ -115,7 +109,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.0})",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.0})",
               "$description": "Transparent. Primary has no documented stroke."
             }
           },
@@ -174,7 +168,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})"
+              "$value": "{core.color.border.standard}"
             }
           },
           "shadow": {
@@ -207,11 +201,8 @@
           "color": {
             "default": {
               "$type": "color",
-              "$value": "{core.color.teal.900}",
-              "$description": "Documented as Teal 900 (visual-design-decisions 4.3, 4.4). No semantic content token for it. Nearest semantic: core.color.content.primary.",
-              "$extensions": {
-                "gap": "GAP-button-1"
-              }
+              "$value": "{core.color.content.brand}",
+              "$description": "Documented as Teal 900 (visual-design-decisions 4.3, 4.4). No semantic content token for it. Nearest semantic: core.color.content.primary."
             }
           }
         },
@@ -219,11 +210,8 @@
           "color": {
             "default": {
               "$type": "color",
-              "$value": "{core.color.teal.900}",
-              "$description": "Matches label color.",
-              "$extensions": {
-                "gap": "GAP-button-1"
-              }
+              "$value": "{core.color.content.brand}",
+              "$description": "Matches label color."
             }
           }
         }
@@ -247,7 +235,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})"
+              "$value": "{core.color.border.subtle}"
             }
           },
           "shadow": {
@@ -273,11 +261,8 @@
           "color": {
             "default": {
               "$type": "color",
-              "$value": "{core.color.teal.900}",
-              "$description": "Documented as Teal 900 (visual-design-decisions 4.3, 4.4). No semantic content token for it. Nearest semantic: core.color.content.primary.",
-              "$extensions": {
-                "gap": "GAP-button-1"
-              }
+              "$value": "{core.color.content.brand}",
+              "$description": "Documented as Teal 900 (visual-design-decisions 4.3, 4.4). No semantic content token for it. Nearest semantic: core.color.content.primary."
             }
           }
         },
@@ -285,11 +270,8 @@
           "color": {
             "default": {
               "$type": "color",
-              "$value": "{core.color.teal.900}",
-              "$description": "Matches label color.",
-              "$extensions": {
-                "gap": "GAP-button-1"
-              }
+              "$value": "{core.color.content.brand}",
+              "$description": "Matches label color."
             }
           }
         }

@@ -17,12 +17,12 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$value": "{core.color.border.subtle}",
               "$description": "Ink 900 at 8%."
             },
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.border.strong},{core.effect.opacity.300})",
+              "$value": "{core.color.border.strong}",
               "$description": "Ink 900 at 24% (strong border assumption). Clickable cards only."
             },
             "selected": {
@@ -33,19 +33,13 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke."
           },
           "borderWidthSelected": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.200}",
-            "$description": "2px selected stroke. Padding is reduced by the difference so layout does not shift.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-200"
-            }
+            "$value": "{core.dimension.borderWidth.medium}",
+            "$description": "2px selected stroke. Padding is reduced by the difference so layout does not shift."
           },
           "shadow": {
             "default": {

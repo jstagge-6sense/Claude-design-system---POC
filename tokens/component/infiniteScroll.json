@@ -57,7 +57,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%."
             }
           },
@@ -70,17 +70,14 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$value": "{core.color.border.subtle}",
               "$description": "Ink 900 at 8%. Hairline above the end-of-content indicator."
             }
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "shadow": {
             "focus": {

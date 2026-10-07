@@ -28,14 +28,14 @@
 .sparkWrap { flex: none; }
 .spark {
   display: block;
-  inline-size: calc(var(--component-dataMetric-all-sparkline-width) * 2);
+  inline-size: calc(var(--core-dimension-size-feedback-large) * 2);
   block-size: var(--component-dataMetric-all-sparkline-height);
   max-inline-size: 100%;
   overflow: visible;
 }
 .spark polyline {
   stroke: var(--core-color-content-secondary);
-  stroke-width: var(--component-dataMetric-all-sparkline-strokeWidth);
+  stroke-width: var(--core-dimension-borderWidth-medium);
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;

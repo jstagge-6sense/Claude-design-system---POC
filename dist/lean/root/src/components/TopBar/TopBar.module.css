@@ -7,7 +7,7 @@
   box-sizing: border-box;
   inline-size: 100%;
   background: var(--core-color-surface-card);
-  border-block-end: var(--component-topBar-all-container-borderWidth) solid var(--component-topBar-all-container-border-default);
+  border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
 .root[data-sticky] { position: sticky; inset-block-start: 0; z-index: var(--ds-z-sticky); }
 .root[data-scrolled] { box-shadow: var(--component-topBar-all-container-shadow-scrolled); }
@@ -20,7 +20,7 @@
   align-items: center;
   gap: var(--core-dimension-space-standard);
   box-sizing: border-box;
-  min-block-size: var(--component-topBar-all-container-height);
+  min-block-size: var(--core-dimension-size-feedback-large);
   padding-inline: var(--core-dimension-space-standard);
 }
 .logo { display: flex; align-items: center; flex: none; }
@@ -67,7 +67,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .link, .action { transition: background-color var(--ds-motion-fast) var(--ds-ease), box-shadow var(--ds-motion-fast) var(--ds-ease); }
 }
-.link:where(:hover), .link[data-state='hover'] { --_fill: var(--component-topBar-all-link-fill-hover); --_color: var(--core-color-content-primary); }
+.link:where(:hover), .link[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_color: var(--core-color-content-primary); }
 .link:where(:active), .link[data-state='pressed'] { --_fill: var(--component-topBar-all-link-fill-pressed); --_color: var(--core-color-content-primary); }
 .link[aria-current='page'] { --_fill: var(--core-color-action-selected); --_color: var(--core-color-content-primary); }
 .link:focus-visible, .link[data-state='focus'] { outline: none; box-shadow: var(--component-topBar-all-link-shadow-focus); }
@@ -100,7 +100,7 @@
 .action::after { content: ''; position: absolute; inset: calc((var(--core-dimension-size-control-height-medium) - var(--ds-hit-min)) / 2); }
 .icon { display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .icon > svg { inline-size: 100%; block-size: 100%; }
-.action:where(:hover), .action[data-state='hover'] { --_fill: var(--component-topBar-all-action-fill-hover); --_shadow: var(--component-topBar-all-action-shadow-hover); }
+.action:where(:hover), .action[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_shadow: var(--component-topBar-all-action-shadow-hover); }
 .action:where(:active), .action[data-state='pressed'] { --_fill: var(--component-topBar-all-action-fill-pressed); --_shadow: var(--component-topBar-all-action-shadow-pressed); }
 .action[aria-expanded='true'], .action[data-open] { --_fill: var(--core-color-action-selected); --_shadow: none; }
 .action:focus-visible, .action[data-state='focus'] { outline: none; --_shadow: var(--component-topBar-all-action-shadow-focus); }

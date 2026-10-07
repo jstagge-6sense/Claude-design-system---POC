@@ -17,7 +17,7 @@
   min-block-size: var(--_height);
   padding-inline: var(--_pad);
   border-radius: var(--core-dimension-radius-control-medium);
-  border: var(--component-button-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   background: var(--_fill);
   box-shadow: var(--_shadow);
   color: var(--_label);
@@ -32,7 +32,7 @@
 @media (prefers-reduced-motion: reduce) { .root { transition: none; } }
 
 .root[data-size='small'] { --_height: var(--core-dimension-size-control-height-small); --_pad: var(--core-dimension-space-compact); --_gap: var(--core-dimension-space-tight); --_type: var(--component-button-all-label-typographySmall-font); }
-.root[data-size='large'] { --_height: var(--component-button-all-container-heightLarge); --_pad: var(--core-dimension-space-spacious); --_type: var(--component-button-all-label-typographyLarge-font); }
+.root[data-size='large'] { --_height: var(--core-dimension-size-feedback-large); --_pad: var(--core-dimension-space-spacious); --_type: var(--component-button-all-label-typographyLarge-font); }
 .root[data-icon-only] { padding-inline: 0; inline-size: var(--_height); }
 
 .icon { display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--_icon, var(--_label)); }
@@ -55,23 +55,23 @@
   --_fill-default: var(--core-color-action-secondary-default);
   --_fill-hover: linear-gradient(var(--component-button-secondary-container-fillTint-hover), var(--component-button-secondary-container-fillTint-hover)), var(--core-color-action-secondary-hover);
   --_fill-pressed: var(--core-color-action-secondary-pressed);
-  --_border-default: var(--component-button-secondary-container-border-default);
+  --_border-default: var(--core-color-border-standard);
   --_shadow-default: var(--component-button-secondary-container-shadow-default);
   --_shadow-hover: var(--component-button-secondary-container-shadow-hover);
   --_shadow-pressed: var(--component-button-secondary-container-shadow-pressed);
   --_shadow-focus: var(--component-button-secondary-container-shadow-focus);
-  --_label-default: var(--component-button-secondary-label-color-default);
+  --_label-default: var(--core-color-content-brand);
 }
 .tertiary {
   --_fill-default: var(--core-color-action-tertiary-default);
   --_fill-hover: var(--core-color-action-tertiary-hover);
   --_fill-pressed: var(--core-color-action-tertiary-pressed);
-  --_border-default: var(--component-button-tertiary-container-border-default);
+  --_border-default: var(--core-color-border-subtle);
   --_shadow-default: var(--component-button-tertiary-container-shadow-default);
   --_shadow-hover: var(--component-button-tertiary-container-shadow-hover);
   --_shadow-pressed: var(--component-button-tertiary-container-shadow-pressed);
   --_shadow-focus: var(--component-button-tertiary-container-shadow-focus);
-  --_label-default: var(--component-button-tertiary-label-color-default);
+  --_label-default: var(--core-color-content-brand);
 }
 .destructive {
   --_fill-default: var(--core-color-action-destructive-default);

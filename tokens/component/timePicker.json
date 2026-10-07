@@ -12,17 +12,14 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%. Also used for dividers inside the panel."
             }
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "radius": {
             "$type": "borderRadius",
@@ -96,7 +93,7 @@
           "fill": {
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$value": "{core.color.action.compact.hover}",
               "$description": "Ink 900 at 8%."
             },
             "pressed": {
@@ -119,21 +116,15 @@
           },
           "borderWidthActive": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.200}",
-            "$description": "2px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-200"
-            }
+            "$value": "{core.dimension.borderWidth.medium}",
+            "$description": "2px stroke. No semantic border width exists."
           }
         },
         "segment": {
           "width": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.1200}",
-            "$description": "Width of an hour, minute or second entry box (3rem).",
-            "$extensions": {
-              "gap": "GAP-dimension-size-1200"
-            }
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Width of an hour, minute or second entry box (3rem)."
           },
           "height": {
             "$type": "sizing",
@@ -152,7 +143,7 @@
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$value": "{core.color.border.control.default}",
               "$description": "Ink 900 at 64%, same as Input."
             },
             "focus": {

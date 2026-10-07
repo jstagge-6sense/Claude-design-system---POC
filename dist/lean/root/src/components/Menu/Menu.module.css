@@ -22,7 +22,7 @@
   box-sizing: border-box;
   min-inline-size: 12rem;
   max-inline-size: 100%;
-  border: var(--component-menu-all-container-borderWidth) solid var(--component-menu-all-container-border-default);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-surface-medium);
   background: var(--core-color-surface-overlay);
   box-shadow: var(--component-menu-all-container-shadow-default);
@@ -30,7 +30,7 @@
 }
 .slot { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); padding: var(--core-dimension-space-compact); }
 .slot:has(+ *) { padding-block-end: 0; }
-.footer { border-block-start: var(--component-menu-all-container-borderWidth) solid var(--component-menu-all-container-border-default); padding-block-start: var(--core-dimension-space-compact); }
+.footer { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); padding-block-start: var(--core-dimension-space-compact); }
 
 @media (prefers-reduced-motion: no-preference) {
   .positioner[data-ready] .panel { animation: ds-menu-in var(--ds-motion-fast) var(--ds-ease); }

@@ -23,9 +23,9 @@
   --_color: var(--core-color-content-secondary);
   display: inline-grid;
   place-items: center;
-  inline-size: var(--component-emptyState-all-illustration-size);
-  block-size: var(--component-emptyState-all-illustration-size);
-  border-radius: var(--component-emptyState-all-illustration-radius);
+  inline-size: var(--core-dimension-size-feedback-large);
+  block-size: var(--core-dimension-size-feedback-large);
+  border-radius: var(--core-dimension-radius-pill);
   background: var(--_fill);
   color: var(--_color);
 }

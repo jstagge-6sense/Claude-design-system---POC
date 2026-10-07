@@ -124,17 +124,14 @@
           "border": {
             "today": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$value": "{core.color.border.control.default}",
               "$description": "Ink 900 at 64%. Today is outlined so it is visible with or without a selection."
             }
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "shadow": {
             "focus": {

@@ -66,7 +66,7 @@
 /* Selected is persistent: darker gradient fill and a stronger border, with the recessed shadow as a supporting cue. */
 .segment[data-selected] {
   --_fill: var(--core-color-action-selected);
-  --_border: var(--component-buttonGroup-all-segment-border-selected);
+  --_border: var(--core-color-border-control-default);
   --_shadow: var(--component-buttonGroup-all-segment-shadow-selected);
   z-index: var(--ds-z-sticky);
 }
@@ -84,5 +84,5 @@
   --_border: var(--component-buttonGroup-all-segment-border-disabled);
   cursor: not-allowed;
 }
-.segment[aria-disabled='true'][data-selected] { --_border: var(--component-buttonGroup-all-segment-border-selected); }
+.segment[aria-disabled='true'][data-selected] { --_border: var(--core-color-border-control-default); }
 .segment[aria-disabled='true']:focus-visible { --_shadow: var(--core-effect-ring-focus); }

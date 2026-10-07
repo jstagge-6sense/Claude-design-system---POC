@@ -22,7 +22,7 @@
   --_h: var(--core-dimension-size-control-height-medium);
   --_type: var(--component-input-all-text-typography-font);
   --_fill: var(--core-color-surface-control-default);
-  --_border: var(--component-input-all-container-border-default);
+  --_border: var(--core-color-border-control-default);
   --_shadow: none;
   --_text: var(--core-color-content-primary);
   --_icon: var(--core-color-content-secondary);
@@ -34,7 +34,7 @@
   box-sizing: border-box;
   min-block-size: var(--_h);
   padding-inline: var(--core-dimension-space-comfortable);
-  border: var(--component-input-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   border-radius: var(--core-dimension-radius-control-medium);
   background: var(--_fill);
   box-shadow: var(--_shadow);
@@ -49,11 +49,11 @@
 /* ---- States: real pseudo-classes plus a [data-state] twin on the shell for forced states ---- */
 .box:hover:not([data-disabled]):not([data-readonly]), .shell[data-state='hover'] .box:not([data-disabled]):not([data-readonly]) { --_border: var(--component-input-all-container-border-hover); }
 .box:focus-within:not([data-disabled]), .shell[data-state='focus'] .box:not([data-disabled]) { --_border: var(--core-color-border-focus); --_shadow: var(--component-input-all-container-shadow-focus); }
-.box[data-readonly] { --_fill: var(--core-color-surface-control-readOnly); --_border: var(--component-input-all-container-border-readOnly); }
+.box[data-readonly] { --_fill: var(--core-color-surface-control-readOnly); --_border: var(--core-color-border-standard); }
 .box[data-invalid]:not([data-disabled]), .box[data-invalid]:not([data-disabled]):hover, .shell[data-state] .box[data-invalid]:not([data-disabled]) { --_border: var(--core-color-status-critical); }
 .box[data-disabled] {
-  --_fill: var(--component-input-all-container-fill-disabled);
-  --_border: var(--component-input-all-container-border-disabled);
+  --_fill: var(--core-color-surface-control-disabled);
+  --_border: var(--core-color-border-disabled);
   --_text: var(--core-color-content-disabled);
   --_icon: var(--core-color-content-disabled);
   --_shadow: none;
@@ -100,7 +100,7 @@
 /* 44x44 hit area around a small visual target. */
 .action::after { content: ''; position: absolute; inset-block: calc((100% - var(--ds-hit-min)) / 2); inset-inline: calc((100% - var(--ds-hit-min)) / 2); }
 .action > svg { inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
-.action:hover:not(:disabled), .action[data-state='hover'] { background: var(--component-input-all-action-fill-hover); color: var(--core-color-content-primary); }
+.action:hover:not(:disabled), .action[data-state='hover'] { background: var(--core-color-action-compact-hover); color: var(--core-color-content-primary); }
 .action:focus-visible, .action[data-state='focus'] { outline: none; box-shadow: var(--component-input-all-container-shadow-focus); }
 .action:disabled { color: var(--core-color-content-disabled); cursor: not-allowed; }
 .adornment { display: inline-flex; flex: none; align-items: center; gap: var(--core-dimension-space-compact); }

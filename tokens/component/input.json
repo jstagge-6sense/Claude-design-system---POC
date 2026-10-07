@@ -24,11 +24,8 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
+            "$value": "{core.dimension.borderWidth.thin}",
+            "$description": "1px stroke. No semantic border width exists."
           },
           "paddingInline": {
             "$type": "spacing",
@@ -50,19 +47,19 @@
             },
             "disabled": {
               "$type": "color",
-              "$value": "rgba({core.color.surface.control.disabled},{core.effect.opacity.100})",
+              "$value": "{core.color.surface.control.disabled}",
               "$description": "Ink 900 at 8%. Semantic token is solid Ink 900, opacity composed here (conflict C-1)."
             }
           },
           "border": {
             "default": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$value": "{core.color.border.control.default}",
               "$description": "Ink 900 at 64%. Passes 3:1 for UI components (visual-design-decisions 2.3)."
             },
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.700})",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.700})",
               "$description": "Ink 900 at 100%. Hover darkens the stroke from 64% to 100%. Proposal: no hover treatment is documented."
             },
             "focus": {
@@ -77,12 +74,12 @@
             },
             "readOnly": {
               "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$value": "{core.color.border.standard}",
               "$description": "Ink 900 at 16%. Quieter stroke than an editable field."
             },
             "disabled": {
               "$type": "color",
-              "$value": "rgba({core.color.border.disabled},{core.effect.opacity.200})",
+              "$value": "{core.color.border.disabled}",
               "$description": "Ink 900 at 16%."
             }
           },
@@ -161,7 +158,7 @@
           "fill": {
             "hover": {
               "$type": "color",
-              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$value": "{core.color.action.compact.hover}",
               "$description": "Ink 900 at 8%, the compact action hover background."
             }
           }

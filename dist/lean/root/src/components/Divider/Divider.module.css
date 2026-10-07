@@ -1,7 +1,7 @@
 /* Divider. Tokens: component.divider.*. Static: no interactive states. */
 .root {
-  --_line: var(--component-divider-all-line-color);
-  --_thick: var(--component-divider-all-line-thickness);
+  --_line: var(--core-color-border-standard);
+  --_thick: var(--core-dimension-borderWidth-thin);
   box-sizing: border-box;
   flex: none;
 }

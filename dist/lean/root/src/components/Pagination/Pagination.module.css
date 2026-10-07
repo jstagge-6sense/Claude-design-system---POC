@@ -64,7 +64,7 @@
 /* Current page: persistent, so a fill and border change. aria-current carries the meaning for assistive tech. */
 .page[aria-current='page'] {
   --_fill: var(--core-color-action-selected);
-  --_border: var(--component-pagination-all-page-border-selected);
+  --_border: var(--core-color-border-control-default);
   --_shadow: var(--component-pagination-all-page-shadow-selected);
 }
 .page:focus-visible, .page[data-state='focus'] { --_shadow: var(--component-pagination-all-page-shadow-focus); }

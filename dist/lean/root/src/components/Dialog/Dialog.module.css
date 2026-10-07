@@ -12,7 +12,7 @@
 /* portal={false}: sit inside the nearest positioned ancestor (docs and previews). */
 .root[data-inline] { position: absolute; }
 
-.scrim { position: absolute; inset: 0; background: var(--component-dialog-all-scrim-fill); }
+.scrim { position: absolute; inset: 0; background: var(--core-color-surface-scrim); }
 
 .surface {
   position: relative;
@@ -24,7 +24,7 @@
   min-block-size: 0;
   background: var(--core-color-surface-overlay);
   color: var(--core-color-content-primary);
-  border: var(--component-dialog-all-container-borderWidth) solid var(--core-color-border-highlight);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-highlight);
   border-radius: var(--core-dimension-radius-surface-medium);
   box-shadow: var(--component-dialog-all-container-shadow);
   overflow: hidden;
@@ -84,10 +84,10 @@
   gap: var(--core-dimension-space-compact);
   padding: var(--core-dimension-space-standard) var(--core-dimension-space-spacious);
   flex: none;
-  border-block-start: var(--component-dialog-all-container-borderWidth) solid var(--component-dialog-all-divider-color);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
 /* A scrolling body gets a divider under the header too. */
-.body[tabindex] { border-block-start: var(--component-dialog-all-container-borderWidth) solid var(--component-dialog-all-divider-color); }
+.body[tabindex] { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
 
 /* Full-screen below 768px (container width, so it also works inside a narrow frame). */
 @container ds-dialog (max-width: 47.9375rem) {

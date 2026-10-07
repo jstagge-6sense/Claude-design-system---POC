@@ -119,6 +119,7 @@
   --core-typography-fontWeight-600: 600;
   --core-typography-fontWeight-700: 700;
   --core-typography-fontFamily-sans: "Atkinson Hyperlegible Next", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --core-typography-fontFamily-mono: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --core-typography-fontSize-1: 0.694rem;
   --core-typography-fontSize-2: 0.833rem;
   --core-typography-fontSize-3: 1rem;

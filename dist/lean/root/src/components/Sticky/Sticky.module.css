@@ -13,9 +13,9 @@
 
 /* Visible boundary only while stuck: a rule on the open edge plus an elevation shadow. */
 .root[data-stuck] { box-shadow: var(--component-sticky-all-container-shadow-stuck); }
-.root[data-stuck][data-edge='top'] { border-block-end: var(--component-sticky-all-container-borderWidth) solid var(--component-sticky-all-container-border-stuck); }
-.root[data-stuck][data-edge='bottom'] { border-block-start: var(--component-sticky-all-container-borderWidth) solid var(--component-sticky-all-container-border-stuck); }
-.root[data-stuck][data-edge='start'] { border-inline-end: var(--component-sticky-all-container-borderWidth) solid var(--component-sticky-all-container-border-stuck); }
+.root[data-stuck][data-edge='top'] { border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+.root[data-stuck][data-edge='bottom'] { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+.root[data-stuck][data-edge='start'] { border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
 @media (prefers-reduced-motion: no-preference) {
   .root { transition: box-shadow var(--ds-motion-fast) var(--ds-ease); }
 }

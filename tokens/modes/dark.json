@@ -20,12 +20,11 @@
     "core.color.surface.group": "{core.color.dark.surface.group}",
     "core.color.surface.chip": "{core.color.dark.surface.chip}",
     "core.color.surface.control.default": "{core.color.dark.surface.control}",
-    "core.color.surface.control.disabled": "{core.color.sage.100}",
+    "core.color.surface.control.disabled": "rgba({core.color.sage.100},{core.effect.opacity.100})",
     "core.color.surface.control.readOnly": "{core.color.dark.surface.card}",
     "core.color.surface.badge.critical": "{core.color.red.200}",
     "core.color.surface.badge.warning": "{core.color.amber.300}",
     "core.color.surface.badge.success": "{core.color.green.300}",
-
     "core.color.content.primary": "{core.color.sage.100}",
     "core.color.content.secondary": "{core.color.sage.400}",
     "core.color.content.placeholder": "{core.color.sage.700}",
@@ -34,22 +33,19 @@
     "core.color.content.link.default": "{core.color.blue.100}",
     "core.color.content.link.hover": "{core.color.dark.link.hover}",
     "core.color.content.link.visited": "{core.color.blue.200}",
-
     "core.color.status.success": "{core.color.green.300}",
     "core.color.status.info": "{core.color.sage.500}",
     "core.color.status.warning": "{core.color.amber.300}",
     "core.color.status.critical": "{core.color.red.200}",
-
-    "core.color.border.subtle": "{core.color.sage.200}",
-    "core.color.border.standard": "{core.color.sage.200}",
-    "core.color.border.disabled": "{core.color.sage.200}",
-    "core.color.border.strong": "{core.color.sage.200}",
-    "core.color.border.control.default": "{core.color.sage.200}",
+    "core.color.border.subtle": "rgba({core.color.sage.200},{core.effect.opacity.100})",
+    "core.color.border.standard": "rgba({core.color.sage.200},{core.effect.opacity.200})",
+    "core.color.border.disabled": "rgba({core.color.sage.200},{core.effect.opacity.200})",
+    "core.color.border.strong": "rgba({core.color.sage.200},{core.effect.opacity.300})",
+    "core.color.border.control.default": "rgba({core.color.sage.200},{core.effect.opacity.600})",
     "core.color.border.highlight": "{core.color.white}",
     "core.color.border.group": "{core.color.dark.border.group}",
     "core.color.border.destructive": "{core.color.red.200}",
     "core.color.border.focus": "{core.color.blue.100}",
-
     "core.color.action.primary.default": "{core.color.teal.300}",
     "core.color.action.primary.hover": "{core.color.teal.200}",
     "core.color.action.primary.pressed": "{core.color.teal.400}",
@@ -64,12 +60,11 @@
     "core.color.action.tint.hover": "{core.color.dark.surface.tint}",
     "core.color.action.selected": "{core.color.dark.surface.selected}",
     "core.color.action.compact.default": "{core.color.sage.100}",
-    "core.color.action.compact.hover": "{core.color.sage.100}",
+    "core.color.action.compact.hover": "rgba({core.color.sage.100},{core.effect.opacity.100})",
     "core.color.action.compact.pressed": "{core.color.sage.100}",
     "core.color.action.destructive.default": "{core.color.red.200}",
     "core.color.action.destructive.hover": "{core.color.red.100}",
     "core.color.action.destructive.pressed": "{core.color.red.200}",
-
     "component.button.secondary.label.color.default": "{core.color.content.primary}",
     "component.button.secondary.icon.color.default": "{core.color.content.primary}",
     "component.button.tertiary.label.color.default": "{core.color.content.primary}",
@@ -78,38 +73,166 @@
   "contrast": {
     "$description": "WCAG AA checks run by scripts/build-modes.mjs. text = 4.5:1, ui = 3:1. fg/bg are semantic token names.",
     "pairs": [
-      ["text", "core.color.content.primary", "core.color.surface.page"],
-      ["text", "core.color.content.primary", "core.color.surface.card"],
-      ["text", "core.color.content.primary", "core.color.surface.overlay"],
-      ["text", "core.color.content.primary", "core.color.surface.group"],
-      ["text", "core.color.content.primary", "core.color.surface.chip"],
-      ["text", "core.color.content.primary", "core.color.surface.control.default"],
-      ["text", "core.color.content.secondary", "core.color.surface.card"],
-      ["text", "core.color.content.secondary", "core.color.surface.page"],
-      ["text", "core.color.content.placeholder", "core.color.surface.control.default"],
-      ["text", "core.color.content.link.default", "core.color.surface.page"],
-      ["text", "core.color.content.link.default", "core.color.surface.card"],
-      ["text", "core.color.content.link.hover", "core.color.surface.card"],
-      ["text", "core.color.content.link.visited", "core.color.surface.card"],
-      ["text", "core.color.status.success", "core.color.surface.card"],
-      ["text", "core.color.status.info", "core.color.surface.card"],
-      ["text", "core.color.status.warning", "core.color.surface.card"],
-      ["text", "core.color.status.critical", "core.color.surface.card"],
-      ["text", "core.color.content.inverse", "core.color.action.primary.default"],
-      ["text", "core.color.content.inverse", "core.color.action.primary.hover"],
-      ["text", "core.color.content.inverse", "core.color.action.primary.pressed"],
-      ["text", "core.color.content.inverse", "core.color.action.destructive.default"],
-      ["text", "core.color.content.inverse", "core.color.action.destructive.hover"],
-      ["text", "core.color.content.inverse", "core.color.action.destructive.pressed"],
-      ["text", "core.color.content.inverse", "core.color.surface.badge.critical"],
-      ["text", "core.color.content.inverse", "core.color.surface.badge.warning"],
-      ["text", "core.color.content.inverse", "core.color.surface.badge.success"],
-      ["text", "core.color.content.primary", "core.color.action.secondary.default"],
-      ["text", "core.color.content.primary", "core.color.action.tertiary.default"],
-      ["text", "core.color.content.primary", "core.color.action.selected"],
-      ["ui", "core.color.border.focus", "core.color.surface.page"],
-      ["ui", "core.color.border.focus", "core.color.surface.card"],
-      ["ui", "core.color.border.destructive", "core.color.surface.card"]
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.surface.page"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.surface.overlay"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.surface.group"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.surface.chip"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.surface.control.default"
+      ],
+      [
+        "text",
+        "core.color.content.secondary",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.content.secondary",
+        "core.color.surface.page"
+      ],
+      [
+        "text",
+        "core.color.content.placeholder",
+        "core.color.surface.control.default"
+      ],
+      [
+        "text",
+        "core.color.content.link.default",
+        "core.color.surface.page"
+      ],
+      [
+        "text",
+        "core.color.content.link.default",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.content.link.hover",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.content.link.visited",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.status.success",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.status.info",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.status.warning",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.status.critical",
+        "core.color.surface.card"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.action.primary.default"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.action.primary.hover"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.action.primary.pressed"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.action.destructive.default"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.action.destructive.hover"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.action.destructive.pressed"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.surface.badge.critical"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.surface.badge.warning"
+      ],
+      [
+        "text",
+        "core.color.content.inverse",
+        "core.color.surface.badge.success"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.action.secondary.default"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.action.tertiary.default"
+      ],
+      [
+        "text",
+        "core.color.content.primary",
+        "core.color.action.selected"
+      ],
+      [
+        "ui",
+        "core.color.border.focus",
+        "core.color.surface.page"
+      ],
+      [
+        "ui",
+        "core.color.border.focus",
+        "core.color.surface.card"
+      ],
+      [
+        "ui",
+        "core.color.border.destructive",
+        "core.color.surface.card"
+      ]
     ]
   }
 }

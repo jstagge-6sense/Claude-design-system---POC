@@ -4,7 +4,7 @@
   flex-direction: column;
   box-sizing: border-box;
   min-inline-size: 0;
-  border: var(--component-codeSnippet-all-container-borderWidth) solid var(--component-codeSnippet-all-container-border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
   border-radius: var(--core-dimension-radius-control-medium);
   background: var(--core-color-surface-group);
   color: var(--core-color-content-primary);
@@ -27,7 +27,7 @@
   gap: var(--core-dimension-space-compact);
   padding-block: var(--core-dimension-space-tight);
   padding-inline: var(--core-dimension-space-comfortable);
-  border-block-end: var(--component-codeSnippet-all-container-borderWidth) solid var(--component-codeSnippet-all-header-border);
+  border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle);
   min-block-size: var(--ds-hit-min);
 }
 .language { font: var(--component-codeSnippet-all-code-typography-font); color: var(--core-color-content-secondary); }
@@ -55,7 +55,7 @@
   min-inline-size: calc(var(--_digits) * 1ch);
   margin-inline-end: var(--core-dimension-space-standard);
   padding-inline-end: var(--core-dimension-space-standard);
-  border-inline-end: var(--component-codeSnippet-all-container-borderWidth) solid var(--component-codeSnippet-all-header-border);
+  border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle);
   color: var(--core-color-content-secondary);
   text-align: end;
   user-select: none;
@@ -76,7 +76,7 @@
   block-size: var(--core-dimension-size-control-height-small);
   margin: 0;
   padding: 0;
-  border: var(--component-codeSnippet-all-container-borderWidth) solid var(--_border);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
   border-radius: var(--core-dimension-radius-control-medium);
   background: var(--_fill);
   box-shadow: var(--_shadow);
@@ -89,7 +89,7 @@
 .copy::after { content: ''; position: absolute; inset-inline: calc((var(--ds-hit-min) - var(--core-dimension-size-control-height-small)) / -2); inset-block: calc((var(--ds-hit-min) - var(--core-dimension-size-control-height-small)) / -2); }
 .copyIcon { display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .copyIcon > svg { inline-size: 100%; block-size: 100%; }
-.copy:hover, .root[data-state='hover'] .copy { --_fill: var(--component-codeSnippet-all-copy-fill-hover); --_border: var(--component-codeSnippet-all-copy-border-hover); --_shadow: var(--component-codeSnippet-all-copy-shadow-hover); }
+.copy:hover, .root[data-state='hover'] .copy { --_fill: var(--core-color-action-compact-hover); --_border: var(--core-color-border-subtle); --_shadow: var(--component-codeSnippet-all-copy-shadow-hover); }
 .copy:active, .root[data-state='pressed'] .copy { --_fill: var(--component-codeSnippet-all-copy-fill-pressed); --_shadow: var(--component-codeSnippet-all-copy-shadow-pressed); }
 .copy:focus-visible, .root[data-state='focus'] .copy { outline: none; --_shadow: var(--component-codeSnippet-all-copy-shadow-focus); }
 /* Copied: the icon swaps to a check, which is the signal. The color only reinforces it. */

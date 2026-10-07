@@ -96,7 +96,7 @@
             },
             "selected": {
               "$type": "color",
-              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$value": "{core.color.border.control.default}",
               "$description": "Ink 900 at 64%."
             },
             "disabled": {

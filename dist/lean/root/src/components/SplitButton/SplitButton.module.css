@@ -8,7 +8,7 @@
   max-inline-size: 100%;
   isolation: isolate;
 }
-.container[data-priority='secondary'] { --_divider: var(--component-splitButton-secondary-divider-color-default); }
+.container[data-priority='secondary'] { --_divider: var(--core-color-border-standard); }
 .menu { display: inline-flex; }
 
 /* Outer corners round, inner corners square. Logical properties, so the chevron mirrors in RTL. */

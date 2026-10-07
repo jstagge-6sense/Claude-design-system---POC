@@ -33,7 +33,7 @@
   inline-size: var(--_size);
   block-size: var(--_size);
   box-sizing: border-box;
-  border-radius: var(--component-radio-all-container-radius);
+  border-radius: var(--core-dimension-radius-pill);
   border: var(--component-radio-all-container-borderWidth) solid var(--_b);
   background: var(--_f);
   color: var(--_m);
@@ -73,7 +73,7 @@
 /* ---- Radio card: the whole card is the target. The label stretches over the card. ---- */
 .card {
   --_cf: var(--core-color-surface-control-default);
-  --_cb: var(--component-radio-unchecked-card-border-default);
+  --_cb: var(--core-color-border-standard);
   box-sizing: border-box;
   padding-inline: var(--core-dimension-space-comfortable);
   border-radius: var(--core-dimension-radius-control-medium);
@@ -82,7 +82,7 @@
 }
 .card .label::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
 .card[data-checked] { --_cf: var(--core-color-surface-group); --_cb: var(--core-color-action-primary-default); }
-.card:hover:not([data-disabled]), .card[data-state='hover'] { --_cb: var(--component-radio-unchecked-card-border-hover); }
+.card:hover:not([data-disabled]), .card[data-state='hover'] { --_cb: var(--core-color-border-control-default); }
 .card[data-checked]:hover:not([data-disabled]), .card[data-checked][data-state='hover'] { --_cb: var(--core-color-action-primary-hover); }
 .card[data-error] { --_cb: var(--core-color-status-critical); }
 .card[data-checked][data-error] { --_cb: var(--core-color-status-critical); }

@@ -2,8 +2,8 @@
 .root {
   --_pad: var(--core-dimension-space-spacious);
   --_gap: var(--core-dimension-space-standard);
-  --_bw: var(--component-card-all-container-borderWidth);
-  --_border: var(--component-card-all-container-border-default);
+  --_bw: var(--core-dimension-borderWidth-thin);
+  --_border: var(--core-color-border-subtle);
   --_shadow: var(--component-card-all-container-shadow-default);
   position: relative;
   display: flex;
@@ -24,13 +24,13 @@
 /* Selected: a color and border-width change. Padding shrinks by the extra width so content does not move. */
 .root[data-selected] {
   --_border: var(--core-color-action-primary-default);
-  --_bw: var(--component-card-all-container-borderWidthSelected);
+  --_bw: var(--core-dimension-borderWidth-medium);
 }
 .content {
   display: flex;
   flex-direction: column;
   gap: var(--_gap);
-  padding: calc(var(--_pad) - (var(--_bw) - var(--component-card-all-container-borderWidth)));
+  padding: calc(var(--_pad) - (var(--_bw) - var(--core-dimension-borderWidth-thin)));
 }
 
 /* Hover applies to clickable cards only. Forced twin for previews. */
@@ -38,7 +38,7 @@
   --_shadow: var(--component-card-all-container-shadow-hover);
 }
 .root[data-interactive]:hover:not([data-selected]), .root[data-interactive][data-state='hover']:not([data-selected]), .root[data-state='hover']:not([data-selected]) {
-  --_border: var(--component-card-all-container-border-hover);
+  --_border: var(--core-color-border-strong);
 }
 .root[data-state='focus'] { box-shadow: var(--core-effect-ring-focus), var(--_shadow); }
 .root[data-state='focus'] .stretch { outline: none; }
@@ -88,7 +88,7 @@
   justify-content: space-between;
   gap: var(--core-dimension-space-compact);
   padding-block-start: var(--_gap);
-  border-block-start: var(--component-card-all-container-borderWidth) solid var(--component-card-all-container-border-default);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle);
 }
 .footerMeta { font: var(--component-card-all-body-typography-font); color: var(--core-color-content-secondary); min-inline-size: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--core-dimension-space-compact); margin-inline-start: auto; }
