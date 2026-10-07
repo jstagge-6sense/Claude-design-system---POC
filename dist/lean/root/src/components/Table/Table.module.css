@@ -1,0 +1,185 @@
+/* Table. Tokens: component.table.* (tokens/component/table.json), sticky boundary aliases component.sticky.*. No raw colors or primitives. */
+.root {
+  --_ctrl-w: var(--component-table-all-control-columnWidth);
+  --_row-h: var(--component-table-all-row-heightDefault);
+  --_pad-inline: var(--core-dimension-space-standard);
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  box-sizing: border-box;
+  border: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border);
+  border-radius: var(--core-dimension-radius-surface-medium);
+  background: var(--core-color-surface-card);
+  box-shadow: var(--component-table-all-container-shadow);
+  overflow: hidden;
+}
+.root[data-density='dense'] {
+  --_row-h: var(--core-dimension-size-control-height-small);
+  --_pad-inline: var(--core-dimension-space-compact);
+}
+.toolbar { border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border); }
+
+/* Horizontal scroll with a focusable region when the content overflows. */
+.scroll { position: relative; overflow: auto; min-block-size: 0; }
+.scroll[data-max-height] { max-block-size: var(--_max-h); }
+.scroll:focus-visible { outline: none; box-shadow: inset var(--core-effect-ring-focus); }
+.table { inline-size: 100%; border-collapse: separate; border-spacing: 0; table-layout: auto; }
+
+/* ---- Header ---- */
+.th {
+  /* Ink 900 at 4% layered over the opaque container fill, so a sticky header never shows rows through it. */
+  background: linear-gradient(var(--component-table-all-header-fill), var(--component-table-all-header-fill)), var(--core-color-surface-card);
+  color: var(--core-color-content-primary);
+  font: var(--component-table-all-header-typography-font);
+  text-decoration: var(--component-table-all-header-typography-text-decoration);
+  border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border);
+  padding-inline: var(--_pad-inline);
+  padding-block: var(--core-dimension-space-compact);
+  text-align: start;
+  white-space: nowrap;
+  block-size: var(--_row-h);
+  box-sizing: border-box;
+}
+[data-align='center'] { text-align: center; }
+[data-align='end'] { text-align: end; }
+th[data-align='end'] .sortBtn { margin-inline-start: auto; }
+
+.sortBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--core-dimension-space-compact);
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--core-dimension-space-compact);
+  margin-inline: calc(var(--core-dimension-space-compact) * -1);
+  min-block-size: var(--_row-h);
+  border: 0;
+  border-radius: var(--core-dimension-radius-control-small);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+  transition: background-color var(--ds-motion-fast) var(--ds-ease);
+}
+/* 44px hit area when the row is shorter. */
+.sortBtn::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((var(--_row-h) - var(--ds-hit-min)) / 2); }
+.sortBtn:hover, .sortBtn[data-state='hover'] { background: var(--component-table-all-header-button-fill-hover); }
+.sortBtn:focus-visible, .sortBtn[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }
+.sortIcon { color: var(--core-color-content-secondary); }
+.sortBtn[data-active] .sortIcon { color: var(--core-color-content-primary); }
+@media (prefers-reduced-motion: reduce) { .sortBtn { transition: none; } }
+
+/* ---- Cells and rows ---- */
+.td {
+  --_tint: linear-gradient(transparent, transparent);
+  background: var(--_tint), var(--core-color-surface-card);
+  border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-row-divider);
+  padding-inline: var(--_pad-inline);
+  padding-block: var(--core-dimension-space-compact);
+  block-size: var(--_row-h);
+  box-sizing: border-box;
+  text-align: start;
+  vertical-align: middle;
+  min-inline-size: 0;
+}
+.primary { color: var(--core-color-content-primary); font: var(--component-table-all-cellPrimary-typography-font); text-decoration: var(--component-table-all-cellPrimary-typography-text-decoration); }
+.secondary { color: var(--core-color-content-secondary); font: var(--component-table-all-cellSecondary-typography-font); text-decoration: var(--component-table-all-cellSecondary-typography-text-decoration); }
+th.td { font-weight: inherit; }
+.row:last-child .td { border-block-end: 0; }
+.row:hover .td, .row[data-state='hover'] .td { --_tint: linear-gradient(var(--component-table-all-row-fill-hover), var(--component-table-all-row-fill-hover)); }
+.row[data-error] .td { --_tint: linear-gradient(var(--component-table-all-row-fill-error), var(--component-table-all-row-fill-error)); }
+/* Selected changes color AND adds a start accent bar, so selection is not a fill difference alone. */
+.row[data-selected] .td { --_tint: var(--core-color-action-selected); }
+.row[data-selected] .td:first-child { box-shadow: inset var(--component-table-all-row-accent-width) 0 0 var(--core-color-action-primary-default); }
+[dir='rtl'] .row[data-selected] .td:first-child { box-shadow: inset calc(var(--component-table-all-row-accent-width) * -1) 0 0 var(--core-color-action-primary-default); }
+
+/* Selection and expand columns. The checkbox's 44px hit row is pulled in so dense rows keep their height. */
+.ctrl { inline-size: var(--_ctrl-w); min-inline-size: var(--_ctrl-w); max-inline-size: var(--_ctrl-w); padding-inline: 0; text-align: center; }
+.ctrl > * { margin-inline: auto; margin-block: calc((var(--_row-h) - var(--ds-hit-min)) / 2); inline-size: max-content; }
+.ctrl > :global(.ds-visually-hidden) { margin: -1px; }
+
+.expandBtn {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--ds-hit-min);
+  block-size: var(--ds-hit-min);
+  border: 0;
+  border-radius: var(--core-dimension-radius-control-small);
+  background: transparent;
+  color: var(--core-color-content-primary);
+  cursor: pointer;
+}
+.expandBtn:hover, .expandBtn[data-state='hover'] { background: var(--component-table-all-header-button-fill-hover); }
+.expandBtn:focus-visible, .expandBtn[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }
+
+.fullCell { padding: 0; background: var(--core-color-surface-card); }
+.detail { padding-block: var(--core-dimension-space-standard); padding-inline: var(--core-dimension-space-spacious); background: var(--core-color-surface-group); border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-row-divider); color: var(--core-color-content-primary); font: var(--component-table-all-cellPrimary-typography-font); }
+.errorCell { padding-block: var(--core-dimension-space-compact); padding-inline: var(--_pad-inline); border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-row-divider); }
+.errorCell { background: linear-gradient(var(--component-table-all-row-fill-error), var(--component-table-all-row-fill-error)), var(--core-color-surface-card); }
+.errorText { display: inline-flex; align-items: center; gap: var(--core-dimension-space-compact); color: var(--core-color-status-critical); font: var(--component-table-all-cellSecondary-typography-font); text-decoration: var(--component-table-all-cellSecondary-typography-text-decoration); }
+.errorCell > :global(button) { margin-inline-start: var(--core-dimension-space-compact); }
+
+/* ---- Inline editing ---- */
+.editBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--core-dimension-space-compact);
+  inline-size: 100%;
+  min-block-size: var(--_row-h);
+  margin-block: calc(var(--core-dimension-space-compact) * -1);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  cursor: text;
+}
+.editValue { flex: 1 1 auto; min-inline-size: 0; }
+.editIcon { flex: none; color: var(--core-color-content-secondary); opacity: 0; }
+.editBtn:hover .editIcon, .editBtn:focus-visible .editIcon, .editBtn[data-state='hover'] .editIcon { opacity: 1; }
+.editBtn:focus-visible, .editBtn[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); border-radius: var(--core-dimension-radius-control-small); }
+.editor {
+  inline-size: 100%;
+  box-sizing: border-box;
+  padding-block: 0;
+  padding-inline: var(--core-dimension-space-compact);
+  min-block-size: calc(var(--_row-h) - var(--core-dimension-space-compact));
+  border: var(--component-table-all-container-borderWidth) solid var(--component-table-all-editor-border);
+  border-radius: var(--core-dimension-radius-control-small);
+  background: var(--core-color-surface-control-default);
+  color: var(--core-color-content-primary);
+  font: inherit;
+  text-decoration: inherit;
+}
+.editor:focus-visible, .editor[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }
+
+/* ---- Footer ---- */
+.footer {
+  border-block-start: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border);
+  padding-block: var(--core-dimension-space-comfortable);
+  padding-inline: var(--core-dimension-space-standard);
+  background: var(--core-color-surface-card);
+  color: var(--core-color-content-secondary);
+  font: var(--component-table-all-footer-typography-font);
+  text-decoration: var(--component-table-all-footer-typography-text-decoration);
+}
+
+/* ---- Sticky header and pinned first column ---- */
+.root[data-sticky-header] .th { position: sticky; inset-block-start: -1px; z-index: var(--ds-z-sticky); }
+.root[data-sticky-header][data-stuck] .th { box-shadow: var(--component-table-all-sticky-shadow-stuck); border-block-end-color: var(--component-table-all-sticky-border-stuck); }
+
+[data-pin] { position: sticky; z-index: var(--ds-z-base); }
+[data-pin='sel'] { inset-inline-start: 0; }
+[data-pin='exp'] { inset-inline-start: calc(var(--_exp-n) * var(--_ctrl-w)); }
+[data-pin='first'] { inset-inline-start: calc(var(--_ctrl-n) * var(--_ctrl-w)); }
+/* Corner cells sit one step above the sticky tier so they stay over the other header cells. */
+.root[data-sticky-header] .head [data-pin] { z-index: calc(var(--ds-z-sticky) + 1); }
+.root[data-scrolled-x] [data-pin-last] { box-shadow: var(--component-table-all-sticky-shadow-stuck); border-inline-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-sticky-border-stuck); }
+.root[data-scrolled-x] .head [data-pin-last] { box-shadow: var(--component-table-all-sticky-shadow-stuck); }
+.root[data-scrolled-x] [data-pin]:not([data-pin-last]) { z-index: var(--ds-z-base); }

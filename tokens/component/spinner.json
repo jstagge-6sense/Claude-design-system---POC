@@ -1,0 +1,87 @@
+{
+  "component": {
+    "spinner": {
+      "all": {
+        "container": {
+          "sizeSmall": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}",
+            "$description": "Inline and button spinner, 16px."
+          },
+          "sizeMedium": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "Section spinner, 24px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          },
+          "sizeLarge": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.1200}",
+            "$description": "Page spinner, 48px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-1200"
+            }
+          },
+          "strokeSmall": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.200}",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-200"
+            }
+          },
+          "strokeLarge": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.400}",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-400"
+            }
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "track": {
+          "color": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$description": "Ink 900 at 16%."
+          }
+        },
+        "arc": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.action.primary.default}"
+          }
+        },
+        "label": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      },
+      "overlay": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "rgba({core.color.surface.scrim},{core.effect.opacity.400})",
+            "$description": "Scrim. No scrim opacity is documented; 32% is a proposal. Tune in the preview."
+          }
+        },
+        "label": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.inverse}"
+          }
+        }
+      }
+    }
+  }
+}

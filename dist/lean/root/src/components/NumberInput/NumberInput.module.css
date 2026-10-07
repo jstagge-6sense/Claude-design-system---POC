@@ -1,0 +1,44 @@
+/* NumberInput delta over Input. Tokens: component.numberInput.* plus component.input.* via Field.module.css. */
+.control { font-variant-numeric: tabular-nums; }
+.unit {
+  flex: none;
+  font: var(--component-numberInput-all-unit-typography-font);
+  text-decoration: var(--component-numberInput-all-unit-typography-text-decoration);
+  color: var(--core-color-content-secondary);
+  user-select: none;
+}
+.box[data-disabled] .unit { color: var(--component-numberInput-all-unit-color-disabled); }
+.box[data-withsteppers] { padding-inline-end: 0; }
+.steppers {
+  display: flex;
+  flex: none;
+  align-self: stretch;
+  border-inline-start: var(--component-input-all-container-borderWidth) solid var(--component-numberInput-all-stepper-divider-color-default);
+}
+.stepper {
+  --_icon: var(--component-numberInput-all-stepper-icon-color-default);
+  --_fill: transparent;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--component-numberInput-all-stepper-width);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--_fill);
+  color: var(--_icon);
+  cursor: pointer;
+}
+.stepper + .stepper { border-inline-start: var(--component-input-all-container-borderWidth) solid var(--component-numberInput-all-stepper-divider-color-default); }
+.stepper:last-child {
+  border-start-end-radius: calc(var(--core-dimension-radius-control-medium) - var(--component-input-all-container-borderWidth));
+  border-end-end-radius: calc(var(--core-dimension-radius-control-medium) - var(--component-input-all-container-borderWidth));
+}
+/* Extend the hit area vertically to 44px. Steppers are not Tab stops: arrow keys step the value. */
+.stepper::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((100% - var(--ds-hit-min)) / 2); }
+.stepper > svg { inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
+.stepper:hover:not([aria-disabled='true']):not(:disabled), .stepper[data-state='hover'] { --_fill: var(--component-numberInput-all-stepper-fill-hover); --_icon: var(--component-numberInput-all-stepper-icon-color-hover); }
+.stepper:active:not([aria-disabled='true']):not(:disabled), .stepper[data-state='pressed'] { --_fill: var(--component-numberInput-all-stepper-fill-pressed); }
+.stepper:focus-visible, .stepper[data-state='focus'] { outline: none; box-shadow: var(--component-input-all-container-shadow-focus); }
+.stepper[aria-disabled='true'], .stepper:disabled { --_icon: var(--component-numberInput-all-stepper-icon-color-disabled); cursor: not-allowed; }

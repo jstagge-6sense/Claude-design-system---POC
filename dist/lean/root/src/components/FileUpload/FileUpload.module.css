@@ -1,0 +1,72 @@
+/* FileUpload. Tokens: component.fileUpload.* (tokens/component/fileUpload.json). No raw colors or primitives. */
+.root { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); min-inline-size: 0; position: relative; }
+
+/* Native input sits behind the Button. The Button is the keyboard trigger; the input is never focused. */
+.input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; pointer-events: none; overflow: hidden; }
+
+.zone {
+  --_fill: var(--core-color-surface-control-default);
+  --_border: var(--component-fileUpload-all-zone-border-default);
+  --_title: var(--core-color-content-primary);
+  --_hint: var(--core-color-content-secondary);
+  --_icon: var(--core-color-content-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--core-dimension-space-compact);
+  box-sizing: border-box;
+  padding: var(--core-dimension-space-spacious);
+  border: var(--component-fileUpload-all-zone-borderWidth) dashed var(--_border);
+  border-radius: var(--core-dimension-radius-surface-medium);
+  background: var(--_fill);
+  text-align: center;
+}
+@media (prefers-reduced-motion: no-preference) { .zone { transition: background-color var(--ds-motion-fast) var(--ds-ease), border-color var(--ds-motion-fast) var(--ds-ease); } }
+
+/* Drag over: solid teal border, selected fill and a different message. Not color alone. */
+.zone[data-drag-over] { --_fill: var(--core-color-action-selected); --_border: var(--core-color-action-primary-default); border-style: solid; }
+.zone[data-disabled] {
+  --_fill: var(--component-fileUpload-all-zone-fill-disabled);
+  --_border: var(--component-fileUpload-all-zone-border-disabled);
+  --_title: var(--core-color-content-disabled);
+  --_hint: var(--core-color-content-disabled);
+  --_icon: var(--core-color-content-disabled);
+}
+.zoneIcon { display: inline-flex; inline-size: calc(var(--core-dimension-size-icon) * 1.5); block-size: calc(var(--core-dimension-size-icon) * 1.5); color: var(--_icon); }
+.zoneIcon > svg { inline-size: 100%; block-size: 100%; }
+.title { margin: 0; font: var(--component-fileUpload-all-zone-title-typography-font); color: var(--_title); }
+.or { font: var(--component-fileUpload-all-zone-hint-typography-font); color: var(--_hint); }
+.hint { margin: 0; font: var(--component-fileUpload-all-zone-hint-typography-font); color: var(--_hint); }
+.buttonRow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--core-dimension-space-compact); }
+.root[data-disabled] .buttonRow .hint { color: var(--core-color-content-disabled); }
+
+/* Validation errors: icon plus specific text. */
+.errors { color: var(--core-color-status-critical); font: var(--component-fileUpload-all-error-typography-font); }
+.errorList { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); }
+.error { display: flex; align-items: flex-start; gap: var(--core-dimension-space-tight); }
+.errorIcon, .statusIcon { flex: none; display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
+.errorIcon > svg, .statusIcon > svg { inline-size: 100%; block-size: 100%; }
+
+/* ---- File list ---- */
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); }
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--core-dimension-space-comfortable);
+  box-sizing: border-box;
+  padding: var(--core-dimension-space-comfortable);
+  border: var(--component-fileUpload-all-item-borderWidth) solid var(--component-fileUpload-all-item-border-default);
+  border-radius: var(--core-dimension-radius-control-medium);
+  background: var(--core-color-surface-card);
+}
+.item[data-status='error'] { border-color: var(--core-color-status-critical); }
+.fileIcon { flex: none; display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--core-color-content-secondary); margin-block-start: var(--core-dimension-space-tight); }
+.fileIcon > svg { inline-size: 100%; block-size: 100%; }
+.info { flex: 1 1 auto; min-inline-size: 0; display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); }
+.name { font: var(--component-fileUpload-all-item-name-typography-font); color: var(--core-color-content-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meta { font: var(--component-fileUpload-all-item-meta-typography-font); color: var(--core-color-content-secondary); }
+.status { display: inline-flex; align-items: flex-start; gap: var(--core-dimension-space-tight); font: var(--component-fileUpload-all-item-meta-typography-font); }
+.success { color: var(--core-color-status-success); }
+.failed { color: var(--core-color-status-critical); }
+.itemActions { flex: none; display: flex; align-items: center; gap: var(--core-dimension-space-tight); }

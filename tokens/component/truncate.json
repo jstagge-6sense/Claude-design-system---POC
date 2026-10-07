@@ -1,0 +1,36 @@
+{
+  "component": {
+    "truncate": {
+      "all": {
+        "toggle": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.link.2}",
+            "$description": "Show more and show less control."
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.link.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.content.link.hover}"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          }
+        },
+        "container": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Gap between truncated text and its toggle."
+          }
+        }
+      }
+    }
+  }
+}

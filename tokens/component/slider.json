@@ -1,0 +1,213 @@
+{
+  "component": {
+    "slider": {
+      "all": {
+        "container": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "track": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "Track thickness, 8px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.strong},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 24%. Unfilled rail."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.surface.control.disabled},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "fillActive": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}",
+              "$description": "Filled portion up to the thumb. Teal 700."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 32%. Proposal: disabled stroke is documented at 16%, too faint for a filled track."
+            }
+          }
+        },
+        "thumb": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "Thumb diameter, 24px. A 44px hit area is added by a pseudo-element.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.200}",
+            "$description": "2px ring around the thumb.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-200"
+            }
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.pressed}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 32%."
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.50}",
+              "$description": "Dragging."
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "tick": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.100}",
+            "$description": "Discrete step marker, 4px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-100"
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$description": "Ink 900 at 64%."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.disabled},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          }
+        },
+        "valueLabel": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.inverse}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "offset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Gap between value label and thumb."
+          }
+        },
+        "readout": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}",
+            "$description": "Current value shown beside the label when there is no value label or synced input, so the value is never hidden."
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        },
+        "range": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}",
+            "$description": "Min and max end labels."
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+/* Truncate. Tokens: component.truncate.*. Typography is inherited from the host component, so it never fights the parent. */
+.root { display: block; min-inline-size: 0; max-inline-size: 100%; }
+.body { display: block; min-inline-size: 0; }
+
+/* Single line: ellipsis at the end. */
+.root[data-mode='single'] .body { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Multi-line clamp: cut after N lines. */
+.root[data-mode='multi'] .body {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--_lines);
+  line-clamp: var(--_lines);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+/* Middle: start shrinks with an ellipsis, the end never shrinks, so file names and ids stay readable. Full text sits in a visually hidden copy. */
+.root[data-mode='middle'] .body { display: flex; white-space: nowrap; }
+.start { flex: 0 1 auto; min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; }
+.end { flex: none; white-space: pre; }
+
+/* Expanded: everything shows. */
+.root[data-mode='expanded'] .body { white-space: normal; overflow-wrap: anywhere; }
+
+.toggle {
+  margin-block-start: var(--component-truncate-all-container-gap);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: var(--component-truncate-all-toggle-typography-font);
+  text-decoration: var(--component-truncate-all-toggle-typography-text-decoration);
+  color: var(--component-truncate-all-toggle-color-default);
+  border-radius: var(--component-truncate-all-toggle-radius);
+  cursor: pointer;
+  position: relative;
+}
+/* 44px hit area without changing the visual size. */
+.toggle::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((1lh - var(--ds-hit-min)) / 2); }
+.toggle:hover, .toggle[data-state='hover'] { color: var(--component-truncate-all-toggle-color-hover); }
+.toggle:focus-visible, .toggle[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }

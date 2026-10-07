@@ -1,0 +1,60 @@
+import { render, screen, fireEvent } from '@testing-library/react'
+import { Slider } from './Slider'
+
+describe('Slider', () => {
+  it('exposes slider semantics with min, max, now and text', () => {
+    render(<Slider label="Confidence" min={0} max={100} defaultValue={40} unit="%" />)
+    const el = screen.getByRole('slider', { name: 'Confidence' })
+    expect(el.getAttribute('aria-valuemin')).toBe('0')
+    expect(el.getAttribute('aria-valuemax')).toBe('100')
+    expect(el.getAttribute('aria-valuenow')).toBe('40')
+    expect(el.getAttribute('aria-valuetext')).toBe('40 %')
+  })
+  it('adjusts with arrow keys, Home, End and Page keys', () => {
+    render(<Slider label="Confidence" min={0} max={100} step={1} defaultValue={40} />)
+    const el = screen.getByRole('slider')
+    fireEvent.keyDown(el, { key: 'ArrowRight' })
+    expect(el.getAttribute('aria-valuenow')).toBe('41')
+    fireEvent.keyDown(el, { key: 'ArrowDown' })
+    expect(el.getAttribute('aria-valuenow')).toBe('40')
+    fireEvent.keyDown(el, { key: 'PageUp' })
+    expect(el.getAttribute('aria-valuenow')).toBe('50')
+    fireEvent.keyDown(el, { key: 'End' })
+    expect(el.getAttribute('aria-valuenow')).toBe('100')
+    fireEvent.keyDown(el, { key: 'ArrowRight' })
+    expect(el.getAttribute('aria-valuenow')).toBe('100')
+    fireEvent.keyDown(el, { key: 'Home' })
+    expect(el.getAttribute('aria-valuenow')).toBe('0')
+  })
+  it('snaps to steps when discrete', () => {
+    const onValueChange = vi.fn()
+    render(<Slider label="Days" discrete min={1} max={7} step={2} defaultValue={1} onValueChange={onValueChange} />)
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowRight' })
+    expect(onValueChange).toHaveBeenLastCalledWith(3)
+  })
+  it('never hides the current value', () => {
+    render(<Slider label="Confidence" defaultValue={40} unit="%" />)
+    expect(screen.getAllByText('40 %').length).toBeGreaterThan(0)
+  })
+  it('shows a value label above the thumb', () => {
+    render(<Slider label="Confidence" defaultValue={40} showValueLabel />)
+    expect(screen.getAllByText('40').length).toBeGreaterThan(0)
+  })
+  it('syncs with a number input', () => {
+    render(<Slider label="Budget" defaultValue={40} withInput />)
+    const input = screen.getByRole('spinbutton', { name: 'Budget value' })
+    fireEvent.change(input, { target: { value: '75' } })
+    fireEvent.blur(input)
+    expect(screen.getByRole('slider').getAttribute('aria-valuenow')).toBe('75')
+    fireEvent.keyDown(screen.getByRole('slider'), { key: 'ArrowLeft' })
+    expect(input.getAttribute('aria-valuenow')).toBe('74')
+  })
+  it('disabled is not focusable and ignores keys', () => {
+    render(<Slider label="Confidence" defaultValue={40} disabled />)
+    const el = screen.getByRole('slider')
+    expect(el.getAttribute('aria-disabled')).toBe('true')
+    expect(el.getAttribute('tabindex')).toBe('-1')
+    fireEvent.keyDown(el, { key: 'ArrowRight' })
+    expect(el.getAttribute('aria-valuenow')).toBe('40')
+  })
+})

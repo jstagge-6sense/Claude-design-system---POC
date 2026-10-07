@@ -1,0 +1,150 @@
+{
+  "component": {
+    "card": {
+      "all": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.large}"
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.card}",
+              "$description": "Sage 100 to 200 gradient. Use as background, not background-color."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.strong},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 24% (strong border assumption). Clickable cards only."
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}",
+              "$description": "Teal 700 border. Selected is a color and border-width change, never shadow alone."
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "borderWidthSelected": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.200}",
+            "$description": "2px selected stroke. Padding is reduced by the difference so layout does not shift.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-200"
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.card}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}",
+              "$description": "Elevation step on hover for clickable cards."
+            }
+          },
+          "paddingDefault": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.spacious}"
+          },
+          "paddingCompact": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "gapDefault": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gapCompact": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.4}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "subtitle": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "footer": {
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$description": "Ink 900 at 8% separator above the footer."
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "media": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.group}",
+            "$description": "Placeholder behind images."
+          }
+        },
+        "selectedMark": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.action.primary.default}",
+            "$description": "Check mark shown when selected, so selection is not color alone."
+          },
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          }
+        },
+        "grid": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gapCompact": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        }
+      }
+    }
+  }
+}

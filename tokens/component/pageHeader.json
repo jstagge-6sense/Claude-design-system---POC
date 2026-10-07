@@ -1,0 +1,114 @@
+{
+  "component": {
+    "pageHeader": {
+      "all": {
+        "container": {
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.spacious}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.spacious}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Vertical gap between breadcrumb, title row, description, metadata and tabs."
+          },
+          "gapRow": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Gap between the title block and the actions."
+          },
+          "fill": {
+            "sticky": {
+              "$type": "color",
+              "$value": "{core.color.surface.overlay}",
+              "$description": "Solid Sage 100 so content never shows through a sticky header."
+            }
+          },
+          "border": {
+            "sticky": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "shadow": {
+            "sticky": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}"
+            }
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.1}",
+            "$description": "Visual size is fixed; the heading level is set by the headingLevel prop."
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          }
+        },
+        "description": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.1}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        },
+        "actions": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "metadata": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "itemGap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          }
+        },
+        "tabs": {
+          "marginBlockStart": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Space above the tab list. Decision: tabs sit inside the header, flush with its bottom edge."
+          }
+        }
+      }
+    }
+  }
+}

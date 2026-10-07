@@ -1,0 +1,169 @@
+{
+  "component": {
+    "pagination": {
+      "all": {
+        "layout": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Between the result count, page-size select and page controls."
+          }
+        },
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.group}",
+              "$description": "Shared group container with Tabs (filled)."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.border.group}",
+              "$description": "Shared group border gradient (a CSS image). Used with background-clip."
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{component.button.all.container.borderWidth}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}"
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "8px gap between controls."
+          }
+        },
+        "page": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{component.button.all.container.heightMedium}",
+            "$description": "Visual size of a page control. The hit area grows to 44px."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{component.button.all.container.radius}"
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{component.button.all.container.borderWidth}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.button.all.label.typographyMedium}"
+          },
+          "icon": {
+            "size": {
+              "$type": "sizing",
+              "$value": "{component.button.all.icon.size}"
+            }
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.button.tertiary.container.fill.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{component.button.tertiary.container.fill.hover}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{component.button.tertiary.container.fill.pressed}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}",
+              "$description": "Current page. Gradient fill (a CSS image), plus a stronger border and aria-current."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.button.all.container.fill.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.button.tertiary.container.border.default}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$description": "Ink 900 at 64%."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.button.all.container.border.disabled}"
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{component.button.tertiary.container.shadow.default}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{component.button.tertiary.container.shadow.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{component.button.tertiary.container.shadow.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{component.button.tertiary.container.shadow.focus}"
+            },
+            "selected": {
+              "$type": "shadow",
+              "$value": "{component.button.tertiary.container.shadow.pressed}"
+            }
+          },
+          "label": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{component.button.tertiary.label.color.default}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{component.button.all.label.color.disabled}"
+              }
+            }
+          }
+        },
+        "ellipsis": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        },
+        "count": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

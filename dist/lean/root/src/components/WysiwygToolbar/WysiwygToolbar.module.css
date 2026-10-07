@@ -1,0 +1,86 @@
+/* WYSIWYG Toolbar. Tokens: component.wysiwygToolbar.* (tokens/component/wysiwygToolbar.json), which alias the Navigation item values
+   (the inline icon action recipe, visual-design-decisions 4.6). Flat icon tools, not a ButtonGroup and not Tabs. */
+.root {
+  --_fill: var(--core-color-surface-card);
+  --_border: var(--component-wysiwygToolbar-full-container-border-default);
+  --_shadow: none;
+  --_radius: var(--core-dimension-radius-control-medium);
+
+  container: wysiwyg / inline-size;
+  display: flex;
+  align-items: center;
+  gap: var(--core-dimension-space-compact);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  padding: var(--core-dimension-space-tight);
+  background: var(--_fill);
+  border: var(--component-wysiwygToolbar-all-container-borderWidth) solid var(--_border);
+  border-radius: var(--_radius);
+  box-shadow: var(--_shadow);
+}
+.root[data-variant='minimal'] { --_fill: var(--core-color-surface-control-default); --_border: var(--component-wysiwygToolbar-minimal-container-border-default); }
+/* Floating shrink-wraps its tools, so it cannot be an inline-size container. */
+.root[data-variant='floating'] {
+  --_fill: var(--core-color-surface-control-default);
+  --_border: var(--component-wysiwygToolbar-floating-container-border-default);
+  --_shadow: var(--component-wysiwygToolbar-floating-container-shadow-default);
+  --_radius: var(--core-dimension-radius-surface-medium);
+  container-type: normal;
+  inline-size: max-content;
+  z-index: var(--ds-z-menu);
+}
+.root[data-variant='minimal'] { inline-size: max-content; container-type: normal; }
+
+.groupWrap { display: flex; align-items: center; gap: var(--core-dimension-space-tight); }
+.groupWrap[data-divided], .more[data-divided] { padding-inline-start: var(--core-dimension-space-compact); border-inline-start: var(--component-wysiwygToolbar-all-container-borderWidth) solid var(--component-wysiwygToolbar-all-group-divider-color); }
+.extended { display: contents; }
+.more { display: none; align-items: center; margin-inline-start: auto; }
+
+/* ---- Tool ---- */
+.tool {
+  --_tfill: var(--component-wysiwygToolbar-all-tool-fill-default);
+  --_tborder: transparent;
+  --_tshadow: none;
+  --_ticon: var(--component-wysiwygToolbar-all-tool-icon-color-default);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  inline-size: var(--component-wysiwygToolbar-all-tool-size);
+  block-size: var(--component-wysiwygToolbar-all-tool-size);
+  padding: 0;
+  border: var(--component-wysiwygToolbar-all-tool-borderWidth) solid var(--_tborder);
+  border-radius: var(--component-wysiwygToolbar-all-tool-radius);
+  background: var(--_tfill);
+  box-shadow: var(--_tshadow);
+  color: var(--_ticon);
+  cursor: pointer;
+  appearance: none;
+}
+.tool::after { content: ''; position: absolute; inset: calc((var(--component-wysiwygToolbar-all-tool-size) - var(--ds-hit-min)) / 2); }
+.icon { display: inline-flex; inline-size: var(--component-wysiwygToolbar-all-tool-icon-size); block-size: var(--component-wysiwygToolbar-all-tool-icon-size); }
+.menuIcon { display: block; inline-size: 100%; block-size: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .tool { transition: background-color var(--ds-motion-fast) var(--ds-ease), box-shadow var(--ds-motion-fast) var(--ds-ease); }
+}
+
+/* Pseudo-classes in :where() keep specificity flat, so source order decides: hover, pressed, active format, focus, disabled. */
+.tool:where(:hover:not([aria-disabled='true'])), .tool[data-state='hover'] { --_tfill: var(--component-wysiwygToolbar-all-tool-fill-hover); --_tborder: var(--component-wysiwygToolbar-all-tool-border-hover); --_tshadow: var(--component-wysiwygToolbar-all-tool-shadow-hover); }
+.tool:where(:active:not([aria-disabled='true'])), .tool[data-state='pressed'] { --_tfill: var(--component-wysiwygToolbar-all-tool-fill-pressed); --_tborder: transparent; --_tshadow: var(--component-wysiwygToolbar-all-tool-shadow-pressed); }
+/* Active format: a fill and icon color change on top of aria-pressed. Persistent, so not shadow alone. */
+.tool[aria-pressed='true'], .tool[data-open] { --_tfill: var(--component-wysiwygToolbar-active-tool-fill-default); --_tborder: transparent; --_tshadow: none; --_ticon: var(--component-wysiwygToolbar-active-tool-icon-color-default); }
+.tool:focus-visible, .tool[data-state='focus'] { outline: none; --_tshadow: var(--component-wysiwygToolbar-all-tool-shadow-focus); }
+.tool[aria-disabled='true'] { --_tfill: var(--component-wysiwygToolbar-all-tool-fill-default); --_tborder: transparent; --_tshadow: none; --_ticon: var(--component-wysiwygToolbar-all-tool-icon-color-disabled); cursor: not-allowed; }
+.tool[aria-disabled='true']:focus-visible { --_tshadow: var(--component-wysiwygToolbar-all-tool-shadow-focus); }
+
+/* ---- Collapsed: extended tools move behind More. Core formatting never hides. ---- */
+.root[data-overflow='always'] .extended, .root[data-overflow='always'] .groupWrap[data-extended] { display: none; }
+.root[data-overflow='always'] .more { display: inline-flex; }
+@container wysiwyg (max-width: 639px) {
+  .root[data-overflow='auto'] .extended, .root[data-overflow='auto'] .groupWrap[data-extended] { display: none; }
+  .root[data-overflow='auto'] .more { display: inline-flex; }
+}
