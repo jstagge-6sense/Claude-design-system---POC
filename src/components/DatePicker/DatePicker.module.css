@@ -1,12 +1,12 @@
 /* DatePicker. The field is Input (component.input.*). Panel, calendar and preset tokens: component.datePicker.*. */
 .anchor { position: relative; min-inline-size: 0; }
 
-/* ---- Panel: absolute below the field, flips above when there is no room. Escape and outside click close it. ---- */
+/* ---- Panel: fixed (never clipped by an overflow ancestor) below the field, flips above when there is no room. Escape and outside click close it. ---- */
 .panel {
-  position: absolute;
+  position: fixed;
+  inset: auto;
   z-index: var(--ds-z-menu);
-  inset-inline-start: 0;
-  inset-block-start: calc(100% + var(--component-datePicker-all-panel-offset));
+  margin-block-start: var(--component-datePicker-all-panel-offset);
   box-sizing: border-box;
   display: flex;
   align-items: stretch;
@@ -19,7 +19,7 @@
   background: var(--component-datePicker-all-panel-fill-default);
   box-shadow: var(--component-datePicker-all-panel-shadow-default);
 }
-.panel[data-placement='top'] { inset-block-start: auto; inset-block-end: calc(100% + var(--component-datePicker-all-panel-offset)); }
+.panel[data-placement='top'] { margin-block-start: 0; margin-block-end: var(--component-datePicker-all-panel-offset); }
 .main { display: flex; flex-direction: column; gap: var(--component-datePicker-all-panel-gap); min-inline-size: 0; }
 
 /* ---- Presets ---- */

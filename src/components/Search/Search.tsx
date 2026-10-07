@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, type ChangeEvent, type FocusEvent, type InputHTMLAttributes, type KeyboardEvent, type ReactNode } from 'react'
+import { forwardRef, useEffect, useRef, type RefObject, type ChangeEvent, type FocusEvent, type InputHTMLAttributes, type KeyboardEvent, type ReactNode } from 'react'
 import { cx } from '../../primitives/cx'
 import { mergeRefs } from '../../primitives/mergeRefs'
 import { useControllableState } from '../../primitives/useControllableState'
@@ -8,6 +8,7 @@ import { Spinner } from '../Spinner'
 import { FieldBox, FieldShell, describedBy, useFieldIds, type FieldSize } from '../Input/Field'
 import fieldStyles from '../Input/Field.module.css'
 import styles from './Search.module.css'
+import { usePanelPlacement } from '../TimePicker/usePanelPlacement'
 
 export interface SearchResult {
   id: string
@@ -59,6 +60,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
   const ids = useFieldIds(idProp)
   const listId = `${ids.id}-listbox`
   const innerRef = useRef<HTMLInputElement>(null)
+  const anchorRef = useRef<HTMLDivElement>(null)
+  const resultsRef = useRef<HTMLElement | null>(null)
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [text, setText] = useControllableState<string>(value, defaultValue, onValueChange)
   const [open, setOpen] = useControllableState<boolean>(openProp, defaultOpen, onOpenChange)
@@ -68,6 +71,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
   const hasResults = isCombo && results.length > 0
   const showList = open && hasResults && !disabled
   const showEmpty = open && isCombo && !hasResults && query !== '' && !loading && !disabled
+  const placement = usePanelPlacement(showList || showEmpty, anchorRef, resultsRef, { matchWidth: true })
   const activeId = showList && active >= 0 ? `${listId}-opt-${active}` : undefined
 
   useEffect(() => () => clearTimeout(timer.current), [])
@@ -133,7 +137,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
       role="search"
       onBlur={handleRootBlur}
     >
-      <div className={styles.anchor}>
+      <div ref={anchorRef} className={styles.anchor}>
         <FieldBox size={size} disabled={disabled} controlRef={innerRef} className={cx(variant === 'global' ? styles.global : styles.contextual)} data-variant={variant}>
           {scope ? <fieldset className={styles.scope} disabled={disabled} aria-label="Search scope">{scope}</fieldset> : null}
           <span className={fieldStyles.icon} aria-hidden="true"><Icon name="search" /></span>
@@ -170,7 +174,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
           ) : null}
         </FieldBox>
         {showList ? (
-          <ul id={listId} role="listbox" aria-label={`${label} results`} className={styles.results}>
+          <ul ref={resultsRef as unknown as RefObject<HTMLUListElement>} id={listId} role="listbox" aria-label={`${label} results`} className={styles.results} data-placement={placement}>
             {results.map((r, i) => (
               <li
                 key={r.id}
@@ -193,7 +197,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(function Search(
           </ul>
         ) : null}
         {showEmpty ? (
-          <div className={cx(styles.results, styles.empty)}>
+          <div ref={resultsRef as unknown as RefObject<HTMLDivElement>} className={cx(styles.results, styles.empty)} data-placement={placement}>
             {noResultsMessage ?? (
               <>
                 <p className={styles.emptyTitle}>{`No results for “${query}”.`}</p>

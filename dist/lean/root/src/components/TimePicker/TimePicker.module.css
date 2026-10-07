@@ -1,14 +1,13 @@
 /* TimePicker. The field is Input (component.input.* via Field.module.css). Panel, option and segment tokens: component.timePicker.*. */
 .anchor { position: relative; min-inline-size: 0; }
 
-/* ---- Panel: absolute below the field, flips above when there is no room. Escape and outside click close it. ---- */
+/* ---- Panel: fixed (never clipped by an overflow ancestor) below the field, flips above when there is no room. Escape and outside click close it. ---- */
 .panel {
-  position: absolute;
+  position: fixed;
+  inset: auto;
   z-index: var(--ds-z-menu);
-  inset-inline-start: 0;
-  inset-block-start: calc(100% + var(--core-dimension-space-tight));
+  margin-block-start: var(--core-dimension-space-tight);
   box-sizing: border-box;
-  min-inline-size: 100%;
   inline-size: max-content;
   max-inline-size: min(100vw, 24rem);
   display: flex;
@@ -20,7 +19,7 @@
   background: var(--core-color-surface-overlay);
   box-shadow: var(--component-timePicker-all-panel-shadow-default);
 }
-.panel[data-placement='top'] { inset-block-start: auto; inset-block-end: calc(100% + var(--core-dimension-space-tight)); }
+.panel[data-placement='top'] { margin-block-start: 0; margin-block-end: var(--core-dimension-space-tight); }
 
 .list { max-block-size: min(18rem, 50vh); overflow-y: auto; overscroll-behavior: contain; outline: none; }
 .groupLabel { padding: var(--core-dimension-space-tight) var(--core-dimension-space-comfortable); font: var(--component-timePicker-all-group-typography-font); text-decoration: var(--component-timePicker-all-group-typography-text-decoration); color: var(--core-color-content-secondary); }

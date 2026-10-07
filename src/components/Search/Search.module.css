@@ -22,9 +22,9 @@
 
 /* ---- Results listbox and no-results panel ---- */
 .results {
-  position: absolute;
-  inset-inline: 0;
-  inset-block-start: calc(100% + var(--component-search-all-results-offset));
+  position: fixed;
+  inset: auto;
+  margin-block-start: var(--component-search-all-results-offset);
   z-index: var(--ds-z-menu);
   box-sizing: border-box;
   max-block-size: calc(var(--ds-hit-min) * 6);
@@ -37,6 +37,7 @@
   border-radius: var(--component-search-all-results-radius);
   box-shadow: var(--component-search-all-results-shadow-default);
 }
+.results[data-placement='top'] { margin-block-start: 0; margin-block-end: var(--component-search-all-results-offset); }
 .option {
   display: flex;
   align-items: center;

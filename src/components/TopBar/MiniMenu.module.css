@@ -2,8 +2,9 @@
 .root { position: relative; display: inline-flex; }
 
 .panel {
-  position: absolute;
-  inset-block-start: calc(100% + var(--component-topBar-all-menu-offset));
+  position: fixed;
+  inset: auto;
+  margin-block-start: var(--component-topBar-all-menu-offset);
   z-index: var(--ds-z-menu);
   display: flex;
   flex-direction: column;
@@ -16,8 +17,7 @@
   border-radius: var(--component-topBar-all-menu-radius);
   box-shadow: var(--component-topBar-all-menu-shadow-default);
 }
-.panel[data-align='end'] { inset-inline-end: 0; }
-.panel[data-align='start'] { inset-inline-start: 0; }
+.panel[data-placement='top'] { margin-block-start: 0; margin-block-end: var(--component-topBar-all-menu-offset); }
 .panel[data-layout='grid'] { inline-size: 20rem; }
 
 .header {

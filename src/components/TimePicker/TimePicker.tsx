@@ -83,7 +83,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(function
   const [announce, setAnnounce] = useState('')
   const [activeId, setActiveId] = useState<string | null>(null)
   useEffect(() => { setDraft(display) }, [display])
-  const placement = usePanelPlacement(open, anchorRef, panelRef)
+  const placement = usePanelPlacement(open, anchorRef, panelRef, { matchWidth: true })
 
   const presetList: TimePreset[] = presets === true ? DEFAULT_TIME_PRESETS : presets === false ? [] : presets
   const options = useMemo<Opt[]>(() => {

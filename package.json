@@ -27,7 +27,8 @@
     "tokens:apply": "node scripts/apply-token-edits.mjs",
     "build:modes": "node scripts/build-modes.mjs .",
     "build:lean": "node scripts/lean-tokens.mjs .",
-    "publish:approved": "node scripts/publish.mjs"
+    "publish:approved": "node scripts/publish.mjs",
+    "preview:offline": "node scripts/build-preview.mjs --mini-react"
   },
   "peerDependencies": {
     "react": ">=18",

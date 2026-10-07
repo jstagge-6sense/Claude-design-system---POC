@@ -4,7 +4,9 @@
 //  - generates src/preview/registry.generated.ts from every src/components/*/*.stories.tsx
 //  - bundles the preview app + components with esbuild (CSS Modules), React mapped to window.React from a CDN
 //  - inlines tokens, CSS and JS into the HTML. Only React/ReactDOM and the Atkinson font load from the web.
-// Usage: node scripts/build-preview.mjs [--copy <dir>]
+// Usage: node scripts/build-preview.mjs [--copy <dir>] [--mini-react]
+//   default       real React 18.3.1 + ReactDOM from cdnjs (needs internet)
+//   --mini-react  inline the built-in mini-react stand-in so the file works offline
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, copyFileSync, statSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { createRequire } from 'node:module'
@@ -12,6 +14,7 @@ import { execFileSync } from 'node:child_process'
 
 const root = resolve('.')
 const argv = process.argv.slice(2)
+const realReact = !argv.includes('--mini-react') // default: React 18.3.1 from cdnjs (needs internet). --mini-react inlines the built-in offline stand-in instead
 const copyTo = argv.includes('--copy') ? argv[argv.indexOf('--copy') + 1] : null
 const ESB = process.env.ESBUILD_PATH || '/usr/local/lib/node_modules_global/lib/node_modules/tsx/node_modules/esbuild'
 const esbuild = createRequire(import.meta.url)(ESB)
@@ -96,7 +99,9 @@ const html = `<!doctype html>
 <script id="ds-data" type="application/json">${safe(JSON.stringify(data))}</script>
 <pre id="boot-error" hidden style="white-space:pre-wrap;padding:16px;color:#b00020;font:12px monospace"></pre>
 <script>window.addEventListener('error',function(e){var el=document.getElementById('boot-error');if(el){el.hidden=false;el.textContent+=(e.message||e.error)+'\\n'}})</script>
-<script>${safe(miniReact)}</script>
+${realReact
+  ? '<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>\n<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>'
+  : `<script>${safe(miniReact)}</script>`}
 <script>${safe(js)}</script>
 </body>
 </html>

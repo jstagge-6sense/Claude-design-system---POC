@@ -4,6 +4,7 @@ import { useClickOutside } from '../../primitives/hooks'
 import { useControllableState } from '../../primitives/useControllableState'
 import { Icon } from '../../icons'
 import styles from './MiniMenu.module.css'
+import { usePanelPlacement } from '../TimePicker/usePanelPlacement'
 
 /**
  * Minimal internal disclosure menu used by the Top Bar (profile, app switcher), Page Header (overflow actions)
@@ -61,6 +62,8 @@ export function MiniMenu({ label, items, trigger, open: openProp, defaultOpen = 
   const rootRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const placement = usePanelPlacement(open, rootRef, panelRef, { align })
   const focusOnOpen = useRef<'first' | 'last' | null>(null)
   const typed = useRef({ text: '', at: 0 })
   const baseId = useId()
@@ -137,7 +140,7 @@ export function MiniMenu({ label, items, trigger, open: openProp, defaultOpen = 
         { open },
       )}
       {open ? (
-        <div className={styles.panel} data-align={align} data-layout={layout}>
+        <div ref={panelRef} className={styles.panel} data-align={align} data-layout={layout} data-placement={placement}>
           {header ? <div className={styles.header}>{header}</div> : null}
           <div ref={menuRef} id={menuId} role="menu" aria-label={label} className={styles.menu} data-layout={layout} onKeyDown={onMenuKeyDown}>
             {items.map((item) => {
