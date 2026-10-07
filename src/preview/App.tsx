@@ -5,7 +5,7 @@ import { Boundary, ColorsPage, EffectsPage, GapsPage, SpacingPage, TypographyPag
 import { DATA, LEAN_COUNT, COMP_LEAN, CORE_COUNT } from './data'
 import { useOverrides } from './overrides'
 
-const TIERS: Record<number, string> = { 4: 'Pages', 1: 'Tier 1 · Critical', 2: 'Tier 2 · High value', 3: 'Tier 3 · Specialized', 0: 'Atomic units and patterns' }
+const TIERS: Record<number, string> = { 1: 'Tier 1 · Critical', 2: 'Tier 2 · High value', 3: 'Tier 3 · Specialized', 0: 'Atomic units and patterns' }
 const FOUND = [['colors', 'Colors'], ['typography', 'Typography'], ['spacing', 'Space, size, radius'], ['effects', 'Shadows and effects'], ['gaps', 'Gaps and conflicts']] as const
 const lowerCamel = (s: string) => s[0].toLowerCase() + s.slice(1)
 const humanize = (s: string) => s.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/_/g, ' ')
@@ -110,7 +110,7 @@ export function App() {
           <input className="pv-input" placeholder="Filter components" value={filter} onChange={(e) => setFilter(e.target.value)} aria-label="Filter components" />
           <h3>Foundations</h3>
           {FOUND.map(([k, l]) => <a key={k} href={`#/f/${k}`} aria-current={kind === 'f' && id === k ? 'page' : undefined}>{l}</a>)}
-          {[4, 1, 2, 3, 0].map((tier) => groups[tier]?.length ? (
+          {[1, 2, 3, 0].map((tier) => groups[tier]?.length ? (
             <div key={tier}><h3>{TIERS[tier]}</h3>
               {groups[tier].sort((a, b) => a.folder.localeCompare(b.folder)).map((e) => <a key={e.folder} href={`#/c/${e.folder}`} aria-current={kind === 'c' && id === e.folder ? 'page' : undefined}>{humanize(e.folder)}</a>)}
             </div>) : null)}

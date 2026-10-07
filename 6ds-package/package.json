@@ -1,0 +1,108 @@
+{
+  "name": "@6si/components",
+  "version": "0.0.0-poc",
+  "description": "6DS: 6sense design system. React + TypeScript components built on primitive, semantic and component tokens. Works in Next.js, Create React App (Craco), Vite and webpack apps.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/styles.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./mui": {
+      "types": "./dist/mui/index.d.ts",
+      "import": "./dist/mui.js",
+      "require": "./dist/mui.cjs"
+    },
+    "./hook-form": {
+      "types": "./dist/hook-form/index.d.ts",
+      "import": "./dist/hook-form.js",
+      "require": "./dist/hook-form.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "docs"
+  ],
+  "scripts": {
+    "build:tokens": "node scripts/build-tokens.mjs . && node scripts/build-modes.mjs .",
+    "build:mui-theme": "node scripts/build-mui-theme.mjs .",
+    "build": "npm run build:tokens && npm run build:mui-theme && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint:tokens": "node scripts/lint-tokens.mjs .",
+    "check:components": "node scripts/check-components.mjs",
+    "smoke": "node scripts/smoke-test.mjs",
+    "gen:index": "node scripts/gen-index.mjs",
+    "preview": "node scripts/build-preview.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build:lean": "node scripts/lean-tokens.mjs .",
+    "tokens:apply": "node scripts/apply-token-edits.mjs",
+    "new:component": "node scripts/new-component.mjs"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "@mui/material": ">=5.14",
+    "@emotion/react": ">=11",
+    "@emotion/styled": ">=11",
+    "react-hook-form": ">=7.45"
+  },
+  "peerDependenciesMeta": {
+    "@mui/material": {
+      "optional": true
+    },
+    "@emotion/react": {
+      "optional": true
+    },
+    "@emotion/styled": {
+      "optional": true
+    },
+    "react-hook-form": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@figma/code-connect": "latest",
+    "@mui/material": "^5.14.0",
+    "@storybook/react-vite": "latest",
+    "@tanstack/react-query": "^5.0.0",
+    "@testing-library/react": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "esbuild": "^0.24.0",
+    "jsdom": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-hook-form": "^7.45.0",
+    "storybook": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vite-plugin-dts": "latest",
+    "vitest": "latest"
+  },
+  "typesVersions": {
+    "*": {
+      "mui": [
+        "dist/mui/index.d.ts"
+      ],
+      "hook-form": [
+        "dist/hook-form/index.d.ts"
+      ]
+    }
+  }
+}

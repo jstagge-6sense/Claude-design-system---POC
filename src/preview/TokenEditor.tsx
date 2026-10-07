@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { DATA, TOKEN_LIST, PASSTHROUGH, type TokenRec } from './data'
+import { downloadEditsZip } from './exportZip'
 import { clearAll, clearOverride, computedValue, exportPatch, setOverride, useOverrides } from './overrides'
 
 const HEX = /^#[0-9a-fA-F]{6}$/
@@ -19,8 +20,8 @@ function Row({ t }: { t: TokenRec }) {
   const aliasNow = ov ? (ov.mode === 'alias' ? ov.value : null) : (t.aliases.length === 1 && t.css && /^var\(/.test(t.css) ? t.aliases[0] : null)
   const commitRaw = (v: string) => { if (v.trim()) setOverride(t.name, { mode: 'raw', value: v.trim() }); setDraft(null) }
   const commitAlias = (v: string) => {
-    const hit = DATA.tokens[v.trim()]
-    if (hit) setOverride(t.name, { mode: 'alias', value: hit.name })
+    const name = v.trim()
+    if (DATA.tokens[name]) setOverride(t.name, { mode: 'alias', value: name }) // value = the selected token's name
   }
   const showColor = t.kind === 'color' && HEX.test(cur)
   return (
@@ -78,11 +79,7 @@ export function TokenEditor({ prefix, onPrefix, onClose }: { prefix: string; onP
   const edited = Object.keys(overrides).length
   const exportJson = () => JSON.stringify(exportPatch(), null, 2)
   const copy = async () => { try { await navigator.clipboard.writeText(exportJson()); setShown('Copied') } catch { setShown('Copy blocked. Use Download or select the text.') } }
-  const download = () => {
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(new Blob([exportJson()], { type: 'application/json' }))
-    a.download = 'token-edits.json'; a.click()
-  }
+  const download = () => { downloadEditsZip(); setShown('Downloaded zip: token-edits.json, token-edits.csv, claude-prompt.md') }
   return (
     <aside className="pv-editor" aria-label="Token editor">
       <header className="pv-editor-head">
@@ -100,11 +97,11 @@ export function TokenEditor({ prefix, onPrefix, onClose }: { prefix: string; onP
         {prefix ? <div className="pv-chip">Showing <code>{prefix}</code> <button className="pv-link" onClick={() => onPrefix('')}>show all</button></div> : null}
         <div className="pv-actions">
           <button className="pv-btn" onClick={copy} disabled={!edited}>Copy edits</button>
-          <button className="pv-btn" onClick={download} disabled={!edited}>Download</button>
+          <button className="pv-btn" onClick={download} disabled={!edited}>Download zip</button>
           <button className="pv-btn" onClick={clearAll} disabled={!edited}>Reset all</button>
         </div>
         {shown ? <div className="pv-muted" role="status">{shown}</div> : null}
-        <p className="pv-hint">Edits apply live to every component and are saved in this browser. Editing a primitive changes everything built on it. Aliases accept any token of the same kind. Copy edits to send token changes back.</p>
+        <p className="pv-hint">Edits apply live to every component and are saved in this browser. Editing a primitive changes everything built on it. Aliases accept any token of the same kind. Download zip gives you the JSON, a table of old and new values, and a prompt for Claude to apply them.</p>
       </div>
       <div className="pv-list">
         {list.slice(0, limit).map((t) => <Row key={t.name} t={t} />)}

@@ -10,6 +10,8 @@ const root = () => document.documentElement
 const PART_VARS: Record<string, string> = { fontFamily: 'font-family', fontSize: 'font-size', fontWeight: 'font-weight', lineHeight: 'line-height', textDecoration: 'text-decoration' }
 
 try { overrides = JSON.parse(localStorage.getItem(KEY) || '{}') } catch { overrides = {} }
+// drop broken entries saved by an earlier build (alias with no token name)
+overrides = Object.fromEntries(Object.entries(overrides).filter(([, o]) => o && o.value && o.value !== 'undefined'))
 
 const cssVarOf = (name: string) => DATA.tokens[name]?.cssVar
 function applyOne(name: string) {
@@ -28,7 +30,9 @@ function applyOne(name: string) {
 }
 const emit = () => { version++; listeners.forEach((l) => l()); try { localStorage.setItem(KEY, JSON.stringify(overrides)) } catch { /* private mode */ } }
 export const applyAll = () => Object.keys(overrides).forEach(applyOne)
-export const setOverride = (name: string, o: Override) => { overrides = { ...overrides, [name]: o }; applyOne(name); emit() }
+export const setOverride = (name: string, o: Override) => {
+  if (!o.value) return // never store an empty alias or value
+  overrides = { ...overrides, [name]: o }; applyOne(name); emit() }
 export const clearOverride = (name: string) => { const { [name]: _gone, ...rest } = overrides; overrides = rest; applyOne(name); emit() }
 export const clearAll = () => { const names = Object.keys(overrides); overrides = {}; names.forEach(applyOne); emit() }
 export const getOverrides = () => overrides

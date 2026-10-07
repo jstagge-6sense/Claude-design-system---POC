@@ -1,0 +1,193 @@
+{
+  "component": {
+    "wysiwygToolbar": {
+      "all": {
+        "container": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between tool groups."
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          }
+        },
+        "group": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "divider": {
+            "color": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Separates logical groups."
+            }
+          }
+        },
+        "tool": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{component.nav.all.item.height}",
+            "$description": "Square tool. Inline icon action reuses Navigation values (visual-design-decisions 4.6)."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{component.nav.all.item.radius}"
+          },
+          "icon": {
+            "size": {
+              "$type": "sizing",
+              "$value": "{component.nav.all.item.icon.size}"
+            },
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{component.nav.all.item.icon.color.default}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{component.nav.all.item.icon.color.disabled}"
+              }
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{component.nav.all.item.borderWidth}"
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.fill.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.fill.hover}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.fill.pressed}"
+            }
+          },
+          "border": {
+            "hover": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.border.hover}"
+            }
+          },
+          "shadow": {
+            "hover": {
+              "$type": "shadow",
+              "$value": "{component.nav.all.item.shadow.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{component.nav.all.item.shadow.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{component.nav.all.item.shadow.focus}"
+            }
+          }
+        }
+      },
+      "full": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.card}",
+              "$description": "Gradient (CSS image), use with `background`."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          }
+        }
+      },
+      "minimal": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}",
+              "$description": "Minimal: a quiet bar with a subtle border."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          }
+        }
+      },
+      "floating": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Floating toolbar sits above the text (menu tier elevation)."
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}"
+          }
+        }
+      },
+      "active": {
+        "tool": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.fill.selected}",
+              "$description": "Active format: a fill change (Nav selected gradient), with aria-pressed. Not shadow alone."
+            }
+          },
+          "icon": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{component.nav.all.item.icon.color.selected}",
+                "$description": "Teal icon in addition to the fill."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

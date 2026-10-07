@@ -1,0 +1,6 @@
+@import '../../dist/primitive.css';
+@import '../../dist/semantic.css';
+@import '../../dist/component.css';
+@import './foundation.css';
+/* dark theme + Compact/Spacious density: active when <html data-theme="dark"> / data-density="compact|spacious" */
+@import '../../dist/modes.css';

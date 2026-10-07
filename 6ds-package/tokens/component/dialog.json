@@ -1,0 +1,123 @@
+{
+  "component": {
+    "dialog": {
+      "all": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.overlay}",
+            "$description": "Modal surface (surface.overlay: Drawer, side panel and Modal)."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}"
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{core.color.border.highlight}",
+            "$description": "Bright edge for floating surfaces (border.highlight is documented for Card and Modal)."
+          },
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.400}",
+            "$description": "Highest step of the elevation ladder. A dialog is the top layer that blocks the page."
+          },
+          "margin": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Minimum gap between the dialog and the viewport edge."
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.spacious}"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Header and footer block padding. The body adds its own block padding."
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Gap between the title, description and body content."
+          }
+        },
+        "scrim": {
+          "fill": {
+            "$type": "color",
+            "$value": "rgba({core.color.surface.scrim},{core.effect.opacity.400})",
+            "$description": "Backdrop. No scrim opacity is documented; 32% is a proposal (same as Spinner overlay). Tune in the preview."
+          }
+        },
+        "header": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between the lead icon, the title and the close button."
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.3}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "description": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.1}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.1}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "divider": {
+          "color": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$description": "Ink 900 at 16%. Separates the fixed header and footer from the scrolling body."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between footer actions. 8px minimum between adjacent targets."
+          }
+        }
+      },
+      "destructive": {
+        "icon": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.critical}",
+            "$description": "Warning icon beside a destructive confirmation title. The icon, title and button label carry the severity, never color alone."
+          }
+        }
+      }
+    }
+  }
+}

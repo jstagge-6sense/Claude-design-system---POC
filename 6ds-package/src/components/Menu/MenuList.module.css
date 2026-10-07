@@ -1,0 +1,109 @@
+/* Menu items and list. Tokens: component.menu.* (tokens/component/menu.json). No raw colors or primitives. */
+.root { position: relative; display: flex; flex-direction: column; min-inline-size: 0; }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-menu-all-container-gap);
+  margin: 0;
+  padding: var(--component-menu-all-container-padding);
+  list-style: none;
+  overflow-y: auto;
+  max-block-size: min(20rem, 50vh);
+  overscroll-behavior: contain;
+}
+.list[data-empty] { display: none; }
+
+/* ---- Item. Local custom properties are mapped once, states below stay generic. ---- */
+.item {
+  --_fill: transparent;
+  --_shadow: none;
+  --_label: var(--component-menu-all-item-label-color-default);
+  --_icon: var(--component-menu-all-item-icon-color-default);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--component-menu-all-item-gap);
+  box-sizing: border-box;
+  min-block-size: var(--ds-hit-min);
+  padding-inline: var(--component-menu-all-item-paddingInline);
+  border-radius: var(--component-menu-all-item-radius);
+  background: var(--_fill);
+  box-shadow: var(--_shadow);
+  color: var(--_label);
+  font: var(--component-menu-all-item-typography-font);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  transition: background-color var(--ds-motion-fast) var(--ds-ease);
+}
+@media (prefers-reduced-motion: reduce) { .item { transition: none; } }
+
+.text { display: flex; flex: 1 1 auto; flex-direction: column; min-inline-size: 0; }
+.label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.description { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--component-menu-all-item-description-color-default); font: var(--component-menu-all-item-description-typography-font); }
+.shortcut { flex: none; color: var(--component-menu-all-item-description-color-default); font: var(--component-menu-all-item-description-typography-font); }
+.icon, .tick { display: inline-flex; flex: none; inline-size: var(--component-menu-all-item-icon-size); block-size: var(--component-menu-all-item-icon-size); color: var(--_icon); }
+.icon > svg, .tick > svg { inline-size: 100%; block-size: 100%; }
+
+.match { background: var(--component-menu-all-match-fill-default); color: inherit; font: var(--component-menu-all-match-typography-font); border-radius: var(--component-menu-all-item-radius); }
+
+/* Multi: a checkbox indicator (visual only, the option carries aria-selected). */
+.check {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--component-menu-all-check-size);
+  block-size: var(--component-menu-all-check-size);
+  border: var(--component-menu-all-check-borderWidth) solid var(--component-menu-all-check-border-default);
+  border-radius: var(--component-menu-all-check-radius);
+  background: var(--component-menu-all-check-fill-default);
+  color: var(--component-menu-all-check-mark-color-selected);
+}
+.check[data-checked] { background: var(--component-menu-all-check-fill-selected); border-color: var(--component-menu-all-check-border-selected); }
+.check > svg { inline-size: 100%; block-size: 100%; }
+
+/* ---- States: real pseudo-classes plus [data-state] twins for forced states ---- */
+.item:hover:not([aria-disabled='true']), .item[data-state='hover'], .item:focus-visible, .item[data-state='focus'] { --_fill: var(--component-menu-all-item-fill-hover); }
+.item:active:not([aria-disabled='true']), .item[data-state='pressed'] { --_fill: var(--component-menu-all-item-fill-pressed); }
+.item:focus-visible, .item[data-state='focus'] { --_shadow: var(--component-menu-all-item-shadow-focus); z-index: var(--ds-z-base); }
+.item[data-open] { --_fill: var(--component-menu-all-item-fill-hover); }
+
+/* Selected: persistent, carried by fill and a check mark. Hover and focus tint on top of it. */
+.item[data-selected] { --_icon: var(--component-menu-all-item-icon-color-selected); background: var(--component-menu-all-item-fill-selected); }
+.item[data-selected]:hover:not([aria-disabled='true']), .item[data-selected][data-state='hover'], .item[data-selected]:focus-visible, .item[data-selected][data-state='focus'] {
+  background: linear-gradient(var(--component-menu-all-item-fill-hover), var(--component-menu-all-item-fill-hover)), var(--component-menu-all-item-fill-selected);
+}
+.item[data-selected]:active:not([aria-disabled='true']), .item[data-selected][data-state='pressed'] {
+  background: linear-gradient(var(--component-menu-all-item-fill-pressed), var(--component-menu-all-item-fill-pressed)), var(--component-menu-all-item-fill-selected);
+}
+
+.item[data-destructive] { --_label: var(--component-menu-all-item-label-color-destructive); --_icon: var(--component-menu-all-item-label-color-destructive); }
+
+.item[aria-disabled='true'] { --_label: var(--component-menu-all-item-label-color-disabled); --_icon: var(--component-menu-all-item-icon-color-disabled); --_fill: transparent; --_shadow: none; cursor: not-allowed; }
+.item[aria-disabled='true'] .description, .item[aria-disabled='true'] .shortcut { color: var(--component-menu-all-item-label-color-disabled); }
+.item[aria-disabled='true'] .check { background: var(--component-menu-all-check-fill-disabled); border-color: var(--component-menu-all-check-border-disabled); color: var(--component-menu-all-check-mark-color-disabled); }
+.item[aria-disabled='true'][data-selected] { background: transparent; }
+
+/* ---- Groups and dividers ---- */
+.groupItem { display: block; }
+.group { display: flex; flex-direction: column; gap: var(--component-menu-all-container-gap); margin: 0; padding: 0; list-style: none; }
+.groupLabel { padding-block: var(--component-menu-all-group-paddingBlock) 0; padding-inline: var(--component-menu-all-item-paddingInline); color: var(--component-menu-all-group-label-color-default); font: var(--component-menu-all-group-label-typography-font); }
+.divider { block-size: var(--component-menu-all-container-borderWidth); margin-block: var(--component-menu-all-container-padding); background: var(--component-menu-all-divider-color-default); }
+
+/* ---- Loading and empty ---- */
+.state { display: flex; align-items: center; gap: var(--component-menu-all-slot-gap); padding: var(--component-menu-all-state-padding); color: var(--component-menu-all-state-color-default); font: var(--component-menu-all-state-typography-font); }
+
+/* ---- Submenu panel (one level) ---- */
+.subPositioner { position: absolute; inset-block-start: 0; inset-inline-start: 0; inline-size: max-content; z-index: var(--ds-z-menu); padding-inline: var(--component-menu-all-container-offset); box-sizing: border-box; }
+.subPositioner:not([data-ready]) { visibility: hidden; }
+.subPanel {
+  min-inline-size: 10rem;
+  border: var(--component-menu-all-container-borderWidth) solid var(--component-menu-all-container-border-default);
+  border-radius: var(--component-menu-all-container-radius);
+  background: var(--component-menu-all-container-fill-default);
+  box-shadow: var(--component-menu-all-container-shadow-default);
+  overflow: hidden;
+}
