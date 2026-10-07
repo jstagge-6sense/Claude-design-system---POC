@@ -30,7 +30,7 @@
 }
 .slot { display: flex; flex-direction: column; gap: var(--component-menu-all-slot-gap); padding: var(--component-menu-all-slot-padding); }
 .slot:has(+ *) { padding-block-end: 0; }
-.footer { border-block-start: var(--component-menu-all-container-borderWidth) solid var(--component-menu-all-divider-color-default); padding-block-start: var(--component-menu-all-slot-padding); }
+.footer { border-block-start: var(--component-menu-all-container-borderWidth) solid var(--component-menu-all-container-border-default); padding-block-start: var(--component-menu-all-slot-padding); }
 
 @media (prefers-reduced-motion: no-preference) {
   .positioner[data-ready] .panel { animation: ds-menu-in var(--ds-motion-fast) var(--ds-ease); }

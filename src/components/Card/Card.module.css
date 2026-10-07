@@ -73,7 +73,7 @@
 .header { display: flex; align-items: flex-start; gap: var(--_gap); }
 .headings { flex: 1 1 auto; min-inline-size: 0; display: flex; flex-direction: column; gap: 0; }
 .title { margin: 0; font: var(--component-card-all-title-typography-font); color: var(--component-card-all-title-color); overflow-wrap: anywhere; }
-.subtitle { font: var(--component-card-all-subtitle-typography-font); color: var(--component-card-all-subtitle-color); }
+.subtitle { font: var(--component-card-all-body-typography-font); color: var(--component-card-all-subtitle-color); }
 .mark { flex: none; display: inline-flex; inline-size: var(--component-card-all-selectedMark-size); block-size: var(--component-card-all-selectedMark-size); color: var(--component-card-all-selectedMark-color); }
 .mark > svg { inline-size: 100%; block-size: 100%; }
 
@@ -88,9 +88,9 @@
   justify-content: space-between;
   gap: var(--component-card-all-footer-gap);
   padding-block-start: var(--_gap);
-  border-block-start: var(--component-card-all-container-borderWidth) solid var(--component-card-all-footer-border);
+  border-block-start: var(--component-card-all-container-borderWidth) solid var(--component-card-all-container-border-default);
 }
-.footerMeta { font: var(--component-card-all-subtitle-typography-font); color: var(--component-card-all-subtitle-color); min-inline-size: 0; }
+.footerMeta { font: var(--component-card-all-body-typography-font); color: var(--component-card-all-subtitle-color); min-inline-size: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--component-card-all-footer-gap); margin-inline-start: auto; }
 
 .skeleton { padding: var(--_pad); box-sizing: border-box; }

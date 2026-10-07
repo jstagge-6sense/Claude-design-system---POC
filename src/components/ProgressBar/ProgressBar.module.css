@@ -12,7 +12,7 @@
 
 .header { display: flex; justify-content: space-between; align-items: baseline; gap: var(--component-progressBar-all-container-gap); }
 .label { font: var(--component-progressBar-all-label-typography-font); color: var(--component-progressBar-all-label-color); }
-.value { font: var(--component-progressBar-all-value-typography-font); color: var(--component-progressBar-all-value-color); font-variant-numeric: tabular-nums; }
+.value { font: var(--component-progressBar-all-status-typography-font); color: var(--component-progressBar-all-value-color); font-variant-numeric: tabular-nums; }
 
 .track {
   display: flex;

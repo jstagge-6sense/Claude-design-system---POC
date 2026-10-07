@@ -39,10 +39,6 @@
           }
         },
         "trend": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "gap": {
             "$type": "spacing",
             "$value": "{core.dimension.space.tight}"

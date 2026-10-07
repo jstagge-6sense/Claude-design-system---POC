@@ -116,14 +116,6 @@
               "gap": "GAP-dimension-size-500"
             }
           },
-          "radius": {
-            "$type": "borderRadius",
-            "$value": "{core.dimension.radius.full}",
-            "$description": "Pill or circle radius. No semantic token for a full radius.",
-            "$extensions": {
-              "gap": "GAP-dimension-radius-full"
-            }
-          },
           "fill": {
             "hover": {
               "$type": "color",

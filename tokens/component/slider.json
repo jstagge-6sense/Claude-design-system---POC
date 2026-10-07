@@ -151,10 +151,6 @@
               "$value": "{core.color.content.disabled}"
             }
           },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "radius": {
             "$type": "borderRadius",
             "$value": "{core.dimension.radius.control.small}"

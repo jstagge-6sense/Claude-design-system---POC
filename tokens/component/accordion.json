@@ -107,10 +107,6 @@
             "$type": "spacing",
             "$value": "{core.dimension.space.standard}"
           },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.paragraph.2}"
-          },
           "color": {
             "$type": "color",
             "$value": "{core.color.content.primary}"

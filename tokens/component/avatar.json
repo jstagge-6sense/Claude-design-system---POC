@@ -70,10 +70,6 @@
           }
         },
         "label": {
-          "typographySmall": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "typographyMedium": {
             "$type": "typography",
             "$value": "{core.typography.label.2}"

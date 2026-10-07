@@ -28,7 +28,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .root { transition: none; } }
 
-.root[data-size='small'] { --_size: var(--component-avatar-all-container-sizeSmall); --_type: var(--component-avatar-all-label-typographySmall-font); }
+.root[data-size='small'] { --_size: var(--component-avatar-all-container-sizeSmall); --_type: var(--component-avatar-all-label-typographyMedium-font); }
 .root[data-size='large'] { --_size: var(--core-dimension-size-control-height-medium); --_type: var(--component-avatar-all-label-typographyLarge-font); --_status: var(--component-avatar-all-status-sizeLarge); }
 .root[data-size='xl'] { --_size: var(--component-avatar-all-container-sizeXl); --_type: var(--component-avatar-all-label-typographyXl-font); --_status: var(--component-avatar-all-status-sizeLarge); }
 

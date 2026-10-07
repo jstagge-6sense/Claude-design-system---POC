@@ -56,10 +56,6 @@
           }
         },
         "weekday": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.help.1}"
-          },
           "color": {
             "default": {
               "$type": "color",
@@ -148,10 +144,6 @@
           }
         },
         "note": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.help.1}"
-          },
           "color": {
             "default": {
               "$type": "color",
@@ -171,10 +163,6 @@
           "radius": {
             "$type": "borderRadius",
             "$value": "{component.timePicker.all.option.radius}"
-          },
-          "typography": {
-            "$type": "typography",
-            "$value": "{component.timePicker.all.option.typography}"
           },
           "color": {
             "default": {

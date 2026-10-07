@@ -6,7 +6,7 @@
 .segment {
   --_h: var(--component-buttonGroup-all-segment-heightMedium);
   --_pad: var(--component-buttonGroup-all-segment-paddingInlineMedium);
-  --_type: var(--component-buttonGroup-all-segment-typographyMedium-font);
+  --_type: var(--component-buttonGroup-all-segment-typographyLarge-font);
   --_fill: var(--component-buttonGroup-all-segment-fill-default);
   --_border: var(--component-buttonGroup-all-segment-border-default);
   --_shadow: var(--component-buttonGroup-all-segment-shadow-default);

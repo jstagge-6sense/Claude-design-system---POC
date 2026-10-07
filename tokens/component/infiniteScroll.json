@@ -11,10 +11,6 @@
             "$type": "spacing",
             "$value": "{core.dimension.space.standard}"
           },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.paragraph.2}"
-          },
           "color": {
             "default": {
               "$type": "color",
@@ -63,14 +59,6 @@
               "$type": "color",
               "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
               "$description": "Ink 900 at 16%."
-            }
-          },
-          "borderWidth": {
-            "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
             }
           },
           "padding": {

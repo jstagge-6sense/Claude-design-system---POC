@@ -35,18 +35,9 @@
             "$value": "rgba({core.color.border.subtle},{core.effect.opacity.50})",
             "$description": "Ink 900 at 4% (opacity ladder, header row fill). Layered over the container fill in CSS so a sticky header stays opaque."
           },
-          "border": {
-            "$type": "color",
-            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-            "$description": "Ink 900 at 16%. Rule under the header row."
-          },
           "color": {
             "$type": "color",
             "$value": "{core.color.content.primary}"
-          },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.table.columnHeader}"
           },
           "button": {
             "fill": {

@@ -20,7 +20,7 @@
 
 .meta { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--component-dataMetric-all-container-gapInline); row-gap: var(--component-dataMetric-all-container-gap); }
 .root[data-size='compact'] .live { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: var(--component-dataMetric-all-container-gapInline); }
-.trend { display: inline-flex; align-items: center; gap: var(--component-dataMetric-all-trend-gap); font: var(--component-dataMetric-all-trend-typography-font); color: var(--_trend-color); }
+.trend { display: inline-flex; align-items: center; gap: var(--component-dataMetric-all-trend-gap); font: var(--component-dataMetric-all-comparison-typography-font); color: var(--_trend-color); }
 .trendIcon { display: inline-flex; inline-size: var(--component-dataMetric-all-trend-iconSize); block-size: var(--component-dataMetric-all-trend-iconSize); }
 .trendIcon > svg { inline-size: 100%; block-size: 100%; }
 .comparison { font: var(--component-dataMetric-all-comparison-typography-font); color: var(--component-dataMetric-all-comparison-color); }

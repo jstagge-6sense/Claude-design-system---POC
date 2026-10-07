@@ -3,7 +3,7 @@
   --_height: var(--core-dimension-size-control-height-medium);
   --_pad: var(--core-dimension-space-standard);
   --_gap: var(--core-dimension-space-compact);
-  --_type: var(--component-button-all-label-typographyMedium-font);
+  --_type: var(--component-button-all-label-typographyLarge-font);
   --_fill: var(--_fill-default);
   --_border: var(--_border-default);
   --_shadow: var(--_shadow-default);

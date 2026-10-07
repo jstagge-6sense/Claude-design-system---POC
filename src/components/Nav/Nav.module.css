@@ -2,7 +2,7 @@
    Interim by design: may be superseded by the Information Architecture redesign (visual-design-decisions 4.5, section 7). */
 .root {
   --_width: 15rem;
-  --_rail: calc(var(--component-nav-all-item-height) + 2 * var(--component-nav-all-container-paddingInline) + 2 * var(--component-nav-all-item-borderWidth));
+  --_rail: calc(var(--component-nav-all-item-height) + 2 * var(--component-nav-all-container-paddingInline) + 2 * var(--component-nav-all-container-borderWidth));
 
   display: flex;
   flex-direction: column;
@@ -52,8 +52,8 @@
 .root[data-collapsed] .scroll { overflow: visible; }
 
 .group { display: flex; flex-direction: column; gap: var(--component-nav-all-container-gap); }
-.group[data-divider] { padding-block-start: var(--component-nav-all-container-groupGap); border-block-start: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-group-divider-color); }
-.root[data-collapsed] .group[data-labelled]:not(:first-child) { padding-block-start: var(--component-nav-all-container-groupGap); border-block-start: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-group-divider-color); }
+.group[data-divider] { padding-block-start: var(--component-nav-all-container-groupGap); border-block-start: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-container-border-default); }
+.root[data-collapsed] .group[data-labelled]:not(:first-child) { padding-block-start: var(--component-nav-all-container-groupGap); border-block-start: var(--component-nav-all-container-borderWidth) solid var(--component-nav-all-container-border-default); }
 .groupLabel {
   margin: 0;
   padding-inline: var(--component-nav-all-item-paddingInline);
@@ -82,7 +82,7 @@
   inline-size: 100%;
   min-block-size: var(--component-nav-all-item-height);
   padding-inline: var(--component-nav-all-item-paddingInline);
-  border: var(--component-nav-all-item-borderWidth) solid var(--_border);
+  border: var(--component-nav-all-container-borderWidth) solid var(--_border);
   border-radius: var(--component-nav-all-item-radius);
   background: var(--_fill);
   box-shadow: var(--_shadow);
@@ -140,7 +140,7 @@
   background: var(--component-nav-all-tooltip-fill-default);
   box-shadow: var(--component-nav-all-tooltip-shadow-default);
   color: var(--component-nav-all-tooltip-label-color-default);
-  font: var(--component-nav-all-tooltip-label-typography-font);
+  font: var(--component-nav-all-group-label-typography-font);
   white-space: nowrap;
   pointer-events: none;
 }

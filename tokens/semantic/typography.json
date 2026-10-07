@@ -103,7 +103,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.2}",
-            "fontWeight": "{core.typography.fontWeight.600}",
+            "fontWeight": "{core.typography.fontWeight.500}",
             "lineHeight": "{core.typography.lineHeight.2}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -114,7 +114,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.2}",
-            "fontWeight": "{core.typography.fontWeight.500}",
+            "fontWeight": "{core.typography.fontWeight.400}",
             "lineHeight": "{core.typography.lineHeight.2}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -127,7 +127,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.2}",
-            "fontWeight": "{core.typography.fontWeight.600}",
+            "fontWeight": "{core.typography.fontWeight.500}",
             "lineHeight": "{core.typography.lineHeight.2}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -149,7 +149,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.1}",
-            "fontWeight": "{core.typography.fontWeight.500}",
+            "fontWeight": "{core.typography.fontWeight.400}",
             "lineHeight": "{core.typography.lineHeight.1}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -162,7 +162,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.1}",
-            "fontWeight": "{core.typography.fontWeight.500}",
+            "fontWeight": "{core.typography.fontWeight.400}",
             "lineHeight": "{core.typography.lineHeight.2}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -175,7 +175,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.2}",
-            "fontWeight": "{core.typography.fontWeight.500}",
+            "fontWeight": "{core.typography.fontWeight.300}",
             "lineHeight": "{core.typography.lineHeight.1}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -186,7 +186,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.1}",
-            "fontWeight": "{core.typography.fontWeight.500}",
+            "fontWeight": "{core.typography.fontWeight.300}",
             "lineHeight": "{core.typography.lineHeight.1}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },
@@ -236,7 +236,7 @@
           "$value": {
             "fontFamily": "{core.typography.fontFamily.sans}",
             "fontSize": "{core.typography.fontSize.2}",
-            "fontWeight": "{core.typography.fontWeight.600}",
+            "fontWeight": "{core.typography.fontWeight.500}",
             "lineHeight": "{core.typography.lineHeight.1}",
             "textDecoration": "{core.typography.textDecoration.1}"
           },

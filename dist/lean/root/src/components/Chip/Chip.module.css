@@ -69,7 +69,7 @@
   margin-inline-end: calc(var(--core-dimension-space-compact) * -1);
   padding: 0;
   border: 0;
-  border-radius: var(--component-chip-all-dismiss-radius);
+  border-radius: var(--component-chip-all-container-radius);
   background: transparent;
   color: var(--core-color-content-primary);
   cursor: pointer;

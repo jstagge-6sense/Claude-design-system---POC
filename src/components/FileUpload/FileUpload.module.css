@@ -35,9 +35,9 @@
 }
 .zoneIcon { display: inline-flex; inline-size: calc(var(--component-fileUpload-all-zone-icon-size) * 1.5); block-size: calc(var(--component-fileUpload-all-zone-icon-size) * 1.5); color: var(--_icon); }
 .zoneIcon > svg { inline-size: 100%; block-size: 100%; }
-.title { margin: 0; font: var(--component-fileUpload-all-zone-title-typography-font); color: var(--_title); }
-.or { font: var(--component-fileUpload-all-zone-hint-typography-font); color: var(--_hint); }
-.hint { margin: 0; font: var(--component-fileUpload-all-zone-hint-typography-font); color: var(--_hint); }
+.title { margin: 0; font: var(--component-fileUpload-all-item-name-typography-font); color: var(--_title); }
+.or { font: var(--component-fileUpload-all-item-meta-typography-font); color: var(--_hint); }
+.hint { margin: 0; font: var(--component-fileUpload-all-item-meta-typography-font); color: var(--_hint); }
 .buttonRow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--component-fileUpload-all-zone-gap); }
 .root[data-disabled] .buttonRow .hint { color: var(--component-fileUpload-all-zone-hint-color-disabled); }
 

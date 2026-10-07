@@ -42,7 +42,7 @@
   border-radius: var(--component-datePicker-all-preset-radius);
   background: var(--_fill);
   color: var(--component-datePicker-all-preset-color-default);
-  font: var(--component-datePicker-all-preset-typography-font);
+  font: var(--component-datePicker-all-day-typography-font);
   text-align: start;
   cursor: pointer;
 }
@@ -57,7 +57,7 @@
 .header { display: flex; align-items: center; justify-content: space-between; gap: var(--core-dimension-space-compact); }
 .title { flex: 1 1 auto; text-align: center; font: var(--component-datePicker-all-header-typography-font); text-decoration: var(--component-datePicker-all-header-typography-text-decoration); color: var(--core-color-content-primary); }
 .grid { border-collapse: collapse; table-layout: fixed; inline-size: calc(var(--ds-hit-min) * 7); }
-.weekday { padding: 0; block-size: var(--core-dimension-size-control-height-medium); font: var(--component-datePicker-all-weekday-typography-font); text-decoration: var(--component-datePicker-all-weekday-typography-text-decoration); color: var(--core-color-content-secondary); text-align: center; font-weight: inherit; }
+.weekday { padding: 0; block-size: var(--core-dimension-size-control-height-medium); font: var(--component-datePicker-all-day-typography-font); text-decoration: var(--component-datePicker-all-day-typography-text-decoration); color: var(--core-color-content-secondary); text-align: center; font-weight: inherit; }
 .cell { padding: 0; text-align: center; inline-size: var(--ds-hit-min); block-size: var(--ds-hit-min); }
 .cell[data-range='in'] { background: var(--component-datePicker-all-day-fill-range); color: var(--core-color-content-primary); }
 
@@ -102,7 +102,7 @@
 .day[aria-disabled='true'] { --_color: var(--core-color-content-disabled); text-decoration: line-through; cursor: not-allowed; }
 .day[aria-disabled='true'][data-selected] { --_fill: transparent; }
 
-.note { margin: 0; font: var(--component-datePicker-all-note-typography-font); text-decoration: var(--component-datePicker-all-note-typography-text-decoration); color: var(--core-color-content-secondary); }
+.note { margin: 0; font: var(--component-datePicker-all-day-typography-font); text-decoration: var(--component-datePicker-all-day-typography-text-decoration); color: var(--core-color-content-secondary); }
 .footer { display: flex; justify-content: flex-end; gap: var(--core-dimension-space-compact); padding-block-start: var(--core-dimension-space-compact); border-block-start: var(--component-datePicker-all-panel-borderWidth) solid var(--component-datePicker-all-panel-border-default); }
 
 /* ---- With time: date field and TimePicker side by side ---- */

@@ -47,7 +47,7 @@
   padding-block: var(--component-popover-simple-container-paddingBlock);
   padding-inline: var(--component-popover-simple-container-paddingInline);
   color: var(--component-popover-simple-label-color-default);
-  font: var(--component-popover-simple-label-typography-font);
+  font: var(--component-popover-rich-body-typography-font);
 }
 .surface:focus-visible { outline: none; box-shadow: var(--component-popover-all-container-shadow-focus), var(--_shadow); }
 

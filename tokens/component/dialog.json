@@ -75,10 +75,6 @@
           }
         },
         "description": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.paragraph.1}"
-          },
           "color": {
             "$type": "color",
             "$value": "{core.color.content.secondary}"

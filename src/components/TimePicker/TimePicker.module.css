@@ -24,7 +24,7 @@
 
 .list { max-block-size: min(18rem, 50vh); overflow-y: auto; overscroll-behavior: contain; outline: none; }
 .groupLabel { padding: var(--component-timePicker-all-panel-gap) var(--component-timePicker-all-option-paddingInline); font: var(--component-timePicker-all-group-typography-font); text-decoration: var(--component-timePicker-all-group-typography-text-decoration); color: var(--component-timePicker-all-group-color-default); }
-.empty { padding: var(--component-timePicker-all-panel-padding); font: var(--component-timePicker-all-option-typography-font); color: var(--component-timePicker-all-option-color-disabled); }
+.empty { padding: var(--component-timePicker-all-panel-padding); font: var(--component-timePicker-all-group-typography-font); color: var(--component-timePicker-all-option-color-disabled); }
 
 /* ---- Options ---- */
 .option {
@@ -41,7 +41,7 @@
   outline-offset: calc(var(--component-timePicker-all-option-borderWidthActive) * -1);
   background: var(--_fill);
   color: var(--_color);
-  font: var(--component-timePicker-all-option-typography-font);
+  font: var(--component-timePicker-all-group-typography-font);
   cursor: pointer;
   user-select: none;
 }
@@ -70,7 +70,7 @@
   border-radius: var(--component-timePicker-all-option-radius);
   background: var(--_fill);
   color: var(--component-timePicker-all-option-color-default);
-  font: var(--component-timePicker-all-option-typography-font);
+  font: var(--component-timePicker-all-group-typography-font);
   cursor: pointer;
 }
 .presetButton:hover, .meridiemButton:hover:not([aria-pressed='true']), .presetButton[data-state='hover'], .meridiemButton[data-state='hover'] { --_fill: var(--component-timePicker-all-option-fill-hover); }
@@ -81,14 +81,14 @@
 
 .segments { display: flex; align-items: end; gap: var(--component-timePicker-all-panel-gap); flex-wrap: wrap; }
 .segment { display: inline-flex; flex-direction: column; gap: var(--component-timePicker-all-panel-gap); }
-.segmentLabel { font: var(--component-timePicker-all-segment-label-typography-font); text-decoration: var(--component-timePicker-all-segment-label-typography-text-decoration); color: var(--component-timePicker-all-segment-label-color); }
+.segmentLabel { font: var(--component-timePicker-all-group-typography-font); text-decoration: var(--component-timePicker-all-group-typography-text-decoration); color: var(--component-timePicker-all-segment-label-color); }
 .segmentInput {
   box-sizing: border-box;
   inline-size: var(--component-timePicker-all-segment-width);
   min-block-size: var(--component-timePicker-all-segment-height);
   margin: 0;
   padding: 0;
-  border: var(--component-timePicker-all-segment-borderWidth) solid var(--component-timePicker-all-segment-border-default);
+  border: var(--component-timePicker-all-panel-borderWidth) solid var(--component-timePicker-all-segment-border-default);
   border-radius: var(--component-timePicker-all-segment-radius);
   background: var(--component-timePicker-all-segment-fill-default);
   color: var(--component-timePicker-all-segment-color-default);

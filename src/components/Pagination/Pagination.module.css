@@ -36,7 +36,7 @@
   margin: 0;
   padding-block: 0;
   padding-inline: var(--component-pagination-all-page-paddingInline);
-  border: var(--component-pagination-all-page-borderWidth) solid var(--_border);
+  border: var(--component-pagination-all-container-borderWidth) solid var(--_border);
   border-radius: var(--component-pagination-all-page-radius);
   background: var(--_fill);
   box-shadow: var(--_shadow);

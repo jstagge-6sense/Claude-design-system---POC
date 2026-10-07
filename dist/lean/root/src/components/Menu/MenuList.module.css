@@ -31,7 +31,7 @@
   background: var(--_fill);
   box-shadow: var(--_shadow);
   color: var(--_label);
-  font: var(--component-menu-all-item-typography-font);
+  font: var(--component-menu-all-item-description-typography-font);
   cursor: pointer;
   outline: none;
   user-select: none;
@@ -46,7 +46,7 @@
 .icon, .tick { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--_icon); }
 .icon > svg, .tick > svg { inline-size: 100%; block-size: 100%; }
 
-.match { background: var(--component-menu-all-match-fill-default); color: inherit; font: var(--component-menu-all-match-typography-font); border-radius: var(--core-dimension-radius-control-small); }
+.match { background: var(--component-menu-all-match-fill-default); color: inherit; font: var(--component-menu-all-group-label-typography-font); border-radius: var(--core-dimension-radius-control-small); }
 
 /* Multi: a checkbox indicator (visual only, the option carries aria-selected). */
 .check {
@@ -91,10 +91,10 @@
 .groupItem { display: block; }
 .group { display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); margin: 0; padding: 0; list-style: none; }
 .groupLabel { padding-block: var(--core-dimension-space-compact) 0; padding-inline: var(--core-dimension-space-comfortable); color: var(--core-color-content-secondary); font: var(--component-menu-all-group-label-typography-font); }
-.divider { block-size: var(--component-menu-all-container-borderWidth); margin-block: var(--core-dimension-space-tight); background: var(--component-menu-all-divider-color-default); }
+.divider { block-size: var(--component-menu-all-container-borderWidth); margin-block: var(--core-dimension-space-tight); background: var(--component-menu-all-container-border-default); }
 
 /* ---- Loading and empty ---- */
-.state { display: flex; align-items: center; gap: var(--core-dimension-space-compact); padding: var(--core-dimension-space-standard); color: var(--core-color-content-secondary); font: var(--component-menu-all-state-typography-font); }
+.state { display: flex; align-items: center; gap: var(--core-dimension-space-compact); padding: var(--core-dimension-space-standard); color: var(--core-color-content-secondary); font: var(--component-menu-all-item-description-typography-font); }
 
 /* ---- Submenu panel (one level) ---- */
 .subPositioner { position: absolute; inset-block-start: 0; inset-inline-start: 0; inline-size: max-content; z-index: var(--ds-z-menu); padding-inline: var(--core-dimension-space-tight); box-sizing: border-box; }

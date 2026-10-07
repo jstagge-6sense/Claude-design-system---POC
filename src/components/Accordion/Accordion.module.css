@@ -70,7 +70,7 @@
 .item[data-disabled] .trigger { --_color: var(--component-accordion-all-header-color-disabled); --_indicator: var(--component-accordion-all-indicator-color-disabled); cursor: not-allowed; }
 .item[data-disabled] .description { color: var(--component-accordion-all-header-color-disabled); }
 
-.panel { font: var(--component-accordion-all-panel-typography-font); color: var(--component-accordion-all-panel-color); }
+.panel { font: var(--component-accordion-all-description-typography-font); color: var(--component-accordion-all-panel-color); }
 .panel[hidden] { display: none; }
 .panelInner { padding-block: var(--component-accordion-all-panel-paddingBlock); padding-inline: var(--component-accordion-all-panel-paddingInline); }
 @media (prefers-reduced-motion: no-preference) {

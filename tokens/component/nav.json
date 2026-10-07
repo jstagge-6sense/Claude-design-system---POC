@@ -74,14 +74,6 @@
             "$value": "{core.dimension.space.spacious}",
             "$description": "Start indent for second-level items. Two levels maximum."
           },
-          "borderWidth": {
-            "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
-          },
           "label": {
             "typography": {
               "$type": "typography",
@@ -185,13 +177,6 @@
                 "$value": "{core.color.content.secondary}"
               }
             }
-          },
-          "divider": {
-            "color": {
-              "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-              "$description": "Ink 900 at 16%."
-            }
           }
         },
         "tooltip": {
@@ -208,10 +193,6 @@
                 "$type": "color",
                 "$value": "{core.color.content.inverse}"
               }
-            },
-            "typography": {
-              "$type": "typography",
-              "$value": "{core.typography.help.1}"
             }
           },
           "radius": {

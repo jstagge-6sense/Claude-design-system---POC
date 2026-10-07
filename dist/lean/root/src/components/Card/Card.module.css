@@ -73,7 +73,7 @@
 .header { display: flex; align-items: flex-start; gap: var(--_gap); }
 .headings { flex: 1 1 auto; min-inline-size: 0; display: flex; flex-direction: column; gap: 0; }
 .title { margin: 0; font: var(--component-card-all-title-typography-font); color: var(--core-color-content-primary); overflow-wrap: anywhere; }
-.subtitle { font: var(--component-card-all-subtitle-typography-font); color: var(--core-color-content-secondary); }
+.subtitle { font: var(--component-card-all-body-typography-font); color: var(--core-color-content-secondary); }
 .mark { flex: none; display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--core-color-action-primary-default); }
 .mark > svg { inline-size: 100%; block-size: 100%; }
 
@@ -88,9 +88,9 @@
   justify-content: space-between;
   gap: var(--core-dimension-space-compact);
   padding-block-start: var(--_gap);
-  border-block-start: var(--component-card-all-container-borderWidth) solid var(--component-card-all-footer-border);
+  border-block-start: var(--component-card-all-container-borderWidth) solid var(--component-card-all-container-border-default);
 }
-.footerMeta { font: var(--component-card-all-subtitle-typography-font); color: var(--core-color-content-secondary); min-inline-size: 0; }
+.footerMeta { font: var(--component-card-all-body-typography-font); color: var(--core-color-content-secondary); min-inline-size: 0; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--core-dimension-space-compact); margin-inline-start: auto; }
 
 .skeleton { padding: var(--_pad); box-sizing: border-box; }

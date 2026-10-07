@@ -61,8 +61,8 @@
   --_be: var(--core-color-status-critical);
 }
 
-.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-checkbox-all-label-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
-.label { font: var(--component-checkbox-all-label-typography-font); color: var(--core-color-content-primary); cursor: pointer; overflow-wrap: anywhere; }
+.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-checkbox-all-description-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
+.label { font: var(--component-checkbox-all-description-typography-font); color: var(--core-color-content-primary); cursor: pointer; overflow-wrap: anywhere; }
 .description { font: var(--component-checkbox-all-description-typography-font); color: var(--core-color-content-secondary); }
 
 /* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */

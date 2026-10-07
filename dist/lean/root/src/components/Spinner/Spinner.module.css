@@ -15,6 +15,7 @@
   border-block-start-color: var(--core-color-action-primary-default);
   animation: spin 800ms linear infinite;
 }
+.root[data-tone='onColor'] .ring { border-color: var(--component-spinner-onColor-track-color); border-block-start-color: var(--component-spinner-onColor-arc-color); }
 .root[data-size='small'] { flex-direction: row; }
 .root[data-size='small'] .ring { --_size: var(--core-dimension-size-icon); }
 .root[data-size='large'] .ring { --_size: var(--component-spinner-all-container-sizeLarge); --_stroke: var(--component-spinner-all-container-strokeLarge); }

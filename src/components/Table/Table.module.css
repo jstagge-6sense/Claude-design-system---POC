@@ -17,7 +17,7 @@
   --_row-h: var(--component-table-all-row-heightDense);
   --_pad-inline: var(--component-table-all-cell-paddingInlineDense);
 }
-.toolbar { border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border); }
+.toolbar { border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border); }
 
 /* Horizontal scroll with a focusable region when the content overflows. */
 .scroll { position: relative; overflow: auto; min-block-size: 0; }
@@ -30,9 +30,9 @@
   /* Ink 900 at 4% layered over the opaque container fill, so a sticky header never shows rows through it. */
   background: linear-gradient(var(--component-table-all-header-fill), var(--component-table-all-header-fill)), var(--component-table-all-container-fill);
   color: var(--component-table-all-header-color);
-  font: var(--component-table-all-header-typography-font);
-  text-decoration: var(--component-table-all-header-typography-text-decoration);
-  border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border);
+  font: var(--component-table-all-cellPrimary-typography-font);
+  text-decoration: var(--component-table-all-cellPrimary-typography-text-decoration);
+  border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border);
   padding-inline: var(--_pad-inline);
   padding-block: var(--component-table-all-cell-paddingBlock);
   text-align: start;
@@ -161,7 +161,7 @@ th.td { font-weight: inherit; }
 
 /* ---- Footer ---- */
 .footer {
-  border-block-start: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border);
+  border-block-start: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border);
   padding-block: var(--component-table-all-footer-paddingBlock);
   padding-inline: var(--component-table-all-footer-paddingInline);
   background: var(--component-table-all-footer-fill);

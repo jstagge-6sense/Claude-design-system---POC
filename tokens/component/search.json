@@ -29,17 +29,6 @@
         }
       },
       "all": {
-        "scope": {
-          "divider": {
-            "color": {
-              "default": {
-                "$type": "color",
-                "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-                "$description": "Ink 900 at 16%. Separates the scope slot from the query."
-              }
-            }
-          }
-        },
         "results": {
           "fill": {
             "default": {

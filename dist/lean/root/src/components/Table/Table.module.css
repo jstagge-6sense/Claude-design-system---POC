@@ -17,7 +17,7 @@
   --_row-h: var(--core-dimension-size-control-height-small);
   --_pad-inline: var(--core-dimension-space-compact);
 }
-.toolbar { border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border); }
+.toolbar { border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border); }
 
 /* Horizontal scroll with a focusable region when the content overflows. */
 .scroll { position: relative; overflow: auto; min-block-size: 0; }
@@ -30,9 +30,9 @@
   /* Ink 900 at 4% layered over the opaque container fill, so a sticky header never shows rows through it. */
   background: linear-gradient(var(--component-table-all-header-fill), var(--component-table-all-header-fill)), var(--core-color-surface-card);
   color: var(--core-color-content-primary);
-  font: var(--component-table-all-header-typography-font);
-  text-decoration: var(--component-table-all-header-typography-text-decoration);
-  border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border);
+  font: var(--component-table-all-cellPrimary-typography-font);
+  text-decoration: var(--component-table-all-cellPrimary-typography-text-decoration);
+  border-block-end: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border);
   padding-inline: var(--_pad-inline);
   padding-block: var(--core-dimension-space-compact);
   text-align: start;
@@ -161,7 +161,7 @@ th.td { font-weight: inherit; }
 
 /* ---- Footer ---- */
 .footer {
-  border-block-start: var(--component-table-all-container-borderWidth) solid var(--component-table-all-header-border);
+  border-block-start: var(--component-table-all-container-borderWidth) solid var(--component-table-all-container-border);
   padding-block: var(--core-dimension-space-comfortable);
   padding-inline: var(--core-dimension-space-standard);
   background: var(--core-color-surface-card);

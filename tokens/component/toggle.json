@@ -73,10 +73,6 @@
           }
         },
         "label": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "color": {
             "default": {
               "$type": "color",

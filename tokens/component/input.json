@@ -98,11 +98,6 @@
             "$type": "typography",
             "$value": "{core.typography.paragraph.1}"
           },
-          "typographySmall": {
-            "$type": "typography",
-            "$value": "{core.typography.paragraph.2}",
-            "$description": "Dense size."
-          },
           "color": {
             "default": {
               "$type": "color",

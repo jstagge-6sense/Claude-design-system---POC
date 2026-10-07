@@ -47,10 +47,6 @@
           }
         },
         "value": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "color": {
             "$type": "color",
             "$value": "{core.color.content.secondary}"

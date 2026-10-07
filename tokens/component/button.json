@@ -71,10 +71,6 @@
             "$type": "typography",
             "$value": "{core.typography.button.2}"
           },
-          "typographyMedium": {
-            "$type": "typography",
-            "$value": "{core.typography.button.1}"
-          },
           "typographyLarge": {
             "$type": "typography",
             "$value": "{core.typography.button.1}",

@@ -74,10 +74,6 @@
             "$type": "spacing",
             "$value": "{core.dimension.space.compact}"
           },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "fill": {
             "hover": {
               "$type": "color",
@@ -169,15 +165,6 @@
             "$value": "{core.dimension.space.compact}"
           }
         },
-        "divider": {
-          "color": {
-            "default": {
-              "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-              "$description": "Ink 900 at 16%."
-            }
-          }
-        },
         "match": {
           "fill": {
             "default": {
@@ -185,10 +172,6 @@
               "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.700})",
               "$description": "Teal 100 at 100%. Matching text is also bold, so color is never the only signal."
             }
-          },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.1}"
           }
         },
         "state": {
@@ -196,10 +179,6 @@
             "$type": "spacing",
             "$value": "{core.dimension.space.standard}",
             "$description": "Loading and empty messages."
-          },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.paragraph.2}"
           },
           "color": {
             "default": {

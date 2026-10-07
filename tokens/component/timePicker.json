@@ -79,10 +79,6 @@
             "$type": "borderRadius",
             "$value": "{core.dimension.radius.control.small}"
           },
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.paragraph.2}"
-          },
           "color": {
             "default": {
               "$type": "color",
@@ -147,14 +143,6 @@
             "$type": "borderRadius",
             "$value": "{core.dimension.radius.control.small}"
           },
-          "borderWidth": {
-            "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
-          },
           "fill": {
             "default": {
               "$type": "color",
@@ -189,10 +177,6 @@
             }
           },
           "label": {
-            "typography": {
-              "$type": "typography",
-              "$value": "{core.typography.help.1}"
-            },
             "color": {
               "$type": "color",
               "$value": "{core.color.content.secondary}"

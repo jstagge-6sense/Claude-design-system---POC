@@ -44,7 +44,7 @@
   transition: border-color var(--ds-motion-fast) var(--ds-ease), box-shadow var(--ds-motion-fast) var(--ds-ease);
 }
 @media (prefers-reduced-motion: reduce) { .box { transition: none; } }
-.box[data-size='small'] { --_h: var(--component-input-all-container-heightSmall); --_type: var(--component-input-all-text-typographySmall-font); }
+.box[data-size='small'] { --_h: var(--component-input-all-container-heightSmall); --_type: var(--component-input-all-helper-typography-font); }
 
 /* ---- States: real pseudo-classes plus a [data-state] twin on the shell for forced states ---- */
 .box:hover:not([data-disabled]):not([data-readonly]), .shell[data-state='hover'] .box:not([data-disabled]):not([data-readonly]) { --_border: var(--component-input-all-container-border-hover); }

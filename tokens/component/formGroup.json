@@ -38,14 +38,6 @@
               "$description": "Group border gradient, painted on the border-box."
             }
           },
-          "borderWidth": {
-            "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
-          },
           "radius": {
             "$type": "borderRadius",
             "$value": "{core.dimension.radius.surface.medium}"
@@ -97,11 +89,6 @@
             "$description": "Inline variant: settings rows inside page content, separated by a rule instead of a card."
           },
           "divider": {
-            "color": {
-              "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-              "$description": "Ink 900 at 16%."
-            },
             "width": {
               "$type": "borderWidth",
               "$value": "{core.dimension.borderWidth.100}",
@@ -130,10 +117,6 @@
           }
         },
         "status": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.help.1}"
-          },
           "color": {
             "dirty": {
               "$type": "color",

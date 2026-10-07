@@ -66,7 +66,7 @@
           },
           "borderWidth": {
             "$type": "borderWidth",
-            "$value": "{component.nav.all.item.borderWidth}"
+            "$value": "{component.nav.all.container.borderWidth}"
           },
           "fill": {
             "default": {
@@ -112,13 +112,6 @@
               "$value": "{core.color.surface.card}",
               "$description": "Gradient (CSS image), use with `background`."
             }
-          },
-          "border": {
-            "default": {
-              "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-              "$description": "Ink 900 at 16%."
-            }
           }
         }
       },
@@ -146,13 +139,6 @@
             "default": {
               "$type": "color",
               "$value": "{core.color.surface.control.default}"
-            }
-          },
-          "border": {
-            "default": {
-              "$type": "color",
-              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
-              "$description": "Ink 900 at 16%."
             }
           },
           "shadow": {

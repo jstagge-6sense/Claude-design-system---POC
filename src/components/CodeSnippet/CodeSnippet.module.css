@@ -30,7 +30,7 @@
   border-block-end: var(--component-codeSnippet-all-container-borderWidth) solid var(--component-codeSnippet-all-header-border);
   min-block-size: var(--ds-hit-min);
 }
-.language { font: var(--component-codeSnippet-all-language-typography-font); color: var(--component-codeSnippet-all-language-color); }
+.language { font: var(--component-codeSnippet-all-code-typography-font); color: var(--component-codeSnippet-all-language-color); }
 
 /* Code is always monospace. No monospace token exists yet (GAP-codeSnippet-1), so a generic keyword stack is set after the font shorthand. */
 .pre, .inlineCode {
@@ -55,7 +55,7 @@
   min-inline-size: calc(var(--_digits) * 1ch);
   margin-inline-end: var(--component-codeSnippet-all-lineNumber-gap);
   padding-inline-end: var(--component-codeSnippet-all-lineNumber-gap);
-  border-inline-end: var(--component-codeSnippet-all-container-borderWidth) solid var(--component-codeSnippet-all-lineNumber-border);
+  border-inline-end: var(--component-codeSnippet-all-container-borderWidth) solid var(--component-codeSnippet-all-header-border);
   color: var(--component-codeSnippet-all-lineNumber-color);
   text-align: end;
   user-select: none;

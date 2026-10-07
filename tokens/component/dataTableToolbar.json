@@ -82,10 +82,6 @@
             "$value": "{core.dimension.space.tight}"
           },
           "title": {
-            "typography": {
-              "$type": "typography",
-              "$value": "{core.typography.label.1}"
-            },
             "color": {
               "$type": "color",
               "$value": "{core.color.content.primary}"

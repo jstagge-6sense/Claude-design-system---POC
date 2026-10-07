@@ -34,10 +34,6 @@
             "$type": "spacing",
             "$value": "{component.button.all.container.paddingInlineMedium}"
           },
-          "typographyMedium": {
-            "$type": "typography",
-            "$value": "{component.button.all.label.typographyMedium}"
-          },
           "heightLarge": {
             "$type": "sizing",
             "$value": "{component.button.all.container.heightLarge}"

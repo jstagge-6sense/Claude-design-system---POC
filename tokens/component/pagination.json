@@ -52,17 +52,13 @@
             "$type": "borderRadius",
             "$value": "{component.button.all.container.radius}"
           },
-          "borderWidth": {
-            "$type": "borderWidth",
-            "$value": "{component.button.all.container.borderWidth}"
-          },
           "paddingInline": {
             "$type": "spacing",
             "$value": "{core.dimension.space.compact}"
           },
           "typography": {
             "$type": "typography",
-            "$value": "{component.button.all.label.typographyMedium}"
+            "$value": "{component.button.all.label.typographyLarge}"
           },
           "icon": {
             "size": {

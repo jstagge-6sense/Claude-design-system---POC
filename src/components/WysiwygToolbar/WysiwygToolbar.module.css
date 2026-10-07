@@ -2,7 +2,7 @@
    (the inline icon action recipe, visual-design-decisions 4.6). Flat icon tools, not a ButtonGroup and not Tabs. */
 .root {
   --_fill: var(--component-wysiwygToolbar-full-container-fill-default);
-  --_border: var(--component-wysiwygToolbar-full-container-border-default);
+  --_border: var(--component-wysiwygToolbar-all-group-divider-color);
   --_shadow: none;
   --_radius: var(--component-wysiwygToolbar-all-container-radius);
 
@@ -23,7 +23,7 @@
 /* Floating shrink-wraps its tools, so it cannot be an inline-size container. */
 .root[data-variant='floating'] {
   --_fill: var(--component-wysiwygToolbar-floating-container-fill-default);
-  --_border: var(--component-wysiwygToolbar-floating-container-border-default);
+  --_border: var(--component-wysiwygToolbar-all-group-divider-color);
   --_shadow: var(--component-wysiwygToolbar-floating-container-shadow-default);
   --_radius: var(--component-wysiwygToolbar-floating-container-radius);
   container-type: normal;

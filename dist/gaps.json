@@ -200,14 +200,6 @@
     "note": "24px. No semantic size. Visual size. The hit area is padded to 44px."
   },
   {
-    "id": "GAP-dimension-radius-full",
-    "token": "component.chip.all.dismiss.radius",
-    "aliases": [
-      "core.dimension.radius.full"
-    ],
-    "note": "Pill or circle radius. No semantic token for a full radius."
-  },
-  {
     "id": "GAP-dimension-borderWidth-100",
     "token": "component.codeSnippet.all.container.borderWidth",
     "aliases": [
@@ -329,14 +321,6 @@
   },
   {
     "id": "GAP-dimension-borderWidth-100",
-    "token": "component.formGroup.all.section.borderWidth",
-    "aliases": [
-      "core.dimension.borderWidth.100"
-    ],
-    "note": "1px stroke. No semantic border width exists."
-  },
-  {
-    "id": "GAP-dimension-borderWidth-100",
     "token": "component.formGroup.all.inline.divider.width",
     "aliases": [
       "core.dimension.borderWidth.100"
@@ -350,14 +334,6 @@
       "core.dimension.borderWidth.200"
     ],
     "note": "2px stroke. No semantic border width exists."
-  },
-  {
-    "id": "GAP-dimension-borderWidth-100",
-    "token": "component.infiniteScroll.all.footer.borderWidth",
-    "aliases": [
-      "core.dimension.borderWidth.100"
-    ],
-    "note": "1px stroke. No semantic border width exists."
   },
   {
     "id": "GAP-dimension-borderWidth-100",
@@ -386,14 +362,6 @@
   {
     "id": "GAP-dimension-borderWidth-100",
     "token": "component.nav.all.container.borderWidth",
-    "aliases": [
-      "core.dimension.borderWidth.100"
-    ],
-    "note": "1px stroke. No semantic border width exists."
-  },
-  {
-    "id": "GAP-dimension-borderWidth-100",
-    "token": "component.nav.all.item.borderWidth",
     "aliases": [
       "core.dimension.borderWidth.100"
     ],
@@ -584,14 +552,6 @@
     "note": "1px stroke. No semantic border width exists."
   },
   {
-    "id": "GAP-dimension-borderWidth-100",
-    "token": "component.skeletonLoader.table.row.borderWidth",
-    "aliases": [
-      "core.dimension.borderWidth.100"
-    ],
-    "note": "1px stroke. No semantic border width exists."
-  },
-  {
     "id": "GAP-dimension-size-200",
     "token": "component.slider.all.track.height",
     "aliases": [
@@ -662,6 +622,23 @@
       "core.dimension.borderWidth.400"
     ],
     "note": ""
+  },
+  {
+    "id": "GAP-spinner-1",
+    "token": "component.spinner.onColor.track.color",
+    "aliases": [
+      "core.color.white",
+      "core.effect.opacity.400"
+    ],
+    "note": "White at 32%. Track for spinners on dark or filled surfaces such as primary and destructive buttons."
+  },
+  {
+    "id": "GAP-spinner-1",
+    "token": "component.spinner.onColor.arc.color",
+    "aliases": [
+      "core.color.white"
+    ],
+    "note": "White arc for spinners on dark or filled surfaces."
   },
   {
     "id": "GAP-dimension-borderWidth-100",
@@ -753,14 +730,6 @@
   },
   {
     "id": "GAP-dimension-borderWidth-100",
-    "token": "component.timePicker.all.segment.borderWidth",
-    "aliases": [
-      "core.dimension.borderWidth.100"
-    ],
-    "note": "1px stroke. No semantic border width exists."
-  },
-  {
-    "id": "GAP-dimension-borderWidth-100",
     "token": "component.toast.all.container.borderWidth",
     "aliases": [
       "core.dimension.borderWidth.100"
@@ -830,14 +799,6 @@
       "core.dimension.size.1200"
     ],
     "note": "48px. No semantic size. Top bar height. Do not make it taller without adding value."
-  },
-  {
-    "id": "GAP-dimension-borderWidth-100",
-    "token": "component.topBar.all.menu.borderWidth",
-    "aliases": [
-      "core.dimension.borderWidth.100"
-    ],
-    "note": "1px stroke. No semantic border width exists."
   },
   {
     "id": "GAP-dimension-borderWidth-100",

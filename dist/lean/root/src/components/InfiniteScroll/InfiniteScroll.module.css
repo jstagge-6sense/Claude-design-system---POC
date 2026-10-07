@@ -9,8 +9,8 @@
   align-items: center;
   gap: var(--core-dimension-space-compact);
   padding-block: var(--core-dimension-space-standard);
-  font: var(--component-infiniteScroll-all-status-typography-font);
-  text-decoration: var(--component-infiniteScroll-all-status-typography-text-decoration);
+  font: var(--component-infiniteScroll-all-count-typography-font);
+  text-decoration: var(--component-infiniteScroll-all-count-typography-text-decoration);
   color: var(--core-color-content-secondary);
   text-align: center;
 }
@@ -40,6 +40,6 @@
   inset-block-end: 0;
   z-index: var(--ds-z-sticky);
   padding: var(--core-dimension-space-standard);
-  border-block-start: var(--component-infiniteScroll-all-footer-borderWidth) solid var(--component-infiniteScroll-all-footer-border-default);
+  border-block-start: var(--component-infiniteScroll-all-end-borderWidth) solid var(--component-infiniteScroll-all-footer-border-default);
   background: var(--core-color-surface-overlay);
 }

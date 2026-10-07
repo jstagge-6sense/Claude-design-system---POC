@@ -5,7 +5,7 @@
 .root[data-orientation='horizontal'] .list { flex-direction: row; align-items: flex-start; gap: var(--core-dimension-space-comfortable); }
 .root[data-orientation='vertical'] .list { flex-direction: column; }
 
-.item { --_marker-fill: var(--component-progressSteps-upcoming-marker-fill-default); --_marker-border: transparent; --_marker-color: var(--core-color-content-secondary); --_label: var(--core-color-content-secondary); --_label-type: var(--component-progressSteps-all-label-typography-font); display: flex; min-inline-size: 0; }
+.item { --_marker-fill: var(--component-progressSteps-upcoming-marker-fill-default); --_marker-border: transparent; --_marker-color: var(--core-color-content-secondary); --_label: var(--core-color-content-secondary); --_label-type: var(--component-progressSteps-all-counter-typography-font); display: flex; min-inline-size: 0; }
 .root[data-orientation='horizontal'] .item { flex: 1 1 auto; align-items: flex-start; gap: var(--core-dimension-space-comfortable); }
 .root[data-orientation='horizontal'] .item[data-last] { flex: 0 1 auto; }
 .root[data-orientation='vertical'] .item { flex-direction: column; gap: var(--core-dimension-space-standard); }
@@ -58,8 +58,8 @@ button.step::after { content: ''; position: absolute; inset-inline: 0; inset-blo
 .text { display: flex; flex-direction: column; min-inline-size: 0; padding-block-start: calc((var(--component-progressSteps-all-marker-size) - 1lh) / 2); }
 .label { overflow-wrap: anywhere; }
 .optional { font-weight: normal; color: var(--core-color-content-secondary); }
-.description { font: var(--component-progressSteps-all-description-typography-font); color: var(--core-color-content-secondary); font-weight: normal; }
-.message { display: flex; align-items: flex-start; gap: var(--core-dimension-space-comfortable); margin: 0; font: var(--component-progressSteps-all-message-typography-font); color: var(--core-color-status-critical); }
+.description { font: var(--component-progressSteps-all-counter-typography-font); color: var(--core-color-content-secondary); font-weight: normal; }
+.message { display: flex; align-items: flex-start; gap: var(--core-dimension-space-comfortable); margin: 0; font: var(--component-progressSteps-all-counter-typography-font); color: var(--core-color-status-critical); }
 .messageIcon { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .messageIcon > svg { inline-size: 100%; block-size: 100%; }
 .root[data-orientation='horizontal'] .body > .message { max-inline-size: 16rem; }

@@ -73,10 +73,6 @@
             }
           },
           "title": {
-            "typography": {
-              "$type": "typography",
-              "$value": "{core.typography.label.1}"
-            },
             "color": {
               "default": {
                 "$type": "color",
@@ -89,10 +85,6 @@
             }
           },
           "hint": {
-            "typography": {
-              "$type": "typography",
-              "$value": "{core.typography.help.1}"
-            },
             "color": {
               "default": {
                 "$type": "color",

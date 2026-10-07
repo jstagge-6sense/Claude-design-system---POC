@@ -69,10 +69,6 @@
           }
         },
         "label": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "typographyActive": {
             "$type": "typography",
             "$value": "{core.typography.label.1}",
@@ -80,10 +76,6 @@
           }
         },
         "description": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.help.1}"
-          },
           "color": {
             "default": {
               "$type": "color",
@@ -92,10 +84,6 @@
           }
         },
         "message": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.help.1}"
-          },
           "color": {
             "error": {
               "$type": "color",

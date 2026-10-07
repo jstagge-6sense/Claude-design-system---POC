@@ -71,8 +71,8 @@
 .body:focus-visible { outline: none; box-shadow: inset var(--core-effect-ring-focus); }
 .description {
   margin: 0;
-  font: var(--component-dialog-all-description-typography-font);
-  text-decoration: var(--component-dialog-all-description-typography-text-decoration);
+  font: var(--component-dialog-all-body-typography-font);
+  text-decoration: var(--component-dialog-all-body-typography-text-decoration);
   color: var(--component-dialog-all-description-color);
 }
 

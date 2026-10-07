@@ -31,10 +31,6 @@
           }
         },
         "label": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{component.checkbox.all.label.typography}"
-          },
           "color": {
             "default": {
               "$type": "color",

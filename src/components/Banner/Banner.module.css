@@ -33,7 +33,7 @@
   --_pad-inline: var(--component-banner-all-container-paddingInlineCompact);
   --_pad-block: var(--component-banner-all-container-paddingBlockCompact);
   --_gap: var(--component-banner-all-container-gapCompact);
-  --_body: var(--component-banner-all-body-typographyCompact-font);
+  --_body: var(--component-banner-all-body-typography-font);
 }
 
 .icon { display: inline-flex; flex: none; color: var(--_icon); inline-size: var(--component-banner-all-icon-size); block-size: var(--component-banner-all-icon-size); }

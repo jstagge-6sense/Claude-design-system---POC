@@ -12,7 +12,7 @@
   max-inline-size: min(22rem, 90vw);
   padding: var(--component-topBar-all-menu-padding);
   background: var(--component-topBar-all-menu-fill-default);
-  border: var(--component-topBar-all-menu-borderWidth) solid var(--component-topBar-all-menu-border-default);
+  border: var(--component-topBar-all-container-borderWidth) solid var(--component-topBar-all-container-border-default);
   border-radius: var(--component-topBar-all-menu-radius);
   box-shadow: var(--component-topBar-all-menu-shadow-default);
 }
@@ -24,7 +24,7 @@
   padding: var(--component-topBar-all-menuItem-paddingInline);
   padding-block-end: var(--component-topBar-all-menu-padding);
   margin-block-end: var(--component-topBar-all-menu-padding);
-  border-block-end: var(--component-topBar-all-menu-borderWidth) solid var(--component-topBar-all-menu-separator-color);
+  border-block-end: var(--component-topBar-all-container-borderWidth) solid var(--component-topBar-all-container-border-default);
   font: var(--component-topBar-all-menu-header-typography-font);
   color: var(--component-topBar-all-menu-header-color-default);
 }
@@ -51,14 +51,14 @@
   background: var(--_fill);
   box-shadow: var(--_shadow);
   color: var(--_color);
-  font: var(--component-topBar-all-menuItem-typography-font);
+  font: var(--component-topBar-all-menu-header-typography-font);
   text-align: start;
   text-decoration: none;
   cursor: pointer;
   appearance: none;
 }
 .item[data-separator] { margin-block-start: var(--component-topBar-all-menu-padding); }
-.item[data-separator]::before { content: ''; position: absolute; inset-inline: 0; inset-block-start: calc(var(--component-topBar-all-menu-padding) * -1.5); border-block-start: var(--component-topBar-all-menu-borderWidth) solid var(--component-topBar-all-menu-separator-color); }
+.item[data-separator]::before { content: ''; position: absolute; inset-inline: 0; inset-block-start: calc(var(--component-topBar-all-menu-padding) * -1.5); border-block-start: var(--component-topBar-all-container-borderWidth) solid var(--component-topBar-all-container-border-default); }
 .item[data-tone='destructive'] { --_color: var(--component-topBar-all-menuItem-color-destructive); --_icon: var(--component-topBar-all-menuItem-color-destructive); }
 .icon { display: inline-flex; flex: none; inline-size: var(--component-topBar-all-menuItem-icon-size); block-size: var(--component-topBar-all-menuItem-icon-size); color: var(--_icon); }
 .icon > svg { inline-size: 100%; block-size: 100%; }

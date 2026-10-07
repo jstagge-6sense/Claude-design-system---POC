@@ -81,6 +81,28 @@
             "$value": "{core.color.content.inverse}"
           }
         }
+      },
+      "onColor": {
+        "track": {
+          "color": {
+            "$type": "color",
+            "$value": "rgba({core.color.white},{core.effect.opacity.400})",
+            "$description": "White at 32%. Track for spinners on dark or filled surfaces such as primary and destructive buttons.",
+            "$extensions": {
+              "gap": "GAP-spinner-1"
+            }
+          }
+        },
+        "arc": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.white}",
+            "$description": "White arc for spinners on dark or filled surfaces.",
+            "$extensions": {
+              "gap": "GAP-spinner-1"
+            }
+          }
+        }
       }
     }
   }

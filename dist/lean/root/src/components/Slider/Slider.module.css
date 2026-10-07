@@ -85,8 +85,8 @@
   border-radius: var(--core-dimension-radius-control-small);
   background: var(--_label-fill);
   color: var(--_label-text);
-  font: var(--component-slider-all-valueLabel-typography-font);
-  text-decoration: var(--component-slider-all-valueLabel-typography-text-decoration);
+  font: var(--component-slider-all-range-typography-font);
+  text-decoration: var(--component-slider-all-range-typography-text-decoration);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }

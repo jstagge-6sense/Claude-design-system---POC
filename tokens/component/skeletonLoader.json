@@ -101,14 +101,6 @@
           "paddingBlock": {
             "$type": "spacing",
             "$value": "{core.dimension.space.comfortable}"
-          },
-          "borderWidth": {
-            "$type": "borderWidth",
-            "$value": "{core.dimension.borderWidth.100}",
-            "$description": "1px stroke. No semantic border width exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-borderWidth-100"
-            }
           }
         }
       }

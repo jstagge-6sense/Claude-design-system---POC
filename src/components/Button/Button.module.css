@@ -3,7 +3,7 @@
   --_height: var(--component-button-all-container-heightMedium);
   --_pad: var(--component-button-all-container-paddingInlineMedium);
   --_gap: var(--component-button-all-container-gapMedium);
-  --_type: var(--component-button-all-label-typographyMedium-font);
+  --_type: var(--component-button-all-label-typographyLarge-font);
   --_fill: var(--_fill-default);
   --_border: var(--_border-default);
   --_shadow: var(--_shadow-default);

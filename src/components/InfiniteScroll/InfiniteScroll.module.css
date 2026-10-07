@@ -9,8 +9,8 @@
   align-items: center;
   gap: var(--component-infiniteScroll-all-status-gap);
   padding-block: var(--component-infiniteScroll-all-status-paddingBlock);
-  font: var(--component-infiniteScroll-all-status-typography-font);
-  text-decoration: var(--component-infiniteScroll-all-status-typography-text-decoration);
+  font: var(--component-infiniteScroll-all-count-typography-font);
+  text-decoration: var(--component-infiniteScroll-all-count-typography-text-decoration);
   color: var(--component-infiniteScroll-all-status-color-default);
   text-align: center;
 }
@@ -40,6 +40,6 @@
   inset-block-end: 0;
   z-index: var(--ds-z-sticky);
   padding: var(--component-infiniteScroll-all-footer-padding);
-  border-block-start: var(--component-infiniteScroll-all-footer-borderWidth) solid var(--component-infiniteScroll-all-footer-border-default);
+  border-block-start: var(--component-infiniteScroll-all-end-borderWidth) solid var(--component-infiniteScroll-all-footer-border-default);
   background: var(--component-infiniteScroll-all-footer-fill-default);
 }

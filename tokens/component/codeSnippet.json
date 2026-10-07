@@ -42,10 +42,6 @@
           }
         },
         "language": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.label.2}"
-          },
           "color": {
             "$type": "color",
             "$value": "{core.color.content.secondary}"
@@ -83,11 +79,6 @@
             "$type": "spacing",
             "$value": "{core.dimension.space.standard}",
             "$description": "Space between line number and code."
-          },
-          "border": {
-            "$type": "color",
-            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
-            "$description": "Ink 900 at 8% rule beside line numbers."
           }
         },
         "copy": {

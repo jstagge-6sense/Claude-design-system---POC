@@ -47,7 +47,7 @@
   padding-block: var(--core-dimension-space-tight);
   padding-inline: var(--core-dimension-space-compact);
   color: var(--core-color-content-inverse);
-  font: var(--component-popover-simple-label-typography-font);
+  font: var(--component-popover-rich-body-typography-font);
 }
 .surface:focus-visible { outline: none; box-shadow: var(--component-popover-all-container-shadow-focus), var(--_shadow); }
 

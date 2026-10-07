@@ -15,7 +15,7 @@
   padding: 0;
   padding-inline-end: var(--core-dimension-space-comfortable);
   border: 0;
-  border-inline-end: var(--component-input-all-container-borderWidth) solid var(--component-search-all-scope-divider-color-default);
+  border-inline-end: var(--component-input-all-container-borderWidth) solid var(--component-search-all-results-border-default);
   min-inline-size: 0;
 }
 .spinner { display: inline-flex; flex: none; align-items: center; }

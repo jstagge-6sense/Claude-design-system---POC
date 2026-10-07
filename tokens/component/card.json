@@ -86,10 +86,6 @@
           }
         },
         "subtitle": {
-          "typography": {
-            "$type": "typography",
-            "$value": "{core.typography.help.1}"
-          },
           "color": {
             "$type": "color",
             "$value": "{core.color.content.secondary}"
@@ -106,11 +102,6 @@
           }
         },
         "footer": {
-          "border": {
-            "$type": "color",
-            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
-            "$description": "Ink 900 at 8% separator above the footer."
-          },
           "gap": {
             "$type": "spacing",
             "$value": "{core.dimension.space.compact}"

@@ -22,7 +22,7 @@
   min-inline-size: 0;
   box-sizing: border-box;
   padding: var(--component-formGroup-all-section-padding);
-  border: var(--component-formGroup-all-section-borderWidth) solid transparent;
+  border: var(--component-formGroup-all-inline-divider-width) solid transparent;
   border-radius: var(--component-formGroup-all-section-radius);
   background: linear-gradient(var(--component-formGroup-all-section-fill-default), var(--component-formGroup-all-section-fill-default)) padding-box, var(--component-formGroup-all-section-border-default) border-box;
   box-shadow: var(--component-formGroup-all-section-shadow-default);
@@ -46,7 +46,7 @@
 /* ---- Inline: settings rows in page content, separated by a rule instead of cards ---- */
 .root[data-variant='inline'] .content { gap: 0; }
 .root[data-variant='inline'] .content > * { padding-block: var(--component-formGroup-all-inline-paddingBlock); }
-.root[data-variant='inline'] .content > * + * { border-block-start: var(--component-formGroup-all-inline-divider-width) solid var(--component-formGroup-all-inline-divider-color); }
+.root[data-variant='inline'] .content > * + * { border-block-start: var(--component-formGroup-all-inline-divider-width) solid var(--component-formGroup-all-footer-divider-color); }
 
 /* ---- Wizard ---- */
 .wizardSteps { padding-block-end: var(--component-formGroup-all-wizard-gap); }
@@ -78,7 +78,7 @@
 /* End alignment puts the buttons at the end edge and the status at the start edge. Logical, so it mirrors in RTL. */
 .footer[data-align='end'] { flex-direction: row-reverse; justify-content: space-between; }
 .buttons { display: flex; flex-wrap: wrap; align-items: center; gap: var(--component-formGroup-all-footer-gap); }
-.status { display: inline-flex; align-items: center; gap: var(--component-formGroup-all-footer-gap); margin: 0; font: var(--component-formGroup-all-status-typography-font); color: var(--component-formGroup-all-status-color-dirty); min-block-size: 1lh; }
+.status { display: inline-flex; align-items: center; gap: var(--component-formGroup-all-footer-gap); margin: 0; font: var(--component-formGroup-all-sectionDescription-typography-font); color: var(--component-formGroup-all-status-color-dirty); min-block-size: 1lh; }
 .status[data-status='success'] { color: var(--component-formGroup-all-status-color-success); }
 .status[data-status='submitting'], .status[data-status='validating'] { color: var(--component-formGroup-all-status-color-submitting); }
 .statusIcon { display: inline-flex; inline-size: var(--component-formGroup-all-summary-icon-size); block-size: var(--component-formGroup-all-summary-icon-size); }
