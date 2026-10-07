@@ -1,5 +1,0 @@
-export { createSixDsTheme } from './createSixDsTheme'
-export type { SixDsThemeOptions, SixDsMode, SixDsDensity } from './createSixDsTheme'
-export { SixDsProvider } from './SixDsProvider'
-export type { SixDsProviderProps } from './SixDsProvider'
-export { SIXDS_THEME } from './theme.generated'

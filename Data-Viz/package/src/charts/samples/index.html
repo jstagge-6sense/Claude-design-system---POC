@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DBA charts samples</title>
+  <!-- 6DS tokens (built by `npm run build:tokens`): primitive and semantic layers. -->
+  <link rel="stylesheet" href="../../../dist/primitive.css" />
+  <link rel="stylesheet" href="../../../dist/semantic.css" />
+  <!-- DRAFT dark theme and density modes (theme and density toggles in the header). -->
+  <link rel="stylesheet" href="../../../dist/modes.css" />
+  <style>
+    body { margin: 0; overflow: hidden; background: var(--core-color-surface-page); color: var(--core-color-content-primary); font: var(--core-typography-paragraph-2-font); }
+    * { box-sizing: border-box; }
+    header { padding: var(--core-dimension-space-standard) var(--core-dimension-space-spacious); }
+    h1 { font: var(--core-typography-heading-2-font); margin: 0; }
+    header p { margin: var(--core-dimension-space-tight) 0 0; color: var(--core-color-content-secondary); max-inline-size: 70rem; }
+    nav { display: flex; flex-wrap: wrap; gap: var(--core-dimension-space-compact); margin-top: var(--core-dimension-space-compact); }
+    nav a { font: var(--core-typography-label-1-font); color: var(--core-color-content-link-default); }
+    /* One chart per screen: the section is the viewport, the chart takes everything under its heading and fills the width. */
+    section { min-block-size: 0; box-sizing: border-box; display: flex; flex-direction: column; padding: var(--core-dimension-space-standard) var(--core-dimension-space-spacious) var(--core-dimension-space-spacious); }
+    h2 { font: var(--core-typography-heading-3-font); margin: 0 0 var(--core-dimension-space-compact); }
+    .card { flex: 1 1 auto; display: flex; flex-direction: column; min-block-size: 0; min-inline-size: 0; background: var(--core-color-surface-control-default); border: 1px solid var(--core-color-border-standard); border-color: color-mix(in srgb, var(--core-color-border-standard) 16%, transparent); border-radius: var(--core-dimension-radius-surface-medium); padding: var(--core-dimension-space-standard); }
+    .chart { flex: 1 1 auto; inline-size: 100%; block-size: 300px; min-block-size: 0; flex: none; }
+    .meta { color: var(--core-color-content-secondary); font: var(--core-typography-help-1-font); margin: 0 0 var(--core-dimension-space-compact); }
+    @media (max-width: 640px) { section { padding: var(--core-dimension-space-compact); } }
+    /* Same SVG hooks as Charts.module.css, scoped to the sample cards. */
+    .card .highcharts-grid-line { stroke-opacity: 0.16; }
+    .card .highcharts-axis-line, .card .highcharts-tick { stroke-opacity: 0.24; }
+    .card .highcharts-tooltip-box { fill: var(--core-color-surface-control-default); stroke: var(--core-color-border-standard); stroke-opacity: 0.16; fill-opacity: 1; }
+    .card .highcharts-legend-item { cursor: pointer; }
+
+    /* Header and token editor (same look as design-system-preview.html). */
+    :root { --pv-bg: #f4f6f7; --pv-panel: #ffffff; --pv-line: #d6dcdf; --pv-ink: #14262a; --pv-mute: #5d7276; --pv-accent: #1f6f78; --pv-warn: #8a5a00; }
+    :root[data-theme='dark'] { --pv-bg: #031a1d; --pv-panel: #07282c; --pv-line: #1d474c; --pv-ink: #e8f0ee; --pv-mute: #9bb8b2; --pv-accent: #59ccd9; --pv-warn: #f3a949; --pv-on-accent: #042a2e; }
+    .pv-shell { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100vh; block-size: 100dvh; }
+    .pv-top { display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--pv-panel); border-block-end: 1px solid var(--pv-line); flex-wrap: wrap; font: 14px/1.45 var(--core-typography-fontFamily-sans); color: var(--pv-ink); }
+    .pv-top h1 { font-size: 15px; margin: 0; font-weight: 600; font-family: inherit; }
+    .pv-top .grow { flex: 1; }
+    .pv-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; min-block-size: 0; }
+    .pv-body.no-editor { grid-template-columns: minmax(0, 1fr); }
+    .pv-scroll { overflow: auto; min-inline-size: 0; scroll-behavior: smooth; }
+    .pv-muted { color: var(--pv-mute); font-size: 12px; } .pv-hint { color: var(--pv-mute); font-size: 12px; margin: 4px 0 0; }
+    .pv-btn, .pv-seg button { font: inherit; font-size: 12px; padding: 4px 10px; border: 1px solid var(--pv-line); background: var(--pv-panel); color: var(--pv-ink); border-radius: 6px; cursor: pointer; }
+    .pv-btn:hover:not(:disabled), .pv-seg button:hover { background: var(--pv-bg); } .pv-btn:disabled { opacity: .5; cursor: not-allowed; }
+    .pv-btn[aria-pressed='true'] { background: var(--pv-accent); color: var(--pv-on-accent, #fff); border-color: var(--pv-accent); }
+    .pv-seg { display: inline-flex; } .pv-seg button { border-radius: 0; } .pv-seg button:first-child { border-radius: 6px 0 0 6px; } .pv-seg button:last-child { border-radius: 0 6px 6px 0; } .pv-seg button.on { background: var(--pv-accent); color: var(--pv-on-accent, #fff); border-color: var(--pv-accent); }
+    .pv-link { background: none; border: 0; color: var(--pv-accent); text-decoration: underline; cursor: pointer; font: inherit; font-size: 11px; padding: 0; }
+    .pv-input { font: inherit; font-size: 12px; padding: 4px 6px; border: 1px solid var(--pv-line); border-radius: 6px; background: var(--pv-panel); color: var(--pv-ink); min-inline-size: 0; inline-size: 100%; }
+    .pv-editor { inline-size: 380px; display: flex; flex-direction: column; background: var(--pv-panel); border-inline-start: 1px solid var(--pv-line); min-block-size: 0; color: var(--pv-ink); font: 14px/1.45 var(--core-typography-fontFamily-sans); }
+    .pv-editor[hidden] { display: none; }
+    .pv-editor-head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-block-end: 1px solid var(--pv-line); } .pv-editor-head .pv-btn { margin-inline-start: auto; }
+    .pv-editor-tools { padding: 8px 12px; display: grid; gap: 8px; border-block-end: 1px solid var(--pv-line); }
+    .pv-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pv-list { overflow: auto; padding: 8px 12px 24px; display: grid; gap: 6px; align-content: start; }
+    .pv-row { border: 1px solid var(--pv-line); border-radius: 8px; padding: 6px 8px; display: grid; gap: 4px; background: var(--pv-panel); }
+    .pv-row.is-edited { border-color: var(--pv-accent); box-shadow: inset 3px 0 0 var(--pv-accent); }
+    .pv-row-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; } .pv-name { font-size: 11px; word-break: break-all; }
+    .pv-row-body, .pv-row-alias { display: flex; gap: 6px; align-items: center; } .pv-row-alias label { display: flex; gap: 6px; align-items: center; font-size: 11px; color: var(--pv-mute); inline-size: 100%; }
+    .pv-swatch { inline-size: 22px; block-size: 22px; border-radius: 4px; border: 1px solid var(--pv-line); flex: none; } .pv-swatch.wide { inline-size: 44px; }
+    .pv-pill { font-size: 10px; padding: 1px 6px; border-radius: 999px; border: 1px solid var(--pv-line); text-transform: uppercase; letter-spacing: .04em; color: var(--pv-mute); background: var(--pv-panel); }
+    .pv-pill.pv-component { color: var(--pv-accent); border-color: var(--pv-accent); } .pv-pill.pv-semantic { color: #4b5fa8; border-color: #4b5fa8; } .pv-pill.pv-gap { color: var(--pv-warn); border-color: var(--pv-warn); text-transform: none; }
+    @media (max-width: 900px) { .pv-editor { position: fixed; inset-block: 56px 0; inset-inline-end: 0; inline-size: min(380px, 100vw); z-index: 10; box-shadow: -8px 0 24px rgba(0,0,0,.15); } }
+    #status { margin-block: var(--core-dimension-space-standard); color: var(--core-color-content-secondary); }
+    .error { color: var(--core-color-status-critical); }
+  </style>
+</head>
+<body>
+  <div class="pv-shell">
+    <div class="pv-top" id="pv-top"></div>
+    <div class="pv-body no-editor" id="pv-body">
+      <div class="pv-scroll" id="pv-scroll">
+<header>
+    <p>DBA charts (Area spline, Line, Bar single, Bar stacked and grouped, Donut) with the shared DBA theme and 6DS color tokens. Each chart is 300px tall, full width, and resizes with the window. Data is synthetic.</p>
+    <nav aria-label="Charts">
+      <a href="#area">Area</a><a href="#line">Line</a><a href="#bar">Bar</a><a href="#bar-sequential">Bar sequential</a><a href="#bar-categorical">Bar categorical</a>
+      <a href="#stacked">Stacked</a><a href="#grouped">Grouped</a><a href="#percent">100%</a><a href="#donut">Donut</a>
+    </nav>
+    <p id="status" role="status">Loading Highcharts…</p>
+  </header>
+  <main>
+    <section id="area"><h2>Area (spline)</h2><div class="card"><div class="chart" id="chart-area"></div></div></section>
+    <section id="line"><h2>Line graph</h2><div class="card"><div class="chart" id="chart-line"></div></div></section>
+    <section id="bar"><h2>Bar graph (single, single color)</h2><div class="card"><div class="chart" id="chart-bar"></div></div></section>
+    <section id="bar-sequential"><h2>Bar graph (single, sequential)</h2><div class="card"><div class="chart" id="chart-bar-sequential"></div></div></section>
+    <section id="bar-categorical"><h2>Bar graph (single, categorical columns)</h2><div class="card"><div class="chart" id="chart-bar-categorical"></div></div></section>
+    <section id="stacked"><h2>Bar graph (stacked)</h2><div class="card"><div class="chart" id="chart-stacked"></div></div></section>
+    <section id="grouped"><h2>Bar graph (grouped)</h2><div class="card"><div class="chart" id="chart-grouped"></div></div></section>
+    <section id="percent"><h2>Bar graph (100% stacked)</h2><div class="card"><div class="chart" id="chart-percent"></div></div></section>
+    <section id="donut"><h2>Donut</h2><div class="card"><div class="chart" id="chart-donut"></div></div></section>
+  </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Built by `npm run samples:charts` -->
+  <script src="./dist/tokens-data.js"></script>
+  <script src="./dist/dba-charts-samples.js"></script>
+  <script>DBAChartSamples.init();</script>
+  <script>
+    // Loads Highcharts 12.2+ (CSS variables in color options). Tries a local copy first (npm run vendor:highcharts),
+    // then three CDNs, and reports exactly which sources failed.
+    (function () {
+      var status = document.getElementById('status');
+      var BASES = ['./vendor/', 'https://code.highcharts.com/', 'https://cdn.jsdelivr.net/npm/highcharts@12/', 'https://unpkg.com/highcharts@12/'];
+      var FILES = ['highcharts.js', 'modules/accessibility.js', 'modules/pattern-fill.js'];
+      var failed = [];
+      function load(src) {
+        return new Promise(function (resolve, reject) {
+          var el = document.createElement('script');
+          el.src = src; el.onload = resolve; el.onerror = function () { reject(new Error(src)); };
+          document.head.appendChild(el);
+        });
+      }
+      function fail(msg) { status.className = 'error'; status.textContent = msg; }
+      function tryBase(i) {
+        if (i >= BASES.length) {
+          var inPreview = location.protocol !== 'file:' && location.protocol !== 'http:' && location.protocol !== 'https:';
+          return fail('Highcharts could not be loaded from any source (' + failed.join(', ') + '). ' +
+            (inPreview ? 'This page is open in a viewer that blocks web requests: open the file in Chrome, Edge, Safari or Firefox. ' : '') +
+            'If your network blocks the CDNs, run "node scripts/vendor-highcharts.mjs" in the package folder to save a local copy, then reload.');
+        }
+        var base = BASES[i];
+        status.textContent = 'Loading Highcharts from ' + base + ' …';
+        window.Highcharts = undefined;
+        FILES.reduce(function (p, f) { return p.then(function () { return load(base + f); }); }, Promise.resolve())
+          .then(function () {
+            if (!window.Highcharts) throw new Error(base);
+            DBAChartSamples.renderAll(window.Highcharts);
+            status.textContent = 'Rendered with Highcharts ' + window.Highcharts.version + ' from ' + base;
+          })
+          .catch(function (e) {
+            failed.push(base); console.warn('Highcharts source failed:', e && e.message ? e.message : e);
+            if (window.Highcharts && DBAChartSamples && /render|chart|options/i.test(String(e && e.message))) return fail('Highcharts loaded but a chart failed: ' + e.message);
+            tryBase(i + 1);
+          });
+      }
+      tryBase(0);
+    })();
+  </script>
+</body>
+</html>
