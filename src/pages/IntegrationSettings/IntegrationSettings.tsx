@@ -1,6 +1,7 @@
-import { useId, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
 import { Badge } from '../../components/Badge'
 import { Button } from '../../components/Button'
+import { ButtonGroup } from '../../components/ButtonGroup'
 import { Card } from '../../components/Card'
 import { Input } from '../../components/Input'
 import { Nav, type NavGroup } from '../../components/Nav'
@@ -58,6 +59,17 @@ export function IntegrationSettings({ connectionOpen = false, dailyLimit = 3000 
   const [limit, setLimit] = useState<number | null>(dailyLimit)
   const [sort, setSort] = useState<TableSort | null>(null)
   const [saved, setSaved] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => (typeof document !== 'undefined' && document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'))
+  const [density, setDensity] = useState<'compact' | 'default' | 'spacious'>(() => {
+    const d = typeof document !== 'undefined' ? document.documentElement.dataset.density : undefined
+    return d === 'compact' || d === 'spacious' ? d : 'default'
+  })
+  // Theme and density are attributes on <html>; modes.css (dark theme, compact and spacious) keys off them.
+  useEffect(() => {
+    const el = document.documentElement
+    el.dataset.theme = theme
+    el.dataset.density = density
+  }, [theme, density])
 
   const rows: ApiRow[] = useMemo(() => [{ id: 'rest', type: 'REST', limit, calls: '--', lastSync: '--', published: '--' }], [limit])
   const columns: TableColumn<ApiRow>[] = useMemo(() => [
@@ -79,6 +91,16 @@ export function IntegrationSettings({ connectionOpen = false, dailyLimit = 3000 
       <div className={styles.main}>
         <TopBar
           logo={<a href="#home" aria-label="Home">6sense</a>}
+          actions={
+            <div className={styles.modes}>
+              <ButtonGroup mode="selection" selectionMode="single" size="small" aria-label="Theme" value={[theme]}
+                onValueChange={(v) => v[0] && setTheme(v[0] as 'light' | 'dark')}
+                items={[{ value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }]} />
+              <ButtonGroup mode="selection" selectionMode="single" size="small" aria-label="Size" value={[density]}
+                onValueChange={(v) => v[0] && setDensity(v[0] as 'compact' | 'default' | 'spacious')}
+                items={[{ value: 'compact', label: 'Compact' }, { value: 'default', label: 'Default' }, { value: 'spacious', label: 'Spacious' }]} />
+            </div>
+          }
           notifications={{ count: 0 }}
           user={{ name: 'Alex Morgan' }}
           skipTo={`#${uid}-content`}

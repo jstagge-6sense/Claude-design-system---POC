@@ -34,3 +34,5 @@
   .body { grid-template-columns: minmax(0, 1fr); }
   .side { position: static; }
 }
+
+.modes { display: flex; align-items: center; gap: var(--core-dimension-space-standard); flex-wrap: wrap; }
