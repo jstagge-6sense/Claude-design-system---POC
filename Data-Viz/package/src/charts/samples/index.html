@@ -5,10 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DBA charts samples</title>
   <!-- 6DS tokens (built by `npm run build:tokens`): primitive and semantic layers. -->
-  <link rel="stylesheet" href="../../../dist/primitive.css" />
-  <link rel="stylesheet" href="../../../dist/semantic.css" />
-  <!-- DRAFT dark theme and density modes (theme and density toggles in the header). -->
-  <link rel="stylesheet" href="../../../dist/modes.css" />
+  <!-- Finds the built token CSS wherever this folder sits: the kit's own package/dist, the design-system root dist,
+       or 6ds-package/dist. Order matters: modes.css (DRAFT dark theme and density) loads after semantic.css. -->
+  <script>
+    (function () {
+      var BASES = ['../../../dist/', '../../../../../dist/', '../../../../../6ds-package/dist/', '../../../../6ds-package/dist/', '../../../../dist/'];
+      var FILES = ['primitive.css', 'semantic.css', 'modes.css'];
+      window.__DS_CSS_BASE__ = '';
+      function add(href, ok, bad) {
+        var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.onload = ok; l.onerror = bad; document.head.appendChild(l);
+      }
+      function tryBase(i) {
+        if (i >= BASES.length) return;
+        add(BASES[i] + FILES[0], function () {
+          window.__DS_CSS_BASE__ = BASES[i];
+          add(BASES[i] + FILES[1], function () { add(BASES[i] + FILES[2], function () {}, function () {}); }, function () {});
+        }, function () { tryBase(i + 1); });
+      }
+      tryBase(0);
+    })();
+  </script>
   <style>
     body { margin: 0; overflow: hidden; background: var(--core-color-surface-page); color: var(--core-color-content-primary); font: var(--core-typography-paragraph-2-font); }
     * { box-sizing: border-box; }
@@ -96,7 +112,18 @@
   <!-- Built by `npm run samples:charts` -->
   <script src="./dist/tokens-data.js"></script>
   <script src="./dist/dba-charts-samples.js"></script>
-  <script>DBAChartSamples.init();</script>
+  <script>
+    DBAChartSamples.init();
+    // Charts take every color, font and spacing from 6DS CSS variables. If they are missing the charts look broken: say why.
+    setTimeout(function () {
+      var ok = getComputedStyle(document.documentElement).getPropertyValue('--core-color-teal-600').trim();
+      if (!ok) {
+        var s = document.getElementById('status');
+        s.className = 'error';
+        s.textContent = '6DS token CSS was not found. Looked for primitive.css in ../../../dist/, ../../../../../dist/ and ../../../../../6ds-package/dist/ (run npm run build:tokens). Charts will look unstyled until it loads.';
+      } else { document.title = 'DBA charts samples (tokens: ' + window.__DS_CSS_BASE__ + ')'; }
+    }, 2500);
+  </script>
   <script>
     // Loads Highcharts 12.2+ (CSS variables in color options). Tries a local copy first (npm run vendor:highcharts),
     // then three CDNs, and reports exactly which sources failed.
