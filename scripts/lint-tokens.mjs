@@ -19,7 +19,7 @@ for (const t of Object.values(tokens)) {
   if (t.kind === 'typography') for (const s of ['-font-family', '-font-size', '-font-weight', '-line-height', '-text-decoration', '-font']) known.set(t.cssVar + s, t.layer)
 }
 const walk = (d) => !existsSync(d) ? [] : readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : /\.css$/.test(p) ? [p] : [] })
-const files = walk(join(root, 'src/components')).filter((f) => !only || only.some((n) => f.includes(`/components/${n}/`)))
+const files = [...walk(join(root, 'src/components')), ...walk(join(root, 'src/pages'))].filter((f) => !only || only.some((n) => f.includes(`/components/${n}/`)))
 const errors = [], warns = []
 for (const f of files) {
   const src = readFileSync(f, 'utf8')
