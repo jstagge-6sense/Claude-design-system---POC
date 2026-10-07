@@ -1,0 +1,9 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: var(--core-typography-paragraph-1-font); color: var(--core-color-content-primary); background: var(--core-color-surface-page); }
+button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
+button { cursor: pointer; }
+button[aria-disabled='true'], button:disabled { cursor: not-allowed; }
+.ds-visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+[dir='rtl'] svg[data-mirror='true'] { transform: scaleX(-1); }

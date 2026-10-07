@@ -1,0 +1,72 @@
+/* FileUpload. Tokens: component.fileUpload.* (tokens/component/fileUpload.json). No raw colors or primitives. */
+.root { display: flex; flex-direction: column; gap: var(--component-fileUpload-all-list-gap); min-inline-size: 0; position: relative; }
+
+/* Native input sits behind the Button. The Button is the keyboard trigger; the input is never focused. */
+.input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; pointer-events: none; overflow: hidden; }
+
+.zone {
+  --_fill: var(--component-fileUpload-all-zone-fill-default);
+  --_border: var(--component-fileUpload-all-zone-border-default);
+  --_title: var(--component-fileUpload-all-zone-title-color-default);
+  --_hint: var(--component-fileUpload-all-zone-hint-color-default);
+  --_icon: var(--component-fileUpload-all-zone-icon-color-default);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--component-fileUpload-all-zone-gap);
+  box-sizing: border-box;
+  padding: var(--component-fileUpload-all-zone-padding);
+  border: var(--component-fileUpload-all-zone-borderWidth) dashed var(--_border);
+  border-radius: var(--component-fileUpload-all-zone-radius);
+  background: var(--_fill);
+  text-align: center;
+}
+@media (prefers-reduced-motion: no-preference) { .zone { transition: background-color var(--ds-motion-fast) var(--ds-ease), border-color var(--ds-motion-fast) var(--ds-ease); } }
+
+/* Drag over: solid teal border, selected fill and a different message. Not color alone. */
+.zone[data-drag-over] { --_fill: var(--component-fileUpload-all-zone-fill-dragOver); --_border: var(--component-fileUpload-all-zone-border-dragOver); border-style: solid; }
+.zone[data-disabled] {
+  --_fill: var(--component-fileUpload-all-zone-fill-disabled);
+  --_border: var(--component-fileUpload-all-zone-border-disabled);
+  --_title: var(--component-fileUpload-all-zone-title-color-disabled);
+  --_hint: var(--component-fileUpload-all-zone-hint-color-disabled);
+  --_icon: var(--component-fileUpload-all-zone-icon-color-disabled);
+}
+.zoneIcon { display: inline-flex; inline-size: calc(var(--component-fileUpload-all-zone-icon-size) * 1.5); block-size: calc(var(--component-fileUpload-all-zone-icon-size) * 1.5); color: var(--_icon); }
+.zoneIcon > svg { inline-size: 100%; block-size: 100%; }
+.title { margin: 0; font: var(--component-fileUpload-all-zone-title-typography-font); color: var(--_title); }
+.or { font: var(--component-fileUpload-all-zone-hint-typography-font); color: var(--_hint); }
+.hint { margin: 0; font: var(--component-fileUpload-all-zone-hint-typography-font); color: var(--_hint); }
+.buttonRow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--component-fileUpload-all-zone-gap); }
+.root[data-disabled] .buttonRow .hint { color: var(--component-fileUpload-all-zone-hint-color-disabled); }
+
+/* Validation errors: icon plus specific text. */
+.errors { color: var(--component-fileUpload-all-error-color); font: var(--component-fileUpload-all-error-typography-font); }
+.errorList { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--component-fileUpload-all-error-gap); }
+.error { display: flex; align-items: flex-start; gap: var(--component-fileUpload-all-error-gap); }
+.errorIcon, .statusIcon { flex: none; display: inline-flex; inline-size: var(--component-fileUpload-all-item-icon-size); block-size: var(--component-fileUpload-all-item-icon-size); }
+.errorIcon > svg, .statusIcon > svg { inline-size: 100%; block-size: 100%; }
+
+/* ---- File list ---- */
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--component-fileUpload-all-list-gap); }
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--component-fileUpload-all-item-gap);
+  box-sizing: border-box;
+  padding: var(--component-fileUpload-all-item-padding);
+  border: var(--component-fileUpload-all-item-borderWidth) solid var(--component-fileUpload-all-item-border-default);
+  border-radius: var(--component-fileUpload-all-item-radius);
+  background: var(--component-fileUpload-all-item-fill);
+}
+.item[data-status='error'] { border-color: var(--component-fileUpload-all-item-border-error); }
+.fileIcon { flex: none; display: inline-flex; inline-size: var(--component-fileUpload-all-item-icon-size); block-size: var(--component-fileUpload-all-item-icon-size); color: var(--component-fileUpload-all-item-icon-color-default); margin-block-start: var(--component-fileUpload-all-error-gap); }
+.fileIcon > svg { inline-size: 100%; block-size: 100%; }
+.info { flex: 1 1 auto; min-inline-size: 0; display: flex; flex-direction: column; gap: var(--component-fileUpload-all-error-gap); }
+.name { font: var(--component-fileUpload-all-item-name-typography-font); color: var(--component-fileUpload-all-item-name-color); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meta { font: var(--component-fileUpload-all-item-meta-typography-font); color: var(--component-fileUpload-all-item-meta-color); }
+.status { display: inline-flex; align-items: flex-start; gap: var(--component-fileUpload-all-error-gap); font: var(--component-fileUpload-all-item-meta-typography-font); }
+.success { color: var(--component-fileUpload-all-item-icon-color-success); }
+.failed { color: var(--component-fileUpload-all-item-icon-color-error); }
+.itemActions { flex: none; display: flex; align-items: center; gap: var(--component-fileUpload-all-error-gap); }

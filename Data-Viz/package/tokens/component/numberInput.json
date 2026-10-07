@@ -1,0 +1,71 @@
+{
+  "component": {
+    "numberInput": {
+      "all": {
+        "stepper": {
+          "width": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.800}",
+            "$description": "Stepper button width, 32px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-800"
+            }
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Proposal: compact pressed is documented at 4%, which is not distinguishable from hover."
+            }
+          },
+          "icon": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{component.input.all.action.color.default}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{component.input.all.action.color.hover}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{component.input.all.icon.color.disabled}"
+              }
+            }
+          },
+          "divider": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+                "$description": "Ink 900 at 16%."
+              }
+            }
+          }
+        },
+        "unit": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.input.all.text.typography}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.input.all.text.color.disabled}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

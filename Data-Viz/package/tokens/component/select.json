@@ -1,0 +1,61 @@
+{
+  "component": {
+    "select": {
+      "all": {
+        "value": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.input.all.text.color.default}"
+            },
+            "placeholder": {
+              "$type": "color",
+              "$value": "{component.input.all.placeholder.color.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.input.all.text.color.disabled}"
+            }
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{component.input.all.icon.size}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.input.all.icon.color.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.input.all.icon.color.disabled}"
+            }
+          }
+        },
+        "container": {
+          "border": {
+            "open": {
+              "$type": "color",
+              "$value": "{component.input.all.container.border.focus}",
+              "$description": "Open state keeps the focus border while focus is inside the panel."
+            }
+          },
+          "shadow": {
+            "open": {
+              "$type": "shadow",
+              "$value": "{component.input.all.container.shadow.focus}"
+            }
+          }
+        },
+        "trigger": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{component.input.all.container.gap}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "component": {
+    "popover": {
+      "all": {
+        "container": {
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "offset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between the trigger and the surface. The arrow sits inside this gap."
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}",
+              "$description": "Focus ring when the rich surface itself holds focus."
+            }
+          }
+        },
+        "arrow": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "Side of the rotated square that forms the arrow (8px). No semantic size token exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          }
+        }
+      },
+      "rich": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.overlay}",
+              "$description": "Overlays sit on surface.overlay (visual-design-decisions)."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}"
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Elevation ladder step 300 for a popover."
+            }
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        }
+      },
+      "simple": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}",
+              "$description": "Ink 900. No dark surface token exists, so the tooltip inverts content colors. Nearest semantic: content.primary."
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}",
+              "$description": "Elevation ladder step 200."
+            }
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.inverse}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

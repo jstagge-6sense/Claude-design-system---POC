@@ -1,0 +1,80 @@
+{
+  "component": {
+    "sidePanel": {
+      "all": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{component.dialog.all.container.fill}",
+            "$description": "Same overlay surface as Dialog and Drawer."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$description": "Ink 900 at 16%. Edge facing the page."
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{component.dialog.all.container.borderWidth}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between header rows and between header, body and footer content."
+          }
+        },
+        "header": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.4}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "body": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "divider": {
+          "color": {
+            "$type": "color",
+            "$value": "{component.dialog.all.divider.color}"
+          }
+        },
+        "rail": {
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Rail width is the control height plus this padding on both sides."
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        }
+      }
+    }
+  }
+}
