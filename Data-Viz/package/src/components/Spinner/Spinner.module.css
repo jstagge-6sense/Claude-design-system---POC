@@ -1,0 +1,33 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--component-spinner-all-container-gap);
+  flex-direction: column;
+  justify-content: center;
+}
+.ring {
+  --_size: var(--component-spinner-all-container-sizeMedium);
+  --_stroke: var(--component-spinner-all-container-strokeSmall);
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  border-radius: 50%;
+  border: var(--_stroke) solid var(--component-spinner-all-track-color);
+  border-block-start-color: var(--component-spinner-all-arc-color);
+  animation: spin 800ms linear infinite;
+}
+.root[data-size='small'] { flex-direction: row; }
+.root[data-size='small'] .ring { --_size: var(--component-spinner-all-container-sizeSmall); }
+.root[data-size='large'] .ring { --_size: var(--component-spinner-all-container-sizeLarge); --_stroke: var(--component-spinner-all-container-strokeLarge); }
+.label { font: var(--component-spinner-all-label-typography-font); color: var(--component-spinner-all-label-color); }
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ds-z-base);
+  background: var(--component-spinner-overlay-container-fill);
+  flex-direction: column;
+  display: flex;
+}
+.overlay .label { color: var(--component-spinner-overlay-label-color); }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* Reduced motion: stop the rotation and show a static arc. */
+@media (prefers-reduced-motion: reduce) { .ring { animation: none; } }

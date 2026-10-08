@@ -1,0 +1,50 @@
+{
+  "component": {
+    "splitButton": {
+      "all": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{component.button.all.container.radius}",
+            "$description": "Outer corners only. The inner corners are square."
+          }
+        },
+        "divider": {
+          "width": {
+            "$type": "borderWidth",
+            "$value": "{component.button.all.container.borderWidth}"
+          }
+        },
+        "trigger": {
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "The chevron section is narrower than a full button."
+          }
+        }
+      },
+      "primary": {
+        "divider": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.content.inverse},{core.effect.opacity.400})",
+              "$description": "Sage 200 at 32%, visible on the Teal 700 fill."
+            }
+          }
+        }
+      },
+      "secondary": {
+        "divider": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          }
+        }
+      }
+    }
+  }
+}

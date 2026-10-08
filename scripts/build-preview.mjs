@@ -42,9 +42,12 @@ const reg = [
 writeFileSync(join(root, 'src/preview/registry.generated.ts'), reg + '\n')
 
 // ---- bundle ----
+const hasDataViz = existsSync(join(root, 'Data-Viz/package/src/charts'))
+if (!hasDataViz) console.warn('Data-Viz/ not found: building without the Data visualization section.')
 const globals = {
   name: 'react-globals',
   setup(b) {
+    if (!hasDataViz) b.onResolve({ filter: /\/DataViz\.jsx$/ }, () => ({ path: join(root, 'src/preview/DataViz.stub.jsx') }))
     b.onResolve({ filter: /^react(-dom)?(\/.*)?$/ }, (a) => ({ path: a.path, namespace: 'rg' }))
     b.onLoad({ filter: /.*/, namespace: 'rg' }, (a) => {
       if (a.path === 'react') return { contents: 'module.exports = window.React', loader: 'js' }

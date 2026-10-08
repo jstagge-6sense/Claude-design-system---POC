@@ -1,0 +1,178 @@
+{
+  "component": {
+    "codeSnippet": {
+      "all": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.group}",
+            "$description": "Sage 200. Distinguishes code from body text without syntax colors."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$description": "Ink 900 at 16%."
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          }
+        },
+        "header": {
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$description": "Ink 900 at 8% under the header row."
+          }
+        },
+        "language": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          }
+        },
+        "code": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}",
+            "$description": "GAP-codeSnippet-1: no monospace text style or font family token exists. Uses paragraph.2 for size and line height. CSS applies a generic monospace font-family keyword stack.",
+            "$extensions": {
+              "gap": "GAP-codeSnippet-1"
+            }
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}",
+            "$description": "Single color. No syntax colors, so copied and displayed output match."
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          }
+        },
+        "lineNumber": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Space between line number and code."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$description": "Ink 900 at 8% rule beside line numbers."
+          }
+        },
+        "copy": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.small}",
+            "$description": "32px visual size, 44px hit area via pseudo-element."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4% (Inline Icon Action, visual-design-decisions 4.6)."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%, matches default."
+            }
+          },
+          "border": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "shadow": {
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.focus}"
+            }
+          },
+          "icon": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.primary}"
+              },
+              "copied": {
+                "$type": "color",
+                "$value": "{core.color.status.success}",
+                "$description": "Check icon after copy. The icon swap, not color, is the signal."
+              }
+            },
+            "size": {
+              "$type": "sizing",
+              "$value": "{core.dimension.size.icon}"
+            }
+          }
+        }
+      },
+      "inline": {
+        "container": {
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          }
+        }
+      }
+    }
+  }
+}

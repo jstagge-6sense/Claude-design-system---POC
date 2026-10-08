@@ -1,0 +1,386 @@
+{
+  "component": {
+    "topBar": {
+      "all": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.card}",
+              "$description": "Gradient (CSS image), use with `background`."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.1200}",
+            "$description": "48px. No semantic size. Top bar height. Do not make it taller without adding value.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-1200"
+            }
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "shadow": {
+            "scrolled": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}",
+              "$description": "Scrolled state: elevation appears when content moves under the bar (requirement: needs a distinct scrolled state)."
+            }
+          }
+        },
+        "region": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Gap between action buttons."
+          }
+        },
+        "link": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.nav.primary}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            },
+            "current": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%."
+            },
+            "current": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}",
+              "$description": "Gradient fill for the current section (same signal as Nav selected)."
+            }
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "action": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}",
+            "$description": "Icon action button (hamburger, search, notifications, app switcher, profile)."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%."
+            },
+            "expanded": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}",
+              "$description": "Open menu or panel. Gradient fill so the state is not shadow alone."
+            }
+          },
+          "icon": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.secondary}"
+              }
+            },
+            "size": {
+              "$type": "sizing",
+              "$value": "{core.dimension.size.icon}"
+            }
+          },
+          "shadow": {
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.focus}"
+            }
+          }
+        },
+        "notification": {
+          "badgeOffset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "How far the count badge overlaps the bell, toward the end edge."
+          }
+        },
+        "skipLink": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            }
+          },
+          "label": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.inverse}"
+              }
+            },
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.button.1}"
+            }
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "offset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "mobilePanel": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}",
+              "$description": "Hamburger panel (primary nav and search on small containers)."
+            }
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}"
+            }
+          }
+        },
+        "menu": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}"
+            }
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "offset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          },
+          "header": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.help.1}"
+            },
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.secondary}"
+              }
+            }
+          },
+          "separator": {
+            "color": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          }
+        },
+        "menuItem": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            },
+            "destructive": {
+              "$type": "color",
+              "$value": "{core.color.status.critical}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%. Also the keyboard highlight."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Proposal: pressed is darker than hover in a list."
+            }
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          },
+          "icon": {
+            "size": {
+              "$type": "sizing",
+              "$value": "{core.dimension.size.icon}"
+            },
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.secondary}"
+              }
+            }
+          },
+          "checkColor": {
+            "$type": "color",
+            "$value": "{core.color.action.primary.default}",
+            "$description": "Checked menu item mark (menuitemcheckbox)."
+          }
+        },
+        "appTile": {
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}",
+            "$description": "Grid layout tile padding (app switcher)."
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        }
+      }
+    }
+  }
+}

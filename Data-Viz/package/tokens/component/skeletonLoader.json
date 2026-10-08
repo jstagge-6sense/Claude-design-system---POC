@@ -1,0 +1,117 @@
+{
+  "component": {
+    "skeletonLoader": {
+      "all": {
+        "shape": {
+          "fill": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+            "$description": "Ink 900 at 8%. Calm placeholder fill."
+          },
+          "shimmerStart": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.highlight},{core.effect.opacity.0})",
+            "$description": "White at 0%, outer ends of the shimmer sweep."
+          },
+          "shimmerMid": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.highlight},{core.effect.opacity.500})",
+            "$description": "White at 48%, center of the shimmer sweep."
+          },
+          "radiusText": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "radiusBlock": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "radiusCircle": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for full radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "heightText": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.300}",
+            "$description": "12px text line.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-300"
+            }
+          },
+          "heightBlock": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.1200}",
+            "$description": "Default block height, 48px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-1200"
+            }
+          }
+        },
+        "container": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between lines, rows and shapes."
+          }
+        }
+      },
+      "card": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.card}",
+            "$description": "Gradient surface."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})"
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}"
+          },
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.card}"
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          }
+        }
+      },
+      "table": {
+        "row": {
+          "divider": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "component": {
+    "chip": {
+      "all": {
+        "container": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.small}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for a full radius. Pill shape is reserved for badges and chips (visual-design-decisions 4.1).",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "paddingInlineAvatar": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Start padding when the leading slot is an avatar."
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.chip}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "fillTint": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.200})",
+              "$description": "Teal 100 at 16%, layered over the chip fill on hover."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.strong},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 24% (border.strong alpha is an assumption)."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.200})"
+            }
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        },
+        "leading": {
+          "sizeIcon": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          },
+          "sizeAvatar": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "24px. No semantic size.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          }
+        },
+        "dismiss": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "24px. No semantic size. Visual size. The hit area is padded to 44px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for a full radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Proposal, no documented pressed value for this part."
+            }
+          },
+          "icon": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.primary}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{core.color.content.disabled}"
+              }
+            }
+          }
+        },
+        "group": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "At least 8px between adjacent targets."
+          }
+        }
+      },
+      "viewOnly": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.group}",
+              "$description": "View-only chips are quieter than interactive chips."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.subtle},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        }
+      },
+      "selected": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}",
+              "$description": "Selected choice chip. Color change plus a check icon."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.hover}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.inverse}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

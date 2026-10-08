@@ -174,7 +174,7 @@ function resolveToken(name) {
   resolving.push(name)
   const aliases = []
   const rec = {
-    name, layer: t.layer, type: t.type, description: t.desc, file: t.file, gap: t.ext.gap, aliases,
+    name, layer: t.layer, type: t.type, description: t.desc, file: t.file, gap: t.ext.gap, aliases, raw: t.raw,
   }
   const raw = t.raw
   if (isTypographyObj(raw)) {
@@ -255,7 +255,7 @@ for (const [layer, lines] of Object.entries(byLayer)) {
 }
 const tokensJson = {}
 for (const [n, r] of Object.entries(resolved)) {
-  tokensJson[n] = { layer: r.layer, kind: r.kind, type: r.type, value: r.value, css: r.css, parts: r.parts, aliases: [...new Set(r.aliases)], description: r.description, file: r.file, gap: r.gap, cssVar: cssVar(n) }
+  tokensJson[n] = { layer: r.layer, kind: r.kind, type: r.type, value: r.value, css: r.css, parts: r.parts, aliases: [...new Set(r.aliases)], description: r.description, file: r.file, gap: r.gap, cssVar: cssVar(n), source: r.raw }
 }
 writeFileSync(join(out, 'tokens.json'), JSON.stringify(tokensJson, null, 2))
 writeFileSync(join(out, 'tokens.d.ts'), `export type TokenName =\n${Object.keys(resolved).map((n) => `  | '${n}'`).join('\n') || '  never'};\n`)
