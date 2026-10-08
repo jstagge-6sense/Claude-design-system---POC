@@ -1,0 +1,150 @@
+/* Nav (sidebar). Tokens: component.nav.* (tokens/component/nav.json). No raw colors or primitives.
+   Interim by design: may be superseded by the Information Architecture redesign (visual-design-decisions 4.5, section 7). */
+.root {
+  --_width: 15rem;
+  --_rail: calc(var(--core-dimension-size-control-height-medium) + 2 * var(--core-dimension-space-compact) + 2 * var(--core-dimension-borderWidth-thin));
+
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  gap: var(--core-dimension-space-standard);
+  box-sizing: border-box;
+  inline-size: var(--_width);
+  block-size: 100%;
+  min-block-size: 0;
+  padding-block: var(--core-dimension-space-comfortable);
+  padding-inline: var(--core-dimension-space-compact);
+  background: var(--core-color-surface-card);
+  /* The divider sits on the edge facing the content, so it follows the nav to the end edge in RTL. */
+  border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
+}
+.root[hidden] { display: none; }
+.root[data-collapsed] { inline-size: var(--_rail); }
+@media (prefers-reduced-motion: no-preference) {
+  .root { transition: inline-size var(--ds-motion-base) var(--ds-ease); }
+}
+
+/* Mobile: the nav is an overlay opened from the Top Bar hamburger. */
+.root[data-breakpoint='mobile'] {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: 0;
+  z-index: var(--ds-z-sidepanel);
+  box-shadow: var(--component-nav-all-container-shadow-overlay);
+  max-inline-size: 100%;
+}
+
+.header { display: flex; align-items: center; min-block-size: var(--core-dimension-size-control-height-medium); padding-inline: var(--core-dimension-space-comfortable); }
+.root[data-collapsed] .header { justify-content: center; padding-inline: 0; }
+.footer { display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); }
+
+/* The scroller leaves room for the focus ring. In the rail it must not clip the tooltips. */
+.scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: var(--core-dimension-space-standard);
+  min-block-size: 0;
+  overflow-y: auto;
+  padding-inline: var(--core-dimension-space-compact);
+  margin-inline: calc(var(--core-dimension-space-compact) * -1);
+}
+.root[data-collapsed] .scroll { overflow: visible; }
+
+.group { display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); }
+.group[data-divider] { padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+.root[data-collapsed] .group[data-labelled]:not(:first-child) { padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+.groupLabel {
+  margin: 0;
+  padding-inline: var(--core-dimension-space-comfortable);
+  font: var(--component-nav-all-group-label-typography-font);
+  color: var(--core-color-content-secondary);
+}
+.list, .sub { display: flex; flex-direction: column; gap: var(--core-dimension-space-tight); margin: 0; padding: 0; list-style: none; }
+.sub[hidden] { display: none; }
+.sub { margin-block-start: var(--core-dimension-space-tight); }
+.li { position: relative; display: block; }
+
+/* ---- Item ---- */
+.item {
+  --_fill: var(--component-nav-all-item-fill-default);
+  --_border: transparent;
+  --_shadow: none;
+  --_label: var(--core-color-content-secondary);
+  --_icon: var(--core-color-content-secondary);
+  --_type: var(--component-nav-all-item-label-typography-font);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--core-dimension-space-comfortable);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--core-dimension-size-control-height-medium);
+  padding-inline: var(--core-dimension-space-comfortable);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
+  border-radius: var(--core-dimension-radius-control-medium);
+  background: var(--_fill);
+  box-shadow: var(--_shadow);
+  color: var(--_label);
+  font: var(--_type);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .item { transition: background-color var(--ds-motion-fast) var(--ds-ease), box-shadow var(--ds-motion-fast) var(--ds-ease); }
+}
+.item[data-level='2'] { --_type: var(--component-nav-all-item-label-typographyNested-font); padding-inline-start: calc(var(--core-dimension-space-comfortable) + var(--core-dimension-space-spacious)); }
+/* 44px hit area for the visual 40px row. */
+.item::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((var(--core-dimension-size-control-height-medium) - var(--ds-hit-min)) / 2); }
+
+.icon { display: inline-flex; flex: none; align-items: center; justify-content: center; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--_icon); }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+.initial { font: var(--component-nav-all-item-label-typographyNested-font); text-transform: uppercase; }
+.label { flex: 1 1 auto; min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chevron { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--_icon); }
+.chevron > svg { inline-size: 100%; block-size: 100%; }
+.chevron[data-open] { transform: rotate(180deg); }
+.badge { display: inline-flex; flex: none; margin-inline-start: auto; }
+.root[data-collapsed] .badge { position: absolute; inset-block-start: 0; inset-inline-end: 0; margin: 0; }
+.root[data-collapsed] .item { justify-content: center; padding-inline: 0; }
+
+/* ---- States: pseudo-classes inside :where() keep specificity flat so source order decides. ---- */
+.item:where(:hover:not([aria-disabled='true'])), .item[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_border: var(--core-color-border-subtle); --_shadow: var(--component-nav-all-item-shadow-hover); }
+.item:where(:active:not([aria-disabled='true'])), .item[data-state='pressed'] { --_fill: var(--component-nav-all-item-fill-pressed); --_border: transparent; --_shadow: var(--component-nav-all-item-shadow-pressed); }
+
+/* Parent whose child is the current page: stronger label and icon, no fill (the child carries the page signal). */
+.item[data-descendant-current] { --_label: var(--core-color-content-primary); --_icon: var(--core-color-action-primary-default); }
+
+/* Current page: gradient fill, stronger label and icon, no border, no shadow. Persistent, so a fill change and not shadow alone. */
+.item[aria-current='page'] { --_fill: var(--core-color-action-selected); --_border: transparent; --_shadow: none; --_label: var(--core-color-content-primary); --_icon: var(--core-color-action-primary-default); }
+
+.item:focus-visible, .item[data-state='focus'] { outline: none; --_shadow: var(--component-nav-all-item-shadow-focus); }
+
+.item[aria-disabled='true'] { --_fill: var(--component-nav-all-item-fill-default); --_border: transparent; --_shadow: none; --_label: var(--core-color-content-disabled); --_icon: var(--core-color-content-disabled); cursor: not-allowed; }
+.item[aria-disabled='true']:focus-visible { --_shadow: var(--component-nav-all-item-shadow-focus); }
+
+/* ---- Rail tooltip: a real element, hidden from assistive tech (the name is the visually hidden label). ---- */
+.tooltip {
+  position: absolute;
+  inset-inline-start: calc(100% + var(--core-dimension-space-compact));
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  z-index: var(--ds-z-tooltip);
+  display: none;
+  padding-block: var(--core-dimension-space-tight);
+  padding-inline: var(--core-dimension-space-compact);
+  border-radius: var(--core-dimension-radius-control-small);
+  background: var(--core-color-content-primary);
+  box-shadow: var(--component-nav-all-tooltip-shadow-default);
+  color: var(--core-color-content-inverse);
+  font: var(--component-nav-all-group-label-typography-font);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.item:hover .tooltip, .item:focus-visible .tooltip, .item[data-state='hover'] .tooltip, .item[data-state='focus'] .tooltip { display: block; }
+
+.toggle { display: flex; justify-content: flex-end; }
+.root[data-collapsed] .toggle { justify-content: center; }

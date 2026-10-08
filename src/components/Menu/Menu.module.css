@@ -1,0 +1,38 @@
+/* Menu panel. Tokens: component.menu.* (tokens/component/menu.json). No raw colors or primitives. */
+.root { position: relative; display: inline-flex; max-inline-size: 100%; }
+
+.positioner {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: max-content;
+  max-inline-size: min(28rem, 100vw);
+  box-sizing: border-box;
+  z-index: var(--ds-z-menu);
+}
+.positioner:not([data-ready]) { visibility: hidden; }
+.positioner[data-side='top'] { padding-block-end: var(--core-dimension-space-tight); }
+.positioner[data-side='bottom'] { padding-block-start: var(--core-dimension-space-tight); }
+.positioner[data-side='start'] { padding-inline-end: var(--core-dimension-space-tight); }
+.positioner[data-side='end'] { padding-inline-start: var(--core-dimension-space-tight); }
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-inline-size: 12rem;
+  max-inline-size: 100%;
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
+  border-radius: var(--core-dimension-radius-surface-medium);
+  background: var(--core-color-surface-overlay);
+  box-shadow: var(--component-menu-all-container-shadow-default);
+  color: var(--core-color-content-primary);
+}
+.slot { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); padding: var(--core-dimension-space-compact); }
+.slot:has(+ *) { padding-block-end: 0; }
+.footer { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); padding-block-start: var(--core-dimension-space-compact); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .positioner[data-ready] .panel { animation: ds-menu-in var(--ds-motion-fast) var(--ds-ease); }
+}
+@keyframes ds-menu-in { from { opacity: 0; } to { opacity: 1; } }

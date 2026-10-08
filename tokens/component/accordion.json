@@ -1,0 +1,26 @@
+{
+  "component": {
+    "accordion": {
+      "all": {
+        "container": {
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.formSection}"
+          }
+        },
+        "header": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.4}"
+          }
+        },
+        "description": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        }
+      }
+    }
+  }
+}

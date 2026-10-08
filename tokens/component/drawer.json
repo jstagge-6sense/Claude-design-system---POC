@@ -1,0 +1,86 @@
+{
+  "component": {
+    "drawer": {
+      "all": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.overlay}",
+            "$description": "Same overlay surface as Dialog."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}",
+            "$description": "Applied to the corners that face the page only."
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.thin}"
+          },
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.300}",
+            "$description": "One step below Dialog on the elevation ladder."
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.spacious}"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          }
+        },
+        "scrim": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.scrim}",
+            "$description": "Shown only when the drawer is modal."
+          }
+        },
+        "header": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.dialog.all.title.typography}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.dialog.all.body.typography}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "divider": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.border.standard}"
+          }
+        },
+        "footer": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        }
+      }
+    }
+  }
+}

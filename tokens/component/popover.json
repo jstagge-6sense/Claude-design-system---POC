@@ -1,0 +1,61 @@
+{
+  "component": {
+    "popover": {
+      "all": {
+        "container": {
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}",
+              "$description": "Focus ring when the rich surface itself holds focus."
+            }
+          }
+        },
+        "arrow": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "Side of the rotated square that forms the arrow (8px). No semantic size token exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          }
+        }
+      },
+      "rich": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Elevation ladder step 300 for a popover."
+            }
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      },
+      "simple": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}",
+              "$description": "Elevation ladder step 200."
+            }
+          }
+        }
+      }
+    }
+  }
+}

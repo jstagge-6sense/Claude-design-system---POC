@@ -1,0 +1,30 @@
+{
+  "component": {
+    "progressBar": {
+      "all": {
+        "track": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "8px track.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "status": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        }
+      }
+    }
+  }
+}

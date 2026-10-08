@@ -1,0 +1,34 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--core-dimension-space-compact);
+  flex-direction: column;
+  justify-content: center;
+}
+.ring {
+  --_size: var(--core-dimension-size-feedback-medium);
+  --_stroke: var(--core-dimension-borderWidth-medium);
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  border-radius: 50%;
+  border: var(--_stroke) solid var(--core-color-border-standard);
+  border-block-start-color: var(--core-color-action-primary-default);
+  animation: spin 800ms linear infinite;
+}
+.root[data-tone='onColor'] .ring { border-color: var(--component-spinner-onColor-track-color); border-block-start-color: var(--core-color-content-inverse); }
+.root[data-size='small'] { flex-direction: row; }
+.root[data-size='small'] .ring { --_size: var(--core-dimension-size-icon); }
+.root[data-size='large'] .ring { --_size: var(--core-dimension-size-feedback-large); --_stroke: var(--core-dimension-borderWidth-thick); }
+.label { font: var(--component-spinner-all-label-typography-font); color: var(--core-color-content-secondary); }
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ds-z-base);
+  background: var(--core-color-surface-scrim);
+  flex-direction: column;
+  display: flex;
+}
+.overlay .label { color: var(--core-color-content-inverse); }
+@keyframes spin { to { transform: rotate(360deg); } }
+/* Reduced motion: stop the rotation and show a static arc. */
+@media (prefers-reduced-motion: reduce) { .ring { animation: none; } }

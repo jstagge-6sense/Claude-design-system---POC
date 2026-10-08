@@ -1,0 +1,42 @@
+/* EmptyState. Tokens: component.emptyState.* (tokens/component/emptyState.json). No raw colors or primitives. */
+.root {
+  --_pad-block: var(--core-dimension-space-spacious);
+  --_title-type: var(--component-emptyState-all-title-typography-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--core-dimension-space-standard);
+  padding-block: var(--_pad-block);
+  padding-inline: var(--core-dimension-space-standard);
+  box-sizing: border-box;
+  inline-size: 100%;
+  text-align: center;
+  color: var(--core-color-content-primary);
+}
+.root[data-size='compact'] { --_pad-block: var(--core-dimension-space-standard); }
+.root[data-minimal] { --_title-type: var(--component-emptyState-minimal-title-typography-font); }
+
+/* Illustration slot. The default is a neutral disc with one icon. */
+.art { display: flex; justify-content: center; max-inline-size: 100%; }
+.disc {
+  --_fill: var(--core-color-surface-group);
+  --_color: var(--core-color-content-secondary);
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--core-dimension-size-feedback-large);
+  block-size: var(--core-dimension-size-feedback-large);
+  border-radius: var(--core-dimension-radius-pill);
+  background: var(--_fill);
+  color: var(--_color);
+}
+.root[data-variant='error'] .disc {
+  --_fill: var(--component-emptyState-error-illustration-fill);
+  --_color: var(--core-color-status-critical);
+}
+
+.text { display: grid; gap: var(--core-dimension-space-compact); max-inline-size: 36rem; }
+.title { margin: 0; font: var(--_title-type); text-decoration: var(--component-emptyState-all-title-typography-text-decoration); color: var(--core-color-content-primary); }
+.description { margin: 0; font: var(--component-emptyState-all-description-typography-font); text-decoration: var(--component-emptyState-all-description-typography-text-decoration); color: var(--core-color-content-secondary); }
+
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--core-dimension-space-compact); }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--core-dimension-space-compact) var(--core-dimension-space-standard); margin: 0; padding: 0; list-style: none; }

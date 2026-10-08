@@ -1,0 +1,55 @@
+{
+  "component": {
+    "search": {
+      "global": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}",
+              "$description": "Global search sits slightly above the page (elevation ladder)."
+            }
+          }
+        }
+      },
+      "contextual": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          }
+        }
+      },
+      "all": {
+        "results": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Results menu elevation."
+            }
+          }
+        },
+        "option": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.input.all.text.typography}"
+          },
+          "fill": {
+            "active": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.200})",
+              "$description": "Teal 100 at 16%. Keyboard-active option."
+            }
+          }
+        },
+        "empty": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      }
+    }
+  }
+}

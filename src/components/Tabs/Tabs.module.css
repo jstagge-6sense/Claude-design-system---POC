@@ -1,0 +1,108 @@
+/* Tabs. Tokens: component.tabs.* (tokens/component/tabs.json). No raw colors or primitives.
+   Distinct from ButtonGroup: tabs are flat, share a baseline, and mark the selected tab with an indicator bar, not a raised segment. */
+.root { display: flex; flex-direction: column; min-inline-size: 0; }
+.root[data-orientation='vertical'] { flex-direction: row; align-items: flex-start; }
+
+/* ---- Tab list ---- */
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--core-dimension-space-tight);
+  box-sizing: border-box;
+  border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
+}
+.root[data-orientation='vertical'] .list { flex-direction: column; flex: none; border-block-end: 0; border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+
+/* Filled: a grouped container using the shared group border gradient. */
+.root[data-variant='filled'] .list {
+  padding: var(--core-dimension-space-tight);
+  border: var(--core-dimension-borderWidth-thin) solid transparent;
+  border-radius: var(--core-dimension-radius-control-medium);
+  background: linear-gradient(var(--core-color-surface-group), var(--core-color-surface-group)) padding-box, var(--core-color-border-group) border-box;
+}
+
+/* Scrollable: tabs never wrap. The scroller keeps room for the focus ring. */
+.scrollWrap { display: flex; align-items: center; gap: var(--core-dimension-space-compact); min-inline-size: 0; }
+.scroller { flex: 1 1 auto; min-inline-size: 0; overflow-x: auto; scrollbar-width: none; padding: var(--core-dimension-space-tight); margin: calc(var(--core-dimension-space-tight) * -1); }
+.scroller::-webkit-scrollbar { display: none; }
+.root[data-scrollable] .list { inline-size: max-content; min-inline-size: 100%; }
+
+/* ---- Tab ---- */
+.tab {
+  --_h: var(--core-dimension-size-control-height-medium);
+  --_pad: var(--core-dimension-space-standard);
+  --_type: var(--component-tabs-all-tab-typographyMedium-font);
+  --_fill: transparent;
+  --_label: var(--core-color-content-secondary);
+  --_badge-fill: var(--core-color-surface-chip);
+  --_badge-color: var(--core-color-content-primary);
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--core-dimension-space-compact);
+  box-sizing: border-box;
+  min-block-size: var(--_h);
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--_pad);
+  border: 0;
+  border-radius: var(--core-dimension-radius-control-small);
+  background: var(--_fill);
+  color: var(--_label);
+  font: var(--_type);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--ds-motion-fast) var(--ds-ease), color var(--ds-motion-fast) var(--ds-ease);
+}
+@media (prefers-reduced-motion: reduce) { .tab { transition: none; } }
+.root[data-variant='compact'] .tab { --_h: var(--core-dimension-size-control-height-small); --_pad: var(--core-dimension-space-comfortable); --_type: var(--component-tabs-all-tab-typographyCompact-font); }
+.root[data-orientation='vertical'] .tab { justify-content: flex-start; inline-size: 100%; }
+
+/* 44px hit area for compact tabs without changing the visual size. */
+.tab::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((var(--_h) - var(--ds-hit-min)) / 2); }
+
+/* Selected indicator bar. Selected is a color and fill change plus the bar, never shadow. */
+.tab::before { content: none; position: absolute; background: var(--core-color-action-primary-default); }
+.tab[aria-selected='true']::before { content: ''; }
+.root[data-orientation='horizontal'] .tab::before { inset-inline: 0; inset-block-end: calc(var(--core-dimension-borderWidth-thin) * -1); block-size: var(--core-dimension-borderWidth-medium); }
+.root[data-variant='filled'] .tab::before { inset-block-end: 0; border-end-start-radius: var(--core-dimension-radius-control-small); border-end-end-radius: var(--core-dimension-radius-control-small); }
+.root[data-orientation='vertical'] .tab::before { inset-block: 0; inset-inline-end: calc(var(--core-dimension-borderWidth-thin) * -1); inline-size: var(--core-dimension-borderWidth-medium); }
+
+.icon { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+.label { overflow: hidden; text-overflow: ellipsis; }
+
+.badge {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  box-sizing: border-box;
+  min-inline-size: var(--core-dimension-size-feedback-medium);
+  block-size: var(--core-dimension-size-feedback-medium);
+  padding-inline: var(--core-dimension-space-compact);
+  border-radius: var(--core-dimension-radius-pill);
+  background: var(--_badge-fill);
+  color: var(--_badge-color);
+  font: var(--component-tabs-all-badge-typography-font);
+}
+
+/* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
+.tab:hover:not([aria-disabled='true']), .tab[data-state='hover'] { --_fill: var(--core-color-action-compact-hover); --_label: var(--core-color-content-primary); }
+.tab[aria-selected='true'] { --_label: var(--core-color-content-primary); --_badge-fill: var(--core-color-action-primary-default); --_badge-color: var(--core-color-content-inverse); }
+.root[data-variant='filled'] .tab[aria-selected='true'] { --_fill: var(--core-color-action-selected); }
+.tab:focus-visible, .tab[data-state='focus'] { outline: none; box-shadow: var(--component-tabs-all-tab-shadow-focus); }
+
+/* Disabled: aria-disabled keeps the tab focusable so the reason can be read. Never selected, no hover, no shadow. */
+.tab[aria-disabled='true'] {
+  --_fill: transparent;
+  --_label: var(--core-color-content-disabled);
+  --_badge-fill: var(--component-tabs-all-badge-fill-disabled);
+  --_badge-color: var(--core-color-content-disabled);
+  cursor: not-allowed;
+}
+.tab[aria-disabled='true']:focus-visible, .tab[aria-disabled='true'][data-state='focus'] { box-shadow: var(--component-tabs-all-tab-shadow-focus); }
+
+/* ---- Panel ---- */
+.panel { padding: var(--core-dimension-space-standard); min-inline-size: 0; flex: 1 1 auto; }
+.panel[hidden] { display: none; }
+.panel:focus-visible { outline: none; box-shadow: var(--component-tabs-all-tab-shadow-focus); border-radius: var(--core-dimension-radius-control-small); }

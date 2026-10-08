@@ -1,0 +1,33 @@
+{
+  "component": {
+    "card": {
+      "all": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.card}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}",
+              "$description": "Elevation step on hover for clickable cards."
+            }
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.4}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      }
+    }
+  }
+}

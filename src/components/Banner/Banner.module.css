@@ -1,0 +1,61 @@
+/* Banner. Tokens: component.banner.* (tokens/component/banner.json). No raw colors or primitives. */
+.root {
+  --_tint: var(--component-banner-info-container-fillTint);
+  --_border: var(--component-banner-info-container-border);
+  --_icon: var(--core-color-status-info);
+  --_pad-inline: var(--core-dimension-space-standard);
+  --_pad-block: var(--core-dimension-space-comfortable);
+  --_gap: var(--core-dimension-space-comfortable);
+  --_body: var(--component-banner-all-body-typography-font);
+
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--_gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding: var(--_pad-block) var(--_pad-inline);
+  background: linear-gradient(var(--_tint), var(--_tint)), var(--core-color-surface-overlay);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
+  border-radius: var(--core-dimension-radius-control-medium);
+  color: var(--core-color-content-primary);
+}
+.root:focus { outline: none; box-shadow: var(--component-banner-all-container-shadow-focus); }
+
+.info { --_tint: var(--component-banner-info-container-fillTint); --_border: var(--component-banner-info-container-border); --_icon: var(--core-color-status-info); }
+.success { --_tint: var(--component-banner-success-container-fillTint); --_border: var(--component-banner-success-container-border); --_icon: var(--core-color-status-success); }
+.warning { --_tint: var(--component-banner-warning-container-fillTint); --_border: var(--component-banner-warning-container-border); --_icon: var(--core-color-status-warning); }
+.error { --_tint: var(--component-banner-error-container-fillTint); --_border: var(--component-banner-error-container-border); --_icon: var(--core-color-status-critical); }
+
+/* Placement. Global is edge to edge and square. Inline is compact. */
+.root[data-placement='global'] { border-radius: 0; border-inline-width: 0; border-block-start-width: 0; }
+.root[data-placement='inline'] {
+  --_pad-inline: var(--core-dimension-space-comfortable);
+  --_pad-block: var(--core-dimension-space-compact);
+  --_gap: var(--core-dimension-space-compact);
+  --_body: var(--component-banner-all-body-typography-font);
+}
+
+.icon { display: inline-flex; flex: none; color: var(--_icon); inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+/* Align the icon with the first text line. */
+.root { --_icon-offset: calc((1lh - var(--core-dimension-size-icon)) / 2); }
+.icon { margin-block-start: var(--_icon-offset); }
+
+.content { flex: 1 1 14rem; min-inline-size: 0; display: flex; flex-direction: column; }
+.title {
+  margin: 0;
+  font: var(--component-banner-all-title-typography-font);
+  text-decoration: var(--component-banner-all-title-typography-text-decoration);
+  color: var(--core-color-content-primary);
+  overflow-wrap: anywhere;
+}
+.body {
+  font: var(--_body);
+  color: var(--core-color-content-primary);
+  overflow-wrap: anywhere;
+}
+.action { flex: none; display: flex; align-items: center; align-self: center; }
+.close { flex: none; align-self: flex-start; }
+
+@media (max-width: 47.9375rem) { .root { padding-inline: var(--core-dimension-space-comfortable); } }

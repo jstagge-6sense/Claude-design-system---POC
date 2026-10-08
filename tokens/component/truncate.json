@@ -1,0 +1,15 @@
+{
+  "component": {
+    "truncate": {
+      "all": {
+        "toggle": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.link.2}",
+            "$description": "Show more and show less control."
+          }
+        }
+      }
+    }
+  }
+}

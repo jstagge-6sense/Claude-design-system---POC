@@ -1,0 +1,119 @@
+{
+  "component": {
+    "progressSteps": {
+      "all": {
+        "marker": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.800}",
+            "$description": "32px. No semantic size.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-800"
+            }
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "step": {
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "label": {
+          "typographyActive": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}",
+            "$description": "Active step label is heavier (600 vs 500): one of several cues."
+          }
+        },
+        "counter": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}",
+            "$description": "Compact variant: \"Step 2 of 5\"."
+          }
+        },
+        "connector": {
+          "thickness": {
+            "$type": "sizing",
+            "$value": "{component.progressBar.all.track.height}",
+            "$description": "Inherited from ProgressBar."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.pill}",
+            "$description": "Inherited from ProgressBar."
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.border.standard}",
+              "$description": "Upcoming segment: ProgressBar track."
+            },
+            "completed": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}",
+              "$description": "Completed segment: ProgressBar fill."
+            }
+          }
+        }
+      },
+      "completed": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}",
+              "$description": "Teal 700 fill with a check: completed."
+            }
+          }
+        }
+      },
+      "upcoming": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%, number only, no ring: upcoming."
+            }
+          }
+        }
+      },
+      "error": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.status.critical}",
+              "$description": "Critical fill with an error icon."
+            }
+          }
+        }
+      },
+      "disabled": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          }
+        }
+      }
+    }
+  }
+}

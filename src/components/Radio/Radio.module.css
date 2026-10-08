@@ -1,0 +1,109 @@
+/* Radio. Tokens: component.radio.* (aliases component.checkbox.* for shared parts). No raw colors or primitives. */
+.root {
+  --_size: var(--component-radio-all-container-size);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--component-radio-all-container-gap);
+  min-block-size: var(--ds-hit-min);
+  color: var(--component-radio-all-label-color-default);
+}
+.control { position: relative; display: grid; place-items: center; flex: none; inline-size: var(--_size); block-size: var(--ds-hit-min); }
+.input {
+  position: absolute;
+  inset: calc((var(--_size) - var(--ds-hit-min)) / 2) calc((var(--_size) - var(--ds-hit-min)) / 2);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.box {
+  --_f0: var(--component-radio-unchecked-container-fill-default);
+  --_fh: linear-gradient(var(--component-radio-unchecked-container-fillTint-hover), var(--component-radio-unchecked-container-fillTint-hover)), var(--component-radio-unchecked-container-fill-default);
+  --_fd: var(--component-radio-unchecked-container-fill-disabled);
+  --_b0: var(--component-radio-unchecked-container-border-default);
+  --_bh: var(--component-radio-unchecked-container-border-hover);
+  --_bd: var(--component-radio-unchecked-container-border-disabled);
+  --_be: var(--component-radio-unchecked-container-border-error);
+  --_m: var(--component-radio-checked-mark-color-default);
+  --_f: var(--_f0);
+  --_b: var(--_b0);
+  display: grid;
+  place-items: center;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  box-sizing: border-box;
+  border-radius: var(--core-dimension-radius-pill);
+  border: var(--component-radio-all-container-borderWidth) solid var(--_b);
+  background: var(--_f);
+  color: var(--_m);
+  pointer-events: none;
+  transition: background-color var(--ds-motion-fast) var(--ds-ease), border-color var(--ds-motion-fast) var(--ds-ease);
+}
+@media (prefers-reduced-motion: reduce) { .box { transition: none; } }
+
+.dot { display: none; inline-size: 50%; block-size: 50%; border-radius: inherit; background: currentColor; }
+.input:checked + .box .dot { display: block; }
+
+/* Selected: fill and border change color, plus the inner dot. Never shadow alone. */
+.input:checked + .box {
+  --_f0: var(--component-radio-checked-container-fill-default);
+  --_fh: var(--component-radio-checked-container-fill-hover);
+  --_fd: var(--component-radio-checked-container-fill-disabled);
+  --_b0: var(--component-radio-checked-container-border-default);
+  --_bh: var(--component-radio-checked-container-border-hover);
+  --_bd: var(--component-radio-unchecked-container-border-disabled);
+  --_be: var(--component-radio-unchecked-container-border-error);
+}
+
+.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-radio-all-description-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
+.label { font: var(--component-radio-all-description-typography-font); color: var(--component-radio-all-label-color-default); cursor: pointer; overflow-wrap: anywhere; }
+.description { font: var(--component-radio-all-description-typography-font); color: var(--component-radio-all-description-color-default); }
+
+/* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
+.root:hover:not([data-disabled]) .box, .root[data-state='hover'] .box { --_f: var(--_fh); --_b: var(--_bh); }
+.root[data-error] .box { --_b: var(--_be); }
+.root:has(.input:focus-visible) .box, .root[data-state='focus'] .box { box-shadow: var(--component-radio-all-container-shadow-focus); }
+
+.root[data-disabled] .box { --_f: var(--_fd); --_b: var(--_bd); --_m: var(--component-radio-all-label-color-disabled); box-shadow: none; }
+.root[data-disabled] .input, .root[data-disabled] .label { cursor: not-allowed; }
+.root[data-disabled] .label { color: var(--component-radio-all-label-color-disabled); }
+.root[data-disabled] .description { color: var(--component-radio-all-label-color-disabled); }
+
+/* ---- Radio card: the whole card is the target. The label stretches over the card. ---- */
+.card {
+  --_cf: var(--core-color-surface-control-default);
+  --_cb: var(--core-color-border-standard);
+  box-sizing: border-box;
+  padding-inline: var(--core-dimension-space-comfortable);
+  border-radius: var(--core-dimension-radius-control-medium);
+  border: var(--component-radio-all-container-borderWidth) solid var(--_cb);
+  background: var(--_cf);
+}
+.card .label::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.card[data-checked] { --_cf: var(--core-color-surface-group); --_cb: var(--core-color-action-primary-default); }
+.card:hover:not([data-disabled]), .card[data-state='hover'] { --_cb: var(--core-color-border-control-default); }
+.card[data-checked]:hover:not([data-disabled]), .card[data-checked][data-state='hover'] { --_cb: var(--core-color-action-primary-hover); }
+.card[data-error] { --_cb: var(--core-color-status-critical); }
+.card[data-checked][data-error] { --_cb: var(--core-color-status-critical); }
+.card:has(.input:focus-visible), .card[data-state='focus'] { box-shadow: var(--component-radio-all-container-shadow-focus); }
+.card[data-disabled] { --_cf: var(--component-radio-unchecked-container-fill-disabled); --_cb: var(--component-radio-unchecked-container-border-disabled); box-shadow: none; }
+.card[data-checked][data-disabled] { --_cf: var(--component-radio-unchecked-container-fill-disabled); --_cb: var(--component-radio-unchecked-container-border-disabled); }
+/* The card carries the focus ring, so the box does not repeat it. */
+.card:has(.input:focus-visible) .box, .card[data-state='focus'] .box { box-shadow: none; }
+
+.error {
+  display: flex; align-items: center; gap: var(--component-radio-all-container-gap);
+  margin: 0;
+  font: var(--component-radio-all-error-typography-font);
+  color: var(--component-radio-all-error-color-default);
+}
+
+/* ---- Group ---- */
+.group { margin: 0; padding: 0; border: 0; min-inline-size: 0; display: flex; flex-direction: column; gap: var(--component-radio-all-group-gapVertical); }
+.legend { padding: 0; font: var(--component-radio-all-legend-typography-font); color: var(--component-radio-all-label-color-default); }
+.groupDescription { margin: 0; font: var(--component-radio-all-description-typography-font); color: var(--component-radio-all-description-color-default); }
+.items { display: flex; flex-direction: column; gap: var(--component-radio-all-group-gapVertical); }
+.group[data-orientation='horizontal'] .items { flex-direction: row; flex-wrap: wrap; column-gap: var(--component-radio-all-group-gapHorizontal); }
+.group[data-variant='card'] .items { gap: var(--core-dimension-space-compact); }
+.group[disabled] .legend { color: var(--component-radio-all-label-color-disabled); }

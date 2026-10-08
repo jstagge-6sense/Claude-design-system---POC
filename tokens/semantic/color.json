@@ -1,0 +1,429 @@
+{
+  "core": {
+    "color": {
+      "surface": {
+        "page": {
+          "$type": "color",
+          "$value": "{core.gradient.sage200To300}",
+          "$description": "Site background."
+        },
+        "card": {
+          "$type": "color",
+          "$value": "{core.gradient.sage100To200}",
+          "$description": "Card container background."
+        },
+        "overlay": {
+          "$type": "color",
+          "$value": "{core.color.sage.100}",
+          "$description": "Background for Drawer, side panel, and Modal."
+        },
+        "scrim": {
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.48",
+                "space": "srgb"
+              }
+            }
+          },
+          "$type": "color",
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.400})",
+          "$description": "Backdrop behind Modal, Dialog, and full-section Loading overlays. Blocks and dims background interaction. Carries its documented opacity: Ink 900 at 32%."
+        },
+        "group": {
+          "$type": "color",
+          "$value": "{core.color.sage.200}",
+          "$description": "Background for Tab container and Pagination."
+        },
+        "chip": {
+          "$type": "color",
+          "$value": "{core.color.sage.400}",
+          "$description": "Background for Chip."
+        },
+        "control": {
+          "default": {
+            "$type": "color",
+            "$value": "{core.color.white}",
+            "$description": "Background for input fields, checkboxes, and radio buttons. Unchanged on hover and pressed."
+          },
+          "disabled": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.08",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+            "$description": "Background for disabled form controls. Carries its documented opacity: Ink 900 at 8%."
+          },
+          "readOnly": {
+            "$type": "color",
+            "$value": "{core.color.sage.200}",
+            "$description": "Background for read-only form controls."
+          }
+        },
+        "badge": {
+          "critical": {
+            "$type": "color",
+            "$value": "{core.color.red.500}",
+            "$description": "Solid fill for the critical badge."
+          },
+          "warning": {
+            "$type": "color",
+            "$value": "{core.color.amber.600}",
+            "$description": "Solid fill for the warning badge."
+          },
+          "success": {
+            "$type": "color",
+            "$value": "{core.color.green.600}",
+            "$description": "Solid fill for the success badge."
+          }
+        }
+      },
+      "content": {
+        "primary": {
+          "$type": "color",
+          "$value": "{core.color.ink.900}",
+          "$description": "High-contrast text and icons."
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{core.color.ink.800}",
+          "$description": "Lower-contrast text and icons for secondary information."
+        },
+        "placeholder": {
+          "$type": "color",
+          "$value": "{core.color.ink.700}",
+          "$description": "Placeholder text."
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{core.color.ink.600}",
+          "$description": "De-emphasized text and icons when disabled."
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "{core.color.sage.200}",
+          "$description": "Text and icons on dark fills."
+        },
+        "link": {
+          "default": {
+            "$type": "color",
+            "$value": "{core.color.blue.600}",
+            "$description": "Link text color, default state."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{core.color.blue.700}",
+            "$description": "Link text color, hover state."
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{core.color.blue.500}",
+            "$description": "Link text color, previously visited."
+          }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{core.color.teal.900}",
+          "$description": "Brand-colored text and icons on light fills, for example Secondary and Tertiary button labels (visual-design-decisions 4.3, 4.4)."
+        }
+      },
+      "status": {
+        "success": {
+          "$type": "color",
+          "$value": "{core.color.green.600}",
+          "$description": "Text and icon color for success states."
+        },
+        "info": {
+          "$type": "color",
+          "$value": "{core.color.ink.800}",
+          "$description": "Text and icon color for info states. Neutral, not a saturated hue."
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "{core.color.amber.600}",
+          "$description": "Text and icon color for warning states."
+        },
+        "critical": {
+          "$type": "color",
+          "$value": "{core.color.red.500}",
+          "$description": "Text and icon color for critical states."
+        }
+      },
+      "border": {
+        "subtle": {
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.08",
+                "space": "srgb"
+              }
+            }
+          },
+          "$type": "color",
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+          "$description": "Softest border weight. Button Primary/Tertiary, Navigation hover/pressed. Carries its documented opacity: Ink 900 at 8%."
+        },
+        "standard": {
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.16",
+                "space": "srgb"
+              }
+            }
+          },
+          "$type": "color",
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.200})",
+          "$description": "Standard border weight. Button Secondary, dividers, table row divider, suggested prompts. Carries its documented opacity: Ink 900 at 16%."
+        },
+        "disabled": {
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.16",
+                "space": "srgb"
+              }
+            }
+          },
+          "$type": "color",
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.200})",
+          "$description": "Border for disabled components. Carries its documented opacity: Ink 900 at 16%."
+        },
+        "strong": {
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.64",
+                "space": "srgb"
+              }
+            }
+          },
+          "$type": "color",
+          "$value": "rgba({core.color.ink.900},{core.effect.opacity.300})",
+          "$description": "Strongest border weight. Used where a real, checkable boundary is needed, e.g. neutral badge. Carries its documented opacity: Ink 900 at 24%."
+        },
+        "control": {
+          "default": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.64",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "rgba({core.color.ink.900},{core.effect.opacity.600})",
+            "$description": "Border for form controls (inputs). Carries its documented opacity: Ink 900 at 64%."
+          }
+        },
+        "highlight": {
+          "$type": "color",
+          "$value": "{core.color.white}",
+          "$description": "Bright edge treatment for floating surfaces — Card, Modal."
+        },
+        "group": {
+          "$type": "color",
+          "$value": "{core.gradient.whiteSage600White}",
+          "$description": "Shared border treatment for Tab container and Pagination."
+        },
+        "destructive": {
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "alpha",
+                "value": "0.08",
+                "space": "srgb"
+              }
+            }
+          },
+          "$type": "color",
+          "$value": "{core.color.red.900}",
+          "$description": "Border for the Destructive button."
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{core.color.blue.600}",
+          "$description": "Universal focus ring/outline color."
+        }
+      },
+      "action": {
+        "primary": {
+          "default": {
+            "$type": "color",
+            "$value": "{core.color.teal.700}",
+            "$description": "Primary button fill, default state."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{core.color.teal.900}",
+            "$description": "Primary button fill, hover state."
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{core.color.teal.700}",
+            "$description": "Primary button fill, pressed state."
+          }
+        },
+        "disabled": {
+          "fill": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.08",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{core.color.ink.900}",
+            "$description": "Fill for disabled interactive elements."
+          },
+          "border": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.16",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{core.color.ink.900}",
+            "$description": "Border for disabled interactive elements."
+          }
+        },
+        "secondary": {
+          "default": {
+            "$type": "color",
+            "$value": "{core.color.sage.400}",
+            "$description": "Secondary button fill, default state."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{core.color.sage.400}",
+            "$description": "Secondary button fill, hover state — base only; tint layered on top, see action.tint.hover."
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{core.color.sage.400}",
+            "$description": "Secondary button fill, pressed state."
+          }
+        },
+        "tertiary": {
+          "default": {
+            "$type": "color",
+            "$value": "{core.color.sage.200}",
+            "$description": "Tertiary button fill, default state."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{core.color.sage.200}",
+            "$description": "Tertiary button fill, hover state — base only; tint layered on top, see action.tint.hover."
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{core.color.sage.200}",
+            "$description": "Tertiary button fill, pressed state."
+          }
+        },
+        "tint": {
+          "hover": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.16",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{core.color.teal.100}",
+            "$description": "Hover fill tint layered on top of Secondary and Tertiary's base fill."
+          }
+        },
+        "selected": {
+          "$type": "color",
+          "$value": "{core.gradient.sage500To400}",
+          "$description": "Fill for the selected state — Navigation item, Tab pill."
+        },
+        "compact": {
+          "default": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.04",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{core.color.ink.900}",
+            "$description": "Fill for small/inline interactive icon elements — Navigation item, Pagination arrow, inline icon actions."
+          },
+          "hover": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.08",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+            "$description": "Hover fill for the same compact interactive elements. Carries its documented opacity: Ink 900 at 8%."
+          },
+          "pressed": {
+            "$extensions": {
+              "studio.tokens": {
+                "modify": {
+                  "type": "alpha",
+                  "value": "0.04",
+                  "space": "srgb"
+                }
+              }
+            },
+            "$type": "color",
+            "$value": "{core.color.ink.900}",
+            "$description": "Pressed fill for the same compact interactive elements."
+          }
+        },
+        "destructive": {
+          "default": {
+            "$type": "color",
+            "$value": "{core.color.red.600}",
+            "$description": "Destructive button fill, default state."
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{core.color.red.900}",
+            "$description": "Destructive button fill, hover state."
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{core.color.red.600}",
+            "$description": "Destructive button fill, pressed state."
+          }
+        }
+      }
+    }
+  }
+}

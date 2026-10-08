@@ -1,0 +1,42 @@
+{
+  "component": {
+    "link": {
+      "all": {
+        "label": {
+          "typographyInline": {
+            "$type": "typography",
+            "$value": "{core.typography.link.1}",
+            "$description": "Inline link inside running text (narrative content)."
+          },
+          "typographyStandalone": {
+            "$type": "typography",
+            "$value": "{core.typography.link.2}",
+            "$description": "Standalone and contextual UI link."
+          }
+        }
+      },
+      "default": {
+        "container": {
+          "fill": {
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.content.link.default},{core.effect.opacity.100})",
+              "$description": "Link blue at 8%. Proposal: no documented pressed tint for links."
+            }
+          }
+        }
+      },
+      "destructive": {
+        "container": {
+          "fill": {
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.destructive.default},{core.effect.opacity.100})",
+              "$description": "Red 600 at 8%. Proposal."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "component": {
+    "textArea": {
+      "all": {
+        "actions": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "resizeHandle": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

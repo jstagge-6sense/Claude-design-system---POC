@@ -1,0 +1,36 @@
+{
+  "component": {
+    "tabs": {
+      "all": {
+        "tab": {
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          },
+          "typographyMedium": {
+            "$type": "typography",
+            "$value": "{core.typography.nav.primary}"
+          },
+          "typographyCompact": {
+            "$type": "typography",
+            "$value": "{core.typography.nav.secondary}"
+          }
+        },
+        "badge": {
+          "fill": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})"
+            }
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.footer.1}"
+          }
+        }
+      }
+    }
+  }
+}

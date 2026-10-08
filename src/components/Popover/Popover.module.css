@@ -1,0 +1,87 @@
+/* Popover (tooltip and rich popover). Tokens: component.popover.* (tokens/component/popover.json). No raw colors or primitives. */
+.root { position: relative; display: inline-flex; max-inline-size: 100%; }
+
+/* The positioned wrapper. Its padding on the trigger side is the gap, so the arrow sits inside it. */
+.positioner {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: max-content;
+  max-inline-size: min(22rem, 100vw);
+  box-sizing: border-box;
+  z-index: var(--ds-z-menu);
+}
+.positioner[data-mode='simple'] { z-index: var(--ds-z-tooltip); pointer-events: auto; }
+.positioner:not([data-ready]) { visibility: hidden; }
+.positioner[data-side='top'] { padding-block-end: var(--core-dimension-space-compact); }
+.positioner[data-side='bottom'] { padding-block-start: var(--core-dimension-space-compact); }
+.positioner[data-side='start'] { padding-inline-end: var(--core-dimension-space-compact); }
+.positioner[data-side='end'] { padding-inline-start: var(--core-dimension-space-compact); }
+
+.surface {
+  --_fill: var(--core-color-surface-overlay);
+  --_border: var(--core-color-border-standard);
+  --_radius: var(--core-dimension-radius-surface-medium);
+  --_shadow: var(--component-popover-rich-container-shadow-default);
+  --_arrow: var(--component-popover-all-arrow-size);
+  --_edge: calc(var(--_radius) + var(--_arrow));
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--core-dimension-space-compact);
+  padding: var(--core-dimension-space-standard);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_border);
+  border-radius: var(--_radius);
+  background: var(--_fill);
+  box-shadow: var(--_shadow);
+  color: var(--core-color-content-secondary);
+  font: var(--component-popover-rich-body-typography-font);
+  overflow-wrap: anywhere;
+}
+.surface[data-mode='simple'] {
+  --_fill: var(--core-color-content-primary);
+  --_border: var(--core-color-content-primary);
+  --_radius: var(--core-dimension-radius-control-small);
+  --_shadow: var(--component-popover-simple-container-shadow-default);
+  padding-block: var(--core-dimension-space-tight);
+  padding-inline: var(--core-dimension-space-compact);
+  color: var(--core-color-content-inverse);
+  font: var(--component-popover-rich-body-typography-font);
+}
+.surface:focus-visible { outline: none; box-shadow: var(--component-popover-all-container-shadow-focus), var(--_shadow); }
+
+.label { display: block; }
+.header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--core-dimension-space-compact); }
+.title { flex: 1 1 auto; min-inline-size: 0; color: var(--core-color-content-primary); font: var(--component-popover-rich-title-typography-font); }
+.body { color: var(--core-color-content-secondary); font: var(--component-popover-rich-body-typography-font); }
+
+/* ---- Arrow: a rotated square. Logical borders on the two outward edges; RTL rotates the other way so they stay on the same edges. ---- */
+.arrow {
+  position: absolute;
+  box-sizing: border-box;
+  inline-size: var(--_arrow);
+  block-size: var(--_arrow);
+  background: var(--_fill);
+  border: 0 solid var(--_border);
+  border-width: 0;
+  transform: rotate(45deg);
+}
+.arrow:dir(rtl) { transform: rotate(-45deg); }
+.positioner[data-side='top'] .arrow, .positioner[data-side='bottom'] .arrow {
+  inset-inline-start: clamp(var(--_edge), var(--_arrow-offset), calc(100% - var(--_edge)));
+  margin-inline-start: calc(var(--_arrow) / -2);
+}
+.positioner[data-side='start'] .arrow, .positioner[data-side='end'] .arrow {
+  inset-block-start: clamp(var(--_edge), var(--_arrow-offset), calc(100% - var(--_edge)));
+  margin-block-start: calc(var(--_arrow) / -2);
+}
+.positioner[data-side='top'] .arrow { inset-block-end: calc(var(--_arrow) / -2 - var(--core-dimension-borderWidth-thin)); border-block-end-width: var(--core-dimension-borderWidth-thin); border-inline-end-width: var(--core-dimension-borderWidth-thin); }
+.positioner[data-side='bottom'] .arrow { inset-block-start: calc(var(--_arrow) / -2 - var(--core-dimension-borderWidth-thin)); border-block-start-width: var(--core-dimension-borderWidth-thin); border-inline-start-width: var(--core-dimension-borderWidth-thin); }
+.positioner[data-side='start'] .arrow { inset-inline-end: calc(var(--_arrow) / -2 - var(--core-dimension-borderWidth-thin)); border-block-start-width: var(--core-dimension-borderWidth-thin); border-inline-end-width: var(--core-dimension-borderWidth-thin); }
+.positioner[data-side='end'] .arrow { inset-inline-start: calc(var(--_arrow) / -2 - var(--core-dimension-borderWidth-thin)); border-block-end-width: var(--core-dimension-borderWidth-thin); border-inline-start-width: var(--core-dimension-borderWidth-thin); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .positioner[data-ready] .surface { animation: ds-popover-in var(--ds-motion-fast) var(--ds-ease); }
+}
+@keyframes ds-popover-in { from { opacity: 0; } to { opacity: 1; } }

@@ -1,0 +1,85 @@
+{
+  "component": {
+    "banner": {
+      "all": {
+        "container": {
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}",
+              "$description": "Critical banners receive programmatic focus."
+            }
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      },
+      "info": {
+        "container": {
+          "fillTint": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.info},{core.effect.opacity.100})",
+            "$description": "Status info at 8%, layered over fillBase. Proposal: tinted status surfaces are not documented."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.info},{core.effect.opacity.500})",
+            "$description": "Status info at 48%. Proposal."
+          }
+        }
+      },
+      "success": {
+        "container": {
+          "fillTint": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.success},{core.effect.opacity.100})",
+            "$description": "Status success at 8%, layered over fillBase. Proposal: tinted status surfaces are not documented."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.success},{core.effect.opacity.500})",
+            "$description": "Status success at 48%. Proposal."
+          }
+        }
+      },
+      "warning": {
+        "container": {
+          "fillTint": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.warning},{core.effect.opacity.100})",
+            "$description": "Status warning at 8%, layered over fillBase. Proposal: tinted status surfaces are not documented."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.warning},{core.effect.opacity.500})",
+            "$description": "Status warning at 48%. Proposal."
+          }
+        }
+      },
+      "error": {
+        "container": {
+          "fillTint": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.critical},{core.effect.opacity.100})",
+            "$description": "Status critical at 8%, layered over fillBase. Proposal: tinted status surfaces are not documented."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.critical},{core.effect.opacity.500})",
+            "$description": "Status critical at 48%. Proposal."
+          }
+        }
+      }
+    }
+  }
+}

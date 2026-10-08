@@ -1,0 +1,51 @@
+{
+  "component": {
+    "chip": {
+      "all": {
+        "container": {
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          },
+          "fill": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "fillTint": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.200})",
+              "$description": "Teal 100 at 16%, layered over the chip fill on hover."
+            }
+          },
+          "border": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.200})"
+            }
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          }
+        },
+        "dismiss": {
+          "fill": {
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Proposal, no documented pressed value for this part."
+            }
+          }
+        }
+      }
+    }
+  }
+}

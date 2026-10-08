@@ -1,0 +1,23 @@
+{
+  "component": {
+    "spinner": {
+      "all": {
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      },
+      "onColor": {
+        "track": {
+          "color": {
+            "$type": "color",
+            "$value": "rgba({core.color.content.inverse},{core.effect.opacity.400})",
+            "$description": "content.inverse at 32%. Track for spinners on filled surfaces such as primary and destructive buttons."
+          }
+        }
+      }
+    }
+  }
+}

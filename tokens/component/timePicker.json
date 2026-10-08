@@ -1,0 +1,44 @@
+{
+  "component": {
+    "timePicker": {
+      "all": {
+        "panel": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Elevation 300 for a menu-level surface (visual-design-decisions 5.6)."
+            }
+          }
+        },
+        "group": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        },
+        "option": {
+          "fill": {
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Proposal: the documented compact pressed value (4%) is too faint to read as feedback."
+            }
+          }
+        },
+        "segment": {
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.1}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+/* Divider. Tokens: component.divider.*. Static: no interactive states. */
+.root {
+  --_line: var(--core-color-border-standard);
+  --_thick: var(--core-dimension-borderWidth-thin);
+  box-sizing: border-box;
+  flex: none;
+}
+
+.root[data-orientation='horizontal'] { inline-size: 100%; block-size: var(--_thick); background: var(--_line); }
+.root[data-orientation='horizontal'][data-inset] { margin-inline-start: var(--core-dimension-space-standard); inline-size: auto; }
+
+/* Vertical: stretches to the height of a flex or grid row. */
+.root[data-orientation='vertical'] { align-self: stretch; inline-size: var(--_thick); min-block-size: 1em; background: var(--_line); }
+
+/* Labelled: line, text, line. */
+.root[data-labelled] { display: flex; align-items: center; gap: var(--core-dimension-space-standard); block-size: auto; background: none; }
+.root[data-labelled]::before, .root[data-labelled]::after { content: ''; flex: 1 1 0; block-size: var(--_thick); background: var(--_line); }
+.label { font: var(--component-divider-all-label-typography-font); color: var(--core-color-content-secondary); white-space: nowrap; }

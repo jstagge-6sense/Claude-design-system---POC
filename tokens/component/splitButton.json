@@ -1,0 +1,32 @@
+{
+  "component": {
+    "splitButton": {
+      "all": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}",
+            "$description": "Outer corners only. The inner corners are square."
+          }
+        },
+        "divider": {
+          "width": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.thin}"
+          }
+        }
+      },
+      "primary": {
+        "divider": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.content.inverse},{core.effect.opacity.400})",
+              "$description": "Sage 200 at 32%, visible on the Teal 700 fill."
+            }
+          }
+        }
+      }
+    }
+  }
+}

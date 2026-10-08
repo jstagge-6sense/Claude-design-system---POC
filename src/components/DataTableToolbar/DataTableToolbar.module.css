@@ -1,0 +1,62 @@
+/* DataTableToolbar. Tokens: component.dataTableToolbar.* (aliases component.table.* for the shared surface). */
+.root {
+  display: grid;
+  gap: var(--core-dimension-space-compact);
+  padding-block: var(--core-dimension-space-compact);
+  padding-inline: var(--core-dimension-space-comfortable);
+  background: var(--component-dataTableToolbar-all-container-fill);
+  box-sizing: border-box;
+  min-inline-size: 0;
+}
+.root[data-sticky] { position: sticky; inset-block-start: -1px; z-index: var(--ds-z-sticky); }
+.root[data-stuck] {
+  box-shadow: var(--component-table-all-sticky-shadow-stuck);
+  border-block-end: var(--component-dataTableToolbar-all-container-borderWidth) solid var(--component-table-all-sticky-border-stuck);
+}
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--core-dimension-space-compact); }
+.search { flex: 1 1 14rem; max-inline-size: 24rem; min-inline-size: 0; }
+.group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--core-dimension-space-compact); }
+.density { display: inline-flex; gap: var(--core-dimension-space-tight); }
+.count { margin-inline-start: var(--core-dimension-space-tight); }
+
+/* Bulk action bar: only rendered while rows are selected. */
+.bulk {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--core-dimension-space-comfortable);
+  padding-block: var(--core-dimension-space-compact);
+  padding-inline: var(--core-dimension-space-comfortable);
+  border-radius: var(--core-dimension-radius-control-medium);
+  background: var(--core-color-action-selected);
+  color: var(--core-color-content-primary);
+  font: var(--component-dataTableToolbar-all-bulkBar-typography-font);
+  text-decoration: var(--component-dataTableToolbar-all-bulkBar-typography-text-decoration);
+}
+.bulkCount { white-space: nowrap; }
+.bulkActions { display: flex; flex-wrap: wrap; gap: var(--core-dimension-space-compact); margin-inline-end: auto; }
+
+/* Column panel. Renders in place under its button. */
+.panelWrap { position: relative; }
+.panel {
+  position: absolute;
+  inset-block-start: calc(100% + var(--core-dimension-space-tight));
+  inset-inline-start: 0;
+  z-index: var(--ds-z-menu);
+  display: grid;
+  gap: var(--core-dimension-space-tight);
+  min-inline-size: 16rem;
+  max-block-size: 24rem;
+  overflow: auto;
+  padding: var(--core-dimension-space-standard);
+  box-sizing: border-box;
+  border: var(--component-dataTableToolbar-all-container-borderWidth) solid var(--component-dataTableToolbar-all-panel-border);
+  border-radius: var(--core-dimension-radius-surface-medium);
+  background: var(--core-color-surface-overlay);
+  box-shadow: var(--component-dataTableToolbar-all-panel-shadow);
+}
+.panelTitle { margin: 0; font: var(--component-dataTableToolbar-all-bulkBar-typography-font); text-decoration: var(--component-dataTableToolbar-all-bulkBar-typography-text-decoration); color: var(--core-color-content-primary); }
+.columnList { display: grid; margin: 0; padding: 0; list-style: none; }
+.columnItem { display: flex; align-items: center; justify-content: space-between; gap: var(--core-dimension-space-compact); border-block-end: var(--component-dataTableToolbar-all-container-borderWidth) solid var(--component-dataTableToolbar-all-panel-divider); }
+.columnItem:last-child { border-block-end: 0; }
+.move { display: inline-flex; flex: none; gap: var(--core-dimension-space-tight); }
