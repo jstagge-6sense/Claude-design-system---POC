@@ -29,9 +29,10 @@
 .track { stroke: var(--component-progressCircle-all-track-color); }
 .arc { stroke: var(--_fill); stroke-linecap: butt; }
 
-/* Smooth sweep normally; four discrete steps under reduced motion. */
-@media (prefers-reduced-motion: no-preference) { .arc { transition: stroke-dasharray var(--ds-motion-slow) var(--ds-ease); } }
-@media (prefers-reduced-motion: reduce) { .arc { transition: stroke-dasharray var(--ds-motion-base) steps(4, end); } }
+/* Motion: tokens core.motion.progress.*. The arc sweeps in from empty on mount and eases to each new value; the number counts up in step.
+   Reduced motion zeroes the duration at the token level. */
+.arc { animation: arcIn var(--core-motion-progress-duration) var(--core-motion-progress-easing) both; transition: stroke-dasharray var(--core-motion-progress-duration) var(--core-motion-progress-easing); }
+@keyframes arcIn { from { stroke-dasharray: 0 100; } }
 
 .center { position: relative; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
 .center > svg { inline-size: var(--component-progressCircle-all-icon-size); block-size: var(--component-progressCircle-all-icon-size); color: var(--_fill); }

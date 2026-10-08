@@ -32,7 +32,13 @@
 .slot:has(+ *) { padding-block-end: 0; }
 .footer { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); padding-block-start: var(--core-dimension-space-compact); }
 
-@media (prefers-reduced-motion: no-preference) {
-  .positioner[data-ready] .panel { animation: ds-menu-in var(--ds-motion-fast) var(--ds-ease); }
-}
-@keyframes ds-menu-in { from { opacity: 0; } to { opacity: 1; } }
+/* Motion: tokens core.motion.popup.*. The panel fades in while travelling the offset away from its anchor.
+   Reduced motion zeroes the duration and offset at the token level (src/styles/foundation.css). */
+.positioner { --_sx: calc(0 * var(--core-motion-popup-offset)); --_dy: var(--_sx); --_dir: 1; }
+.positioner:dir(rtl) { --_dir: -1; }
+.positioner[data-side='bottom'] { --_dy: calc(-1 * var(--core-motion-popup-offset)); }
+.positioner[data-side='top'] { --_dy: var(--core-motion-popup-offset); }
+.positioner[data-side='end'] { --_sx: calc(-1 * var(--core-motion-popup-offset)); }
+.positioner[data-side='start'] { --_sx: var(--core-motion-popup-offset); }
+.positioner[data-ready] .panel { animation: ds-menu-in var(--core-motion-popup-enter-duration) var(--core-motion-popup-enter-easing) both; }
+@keyframes ds-menu-in { from { opacity: 0; transform: translate(calc(var(--_dir) * var(--_sx)), var(--_dy)); } to { opacity: 1; transform: none; } }

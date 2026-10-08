@@ -1,6 +1,7 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react'
 import { cx } from '../../primitives/cx'
 import { Icon } from '../../icons'
+import { useCountUp } from '../../primitives/useCountUp'
 import type { ProgressState } from '../ProgressBar'
 import styles from './ProgressCircle.module.css'
 
@@ -29,7 +30,8 @@ export const ProgressCircle = forwardRef<HTMLDivElement, ProgressCircleProps>(fu
 ) {
   const pct = Math.round(clamp(value))
   const resolved: ProgressState = state ?? (pct === 100 ? 'complete' : 'default')
-  const center = centerLabel ?? (resolved === 'complete' ? <Icon name="check" /> : resolved === 'error' ? <Icon name="error" /> : `${pct}%`)
+  const counted = useCountUp(pct)
+  const center = centerLabel ?? (resolved === 'complete' ? <Icon name="check" /> : resolved === 'error' ? <Icon name="error" /> : `${counted}%`)
   return (
     <div
       ref={ref}

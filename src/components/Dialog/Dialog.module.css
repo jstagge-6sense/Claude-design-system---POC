@@ -95,14 +95,12 @@
   .footer { flex-direction: column-reverse; align-items: stretch; }
 }
 
-/* Motion: fade and scale in. Instant under reduced motion. */
-@media (prefers-reduced-motion: no-preference) {
-  .scrim { animation: scrimIn var(--ds-motion-base) var(--ds-ease) both; }
-  .surface { animation: surfaceIn var(--ds-motion-base) var(--ds-ease) both; }
-  .root[data-phase='closing'] .scrim { animation: scrimOut var(--ds-motion-base) var(--ds-ease) both; }
-  .root[data-phase='closing'] .surface { animation: surfaceOut var(--ds-motion-base) var(--ds-ease) both; }
-}
+/* Motion: tokens core.motion.modal.*. Fades and grows in, then leaves faster. Reduced motion zeroes the durations at the token level. */
+.scrim { animation: scrimIn var(--core-motion-modal-enter-duration) var(--core-motion-modal-enter-easing) both; }
+.surface { animation: surfaceIn var(--core-motion-modal-enter-duration) var(--core-motion-modal-enter-easing) both; }
+.root[data-phase='closing'] .scrim { animation: scrimOut var(--core-motion-modal-exit-duration) var(--core-motion-modal-exit-easing) both; }
+.root[data-phase='closing'] .surface { animation: surfaceOut var(--core-motion-modal-exit-duration) var(--core-motion-modal-exit-easing) both; }
 @keyframes scrimIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes scrimOut { from { opacity: 1; } to { opacity: 0; } }
-@keyframes surfaceIn { from { opacity: 0; transform: translateY(var(--core-dimension-space-compact)) scale(0.98); } to { opacity: 1; transform: none; } }
-@keyframes surfaceOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(var(--core-dimension-space-compact)) scale(0.98); } }
+@keyframes surfaceIn { from { opacity: 0; transform: translateY(var(--core-dimension-space-compact)) scale(var(--core-motion-modal-scale)); } to { opacity: 1; transform: none; } }
+@keyframes surfaceOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(var(--core-dimension-space-compact)) scale(var(--core-motion-modal-scale)); } }

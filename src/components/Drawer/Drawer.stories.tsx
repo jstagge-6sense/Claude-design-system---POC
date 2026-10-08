@@ -87,6 +87,19 @@ export const Loading: Story = {
   ),
 }
 
+export const Push: Story = {
+  render: (args) => (
+    <Frame height={460}>
+      <div style={{ display: 'flex', blockSize: '100%' }}>
+        <div style={{ flex: '1 1 0', minInlineSize: 0, overflow: 'auto' }}><SamplePage /></div>
+        <Drawer {...args} behavior="push" {...INLINE} size="small" title="Segment details" primaryAction={<Button>Save changes</Button>} secondaryAction={<Button priority="secondary">Cancel</Button>}>
+          <Details />
+        </Drawer>
+      </div>
+    </Frame>
+  ),
+}
+
 export const NonModal: Story = {
   name: 'Not modal (page stays interactive)',
   render: (args) => (

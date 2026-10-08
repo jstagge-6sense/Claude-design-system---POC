@@ -81,7 +81,9 @@ const state = JSON.parse(readFileSync(join(root, 'design-system-state.json'), 'u
 execFileSync('node', ['scripts/lean-tokens.mjs', '.'], { stdio: 'inherit' })
 const passMap = JSON.parse(readFileSync(join(root, 'dist/lean/passthrough.json'), 'utf8'))
 const lean = Object.entries(tokens).filter(([, t]) => passMap[t.cssVar]).map(([n]) => n)
-const data = { tokens, gaps, state, lean, builtAt: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZoneName: 'short' }).format(new Date()).replace(',', '') }
+import { buildAnalytics } from './lib/analytics.mjs'
+const analytics = buildAnalytics(root, { tokens, gaps, state, modes: JSON.parse(readFileSync(join(root, 'dist/modes.json'), 'utf8')) })
+const data = { tokens, gaps, state, lean, analytics, builtAt: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZoneName: 'short' }).format(new Date()).replace(',', '') }
 const miniReact = readFileSync(join(root, 'src/preview/mini-react.js'), 'utf8')
 const safe = (s) => s.replace(/<\/(script)/gi, '<\\/$1').replace(/<!--/g, '<\\!--')
 const html = `<!doctype html>
@@ -99,6 +101,23 @@ const html = `<!doctype html>
 <script id="ds-data" type="application/json">${safe(JSON.stringify(data))}</script>
 <pre id="boot-error" hidden style="white-space:pre-wrap;padding:16px;color:#b00020;font:12px monospace"></pre>
 <script>window.addEventListener('error',function(e){var el=document.getElementById('boot-error');if(el){el.hidden=false;el.textContent+=(e.message||e.error)+'\\n'}})</script>
+<script>
+// Highcharts 12.2.0 and the modules the DBA charts need. Tries jsDelivr, then unpkg, then code.highcharts.com, in order,
+// so one blocked CDN does not lose the charts. Pages under "Data visualization" wait for window.Highcharts.
+(function () {
+  var B = ['https://cdn.jsdelivr.net/npm/highcharts@12.2.0/', 'https://unpkg.com/highcharts@12.2.0/', 'https://code.highcharts.com/12.2.0/'];
+  var F = ['highcharts.js', 'modules/accessibility.js', 'modules/funnel.js', 'modules/pareto.js', 'modules/pattern-fill.js'];
+  function load(b, i) {
+    if (i >= F.length) return;
+    var s = document.createElement('script');
+    s.src = B[b] + F[i];
+    s.onload = function () { load(b, i + 1); };
+    s.onerror = function () { if (b + 1 < B.length) { window.Highcharts = undefined; load(b + 1, 0); } };
+    document.head.appendChild(s);
+  }
+  load(0, 0);
+})();
+</script>
 ${realReact
   ? '<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>\n<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>'
   : `<script>${safe(miniReact)}</script>`}

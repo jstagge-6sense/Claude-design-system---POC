@@ -8,11 +8,6 @@
             "$value": "{core.color.surface.overlay}",
             "$description": "Same overlay surface as Dialog."
           },
-          "radius": {
-            "$type": "borderRadius",
-            "$value": "{core.dimension.radius.surface.medium}",
-            "$description": "Applied to the corners that face the page only."
-          },
           "borderWidth": {
             "$type": "borderWidth",
             "$value": "{core.dimension.borderWidth.thin}"

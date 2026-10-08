@@ -188,7 +188,9 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(func
       </Heading>
       <div id={panelId} role="region" aria-labelledby={triggerId} aria-busy={loading || undefined} className={styles.panel} hidden={!open}>
         <div className={styles.panelInner}>
-          {loading ? <SkeletonLoader variant="text" lines={3} label={`Loading ${plain}`} /> : children}
+          <div className={styles.panelContent}>
+            {loading ? <SkeletonLoader variant="text" lines={3} label={`Loading ${plain}`} /> : children}
+          </div>
         </div>
       </div>
     </div>

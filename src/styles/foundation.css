@@ -15,10 +15,21 @@
   --ds-hit-min: 2.75rem;
   --ds-hit-touch: 3rem;
   /* Motion. Wrap in prefers-reduced-motion: no-preference. */
-  --ds-motion-fast: 120ms;
-  --ds-motion-base: 200ms;
-  --ds-motion-slow: 320ms;
-  --ds-ease: cubic-bezier(0.2, 0, 0, 1);
+  --ds-motion-fast: var(--core-motion-duration-fast);
+  --ds-motion-base: var(--core-motion-duration-base);
+  --ds-motion-slow: var(--core-motion-duration-slow);
+  --ds-ease: var(--core-motion-easing-standard);
   /* Breakpoints for reference (custom properties cannot be used inside @media):
      mobile < 768, tablet 768-1023, desktop 1024-1439, wide >= 1440. */
+}
+
+/* Reduced motion: every duration collapses to 0, so any component using the motion tokens (or the --ds-motion-* aliases) stops animating. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --core-motion-duration-fast: 0ms;
+    --core-motion-duration-base: 0ms;
+    --core-motion-duration-slow: 0ms;
+    --core-motion-duration-slower: 0ms;
+    --core-motion-distance-short: 0rem;
+  }
 }

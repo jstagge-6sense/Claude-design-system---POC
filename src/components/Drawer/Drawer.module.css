@@ -33,16 +33,12 @@
 .root[data-side='end'] .surface {
   inset-inline-end: 0;
   border-inline-start-width: var(--component-drawer-all-container-borderWidth);
-  border-start-start-radius: var(--component-drawer-all-container-radius);
-  border-end-start-radius: var(--component-drawer-all-container-radius);
 }
 .root[data-side='start'] .surface {
   inset-inline-start: 0;
   inset-inline-end: auto;
   --_slide: -100%;
   border-inline-end-width: var(--component-drawer-all-container-borderWidth);
-  border-start-end-radius: var(--component-drawer-all-container-radius);
-  border-end-end-radius: var(--component-drawer-all-container-radius);
 }
 /* Slide direction flips with the reading direction. */
 .root:dir(rtl) .surface { --_slide: -100%; }
@@ -72,7 +68,7 @@
   overflow-wrap: anywhere;
 }
 .title:focus { outline: none; }
-.title:focus-visible { box-shadow: var(--core-effect-ring-focus); border-radius: var(--component-drawer-all-container-radius); }
+.title:focus-visible { box-shadow: var(--core-effect-ring-focus); }
 .headerActions { display: flex; align-items: center; gap: var(--component-drawer-all-header-gap); flex: none; }
 
 .body {
@@ -105,18 +101,43 @@
 
 /* Full-screen below 768px. */
 @container ds-drawer (max-width: 47.9375rem) {
-  .root[data-side] .surface[data-size] { inset-inline: 0; inline-size: 100%; min-inline-size: 0; max-inline-size: none; border-radius: 0; border-inline-width: 0; }
+  .root:not([data-push])[data-side] .surface[data-size] { inset-inline: 0; inline-size: 100%; min-inline-size: 0; max-inline-size: none; border-inline-width: 0; }
   .footer { flex-direction: column-reverse; align-items: stretch; }
   .tertiary { margin-inline-end: 0; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .scrim { animation: scrimIn var(--ds-motion-slow) var(--ds-ease) both; }
-  .surface { animation: slideIn var(--ds-motion-slow) var(--ds-ease) both; }
-  .root[data-phase='closing'] .scrim { animation: scrimOut var(--ds-motion-slow) var(--ds-ease) both; }
-  .root[data-phase='closing'] .surface { animation: slideOut var(--ds-motion-slow) var(--ds-ease) both; }
+/* Push: the drawer is a flex item that takes width from the content beside it. The root animates 0 -> full width and clips
+   the surface, which keeps its own width so the content inside never reflows mid-animation. */
+.root[data-push] {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  flex: none;
+  align-self: stretch;
+  container-type: normal;
+  min-inline-size: 0;
+  overflow: hidden;
+  pointer-events: auto;
+  inline-size: var(--_w);
 }
+.root[data-push]:has(.surface[data-size='small']) { --_w: 22rem; }
+.root[data-push]:has(.surface[data-size='medium']) { --_w: 28rem; }
+.root[data-push]:has(.surface[data-size='large']) { --_w: 40rem; }
+.root[data-push] .surface { inline-size: var(--_w); min-inline-size: 0; max-inline-size: none; animation: none; }
+.root[data-push][data-side='start'] .surface { inset-inline-start: 0; inset-inline-end: auto; }
+.root[data-push][data-side='end'] .surface { inset-inline-end: 0; inset-inline-start: auto; }
+
+/* Motion: tokens core.motion.panel.*. Enter decelerates over the slow duration; exit accelerates and is shorter.
+   Reduced motion zeroes the durations at the token level (src/styles/foundation.css). */
+.scrim { animation: scrimIn var(--core-motion-panel-enter-duration) var(--core-motion-panel-enter-easing) both; }
+.surface { animation: slideIn var(--core-motion-panel-enter-duration) var(--core-motion-panel-enter-easing) both; }
+.root[data-phase='closing'] .scrim { animation: scrimOut var(--core-motion-panel-exit-duration) var(--core-motion-panel-exit-easing) both; }
+.root[data-phase='closing'] .surface { animation: slideOut var(--core-motion-panel-exit-duration) var(--core-motion-panel-exit-easing) both; }
 @keyframes scrimIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes scrimOut { from { opacity: 1; } to { opacity: 0; } }
 @keyframes slideIn { from { transform: translateX(var(--_slide)); } to { transform: none; } }
 @keyframes slideOut { from { transform: none; } to { transform: translateX(var(--_slide)); } }
+.root[data-push] { animation: pushIn var(--core-motion-panel-enter-duration) var(--core-motion-panel-enter-easing) both; }
+.root[data-push][data-phase='closing'] { animation: pushOut var(--core-motion-panel-exit-duration) var(--core-motion-panel-exit-easing) both; }
+@keyframes pushIn { from { inline-size: 0; } }
+@keyframes pushOut { to { inline-size: 0; } }

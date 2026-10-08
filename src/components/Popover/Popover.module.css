@@ -81,7 +81,13 @@
 .positioner[data-side='start'] .arrow { inset-inline-end: calc(var(--_arrow) / -2 - var(--core-dimension-borderWidth-thin)); border-block-start-width: var(--core-dimension-borderWidth-thin); border-inline-end-width: var(--core-dimension-borderWidth-thin); }
 .positioner[data-side='end'] .arrow { inset-inline-start: calc(var(--_arrow) / -2 - var(--core-dimension-borderWidth-thin)); border-block-end-width: var(--core-dimension-borderWidth-thin); border-inline-start-width: var(--core-dimension-borderWidth-thin); }
 
-@media (prefers-reduced-motion: no-preference) {
-  .positioner[data-ready] .surface { animation: ds-popover-in var(--ds-motion-fast) var(--ds-ease); }
-}
-@keyframes ds-popover-in { from { opacity: 0; } to { opacity: 1; } }
+/* Motion: tokens core.motion.popup.*. Fades in while travelling the offset away from the trigger. Enter only.
+   Reduced motion zeroes the duration and offset at the token level (src/styles/foundation.css). */
+.positioner { --_sx: calc(0 * var(--core-motion-popup-offset)); --_dy: var(--_sx); --_dir: 1; }
+.positioner:dir(rtl) { --_dir: -1; }
+.positioner[data-side='bottom'] { --_dy: calc(-1 * var(--core-motion-popup-offset)); }
+.positioner[data-side='top'] { --_dy: var(--core-motion-popup-offset); }
+.positioner[data-side='end'] { --_sx: calc(-1 * var(--core-motion-popup-offset)); }
+.positioner[data-side='start'] { --_sx: var(--core-motion-popup-offset); }
+.positioner[data-ready] .surface { animation: ds-popover-in var(--core-motion-popup-enter-duration) var(--core-motion-popup-enter-easing) both; }
+@keyframes ds-popover-in { from { opacity: 0; transform: translate(calc(var(--_dir) * var(--_sx)), var(--_dy)); } to { opacity: 1; transform: none; } }

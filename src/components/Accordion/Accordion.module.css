@@ -59,9 +59,7 @@
   color: var(--_indicator);
 }
 .indicator > svg { inline-size: 100%; block-size: 100%; }
-@media (prefers-reduced-motion: no-preference) {
-  .indicator > svg { transition: transform var(--ds-motion-fast) var(--ds-ease); }
-}
+.indicator > svg { transition: transform var(--core-motion-feedback-duration) var(--core-motion-feedback-easing); }
 .item[data-open] .indicator > svg { transform: rotate(180deg); }
 
 /* States. Real pseudo-classes plus [data-state] twins for forced previews. */
@@ -70,10 +68,20 @@
 .item[data-disabled] .trigger { --_color: var(--core-color-content-disabled); --_indicator: var(--core-color-content-disabled); cursor: not-allowed; }
 .item[data-disabled] .description { color: var(--core-color-content-disabled); }
 
-.panel { font: var(--component-accordion-all-description-typography-font); color: var(--core-color-content-primary); }
-.panel[hidden] { display: none; }
-.panelInner { padding-block: var(--core-dimension-space-standard); padding-inline: var(--core-dimension-space-standard); }
-@media (prefers-reduced-motion: no-preference) {
-  .item[data-open] .panelInner { animation: reveal var(--ds-motion-base) var(--ds-ease); }
+/* Motion: tokens core.motion.expand.*. The panel stays in the DOM (hidden) and its row animates 0fr -> 1fr.
+   visibility keeps the collapsed content out of the tab order and the accessibility tree. Reduced motion zeroes the duration. */
+.panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  font: var(--component-accordion-all-description-typography-font);
+  color: var(--core-color-content-primary);
+  transition: grid-template-rows var(--core-motion-expand-duration) var(--core-motion-expand-easing), visibility 0s linear 0s;
 }
-@keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+.panel[hidden] {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows var(--core-motion-expand-duration) var(--core-motion-expand-easing), visibility 0s linear var(--core-motion-expand-duration);
+}
+.panelInner { min-block-size: 0; overflow: hidden; }
+.panelContent { padding-block: var(--core-dimension-space-standard); padding-inline: var(--core-dimension-space-standard); }

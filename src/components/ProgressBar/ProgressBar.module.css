@@ -42,14 +42,15 @@
 .track:not([data-steps]) > .fill { position: absolute; inset-block: 0; inset-inline-start: 0; }
 .segment > .fill { position: absolute; inset-block: 0; inset-inline-start: 0; }
 
-/* Smooth fill normally; stepped fill (4 discrete jumps) under reduced motion. Functional motion is reduced, not removed. */
-@media (prefers-reduced-motion: no-preference) { .fill { transition: inline-size var(--ds-motion-slow) var(--ds-ease); } }
-@media (prefers-reduced-motion: reduce) { .fill { transition: inline-size var(--ds-motion-base) steps(4, end); } }
+/* Motion: tokens core.motion.progress.*. The fill slides in from empty on mount and eases to each new value.
+   Reduced motion zeroes the duration at the token level, so the fill appears at its value. */
+.fill { animation: fillIn var(--core-motion-progress-duration) var(--core-motion-progress-easing) both; transition: inline-size var(--core-motion-progress-duration) var(--core-motion-progress-easing); }
+@keyframes fillIn { from { inline-size: 0; } }
 
 /* Indeterminate: a segment sweeps across. Reduced motion: a static partial fill, with the status text carrying the meaning. */
 .root[data-indeterminate] .fill { inline-size: 40%; }
 @media (prefers-reduced-motion: no-preference) {
-  .root[data-indeterminate] .fill { animation: sweep calc(var(--ds-motion-slow) * 5) var(--ds-ease) infinite; transition: none; }
+  .root[data-indeterminate] .fill { animation: sweep calc(var(--core-motion-progress-duration) * 5) var(--core-motion-progress-easing) infinite; transition: none; }
   [dir='rtl'] .root[data-indeterminate] .fill { animation-name: sweepRtl; }
 }
 @keyframes sweep { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
