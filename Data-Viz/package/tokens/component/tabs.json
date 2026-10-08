@@ -1,0 +1,225 @@
+{
+  "component": {
+    "tabs": {
+      "all": {
+        "tab": {
+          "heightMedium": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}"
+          },
+          "heightCompact": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.small}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "paddingInlineCompact": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          },
+          "typographyMedium": {
+            "$type": "typography",
+            "$value": "{core.typography.nav.primary}"
+          },
+          "typographyCompact": {
+            "$type": "typography",
+            "$value": "{core.typography.nav.secondary}"
+          },
+          "label": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.secondary}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{core.color.content.primary}"
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{core.color.content.primary}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{core.color.content.disabled}"
+              }
+            }
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          }
+        },
+        "indicator": {
+          "color": {
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            }
+          },
+          "thickness": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.200}",
+            "$description": "2px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-200"
+            }
+          }
+        },
+        "list": {
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Baseline under standard and compact tabs. Ink 900 at 16%."
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          }
+        },
+        "badge": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.chip}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})"
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.content.inverse}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.footer.1}"
+          },
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "24px. No semantic size. Minimum height and width of the count pill.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for a full radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          }
+        },
+        "panel": {
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "scroll": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between scroll buttons and the tab list."
+          }
+        }
+      },
+      "filled": {
+        "list": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.group}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.border.group}",
+              "$description": "Shared Tab and Pagination container border gradient. Used as a background image on the border box."
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          }
+        },
+        "tab": {
+          "fill": {
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}",
+              "$description": "Navigation Selected gradient (Sage 500 to Sage 400)."
+            }
+          }
+        }
+      }
+    }
+  }
+}

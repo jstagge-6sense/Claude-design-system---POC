@@ -1,0 +1,208 @@
+{
+  "component": {
+    "avatar": {
+      "all": {
+        "container": {
+          "sizeSmall": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "24px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          },
+          "sizeMedium": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.small}",
+            "$description": "32px."
+          },
+          "sizeLarge": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}",
+            "$description": "40px."
+          },
+          "sizeXl": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.1200}",
+            "$description": "48px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-1200"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for full radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.100}",
+            "$description": "1px stroke. No semantic border width exists.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-100"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$description": "Ink 900 at 64%. Interactive (dropdown trigger) only."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}",
+              "$description": "Interactive (dropdown trigger) only."
+            }
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "label": {
+          "typographySmall": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "typographyMedium": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "typographyLarge": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          },
+          "typographyXl": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.3}"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          }
+        },
+        "status": {
+          "sizeSmall": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "8px status dot for small and medium avatars.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          },
+          "sizeLarge": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.300}",
+            "$description": "12px status dot for large and xl avatars.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-300"
+            }
+          },
+          "ringWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.200}",
+            "$description": "2px ring that separates the dot from the avatar.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-200"
+            }
+          },
+          "ringColor": {
+            "$type": "color",
+            "$value": "{core.color.border.highlight}"
+          }
+        }
+      },
+      "initials": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.chip}"
+          }
+        },
+        "label": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        }
+      },
+      "placeholder": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.group}"
+          }
+        },
+        "icon": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          }
+        }
+      },
+      "image": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.group}",
+            "$description": "Shown behind the photo while it loads."
+          }
+        }
+      },
+      "online": {
+        "status": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.status.success}"
+          }
+        }
+      },
+      "busy": {
+        "status": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.status.critical}"
+          },
+          "mark": {
+            "$type": "color",
+            "$value": "{core.color.content.inverse}",
+            "$description": "Horizontal bar inside the busy dot so status is not color alone."
+          }
+        }
+      },
+      "away": {
+        "status": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.status.warning}"
+          }
+        }
+      },
+      "offline": {
+        "status": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.control.default}",
+            "$description": "Hollow dot: white fill with a visible ink border."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{core.color.content.placeholder}"
+          }
+        }
+      }
+    }
+  }
+}

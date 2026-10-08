@@ -1,0 +1,162 @@
+{
+  "component": {
+    "search": {
+      "global": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Global search is a pill. Contextual search keeps the input radius. Proposal to make the two visually distinct.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}",
+              "$description": "Global search sits slightly above the page (elevation ladder)."
+            }
+          }
+        }
+      },
+      "contextual": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{component.input.all.container.radius}"
+          }
+        }
+      },
+      "all": {
+        "scope": {
+          "divider": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+                "$description": "Ink 900 at 16%. Separates the scope slot from the query."
+              }
+            }
+          }
+        },
+        "results": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Results menu elevation."
+            }
+          },
+          "offset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Gap between field and results."
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          }
+        },
+        "option": {
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.input.all.text.typography}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          },
+          "descriptionColor": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.hover},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            },
+            "active": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.200})",
+              "$description": "Teal 100 at 16%. Keyboard-active option."
+            }
+          },
+          "indicator": {
+            "color": {
+              "active": {
+                "$type": "color",
+                "$value": "{core.color.action.primary.default}",
+                "$description": "Leading bar on the active option so it is not signalled by fill alone."
+              }
+            },
+            "width": {
+              "active": {
+                "$type": "borderWidth",
+                "$value": "{core.dimension.borderWidth.200}",
+                "$description": "2px bar.",
+                "$extensions": {
+                  "gap": "GAP-dimension-borderWidth-200"
+                }
+              }
+            }
+          }
+        },
+        "empty": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          }
+        }
+      }
+    }
+  }
+}

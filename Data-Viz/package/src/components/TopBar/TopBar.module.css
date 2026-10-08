@@ -1,0 +1,130 @@
+/* Top Bar. Tokens: component.topBar.* (tokens/component/topBar.json). No raw colors or primitives.
+   Responsive behavior uses container queries so it follows the bar's own width, not the window.
+   Breakpoint: mobile is below 768 (cross-cutting spec). It is a structural length, not a token. */
+.root {
+  container: topbar / inline-size;
+  position: relative;
+  box-sizing: border-box;
+  inline-size: 100%;
+  background: var(--component-topBar-all-container-fill-default);
+  border-block-end: var(--component-topBar-all-container-borderWidth) solid var(--component-topBar-all-container-border-default);
+}
+.root[data-sticky] { position: sticky; inset-block-start: 0; z-index: var(--ds-z-sticky); }
+.root[data-scrolled] { box-shadow: var(--component-topBar-all-container-shadow-scrolled); }
+@media (prefers-reduced-motion: no-preference) {
+  .root { transition: box-shadow var(--ds-motion-base) var(--ds-ease); }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--component-topBar-all-container-gap);
+  box-sizing: border-box;
+  min-block-size: var(--component-topBar-all-container-height);
+  padding-inline: var(--component-topBar-all-container-paddingInline);
+}
+.logo { display: flex; align-items: center; flex: none; }
+.spacer { flex: 1 1 auto; }
+
+/* ---- Skip link: first focusable element, visible only when focused. ---- */
+.skip {
+  position: absolute;
+  inset-block-start: var(--component-topBar-all-skipLink-offset);
+  inset-inline-start: var(--component-topBar-all-skipLink-offset);
+  z-index: var(--ds-z-menu);
+  padding-block: var(--component-topBar-all-skipLink-paddingBlock);
+  padding-inline: var(--component-topBar-all-skipLink-paddingInline);
+  border-radius: var(--component-topBar-all-skipLink-radius);
+  background: var(--component-topBar-all-skipLink-fill-default);
+  color: var(--component-topBar-all-skipLink-label-color-default);
+  font: var(--component-topBar-all-skipLink-label-typography-font);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.skip:not(:focus):not([data-state='focus']) { clip-path: inset(50%); inline-size: 1px; block-size: 1px; overflow: hidden; padding: 0; }
+.skip:focus-visible, .skip[data-state='focus'] { outline: none; box-shadow: var(--component-topBar-all-skipLink-shadow-focus); }
+
+/* ---- Primary navigation links ---- */
+.nav { display: block; min-inline-size: 0; }
+.links { display: flex; align-items: center; gap: var(--component-topBar-all-region-gap); margin: 0; padding: 0; list-style: none; }
+.link {
+  --_fill: transparent;
+  --_color: var(--component-topBar-all-link-color-default);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-block-size: var(--component-topBar-all-link-height);
+  padding-inline: var(--component-topBar-all-link-paddingInline);
+  border-radius: var(--component-topBar-all-link-radius);
+  background: var(--_fill);
+  color: var(--_color);
+  font: var(--component-topBar-all-link-typography-font);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.link::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((var(--component-topBar-all-link-height) - var(--ds-hit-min)) / 2); }
+@media (prefers-reduced-motion: no-preference) {
+  .link, .action { transition: background-color var(--ds-motion-fast) var(--ds-ease), box-shadow var(--ds-motion-fast) var(--ds-ease); }
+}
+.link:where(:hover), .link[data-state='hover'] { --_fill: var(--component-topBar-all-link-fill-hover); --_color: var(--component-topBar-all-link-color-hover); }
+.link:where(:active), .link[data-state='pressed'] { --_fill: var(--component-topBar-all-link-fill-pressed); --_color: var(--component-topBar-all-link-color-hover); }
+.link[aria-current='page'] { --_fill: var(--component-topBar-all-link-fill-current); --_color: var(--component-topBar-all-link-color-current); }
+.link:focus-visible, .link[data-state='focus'] { outline: none; box-shadow: var(--component-topBar-all-link-shadow-focus); }
+
+/* ---- Search ---- */
+.search { flex: 0 1 28rem; min-inline-size: 12rem; }
+.region { display: flex; align-items: center; gap: var(--component-topBar-all-region-gap); flex: none; }
+
+/* ---- Icon actions (hamburger, search, notifications, app switcher) ---- */
+.action {
+  --_fill: var(--component-topBar-all-action-fill-default);
+  --_shadow: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  inline-size: var(--component-topBar-all-action-size);
+  block-size: var(--component-topBar-all-action-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--component-topBar-all-action-radius);
+  background: var(--_fill);
+  box-shadow: var(--_shadow);
+  color: var(--component-topBar-all-action-icon-color-default);
+  cursor: pointer;
+  appearance: none;
+}
+.action::after { content: ''; position: absolute; inset: calc((var(--component-topBar-all-action-size) - var(--ds-hit-min)) / 2); }
+.icon { display: inline-flex; inline-size: var(--component-topBar-all-action-icon-size); block-size: var(--component-topBar-all-action-icon-size); }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+.action:where(:hover), .action[data-state='hover'] { --_fill: var(--component-topBar-all-action-fill-hover); --_shadow: var(--component-topBar-all-action-shadow-hover); }
+.action:where(:active), .action[data-state='pressed'] { --_fill: var(--component-topBar-all-action-fill-pressed); --_shadow: var(--component-topBar-all-action-shadow-pressed); }
+.action[aria-expanded='true'], .action[data-open] { --_fill: var(--component-topBar-all-action-fill-expanded); --_shadow: none; }
+.action:focus-visible, .action[data-state='focus'] { outline: none; --_shadow: var(--component-topBar-all-action-shadow-focus); }
+.badge { position: absolute; inset-block-start: 0; inset-inline-end: 0; transform: translate(var(--component-topBar-all-notification-badgeOffset), calc(var(--component-topBar-all-notification-badgeOffset) * -1)); pointer-events: none; }
+[dir='rtl'] .badge { transform: translate(calc(var(--component-topBar-all-notification-badgeOffset) * -1), calc(var(--component-topBar-all-notification-badgeOffset) * -1)); }
+
+/* Hamburger and search icon only exist on small containers. */
+.hamburger, .searchToggle { display: none; }
+
+/* ---- Small container: hamburger, nav panel, search collapses to an icon. ---- */
+@container topbar (max-width: 767px) {
+  .hamburger, .searchToggle { display: inline-flex; }
+  .nav, .search { display: none; }
+  .root[data-menu-open] .nav, .root[data-search-open] .search {
+    display: block;
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    z-index: var(--ds-z-menu);
+    padding: var(--component-topBar-all-mobilePanel-padding);
+    background: var(--component-topBar-all-mobilePanel-fill-default);
+    box-shadow: var(--component-topBar-all-mobilePanel-shadow-default);
+  }
+  .root[data-menu-open] .links { flex-direction: column; align-items: stretch; }
+  .root[data-menu-open] .link { inline-size: 100%; }
+  .search { flex: none; }
+}

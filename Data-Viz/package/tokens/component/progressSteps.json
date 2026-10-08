@@ -1,0 +1,293 @@
+{
+  "component": {
+    "progressSteps": {
+      "all": {
+        "marker": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.800}",
+            "$description": "32px. No semantic size.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-800"
+            }
+          },
+          "sizeCompact": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.500}",
+            "$description": "24px. No semantic size. Compact (numbers only) marker.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-500"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for a full radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.200}",
+            "$description": "2px stroke. No semantic border width exists. Active step ring.",
+            "$extensions": {
+              "gap": "GAP-dimension-borderWidth-200"
+            }
+          },
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          }
+        },
+        "step": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}",
+            "$description": "Gap between marker and text."
+          },
+          "gapVertical": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.standard}",
+            "$description": "Gap between steps in the vertical layout."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "typographyActive": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}",
+            "$description": "Active step label is heavier (600 vs 500): one of several cues."
+          }
+        },
+        "description": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        },
+        "message": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          },
+          "color": {
+            "error": {
+              "$type": "color",
+              "$value": "{core.color.status.critical}"
+            }
+          }
+        },
+        "counter": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}",
+            "$description": "Compact variant: \"Step 2 of 5\"."
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        },
+        "connector": {
+          "thickness": {
+            "$type": "sizing",
+            "$value": "{component.progressBar.all.track.height}",
+            "$description": "Inherited from ProgressBar."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{component.progressBar.all.track.radius}",
+            "$description": "Inherited from ProgressBar."
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.progressBar.all.track.fill}",
+              "$description": "Upcoming segment: ProgressBar track."
+            },
+            "completed": {
+              "$type": "color",
+              "$value": "{component.progressBar.default.fill.color}",
+              "$description": "Completed segment: ProgressBar fill."
+            }
+          }
+        }
+      },
+      "completed": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.progressBar.default.fill.color}",
+              "$description": "Teal 700 fill with a check: completed."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.hover}",
+              "$description": "Completed steps are clickable (go back)."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.pressed}"
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.inverse}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          }
+        }
+      },
+      "active": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}",
+              "$description": "White fill with a 2px Teal ring and a number: active."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          }
+        }
+      },
+      "upcoming": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%, number only, no ring: upcoming."
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        }
+      },
+      "error": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.progressBar.error.fill.color}",
+              "$description": "Critical fill with an error icon."
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.inverse}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          }
+        }
+      },
+      "disabled": {
+        "marker": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "component": {
+    "progressBar": {
+      "all": {
+        "track": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "8px track.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for full radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          },
+          "fill": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+            "$description": "Ink 900 at 16%."
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Gap between step segments."
+          }
+        },
+        "container": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          }
+        },
+        "value": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          }
+        },
+        "status": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          }
+        }
+      },
+      "default": {
+        "fill": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.action.primary.default}"
+          }
+        },
+        "status": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.secondary}"
+          }
+        }
+      },
+      "complete": {
+        "fill": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.success}"
+          }
+        },
+        "status": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.success}"
+          }
+        }
+      },
+      "error": {
+        "fill": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.critical}"
+          }
+        },
+        "status": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.critical}"
+          }
+        }
+      }
+    }
+  }
+}

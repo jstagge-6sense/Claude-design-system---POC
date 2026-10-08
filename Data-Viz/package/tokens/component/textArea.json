@@ -1,0 +1,58 @@
+{
+  "component": {
+    "textArea": {
+      "all": {
+        "container": {
+          "minHeight": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.1200}",
+            "$description": "Minimum text area height, 48px. Row count sets the rest.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-1200"
+            }
+          },
+          "paddingBlock": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        },
+        "tags": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}",
+            "$description": "Gap between tags in the rich textarea tags slot."
+          }
+        },
+        "actions": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{component.input.all.container.gap}"
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Separates the inline actions bar from the text."
+            }
+          }
+        },
+        "resizeHandle": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{component.input.all.icon.size}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.input.all.icon.color.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.input.all.icon.color.disabled}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

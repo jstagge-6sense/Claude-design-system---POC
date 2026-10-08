@@ -1,0 +1,146 @@
+{
+  "component": {
+    "buttonGroup": {
+      "all": {
+        "container": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{component.button.all.container.radius}",
+            "$description": "Outer corners only. Inner corners are square."
+          }
+        },
+        "segment": {
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{component.button.all.container.borderWidth}"
+          },
+          "heightSmall": {
+            "$type": "sizing",
+            "$value": "{component.button.all.container.heightSmall}"
+          },
+          "paddingInlineSmall": {
+            "$type": "spacing",
+            "$value": "{component.button.all.container.paddingInlineSmall}"
+          },
+          "typographySmall": {
+            "$type": "typography",
+            "$value": "{component.button.all.label.typographySmall}"
+          },
+          "heightMedium": {
+            "$type": "sizing",
+            "$value": "{component.button.all.container.heightMedium}"
+          },
+          "paddingInlineMedium": {
+            "$type": "spacing",
+            "$value": "{component.button.all.container.paddingInlineMedium}"
+          },
+          "typographyMedium": {
+            "$type": "typography",
+            "$value": "{component.button.all.label.typographyMedium}"
+          },
+          "heightLarge": {
+            "$type": "sizing",
+            "$value": "{component.button.all.container.heightLarge}"
+          },
+          "paddingInlineLarge": {
+            "$type": "spacing",
+            "$value": "{component.button.all.container.paddingInlineLarge}"
+          },
+          "typographyLarge": {
+            "$type": "typography",
+            "$value": "{component.button.all.label.typographyLarge}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{component.button.all.container.gapMedium}"
+          },
+          "icon": {
+            "size": {
+              "$type": "sizing",
+              "$value": "{component.button.all.icon.size}"
+            }
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.button.secondary.container.fill.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{component.button.secondary.container.fill.hover}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{component.button.secondary.container.fill.pressed}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}",
+              "$description": "Gradient fill (a CSS image) that is darker than the resting Sage 400. Persistent, so it is carried by color and border."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.button.all.container.fill.disabled}"
+            }
+          },
+          "fillTint": {
+            "hover": {
+              "$type": "color",
+              "$value": "{component.button.secondary.container.fillTint.hover}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.button.secondary.container.border.default}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})",
+              "$description": "Ink 900 at 64%, up from 16% at rest."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.button.all.container.border.disabled}"
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{component.button.secondary.container.shadow.default}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{component.button.secondary.container.shadow.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{component.button.secondary.container.shadow.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{component.button.secondary.container.shadow.focus}"
+            },
+            "selected": {
+              "$type": "shadow",
+              "$value": "{component.button.secondary.container.shadow.pressed}",
+              "$description": "Recessed look. Never the only cue."
+            }
+          },
+          "label": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{component.button.secondary.label.color.default}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{component.button.all.label.color.disabled}"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

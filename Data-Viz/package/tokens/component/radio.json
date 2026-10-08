@@ -1,0 +1,265 @@
+{
+  "component": {
+    "radio": {
+      "all": {
+        "container": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{component.checkbox.all.container.size}"
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{component.checkbox.all.container.borderWidth}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{component.checkbox.all.container.gap}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{component.checkbox.all.container.shadow.focus}"
+            }
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.full}",
+            "$description": "Pill or circle radius. No semantic token for a full radius. Radio is circular. Checkbox keeps the small control radius.",
+            "$extensions": {
+              "gap": "GAP-dimension-radius-full"
+            }
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.checkbox.all.label.typography}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.all.label.color.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.all.label.color.disabled}"
+            }
+          }
+        },
+        "description": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.checkbox.all.description.typography}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.all.description.color.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.all.description.color.disabled}"
+            }
+          }
+        },
+        "error": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.checkbox.all.error.typography}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.all.error.color.default}"
+            }
+          }
+        },
+        "legend": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{component.checkbox.all.legend.typography}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.all.legend.color.default}"
+            }
+          }
+        },
+        "group": {
+          "gapVertical": {
+            "$type": "spacing",
+            "$value": "{component.checkbox.all.group.gapVertical}"
+          },
+          "gapHorizontal": {
+            "$type": "spacing",
+            "$value": "{component.checkbox.all.group.gapHorizontal}"
+          }
+        },
+        "card": {
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "padding": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}",
+            "$description": "Gap between radio cards."
+          }
+        }
+      },
+      "unchecked": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.fill.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.fill.disabled}"
+            }
+          },
+          "fillTint": {
+            "hover": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.fillTint.hover}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.border.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.border.hover}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.border.disabled}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.border.error}"
+            }
+          }
+        },
+        "card": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.control.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.fill.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.standard},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.control.default},{core.effect.opacity.600})"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.border.disabled}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{core.color.status.critical}"
+            }
+          }
+        }
+      },
+      "checked": {
+        "container": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.fill.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.fill.hover}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.fill.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.border.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.border.hover}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.border.disabled}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.container.border.error}"
+            }
+          }
+        },
+        "mark": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.mark.color.default}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.checked.mark.color.disabled}"
+            }
+          }
+        },
+        "card": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.group}",
+              "$description": "Selected card: Sage 200 fill plus a teal border. Color change, not shadow."
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.fill.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.action.primary.hover}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{component.checkbox.unchecked.container.border.disabled}"
+            },
+            "error": {
+              "$type": "color",
+              "$value": "{core.color.status.critical}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
