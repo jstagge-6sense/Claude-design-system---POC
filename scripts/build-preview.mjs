@@ -21,6 +21,7 @@ const esbuild = createRequire(import.meta.url)(ESB)
 
 execFileSync('node', ['scripts/build-tokens.mjs', '.'], { stdio: 'inherit' })
 execFileSync('node', ['scripts/build-modes.mjs', '.'], { stdio: 'inherit' }) // modes.css must exist before bundling
+execFileSync('node', ['scripts/cost-report.mjs', '.'], { stdio: 'inherit' }) // costData.json must exist before bundling
 
 // ---- registry ----
 // components first, then pages (src/pages/*): full pages composed only from library components

@@ -1,0 +1,13 @@
+{
+  "note": "Active working time from message timestamps. Messages less than 10 minutes apart count as one continuous window. Times are UTC.",
+  "windows": [
+    { "start": "2026-10-08T01:50", "end": "2026-10-08T02:08" },
+    { "start": "2026-10-08T02:23", "end": "2026-10-08T02:24" },
+    { "start": "2026-10-08T02:58", "end": "2026-10-08T03:00" },
+    { "start": "2026-10-08T13:58", "end": "2026-10-08T14:03" },
+    { "start": "2026-10-08T15:35", "end": "2026-10-08T15:46" },
+    { "start": "2026-10-08T16:12", "end": "2026-10-08T16:55" },
+    { "start": "2026-10-08T17:13", "end": "2026-10-08T18:19" },
+    { "start": "2026-10-08T20:09", "end": "2026-10-08T20:24" }
+  ]
+}
