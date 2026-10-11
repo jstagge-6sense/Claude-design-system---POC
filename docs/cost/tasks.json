@@ -1,0 +1,107 @@
+{
+ "note": "Task categories by time (UTC). Excluded categories are never counted in the cost, now or in future runs. Edit a segment start to move work between tasks.",
+ "excluded": [
+  "Demo pages",
+  "Library restore",
+  "Cost page",
+  "Token editor and import tools"
+ ],
+ "segments": [
+  [
+   "2026-10-07T00:00",
+   "Early build (first tokens, components and demo pages)"
+  ],
+  [
+   "2026-10-07T13:00",
+   "Charts (Data-Viz)"
+  ],
+  [
+   "2026-10-07T14:00",
+   "Tokens"
+  ],
+  [
+   "2026-10-07T22:19",
+   "Tokens"
+  ],
+  [
+   "2026-10-07T22:24",
+   "Components"
+  ],
+  [
+   "2026-10-07T22:30",
+   "Tokens"
+  ],
+  [
+   "2026-10-07T22:59",
+   "Components"
+  ],
+  [
+   "2026-10-07T23:07",
+   "Demo pages"
+  ],
+  [
+   "2026-10-07T23:10",
+   "Tokens"
+  ],
+  [
+   "2026-10-08T02:03",
+   "Demo pages"
+  ],
+  [
+   "2026-10-08T02:09",
+   "Tokens"
+  ],
+  [
+   "2026-10-08T13:58",
+   "Demo pages"
+  ],
+  [
+   "2026-10-08T14:02",
+   "Tokens"
+  ],
+  [
+   "2026-10-08T15:35",
+   "Motion"
+  ],
+  [
+   "2026-10-08T16:36",
+   "Demo pages"
+  ],
+  [
+   "2026-10-08T16:42",
+   "Charts (Data-Viz)"
+  ],
+  [
+   "2026-10-08T17:13",
+   "Token editor and import tools"
+  ],
+  [
+   "2026-10-08T17:47",
+   "Library restore"
+  ],
+  [
+   "2026-10-08T17:52",
+   "Token editor and import tools"
+  ],
+  [
+   "2026-10-08T18:17",
+   "Library restore"
+  ],
+  [
+   "2026-10-08T18:20",
+   "Cost page"
+  ],
+  [
+   "2026-10-08T21:44",
+   "Demo pages"
+  ],
+  [
+   "2026-10-08T21:50",
+   "Cost page"
+  ],
+  [
+   "2026-10-08T22:16",
+   "Demo pages"
+  ]
+ ]
+}

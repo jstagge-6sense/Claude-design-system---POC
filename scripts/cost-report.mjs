@@ -6,14 +6,19 @@ import { execSync } from 'node:child_process'
 const root = process.argv[2] || '.'
 const dir = join(root, 'docs/cost')
 const excluded = new Set(existsSync(join(dir, 'exclude-dates.json')) ? JSON.parse(readFileSync(join(dir, 'exclude-dates.json'), 'utf8')).dates || [] : [])
+const taskCfg = existsSync(join(dir, 'tasks.json')) ? JSON.parse(readFileSync(join(dir, 'tasks.json'), 'utf8')) : { excluded: [], segments: [] }
+const segs = taskCfg.segments
+const catOf = (t) => { let c = segs.length ? segs[0][1] : 'All work'; for (const [s0, n] of segs) if (t.slice(0, 16) >= s0) c = n; return c }
+const dropped = new Set(taskCfg.excluded)
+const taskUse = {}
 const sessions = []
 if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => f.endsWith('.txt')).sort()) {
-  const rows = readFileSync(join(dir, f), 'utf8').split('\n').map((l) => l.trim()).filter(Boolean).map((l) => l.split(/\s+/)).filter((c) => !excluded.has(c[3])).map((c) => c.slice(0, 3).map(Number))
+  const rows = readFileSync(join(dir, f), 'utf8').split('\n').map((l) => l.trim()).filter(Boolean).map((l) => l.split(/\s+/)).filter((c) => !excluded.has(c[3].slice(0, 10)) && !dropped.has(catOf(c[3]))).map((c) => { const n = c.slice(0, 3).map(Number); const k = catOf(c[3]); const u = (taskUse[k] ||= { name: k, calls: 0, cacheWrite: 0, cacheRead: 0, output: 0, input: 0 }); u.calls++; u.cacheWrite += n[0]; u.cacheRead += n[1]; u.output += n[2]; u.input += 2; return n })
   sessions.push({ file: f, calls: rows.length, cacheWrite: rows.reduce((a, r) => a + r[0], 0), cacheRead: rows.reduce((a, r) => a + r[1], 0), output: rows.reduce((a, r) => a + r[2], 0), input: rows.length * 2 })
 }
 const time = { activeMinutes: 0, windows: 0, firstMessage: null, lastMessage: null, list: [] }
 if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => /^time.*\.json$/.test(f)).sort()) {
-  for (const w of (JSON.parse(readFileSync(join(dir, f), 'utf8')).windows || []).filter((w) => !excluded.has(w.start.slice(0, 10)))) {
+  for (const w of (JSON.parse(readFileSync(join(dir, f), 'utf8')).windows || []).filter((w) => !excluded.has(w.start.slice(0, 10)) && !dropped.has(catOf(w.start)))) {
     const a = Date.parse(w.start + 'Z'), b = Date.parse(w.end + 'Z')
     time.activeMinutes += Math.round((b - a) / 60000); time.windows++; time.list.push([w.start, w.end])
     if (!time.firstMessage || w.start < time.firstMessage) time.firstMessage = w.start
@@ -29,11 +34,14 @@ try {
   const sh = (c) => execSync(c, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim()
   git = { firstCommit: sh('git log --reverse --format=%ad --date=short | head -1'), lastCommit: sh('git log -1 --format=%ad --date=short'), commits: Number(sh('git rev-list --count HEAD')), authors: sh('git shortlog -sn HEAD | wc -l').trim() }
 } catch { git = { firstCommit: '2026-10-06', lastCommit: '2026-10-08', commits: 30, authors: '1' } }
+const early = existsSync(join(dir, 'early-build.json')) ? JSON.parse(readFileSync(join(dir, 'early-build.json'), 'utf8')) : null
+if (early) taskUse[early.task] = { name: early.task, calls: early.modelCalls || 0, toolCalls: early.toolCalls || 0, cacheWrite: 0, cacheRead: 0, output: 0, input: 0, effective: early.effectiveTokens, split: early.split }
 const out = {
   generatedAt: new Date().toISOString().slice(0, 10), git, sessions, time,
   totals: { tokens: Object.values(layers).reduce((a, b) => a + b, 0), layers, components: Object.keys(comps).length },
   componentTokens: Object.entries(comps).sort((a, b) => b[1] - a[1]),
   builtAt: new Date().toISOString(),
+  tasks: { excluded: taskCfg.excluded, segments: segs, list: Object.values(taskUse) },
   rates: { input: 3, output: 15, cacheWrite: 3.75, cacheRead: 0.3, hourly: 150, buffer: 25 },
   otherSessions: ['React library from MD files', 'First build components', 'React components creation', 'Component token generation', 'CSS token compression', 'Design system variable count', 'Shadow token efficiency', 'Library components list', 'Library load time rating', 'Team kit setup', 'Token migration report analysis', 'Phase 1 approval', 'React structure skill scaffolding', 'Figma markdown library setup', 'Markdown conversion', 'Figma library components skill', 'Figma form-control component skills', 'File reference collection', '6sense UI code language', 'Claude design repository proposal'],
 }

@@ -1,0 +1,30 @@
+{
+ "task": "Early build (first tokens, components and demo pages)",
+ "effectiveTokens": 2100000,
+ "note": "From the thread that did the early build: about 2.1 million effective tokens, weighted so cached re-reads count at 0.1x, cache writes at 2x and output at 5x a regular input token. Cost is these effective tokens at the input rate, plus the buffer on spend. The split by group is approximate (estimated from the size of what was added each turn). The thread made 72 tool calls across 36 model turns; the 36 model turns are counted as its calls.",
+ "split": [
+  [
+   "Project docs",
+   50
+  ],
+  [
+   "Claude's instructions and tools",
+   18
+  ],
+  [
+   "Claude writing",
+   14
+  ],
+  [
+   "Your messages and loaded skills",
+   9
+  ],
+  [
+   "Everything else",
+   8
+  ]
+ ],
+ "notPresent": "Subagents, web research, connectors and Chrome were not used.",
+ "modelCalls": 36,
+ "toolCalls": 72
+}

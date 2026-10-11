@@ -31,7 +31,7 @@ for F in sorted(glob.glob(os.path.join(src, '*.jsonl'))):
         if o.get('type') in ('user', 'assistant') and t and not o.get('isSidechain') and not slack and not skip_next and not out_of(t):
             stamps.add(t)
 rows = sorted(calls.values())
-open(os.path.join(out, 'usage-all-chats.txt'), 'w').write('\n'.join('%d %d %d %s' % (r[1], r[2], r[3], r[0][:10]) for r in rows) + '\n')
+open(os.path.join(out, 'usage-all-chats.txt'), 'w').write('\n'.join('%d %d %d %s' % (r[1], r[2], r[3], r[0][:16]) for r in rows) + '\n')
 p = lambda s: D.fromisoformat(s.replace('Z', ''))
 T = sorted(p(t) for t in stamps)
 w, cur = [], [T[0], T[0]]
