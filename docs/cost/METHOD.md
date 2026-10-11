@@ -16,6 +16,7 @@ Use this method every time the Cost page is rerun.
 - Tasks not counted: Demo pages, Library restore, Cost page, and Token editor and import tools are never counted in the cost (hours, model usage, per token, per component), now or in future runs. Work is assigned to tasks by time in `docs/cost/tasks.json`; its `excluded` list says which tasks are left out. New work must be added there as a new segment with its task name.
 - Cost by task: the Cost page shows each counted task with calls, tokens used, hours, Claude cost, people cost and total, right above Cost per token. "Where the measured cost went" is at the very bottom.
 - Early build: the early build row uses 2.1 million effective tokens (cached re-reads x0.1, cache writes x2, output x5) from `docs/cost/early-build.json`, costed at the input rate with the buffer on spend. Its calls are 36 model turns (72 tool calls across them), added to the call total. Use this for the early build now and in future runs.
+- Working time shown: the Working time stat and the Measured line show ALL work hours, including tasks that are not counted in the cost. The cost, per token and per component use only the counted tasks' hours. Excluded dates, Slack reading, cost analysis pulling and cleanup are still left out of both.
 - Date format: MM-DD-'YY.
 - Last updated date: from now on, when the page is built or rebuilt, use the current date and time of that build as the last update, not the last logged message or commit. (Not applied to the current page yet.)
 

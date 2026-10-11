@@ -16,9 +16,11 @@ if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => f.endsWith('
   const rows = readFileSync(join(dir, f), 'utf8').split('\n').map((l) => l.trim()).filter(Boolean).map((l) => l.split(/\s+/)).filter((c) => !excluded.has(c[3].slice(0, 10)) && !dropped.has(catOf(c[3]))).map((c) => { const n = c.slice(0, 3).map(Number); const k = catOf(c[3]); const u = (taskUse[k] ||= { name: k, calls: 0, cacheWrite: 0, cacheRead: 0, output: 0, input: 0 }); u.calls++; u.cacheWrite += n[0]; u.cacheRead += n[1]; u.output += n[2]; u.input += 2; return n })
   sessions.push({ file: f, calls: rows.length, cacheWrite: rows.reduce((a, r) => a + r[0], 0), cacheRead: rows.reduce((a, r) => a + r[1], 0), output: rows.reduce((a, r) => a + r[2], 0), input: rows.length * 2 })
 }
-const time = { activeMinutes: 0, windows: 0, firstMessage: null, lastMessage: null, list: [] }
+const time = { activeMinutes: 0, windows: 0, firstMessage: null, lastMessage: null, list: [], allList: [] }
 if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => /^time.*\.json$/.test(f)).sort()) {
-  for (const w of (JSON.parse(readFileSync(join(dir, f), 'utf8')).windows || []).filter((w) => !excluded.has(w.start.slice(0, 10)) && !dropped.has(catOf(w.start)))) {
+  for (const w of (JSON.parse(readFileSync(join(dir, f), 'utf8')).windows || []).filter((w) => !excluded.has(w.start.slice(0, 10)))) {
+    time.allList.push([w.start, w.end]) // all work, including tasks that are not counted in the cost
+    if (dropped.has(catOf(w.start))) continue
     const a = Date.parse(w.start + 'Z'), b = Date.parse(w.end + 'Z')
     time.activeMinutes += Math.round((b - a) / 60000); time.windows++; time.list.push([w.start, w.end])
     if (!time.firstMessage || w.start < time.firstMessage) time.firstMessage = w.start
