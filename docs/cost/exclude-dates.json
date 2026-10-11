@@ -1,0 +1,23 @@
+{
+  "note": "Dates (UTC, YYYY-MM-DD) that are never counted in the cost: no work on the design system happened on them. Applies to usage and to working time now and on every future run.",
+  "dates": [
+    "2026-10-09",
+    "2026-10-11"
+  ],
+  "ranges": [
+    {
+      "start": "2026-10-08T23:29",
+      "end": "2026-10-08T23:43",
+      "reason": "cost analysis pulling: rerun of usage cost, hours questions, estimates and the calculation explanation"
+    },
+    {
+      "start": "2026-10-11T00:26",
+      "end": "2026-10-11T01:30",
+      "reason": "cleanup of unused files"
+    }
+  ],
+  "kinds": [
+    "cost analysis pulling",
+    "cleanup of unused files"
+  ]
+}

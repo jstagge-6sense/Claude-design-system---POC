@@ -9,6 +9,10 @@ Use this method every time the Cost page is rerun.
 - Total: people cost + Claude cost. Per token: total / 679 tokens. Per component: its own tokens plus a share of the shared core tokens.
 - First day of usage: 10-02-'26. Work before the first commit is not on record, so it is not counted unless hours are added by hand.
 - About 2 hours of the time were spent learning skills in the library.
+- Excluded dates: 10-09-'26 and 10-11-'26 are never counted, now or in future runs (no work on the design system on those days). They are listed in `docs/cost/exclude-dates.json`; usage lines carry their date so they can be filtered.
+- Slack reading: never counted, now or in future runs. Any model call that uses a Slack tool, plus the call that reads its result, is dropped from usage and from working time. `docs/cost/extract-usage.py` applies this and the excluded dates. No Slack reading was found in the readable chats so far, so today's numbers did not change.
+- Cost analysis pulling: never counted. Time and model calls spent pulling usage, rerunning the cost, and answering questions about the cost are added to the `ranges` list in `docs/cost/exclude-dates.json` and left out. Building the Cost page itself is counted. Add each new pull to that list.
+- Cleanup of unused files: never counted. Time and calls spent finding, moving or removing unused files are added to the `ranges` list in `docs/cost/exclude-dates.json` and left out. Unused files are moved into an `_unused` folder, not deleted.
 - Date format: MM-DD-'YY.
 - Last updated date: from now on, when the page is built or rebuilt, use the current date and time of that build as the last update, not the last logged message or commit. (Not applied to the current page yet.)
 

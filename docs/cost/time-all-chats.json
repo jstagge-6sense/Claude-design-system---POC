@@ -1,8 +1,16 @@
 {
-  "note": "Active working time from message timestamps. Messages less than 10 minutes apart count as one continuous window. Times are UTC.",
+  "note": "Active working time from message timestamps across every readable chat. Messages less than 10 minutes apart count as one window. Times are UTC. Slack reading and excluded dates are left out.",
   "windows": [
     {
-      "start": "2026-10-08T01:50",
+      "start": "2026-10-07T22:19",
+      "end": "2026-10-07T22:41"
+    },
+    {
+      "start": "2026-10-07T22:59",
+      "end": "2026-10-07T23:23"
+    },
+    {
+      "start": "2026-10-08T01:40",
       "end": "2026-10-08T02:08"
     },
     {
@@ -39,7 +47,15 @@
     },
     {
       "start": "2026-10-08T21:44",
-      "end": "2026-10-08T21:58"
+      "end": "2026-10-08T22:00"
+    },
+    {
+      "start": "2026-10-08T22:16",
+      "end": "2026-10-08T22:17"
+    },
+    {
+      "start": "2026-10-08T23:09",
+      "end": "2026-10-08T23:15"
     }
   ]
 }
