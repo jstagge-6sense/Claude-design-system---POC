@@ -3,13 +3,29 @@
 // Usage: node build-revvy-explainability.mjs [path-to-design-system-repo] [out-file]
 // Defaults: the repo root four folders up (this library's parent), output next to this script.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import { join, dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const repo = resolve(process.argv[2] ?? join(here, '../../../..'))
 const out = resolve(process.argv[3] ?? join(here, 'revvy-explainability.html'))
-const need = (p) => { if (!existsSync(p)) { console.error(`Missing: ${p}`); process.exit(1) } return readFileSync(p, 'utf8') }
+const need = (p) => {
+  if (existsSync(p)) return readFileSync(p, 'utf8')
+  // The working tree can lose a file the design system still needs (for example a CSS module removed by a commit).
+  // Read-only fallback: take the last committed version from git history and say so. Nothing in the parent is changed.
+  try {
+    const rel = p.slice(repo.length + 1)
+    const git = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    const gone = git('log', '-1', '--format=%H', '--diff-filter=D', '--', rel)
+    if (gone) {
+      const css = git('show', `${gone}^:${rel}`)
+      console.warn(`WARNING: ${rel} is missing from the parent. Using its last committed version (before ${gone.slice(0, 7)}).`)
+      return css
+    }
+  } catch { /* fall through */ }
+  console.error(`Missing: ${p}`); process.exit(1)
+}
 const strip = (css) => css.replace(/\/\*[\s\S]*?\*\//g, '')
 
 // 1. Tokens (primitive -> semantic -> component), in dependency order, plus foundation constants, reset and focus.
@@ -21,6 +37,7 @@ const modules = [
   ['Card', 'Card/Card'], ['Badge', 'Badge/Badge'], ['Button', 'Button/Button'], ['Chip', 'Chip/Chip'], ['Link', 'Link/Link'],
   ['Field', 'Input/Field'], ['TextArea', 'TextArea/TextArea'], ['Search', 'Search/Search'],
   ['Menu', 'Menu/Menu'], ['MenuList', 'Menu/MenuList'], ['Spinner', 'Spinner/Spinner'],
+  ['Checkbox', 'Checkbox/Checkbox'], ['Popover', 'Popover/Popover'],
 ]
 const scoped = modules.map(([name, path]) => {
   const css = strip(need(join(repo, 'src/components', `${path}.module.css`)))

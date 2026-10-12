@@ -3,9 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B05SLKHK7R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B05SLKHK7R');
+</script>
 <title>RevvyAI + Explainability – 6sense design system</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ==== 6sense design system: tokens, foundations and component CSS, read from the parent repo by build-revvy-explainability.mjs. Not edited. ==== */
 /*__DS_CSS__*/
@@ -119,6 +128,15 @@ svg.ds-icon{inline-size:var(--core-dimension-size-icon);block-size:var(--core-di
 .actions-row{display:flex;align-items:center;justify-content:space-between;gap:var(--core-dimension-space-compact)}
 .disc{margin:var(--core-dimension-space-compact) 0 0;font:var(--core-typography-help-1-font);color:var(--core-color-content-secondary);text-align:center}
 .Search_option b{font-weight:var(--core-typography-fontWeight-600)}
+
+/* Feedback popover (Popover rich surface + Checkbox + TextArea). Opens only after thumbs down in RevvyAI. */
+.fb-pop{position:fixed;inline-size:min(var(--ds-w-416),100vw);max-inline-size:100vw;z-index:var(--ds-z-menu)}
+.fb-pop .Popover_surface{gap:var(--core-dimension-space-standard);inline-size:100%}
+.fb-pop .Popover_body{display:flex;flex-direction:column;gap:var(--core-dimension-space-standard)}
+.fb-list{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:0}
+.fb-list legend{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.fb-pop .Field_labelRow{align-items:center}
+.fb-actions{display:flex;justify-content:flex-end;gap:var(--core-dimension-space-comfortable)}
 </style>
 </head>
 <body>
@@ -289,7 +307,7 @@ function renderParts(blocks){
   return P;
 }
 function voteButtons(st){
-  return `<span class="x-vote">Was this helpful?${Button({priority:'tertiary',size:'small',iconOnly:true,icon:'thumbUp',aria:'Helpful',attrs:`data-act="up" aria-pressed="${st.vote==='up'}"`})}${Button({priority:'tertiary',size:'small',iconOnly:true,icon:'thumbDown',aria:'Not helpful',attrs:`data-act="down" aria-pressed="${st.vote==='down'}"`})}</span>`;
+  return `<span class="x-vote">${st.fbSent?'Thanks for the feedback':'Was this helpful?'}${Button({priority:'tertiary',size:'small',iconOnly:true,icon:'thumbUp',aria:'Helpful',attrs:`data-act="up" aria-pressed="${st.vote==='up'}"`})}${Button({priority:'tertiary',size:'small',iconOnly:true,icon:'thumbDown',aria:'Not helpful',attrs:`data-act="down" aria-pressed="${st.vote==='down'}"`})}</span>`;
 }
 function buildCard(md,cfg,st,id){
   const P=renderParts(parseMd(md));
@@ -385,6 +403,69 @@ function select(name,feed=true){
   });
 })();
 
+/* ======================= Thumbs-down feedback (RevvyAI only) =======================
+   Popover (rich) + Checkbox x5 + TextArea with counter (max 100) + Cancel / Submit.
+   Shown only when a user clicks thumbs down on a RevvyAI response. Thumbs up never opens it. */
+const FB_REASONS=['Data is wrong','Hard to read','Isn’t behaving as expected','Taking too long to load','Too wordy/technical'];
+const FB_MAX=100;
+let fb=null; // { mi, btn }
+function CheckboxField(label,i){
+  const id=`fb-r${i}`;
+  return `<div class="Checkbox_root"><span class="Checkbox_row"><span class="Checkbox_control"><input class="Checkbox_input" type="checkbox" id="${id}" value="${esc(label)}"><span class="Checkbox_box" aria-hidden="true">${ic('check').replace('class="ds-icon"','class="ds-icon Checkbox_check"')}</span></span><span class="Checkbox_text"><label class="Checkbox_label" for="${id}">${esc(label)}</label></span></span></div>`;
+}
+function placeFeedback(pop,btn){
+  const rem=parseFloat(getComputedStyle(document.documentElement).fontSize)||16,gap=rem*.5,margin=rem;
+  const r=btn.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight;
+  const below=innerHeight-r.bottom,above=r.top;
+  const top=(h+gap>below&&above>below)?Math.max(margin,r.top-h-gap):Math.min(innerHeight-h-margin,r.bottom+gap);
+  pop.dataset.side=(h+gap>below&&above>below)?'top':'bottom';
+  pop.style.top=`${Math.max(margin,top)}px`;
+  pop.style.left=`${Math.min(Math.max(margin,r.right-w),Math.max(margin,innerWidth-w-margin))}px`;
+}
+function closeFeedback(restore=false){
+  const pop=document.getElementById('fbPop');if(pop)pop.remove();
+  if(restore&&fb&&fb.btn&&fb.btn.isConnected)fb.btn.focus();
+  fb=null;
+}
+function openFeedback(mi,btn){
+  closeFeedback();
+  fb={mi,btn};
+  const pop=document.createElement('div');
+  pop.id='fbPop';pop.className='Popover_positioner fb-pop';pop.dataset.mode='rich';pop.dataset.side='bottom';pop.dataset.ready='';
+  pop.innerHTML=`<div class="Popover_surface" data-mode="rich" role="dialog" aria-modal="false" aria-labelledby="fbTitle" tabindex="-1">
+    <div class="Popover_header"><div class="Popover_title" id="fbTitle">What went wrong?</div></div>
+    <div class="Popover_body">
+      <fieldset class="fb-list"><legend>What went wrong?</legend>${FB_REASONS.map(CheckboxField).join('')}</fieldset>
+      <div class="Field_shell">
+        <div class="Field_labelRow"><span class="Field_labelText"><label class="Field_label" for="fbText">Description <span class="Field_indicator">(optional)</span></label></span><span class="Field_counter" id="fbCount">0/${FB_MAX}</span></div>
+        <div class="Field_box TextArea_box"><span class="TextArea_areaWrap"><textarea id="fbText" class="Field_control TextArea_area" data-resize="none" rows="5" maxlength="${FB_MAX}" placeholder="Enter a description" style="--_rows:5"></textarea></span></div>
+      </div>
+      <div class="fb-actions">${Button({priority:'secondary',size:'small',label:'Cancel',attrs:'data-fb="cancel"'})}${Button({priority:'primary',size:'small',label:'Submit',attrs:'data-fb="submit"'})}</div>
+    </div></div>`;
+  document.body.appendChild(pop);
+  placeFeedback(pop,btn);
+  const ta=pop.querySelector('#fbText');
+  ta.addEventListener('input',()=>{pop.querySelector('#fbCount').textContent=`${ta.value.length}/${FB_MAX}`;pop.querySelector('#fbCount').toggleAttribute('data-limit',ta.value.length>=FB_MAX)});
+  const first=pop.querySelector('input');if(first)first.focus({preventScroll:true});
+}
+function submitFeedback(){
+  const pop=document.getElementById('fbPop');if(!pop||!fb)return;
+  const m=st.chat[fb.mi];
+  m.fbSent=true;
+  m.feedback={reasons:[...pop.querySelectorAll('input:checked')].map(i=>i.value),text:pop.querySelector('#fbText').value.trim()};
+  const ai=document.querySelector(`#vChat .ai[data-m="${fb.mi}"]`);
+  if(ai)ai.innerHTML=buildCard(m.md,CHAT_CFG,m,'chat'+fb.mi);
+  const btn=ai&&ai.querySelector('[data-act="down"]');
+  closeFeedback();if(btn)btn.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fb)closeFeedback(true)});
+document.addEventListener('mousedown',e=>{if(fb&&!e.target.closest('#fbPop')&&!e.target.closest('[data-act="down"]'))closeFeedback()});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('#fbPop [data-fb]');if(!b)return;
+  if(b.dataset.fb==='cancel')closeFeedback(true);else submitFeedback();
+});
+window.addEventListener('resize',()=>{const pop=document.getElementById('fbPop');if(pop&&fb&&fb.btn.isConnected)placeFeedback(pop,fb.btn);else if(fb)closeFeedback()});
+
 /* ======================= RevvyAI companion ======================= */
 const SUGGESTIONS=["What are high-intent keywords for my website?","How are my new advertising campaigns doing?","How are my keywords performing?","How many accounts should I have in a segment?"];
 const JTBD={
@@ -419,6 +500,7 @@ function answerData(q){
 }
 
 function setView(v){
+  closeFeedback();
   st.view=v;
   document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));
   $({orient:'#vOrient',chat:'#vChat',lib:'#vLib',hist:'#vHist'}[v]).classList.add('on');
@@ -534,7 +616,11 @@ document.addEventListener('click',e=>{
     if(a.dataset.act==='link')e.preventDefault();
     if(a.dataset.act==='up'||a.dataset.act==='down'){
       const m=st.chat[+ai.dataset.m];m.vote=m.vote===a.dataset.act?null:a.dataset.act;
+      if(m.vote!=='down')m.fbSent=false;
+      closeFeedback();
       ai.innerHTML=buildCard(m.md,CHAT_CFG,m,'chat'+ai.dataset.m);
+      // Feedback form: only after thumbs down, never for thumbs up.
+      if(m.vote==='down'&&!m.fbSent)openFeedback(+ai.dataset.m,ai.querySelector('[data-act="down"]'));
     }
     if(a.dataset.act==='toggle'){/* chat cards are not collapsible */}
   }

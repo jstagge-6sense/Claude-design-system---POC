@@ -36,3 +36,5 @@ npm run build:revvy-explainability   # writes samples/revvy-explainability/revvy
 ```
 
 Edit `revvy-explainability.template.html`, then rebuild. The build fails if the sample's own CSS uses anything but parent tokens.
+
+Notes: thumbs down on a RevvyAI response opens the "What went wrong?" feedback popover (Popover, Checkbox, TextArea); thumbs up never does. The page carries the Google tag. If the parent is missing a CSS module the sample needs, the build reads its last committed version from git and prints a warning.
