@@ -9,7 +9,8 @@
     "build": "npm run check && vite build",
     "check": "node scripts/check-base-only.mjs",
     "typecheck": "tsc --noEmit",
-    "tokens": "npm --prefix ../.. run build:tokens"
+    "tokens": "npm --prefix ../.. run build:tokens",
+    "build:revvy-explainability": "node samples/revvy-explainability/build-revvy-explainability.mjs"
   },
   "peerDependencies": {
     "react": ">=18",

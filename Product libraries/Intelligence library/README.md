@@ -26,3 +26,13 @@ npm run dev        # preview with live updates
 ```
 
 Add a component: copy `src/components/InsightCard`, rename it, export it from `src/index.ts`.
+
+## Samples
+
+`samples/revvy-explainability/` is a single-file interactive sample: explainability cards, their Markdown (rendered or source) and the RevvyAI companion, all fed by the same Markdown. It reads the parent's token CSS, component CSS and icon set at build time and copies nothing by hand.
+
+```
+npm run build:revvy-explainability   # writes samples/revvy-explainability/revvy-explainability.html
+```
+
+Edit `revvy-explainability.template.html`, then rebuild. The build fails if the sample's own CSS uses anything but parent tokens.
