@@ -1,0 +1,2 @@
+/* Insight card. Only base tokens (core.* and component.*). */
+.summary { margin: 0; color: var(--core-color-content-secondary); }

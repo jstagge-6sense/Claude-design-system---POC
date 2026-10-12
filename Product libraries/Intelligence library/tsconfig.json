@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", "module": "ESNext", "moduleResolution": "Bundler", "jsx": "react-jsx",
+    "strict": true, "skipLibCheck": true, "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": { "@base/*": ["../../src/*"], "@tokens/*": ["../../dist/*"] }
+  },
+  "include": ["src", "../../dist/tokens.d.ts"]
+}
