@@ -183,3 +183,14 @@ th.td { font-weight: inherit; }
 .root[data-scrolled-x] [data-pin-last] { box-shadow: var(--component-table-all-sticky-shadow-stuck); border-inline-end: var(--core-dimension-borderWidth-thin) solid var(--component-table-all-sticky-border-stuck); }
 .root[data-scrolled-x] .head [data-pin-last] { box-shadow: var(--component-table-all-sticky-shadow-stuck); }
 .root[data-scrolled-x] [data-pin]:not([data-pin-last]) { z-index: var(--ds-z-base); }
+
+/* Row actions column and the built-in search and filters. Tokens only. */
+.actionsCol { inline-size: 1%; white-space: nowrap; text-align: end; }
+/* The actions column stays pinned at the end, so it is visible even when the other columns scroll sideways. */
+.actionsCol { position: sticky; inset-inline-end: 0; z-index: var(--ds-z-base); border-inline-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); }
+.root[data-sticky-header] .head .actionsCol { z-index: calc(var(--ds-z-sticky) + 1); }
+.actions { display: inline-flex; align-items: center; gap: var(--core-dimension-space-tight); }
+.tools { display: flex; flex-wrap: wrap; align-items: end; gap: var(--core-dimension-space-compact); padding: var(--core-dimension-space-compact); }
+.toolSearch { flex: 2 1 auto; min-inline-size: 0; }
+.toolFilter { flex: 1 1 auto; min-inline-size: 0; }
+.toolCount { margin-inline-start: auto; color: var(--core-color-content-secondary); font: var(--component-input-all-helper-typography-font); align-self: center; }

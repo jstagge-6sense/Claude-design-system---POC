@@ -48,6 +48,41 @@ export const Standard: Story = {
   render: () => <Table caption="Accounts" columns={COLUMNS} rows={ACCOUNTS.slice(0, 8)} getRowId={(r) => r.id} footer={footer(8)} />,
 }
 
+const ACTION_ICONS = { view: <Icon name="eye" />, edit: <Icon name="edit" />, del: <Icon name="trash" /> }
+const actionsFor = (note: (m: string) => void) => [
+  { id: 'view', label: 'View', icon: ACTION_ICONS.view, onSelect: (r: Account) => note(`View ${r.name}`) },
+  { id: 'edit', label: 'Edit', icon: ACTION_ICONS.edit, onSelect: (r: Account) => note(`Edit ${r.name}`) },
+  { id: 'del', label: 'Delete', icon: ACTION_ICONS.del, priority: 'destructive' as const, onSelect: (r: Account) => note(`Delete ${r.name}`) },
+]
+
+export const RowActionsButtons: Story = {
+  name: 'Row actions: View, Edit and Delete buttons',
+  args: Standard.args,
+  render: () => {
+    const [last, setLast] = useState('')
+    return (
+      <div>
+        <Table caption="Accounts with row actions" columns={COLUMNS} rows={ACCOUNTS.slice(0, 8)} getRowId={(r) => r.id} rowActions={actionsFor(setLast)} />
+        <p aria-live="polite">{last ? `Last action: ${last}` : 'Choose an action.'}</p>
+      </div>
+    )
+  },
+}
+
+export const RowActionsMenu: Story = {
+  name: 'Row actions: single menu',
+  args: Standard.args,
+  render: () => {
+    const [last, setLast] = useState('')
+    return (
+      <div>
+        <Table caption="Accounts with a row menu" columns={COLUMNS} rows={ACCOUNTS.slice(0, 8)} getRowId={(r) => r.id} rowActions={actionsFor(setLast)} rowActionsAs="menu" />
+        <p aria-live="polite">{last ? `Last action: ${last}` : 'Open a menu and choose an action.'}</p>
+      </div>
+    )
+  },
+}
+
 export const SelectionAndBulkActions: Story = {
   name: 'Selection and bulk actions',
   args: Standard.args,

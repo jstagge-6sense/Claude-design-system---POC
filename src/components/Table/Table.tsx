@@ -8,6 +8,9 @@ import { VisuallyHidden } from '../../primitives/VisuallyHidden'
 import { Icon } from '../../icons'
 import { Button } from '../Button'
 import { Checkbox } from '../Checkbox'
+import { Menu, type MenuEntry } from '../Menu'
+import { Search } from '../Search'
+import { Select } from '../Select'
 import { EmptyState } from '../EmptyState'
 import { SkeletonLoader } from '../SkeletonLoader'
 import { Truncate } from '../Truncate'
@@ -26,8 +29,10 @@ export interface TableColumn<T> {
   accessor?: keyof T | ((row: T) => ReactNode)
   /** Full control of the cell content. Wins over `accessor`. */
   cell?: (row: T) => ReactNode
-  /** Shows a sort button with a direction icon and sets aria-sort. */
+  /** Sort button with a direction icon and aria-sort. On by default. Set false to turn sorting off for this column. */
   sortable?: boolean
+  /** Adds this column to the built-in filters when it has 2 to 8 distinct text values. On by default. Set false to leave it out. */
+  filterable?: boolean
   /** fixed: exactly `width`. fluid: grows to fill, never below `minWidth`. minmax: between `minWidth` and `maxWidth`. */
   sizing?: 'fixed' | 'fluid' | 'minmax'
   width?: number | string
@@ -42,6 +47,18 @@ export interface TableColumn<T> {
   editable?: boolean
   /** Renders the cells of this column as row headers (th scope="row"). Use it for the column that names the row. */
   rowHeader?: boolean
+}
+
+export interface TableRowAction<T> {
+  id: string
+  /** Verb only: "View", "Edit", "Delete". The row name is added for assistive tech. */
+  label: string
+  /** Leading icon slot. Shown in the menu. */
+  icon?: ReactNode
+  /** Button style. Defaults to tertiary. Use destructive for Delete. */
+  priority?: 'secondary' | 'tertiary' | 'destructive'
+  disabled?: boolean
+  onSelect: (row: T) => void
 }
 
 export interface TableErrorState {
@@ -59,8 +76,10 @@ export interface TableProps<T> extends Omit<HTMLAttributes<HTMLDivElement>, 'chi
   /** Column order and visibility are state held by the caller (see useTableColumns). The table renders what it is given. */
   columnOrder?: string[]
   hiddenColumnIds?: string[]
-  /** Current sort. The caller sorts `rows`. */
+  /** Current sort. Pass it (even as null) to control sorting yourself: the caller then sorts `rows`. Leave it out and the table sorts itself. */
   sort?: TableSort | null
+  /** Starting sort when the table sorts itself. */
+  defaultSort?: TableSort | null
   onSortChange?: (sort: TableSort | null) => void
   /** none: no checkboxes. single: one row at a time. multiple: select-all plus bulk selection. */
   selectionMode?: 'none' | 'single' | 'multiple'
@@ -94,8 +113,18 @@ export interface TableProps<T> extends Omit<HTMLAttributes<HTMLDivElement>, 'chi
   maxHeight?: number | string
   /** Slot under the table for pagination or a summary. The table is linked to it with aria-describedby. */
   footer?: ReactNode
-  /** Slot above the table for a DataTableToolbar. */
+  /** Slot above the table for a DataTableToolbar. When set, the built-in search and filters are not shown. */
   toolbar?: ReactNode
+  /** Built-in search box over the visible columns. On by default. */
+  searchable?: boolean
+  /** Built-in filters for columns with a few distinct values. On by default. */
+  filterable?: boolean
+  /** Actions at the end of every row. As buttons: 3 at most (extra ones are ignored). As a menu: one icon button with all of them. */
+  rowActions?: TableRowAction<T>[]
+  /** buttons (default): up to 3 text buttons. menu: a single vertical-dots button that opens a menu. */
+  rowActionsAs?: 'buttons' | 'menu'
+  /** Header of the actions column. */
+  rowActionsHeader?: string
   /** Force row hover for docs and previews. Do not use in product code. */
   rowDataState?: Record<string, 'hover'>
 }
@@ -172,11 +201,12 @@ function EditCell({ display, text, header, rowLabel, onCommit }: EditCellProps) 
 
 function TableInner<T>(
   {
-    caption, columns, rows, getRowId, columnOrder, hiddenColumnIds, sort, onSortChange,
+    caption, columns, rows: rowsIn, getRowId, columnOrder, hiddenColumnIds, sort: sortProp, defaultSort = null, onSortChange,
     selectionMode = 'none', selectedIds, defaultSelectedIds, onSelectionChange, getRowLabel,
     density = 'default', loading = false, loadingRows = 5, error, rowErrors, onRowRetry, emptyState,
     renderExpanded, expandedIds, defaultExpandedIds, onExpandedChange, onCellEdit,
     stickyHeader = false, stickyFirstColumn = false, maxHeight, footer, toolbar, rowDataState,
+    searchable = true, filterable = true, rowActions, rowActionsAs = 'buttons', rowActionsHeader = 'Actions',
     className, style, ...rest
   }: TableProps<T>,
   ref: Ref<HTMLDivElement>,
@@ -187,6 +217,11 @@ function TableInner<T>(
   const [selected, setSelected] = useControllableState<string[]>(selectedIds, defaultSelectedIds ?? [], onSelectionChange)
   const [expanded, setExpanded] = useControllableState<string[]>(expandedIds, defaultExpandedIds ?? [], onExpandedChange)
   const [announce, setAnnounce] = useState('')
+  const [innerSort, setInnerSort] = useState<TableSort | null>(defaultSort)
+  const [query, setQuery] = useState('')
+  const [filters, setFilters] = useState<Record<string, string>>({})
+  const controlledSort = sortProp !== undefined
+  const sort = controlledSort ? sortProp : innerSort
   const [scrolledX, setScrolledX] = useState(false)
   const [scrollable, setScrollable] = useState(false)
   const { ref: headStuckRef, stuck } = useStuck<HTMLTableCellElement>({ edge: 'top', root: scrollRef, enabled: stickyHeader })
@@ -197,10 +232,36 @@ function TableInner<T>(
     : columns
   const visible = ordered.filter((c) => !(hiddenColumnIds ?? []).includes(c.id))
 
+  // Built-in search, filters and (when not controlled) sort. Selection and counts use the rows that remain.
+  const textOf = (c: TableColumn<T>, row: T) => { const v = rawValue(c, row); return typeof v === 'string' || typeof v === 'number' ? String(v) : '' }
+  const filterCols = filterable
+    ? visible.filter((c) => {
+        if (c.filterable === false) return false
+        const vals = new Set(rowsIn.map((r) => textOf(c, r)).filter(Boolean))
+        return vals.size >= 2 && vals.size <= 8 && vals.size < rowsIn.length && rowsIn.every((r) => typeof rawValue(c, r) === 'string')
+      })
+    : []
+  const activeFilters = Object.entries(filters).filter(([, v]) => v)
+  const q = query.trim().toLowerCase()
+  let rows = rowsIn.filter((r) => activeFilters.every(([id, v]) => { const c = columns.find((x) => x.id === id); return c ? textOf(c, r) === v : true }))
+  if (q) rows = rows.filter((r) => visible.some((c) => textOf(c, r).toLowerCase().includes(q)))
+  if (!controlledSort && sort) {
+    const col = columns.find((c) => c.id === sort.columnId)
+    if (col) {
+      const dir = sort.direction === 'ascending' ? 1 : -1
+      const cmp = (a: unknown, b: unknown) => (typeof a === 'number' && typeof b === 'number' ? a - b : String(a ?? '').localeCompare(String(b ?? ''), undefined, { numeric: true, sensitivity: 'base' }))
+      rows = [...rows].sort((a, b) => cmp(rawValue(col, a), rawValue(col, b)) * dir)
+    }
+  }
+  const filtering = Boolean(q) || activeFilters.length > 0
+  const showTools = !toolbar && (searchable || filterCols.length > 0)
+  const actions = (rowActions ?? []).slice(0, rowActionsAs === 'buttons' ? 3 : undefined)
+  const hasActions = actions.length > 0
+
   const selectable = selectionMode !== 'none'
   const expandable = Boolean(renderExpanded)
   const ctrlCount = (selectable ? 1 : 0) + (expandable ? 1 : 0)
-  const colSpan = visible.length + ctrlCount
+  const colSpan = visible.length + ctrlCount + (hasActions ? 1 : 0)
   const rowIds = rows.map(getRowId)
   const selectedCount = rowIds.filter((id) => selected.includes(id)).length
   const allSelected = rows.length > 0 && selectedCount === rows.length
@@ -223,6 +284,7 @@ function TableInner<T>(
   const cycleSort = (c: TableColumn<T>) => {
     const dir = sort?.columnId === c.id ? sort.direction : undefined
     const next: TableSort | null = dir === undefined ? { columnId: c.id, direction: 'ascending' } : dir === 'ascending' ? { columnId: c.id, direction: 'descending' } : null
+    if (!controlledSort) setInnerSort(next)
     onSortChange?.(next)
     setAnnounce(next ? `Sorted by ${c.header}, ${next.direction}` : `Sort removed from ${c.header}`)
   }
@@ -286,6 +348,26 @@ function TableInner<T>(
       {...rest}
     >
       {toolbar ? <div className={styles.toolbar}>{toolbar}</div> : null}
+      {showTools ? (
+        <div className={cx(styles.toolbar, styles.tools)}>
+          {searchable ? (
+            <div className={styles.toolSearch}>
+              <Search variant="contextual" label={`Search ${caption}`} placeholder="Search" value={query} onValueChange={(v) => { setQuery(v); setAnnounce(`${v ? 'Searching' : 'Search cleared'}`) }} />
+            </div>
+          ) : null}
+          {filterCols.map((c) => {
+            const vals = [...new Set(rowsIn.map((r) => textOf(c, r)))].sort((a, b) => a.localeCompare(b))
+            return (
+              <div key={c.id} className={styles.toolFilter}>
+                <Select label={c.header} items={[{ value: '__all', label: 'All' }, ...vals.map((v) => ({ value: v, label: v }))]} value={filters[c.id] || '__all'}
+                  onValueChange={(v) => setFilters((f) => ({ ...f, [c.id]: v === '__all' ? '' : v }))} />
+              </div>
+            )
+          })}
+          {filtering ? <Button priority="tertiary" size="small" onClick={() => { setQuery(''); setFilters({}) }}>Clear filters</Button> : null}
+          <span className={styles.toolCount} aria-live="polite">{filtering ? `${rows.length} of ${rowsIn.length} rows` : `${rowsIn.length} rows`}</span>
+        </div>
+      ) : null}
       <div
         ref={scrollRef}
         className={styles.scroll}
@@ -333,9 +415,9 @@ function TableInner<T>(
                     data-align={c.align}
                     data-pin={pinned}
                     data-pin-last={pinned ? true : undefined}
-                    aria-sort={c.sortable ? (active ? sort!.direction : 'none') : undefined}
+                    aria-sort={c.sortable !== false ? (active ? sort!.direction : 'none') : undefined}
                   >
-                    {c.sortable ? (
+                    {c.sortable !== false ? (
                       <button type="button" className={styles.sortBtn} data-sort-btn data-active={active || undefined} onClick={() => cycleSort(c)}>
                         <span>{c.header}</span>
                         <Icon name={active ? (sort!.direction === 'ascending' ? 'arrowUp' : 'arrowDown') : 'sort'} className={styles.sortIcon} />
@@ -344,6 +426,7 @@ function TableInner<T>(
                   </th>
                 )
               })}
+              {hasActions ? <th scope="col" className={cx(styles.th, styles.actionsCol)} data-align="end">{rowActionsHeader}</th> : null}
             </tr>
           </thead>
           <tbody>
@@ -365,7 +448,7 @@ function TableInner<T>(
             ) : null}
             {bodyState === 'empty' ? (
               <tr><td colSpan={colSpan} className={styles.fullCell}>
-                {emptyState ?? <EmptyState minimal title="Nothing to show" description="There are no rows yet." />}
+                {filtering ? <EmptyState minimal title="No matches" description="No rows match your search or filters. Clear them to see every row." /> : (emptyState ?? <EmptyState minimal title="Nothing to show" description="There are no rows yet." />)}
               </td></tr>
             ) : null}
             {bodyState === 'rows' ? rows.map((row, ri) => {
@@ -439,6 +522,26 @@ function TableInner<T>(
                         </Cell>
                       )
                     })}
+                    {hasActions ? (
+                      <td className={cx(styles.td, styles.actionsCol)} data-align="end">
+                        {rowActionsAs === 'menu' ? (
+                          <Menu
+                            label={`Actions for ${label}`}
+                            mode="action"
+                            align="end"
+                            trigger={<Button priority="tertiary" size="small" iconOnly icon={<Icon name="moreVertical" />} aria-label={`More actions for ${label}`} />}
+                            items={actions.map((a): MenuEntry => ({ value: a.id, label: a.label, icon: a.icon, disabled: a.disabled, destructive: a.priority === 'destructive' }))}
+                            onAction={(v) => actions.find((a) => a.id === v)?.onSelect(row)}
+                          />
+                        ) : (
+                          <span className={styles.actions}>
+                            {actions.map((a) => (
+                              <Button key={a.id} size="small" priority={a.priority ?? 'tertiary'} disabled={a.disabled} aria-label={`${a.label} ${label}`} onClick={() => a.onSelect(row)}>{a.label}</Button>
+                            ))}
+                          </span>
+                        )}
+                      </td>
+                    ) : null}
                   </tr>
                   {errMsg ? (
                     <tr className={styles.errorRow} data-error="true">
