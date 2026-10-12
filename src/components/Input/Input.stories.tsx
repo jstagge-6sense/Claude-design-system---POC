@@ -25,6 +25,15 @@ export const RequiredAndOptional: Story = {
     </div>
   ),
 }
+export const LabelOptions: Story = {
+  render: (args) => (
+    <div style={col}>
+      <Input {...args} label="Work email" requirement="required" placeholder="name@company.com" type="email" />
+      <Input {...args} label="Segment name" help="Use 3 to 40 characters. The name shows in lists and reports." placeholder="Enterprise accounts" />
+      <Input {...args} label="Work email" requirement="required" help="We use this to send the weekly summary." placeholder="name@company.com" type="email" />
+    </div>
+  ),
+}
 export const Sizes: Story = {
   render: (args) => (
     <div style={col}>

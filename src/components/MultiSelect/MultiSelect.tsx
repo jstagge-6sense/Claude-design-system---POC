@@ -16,6 +16,8 @@ export interface MultiSelectProps {
   label: string
   hideLabel?: boolean
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   helperText?: ReactNode
   error?: string
   items: MenuEntry[]
@@ -61,7 +63,7 @@ function onlySelected(entries: MenuEntry[], selected: string[]): MenuEntry[] {
 
 export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(function MultiSelect(
   {
-    label, hideLabel, requirement, helperText, error, items, value, defaultValue = [], onValueChange, placeholder = 'Select options', searchable, selectAll = true, showChips = true,
+    label, hideLabel, requirement, help, helperText, error, items, value, defaultValue = [], onValueChange, placeholder = 'Select options', searchable, selectAll = true, showChips = true,
     maxVisibleChips = 3, loading = false, emptyMessage, size = 'medium', disabled = false, required, name, id, className, open, defaultOpen, onOpenChange, portal = true, 'data-state': forced,
   },
   ref,
@@ -110,6 +112,7 @@ export const MultiSelect = forwardRef<HTMLButtonElement, MultiSelectProps>(funct
       hideLabel={hideLabel}
       labelAs="span"
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={helperText}
       error={error}
       disabled={disabled}

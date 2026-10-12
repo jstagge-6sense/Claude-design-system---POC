@@ -62,15 +62,15 @@ button.step::after { content: ''; position: absolute; inset-inline: 0; inset-blo
 .message { display: flex; align-items: flex-start; gap: var(--core-dimension-space-comfortable); margin: 0; font: var(--component-progressSteps-all-counter-typography-font); color: var(--core-color-status-critical); }
 .messageIcon { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .messageIcon > svg { inline-size: 100%; block-size: 100%; }
-.root[data-orientation='horizontal'] .body > .message { max-inline-size: 16rem; }
+.root[data-orientation='horizontal'] .body > .message { max-inline-size: var(--ds-w-256); }
 .counter { margin: 0; font: var(--component-progressSteps-all-counter-typography-font); color: var(--core-color-content-secondary); }
 
 /* ---- Connector: ProgressBar track, filled with the ProgressBar fill once the step is completed. ---- */
 .connector { flex: 1 1 auto; align-self: flex-start; background: var(--component-progressSteps-all-connector-fill-default); border-radius: var(--component-progressSteps-all-connector-radius); }
 .connector[data-filled] { background: var(--component-progressSteps-all-connector-fill-completed); }
-.root[data-orientation='horizontal'] .connector { min-inline-size: 1rem; block-size: var(--component-progressSteps-all-connector-thickness); margin-block-start: calc((var(--component-progressSteps-all-marker-size) - var(--component-progressSteps-all-connector-thickness)) / 2); }
+.root[data-orientation='horizontal'] .connector { min-inline-size: var(--ds-w-16); block-size: var(--component-progressSteps-all-connector-thickness); margin-block-start: calc((var(--component-progressSteps-all-marker-size) - var(--component-progressSteps-all-connector-thickness)) / 2); }
 .root[data-compact][data-orientation='horizontal'] .connector { margin-block-start: calc((var(--core-dimension-size-feedback-medium) - var(--component-progressSteps-all-connector-thickness)) / 2); }
-.root[data-orientation='vertical'] .connector { inline-size: var(--component-progressSteps-all-connector-thickness); min-block-size: 1.5rem; flex: none; margin-inline-start: calc((var(--component-progressSteps-all-marker-size) - var(--component-progressSteps-all-connector-thickness)) / 2); }
+.root[data-orientation='vertical'] .connector { inline-size: var(--component-progressSteps-all-connector-thickness); min-block-size: var(--ds-w-24); flex: none; margin-inline-start: calc((var(--component-progressSteps-all-marker-size) - var(--component-progressSteps-all-connector-thickness)) / 2); }
 
 /* ---- Interactive (completed, go back): hover, pressed, focus. Real pseudo-classes plus forced twins. ---- */
 .item[data-status='completed'] button.step:where(:hover) .marker, .item[data-status='completed'] .step[data-state='hover'] .marker { --_marker-fill: var(--core-color-action-primary-hover); background: var(--core-color-action-primary-hover); }

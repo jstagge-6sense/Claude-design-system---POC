@@ -11,6 +11,8 @@ export interface NumberInputProps extends Omit<InputHTMLAttributes<HTMLInputElem
   label: ReactNode
   hideLabel?: boolean
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   helperText?: ReactNode
   error?: string
   /** Runs on blur. Receives the committed number (or null when empty). */
@@ -47,7 +49,7 @@ const decimalsOf = (n: number) => {
 
 export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(function NumberInput(
   {
-    label, hideLabel, requirement, helperText, error: errorProp, validate, requiredMessage, size = 'medium', value, defaultValue = null, onValueChange,
+    label, hideLabel, requirement, help, helperText, error: errorProp, validate, requiredMessage, size = 'medium', value, defaultValue = null, onValueChange,
     min, max, step = 1, precision, steppers = true, unit, leadingIcon, stepperLabels = { decrease: 'Decrease value', increase: 'Increase value' }, boundaryMessages,
     disabled = false, readOnly = false, required, className, id: idProp, onBlur, onFocus, onKeyDown, 'data-state': forced, 'aria-describedby': describedByProp, ...rest
   },
@@ -174,6 +176,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
       label={label}
       hideLabel={hideLabel}
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={helper}
       error={error}
       disabled={disabled}

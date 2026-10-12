@@ -26,8 +26,8 @@
   box-sizing: border-box;
   pointer-events: auto;
   /* Min and max width, never fixed. */
-  min-inline-size: 16rem;
-  max-inline-size: min(26rem, 100%);
+  min-inline-size: var(--ds-w-256);
+  max-inline-size: min(var(--ds-w-416), 100%);
   padding: var(--core-dimension-space-comfortable) var(--core-dimension-space-standard);
   background: var(--core-color-surface-overlay);
   border: var(--core-dimension-borderWidth-thin) solid var(--_border);

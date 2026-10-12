@@ -34,7 +34,7 @@
   --_color: var(--core-color-status-critical);
 }
 
-.text { display: grid; gap: var(--core-dimension-space-compact); max-inline-size: 36rem; }
+.text { display: grid; gap: var(--core-dimension-space-compact); max-inline-size: var(--ds-w-576); }
 .title { margin: 0; font: var(--_title-type); text-decoration: var(--component-emptyState-all-title-typography-text-decoration); color: var(--core-color-content-primary); }
 .description { margin: 0; font: var(--component-emptyState-all-description-typography-font); text-decoration: var(--component-emptyState-all-description-typography-text-decoration); color: var(--core-color-content-secondary); }
 

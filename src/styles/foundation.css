@@ -14,6 +14,29 @@
   /* Touch targets: 44x44 minimum, 48x48 on touch devices. */
   --ds-hit-min: 2.75rem;
   --ds-hit-touch: 3rem;
+  /* Layout size constants (min/max widths). Name = pixels at 16px root. Not design tokens: no semantic role. */
+  --ds-w-16: 1rem;
+  --ds-w-24: 1.5rem;
+  --ds-w-144: 9rem;
+  --ds-w-160: 10rem;
+  --ds-w-192: 12rem;
+  --ds-w-224: 14rem;
+  --ds-w-256: 16rem;
+  --ds-w-280: 17.5rem;
+  --ds-w-288: 18rem;
+  --ds-w-320: 20rem;
+  --ds-w-352: 22rem;
+  --ds-w-384: 24rem;
+  --ds-w-416: 26rem;
+  --ds-w-448: 28rem;
+  --ds-w-480: 30rem;
+  --ds-w-512: 32rem;
+  --ds-w-576: 36rem;
+  --ds-w-640: 40rem;
+  --ds-w-768: 48rem;
+  --ds-w-896: 56rem;
+  --ds-underline-offset: 0.15em;
+  --ds-min-line-length: 1em;
   /* Motion. Wrap in prefers-reduced-motion: no-preference. */
   --ds-motion-fast: var(--core-motion-duration-fast);
   --ds-motion-base: var(--core-motion-duration-base);

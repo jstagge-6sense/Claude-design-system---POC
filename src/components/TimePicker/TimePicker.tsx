@@ -20,6 +20,8 @@ export interface TimePickerProps extends Omit<InputHTMLAttributes<HTMLInputEleme
   label: ReactNode
   hideLabel?: boolean
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   helperText?: ReactNode
   /** Error message. When set the field is invalid and the message is wired via aria-describedby. */
   error?: string
@@ -59,7 +61,7 @@ interface Opt { id: string; value: string; label: string; hint?: string; group: 
 
 export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(function TimePicker(
   {
-    label, hideLabel, requirement, helperText, error: errorProp, validate, requiredMessage, size = 'medium', value: valueProp, defaultValue = '', onValueChange,
+    label, hideLabel, requirement, help, helperText, error: errorProp, validate, requiredMessage, size = 'medium', value: valueProp, defaultValue = '', onValueChange,
     step = 30, min, max, hourCycle: hourCycleProp, locale, granular = false, presets = false, assume, open: openProp, defaultOpen = false, onOpenChange,
     disabled = false, required, className, id: idProp, placeholder, onKeyDown, onBlur, onClick, 'data-state': forced, forcedOptionStates,
     'aria-describedby': describedByProp, ...rest
@@ -234,6 +236,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(function
       label={label}
       hideLabel={hideLabel}
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={helperText}
       error={error}
       disabled={disabled}

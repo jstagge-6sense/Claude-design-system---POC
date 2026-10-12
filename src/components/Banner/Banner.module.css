@@ -42,7 +42,7 @@
 .root { --_icon-offset: calc((1lh - var(--core-dimension-size-icon)) / 2); }
 .icon { margin-block-start: var(--_icon-offset); }
 
-.content { flex: 1 1 14rem; min-inline-size: 0; display: flex; flex-direction: column; }
+.content { flex: 1 1 var(--ds-w-224); min-inline-size: 0; display: flex; flex-direction: column; }
 .title {
   margin: 0;
   font: var(--component-banner-all-title-typography-font);

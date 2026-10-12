@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useRef, type ChangeEvent, type CSSProperties, ty
 import { cx } from '../../primitives/cx'
 import { mergeRefs } from '../../primitives/mergeRefs'
 import { useControllableState } from '../../primitives/useControllableState'
-import { FieldBox, FieldShell, describedBy, useFieldIds, useFieldValidation, type FieldRequirement } from '../Input/Field'
+import { FieldBox, FieldShell, describedBy, useFieldIds, useFieldValidation, type FieldRequirement, type FieldRequirementPosition } from '../Input/Field'
 import fieldStyles from '../Input/Field.module.css'
 import styles from './TextArea.module.css'
 
@@ -19,6 +19,8 @@ export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaE
   label: ReactNode
   hideLabel?: boolean
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   helperText?: ReactNode
   error?: string
   validate?: (value: string) => string | undefined
@@ -47,7 +49,7 @@ export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaE
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function TextArea(
   {
-    label, hideLabel, requirement, helperText, error: errorProp, validate, requiredMessage, value, defaultValue = '', onValueChange, onChange, onBlur,
+    label, hideLabel, requirement, help, helperText, error: errorProp, validate, requiredMessage, value, defaultValue = '', onValueChange, onChange, onBlur,
     autoResize = false, rows = 3, maxRows = 8, resize = 'vertical', showCounter, maxLength, actions, tags,
     disabled = false, readOnly = false, required, className, id: idProp, 'data-state': forced, 'aria-describedby': describedByProp, style, ...rest
   },
@@ -96,6 +98,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(function 
       label={label}
       hideLabel={hideLabel}
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={helperText}
       error={error}
       counter={hasCounter ? { count: text.length, max: maxLength as number } : undefined}

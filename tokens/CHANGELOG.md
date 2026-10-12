@@ -28,3 +28,10 @@ Record every token add, rename, or removal, and the matching Figma change.
 - New primitive `core.motion.duration.slower` (480ms). `core.motion.progress.duration` now uses it, so the progress fill, circle arc and count-up run one step slower than before (320ms to 480ms). Reduced motion zeroes it too.
 - Drawer: removed corner radius. Deleted `component.drawer.all.container.radius` (no longer used).
 - Drawer: new `behavior="push"` option. The drawer sits in a flex row and squeezes the content beside it (no scrim, no scroll lock, rendered in place). Uses the same `core.motion.panel.*` tokens, animating width instead of sliding. No new tokens.
+
+## Figma sync: semantic color (2026-10-12)
+- Restored `tokens/semantic/color.json` (53 tokens) and `tokens/semantic/effect.json` (22 tokens), plus 9 component files missing from `tokens/component` (avatar, badge, breadcrumb, checkbox, codeSnippet, emptyState, formGroup, infiniteScroll, menu). All rebuilt from `dist/tokens.json` sources; 679 tokens, build passes.
+- Matched to Figma: `surface.scrim` 32% to 48% and `border.strong` 24% to 64%.
+- Not matched, by design: Figma holds `border.destructive`, `action.disabled.fill/border`, `action.tint.hover` and `action.compact.default/pressed` with opacity (4-16%). The repo keeps these semantic tokens solid and composes opacity in about 37 component tokens (`rgba({semantic},{opacity})`). Applying Figma's alpha would double the opacity, so they stay solid.
+- Kept as repo-only (not in Figma): `surface.page`, `surface.card`, `border.group`, `action.selected` (gradients) and `content.brand`.
+- Not updated: `modes/dark.json` overrides for scrim and border.strong.

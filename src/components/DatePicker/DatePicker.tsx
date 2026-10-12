@@ -44,6 +44,8 @@ export interface DatePickerProps extends Omit<InputHTMLAttributes<HTMLInputEleme
   label: ReactNode
   hideLabel?: boolean
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   /** Shown under the field. When min or max is set and this is empty, the allowed dates are shown here so constraints are upfront. */
   helperText?: ReactNode
   error?: string
@@ -93,7 +95,7 @@ const isRange = (v: DateValue | undefined): v is DateRange => !!v && typeof v ==
 
 const DateField = forwardRef<HTMLInputElement, DatePickerProps>(function DateField(
   {
-    label, hideLabel, requirement, helperText, error: errorProp, validate, requiredMessage, size = 'medium', mode = 'single', value: valueProp, defaultValue = null,
+    label, hideLabel, requirement, help, helperText, error: errorProp, validate, requiredMessage, size = 'medium', mode = 'single', value: valueProp, defaultValue = null,
     onValueChange, min, max, isDateDisabled, locale, weekStartsOn, dateStyle = 'numeric', presets = false, today: todayProp, open: openProp, defaultOpen = false, onOpenChange,
     disabled = false, required, className, id: idProp, placeholder, onKeyDown, onBlur, onClick, 'data-state': forced, forcedDayStates, 'aria-describedby': describedByProp,
     // consumed by the outer component
@@ -260,6 +262,7 @@ const DateField = forwardRef<HTMLInputElement, DatePickerProps>(function DateFie
       label={label}
       hideLabel={hideLabel}
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={note}
       error={error}
       disabled={disabled}

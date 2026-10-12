@@ -13,6 +13,8 @@ export interface SelectProps {
   label: string
   hideLabel?: boolean
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   helperText?: ReactNode
   /** Error message. Sets aria-invalid and is wired through aria-describedby. */
   error?: string
@@ -48,7 +50,7 @@ export interface SelectProps {
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select(
   {
-    label, hideLabel, requirement, helperText, error, items, value, defaultValue = '', onValueChange, placeholder = 'Select an option', searchable = false,
+    label, hideLabel, requirement, help, helperText, error, items, value, defaultValue = '', onValueChange, placeholder = 'Select an option', searchable = false,
     onCreate, createLabel, loading = false, emptyMessage, size = 'medium', disabled = false, required, name, id, className, open, defaultOpen, onOpenChange, portal = true, 'data-state': forced,
   },
   ref,
@@ -66,6 +68,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(function Select
       hideLabel={hideLabel}
       labelAs="span"
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={helperText}
       error={error}
       disabled={disabled}

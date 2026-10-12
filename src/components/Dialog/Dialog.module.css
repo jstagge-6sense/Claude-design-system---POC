@@ -32,9 +32,9 @@
 .surface:focus { outline: none; }
 
 /* Sizes: min and max widths only. */
-.surface[data-size='small'] { min-inline-size: 17.5rem; max-inline-size: 26rem; }
-.surface[data-size='medium'] { min-inline-size: 22rem; max-inline-size: 36rem; }
-.surface[data-size='large'] { min-inline-size: 28rem; max-inline-size: 56rem; }
+.surface[data-size='small'] { min-inline-size: var(--ds-w-280); max-inline-size: var(--ds-w-416); }
+.surface[data-size='medium'] { min-inline-size: var(--ds-w-352); max-inline-size: var(--ds-w-576); }
+.surface[data-size='large'] { min-inline-size: var(--ds-w-448); max-inline-size: var(--ds-w-896); }
 
 .header {
   display: flex;

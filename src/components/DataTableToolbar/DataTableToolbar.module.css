@@ -14,7 +14,7 @@
   border-block-end: var(--component-dataTableToolbar-all-container-borderWidth) solid var(--component-table-all-sticky-border-stuck);
 }
 .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--core-dimension-space-compact); }
-.search { flex: 1 1 14rem; max-inline-size: 24rem; min-inline-size: 0; }
+.search { flex: 1 1 var(--ds-w-224); max-inline-size: var(--ds-w-384); min-inline-size: 0; }
 .group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--core-dimension-space-compact); }
 .density { display: inline-flex; gap: var(--core-dimension-space-tight); }
 .count { margin-inline-start: var(--core-dimension-space-tight); }
@@ -45,8 +45,8 @@
   z-index: var(--ds-z-menu);
   display: grid;
   gap: var(--core-dimension-space-tight);
-  min-inline-size: 16rem;
-  max-block-size: 24rem;
+  min-inline-size: var(--ds-w-256);
+  max-block-size: var(--ds-w-384);
   overflow: auto;
   padding: var(--core-dimension-space-standard);
   box-sizing: border-box;

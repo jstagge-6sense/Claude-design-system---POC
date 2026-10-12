@@ -73,7 +73,7 @@
 .link:focus-visible, .link[data-state='focus'] { outline: none; box-shadow: var(--component-topBar-all-link-shadow-focus); }
 
 /* ---- Search ---- */
-.search { flex: 0 1 28rem; min-inline-size: 12rem; }
+.search { flex: 0 1 var(--ds-w-448); min-inline-size: var(--ds-w-192); }
 .region { display: flex; align-items: center; gap: var(--core-dimension-space-tight); flex: none; }
 
 /* ---- Icon actions (hamburger, search, notifications, app switcher) ---- */

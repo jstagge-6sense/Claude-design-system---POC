@@ -9,7 +9,7 @@
   color: var(--_color);
   font: var(--_type);
   text-decoration: var(--_deco);
-  text-underline-offset: 0.15em;
+  text-underline-offset: var(--ds-underline-offset);
   background: var(--_fill);
   border-radius: var(--core-dimension-radius-control-small);
   cursor: pointer;

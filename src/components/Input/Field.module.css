@@ -14,6 +14,19 @@
   color: var(--core-color-content-primary);
 }
 .indicator { color: var(--core-color-content-secondary); font-weight: normal; margin-inline-start: var(--core-dimension-space-tight); }
+.labelText { display: inline-flex; align-items: center; gap: var(--core-dimension-space-tight); flex-wrap: wrap; min-inline-size: 0; }
+.labelText > span { display: inline-flex; align-items: center; align-self: center; line-height: 0; }
+.indicatorStart { margin-inline-start: 0; margin-inline-end: 0; color: var(--core-color-status-critical); }
+/* Help icon at the end of the label. Its text opens in a popover on hover and focus. */
+.helpButton {
+  display: inline-flex; align-items: center; background: none; border: 0; padding: 0; cursor: help; line-height: 0;
+  color: var(--core-color-content-secondary); border-radius: var(--core-dimension-radius-pill);
+}
+.helpButton > svg { display: block; }
+.helpButton:hover { color: var(--core-color-content-primary); }
+.helpButton:focus-visible { outline: none; box-shadow: var(--core-effect-ring-focus); }
+.helpButton:disabled { color: var(--core-color-content-disabled); cursor: not-allowed; text-decoration: none; }
+.helpText { margin: 0; }
 .shell[data-disabled] .label { color: var(--core-color-content-disabled); }
 .shell[data-disabled] .indicator { color: var(--core-color-content-disabled); }
 
@@ -120,6 +133,10 @@
 .message > .icon { color: inherit; margin-block-start: 0; }
 .helper { color: var(--core-color-content-secondary); }
 .error { color: var(--core-color-status-critical); }
+.asterisk { color: var(--core-color-status-critical); }
+.info { color: var(--core-color-status-info); }
+.success { color: var(--core-color-status-success); }
+.warning { color: var(--core-color-status-warning); }
 .shell[data-disabled] .helper { color: var(--core-color-content-disabled); }
 .counter {
   flex: none;

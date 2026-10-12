@@ -9,8 +9,8 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  min-inline-size: 12rem;
-  max-inline-size: min(22rem, 90vw);
+  min-inline-size: var(--ds-w-192);
+  max-inline-size: min(var(--ds-w-352), 90vw);
   padding: var(--core-dimension-space-tight);
   background: var(--core-color-surface-control-default);
   border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
@@ -18,7 +18,7 @@
   box-shadow: var(--component-topBar-all-menu-shadow-default);
 }
 .panel[data-placement='top'] { margin-block-start: 0; margin-block-end: var(--core-dimension-space-tight); }
-.panel[data-layout='grid'] { inline-size: 20rem; }
+.panel[data-layout='grid'] { inline-size: var(--ds-w-320); }
 
 .header {
   padding: var(--core-dimension-space-comfortable);

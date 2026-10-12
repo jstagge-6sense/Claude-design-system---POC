@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Component CSS lint.
 //  ERROR: hex/rgb/hsl colors, primitive tokens used directly, var() names that do not exist, z-index outside --ds-z-*.
-//  WARN:  raw px/rem/ms literals (use a token, a --ds-* constant, or log a GAP).
+//  WARN:  raw px/rem/ms literals (use a token, a --ds-* constant, or log a GAP). @media/@container conditions are exempt (var() is not allowed there).
 // Usage: node scripts/lint-tokens.mjs [root] [--only Button,Input]
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs'
 import { join, resolve, relative } from 'node:path'
@@ -36,7 +36,7 @@ for (const f of files) {
       if (!known.has(v)) { errors.push(`${loc} unknown variable ${v}`); continue }
       if (known.get(v) === 'primitive' && !/^--core-effect-(opacity|blur|shadow|glow)-/.test(v)) errors.push(`${loc} primitive token ${v} used in a component. Use a semantic or component token`)
     }
-    const stripped = line.replace(/var\([^)]*\)/g, '').replace(/@media[^{]*/g, '').replace(/\b(0|1)px\b/g, '')
+    const stripped = line.replace(/var\([^)]*\)/g, '').replace(/@(media|container)[^{]*/g, '').replace(/\b(0|1)px\b/g, '')
     if (/(^|[^\w#-])-?\d*\.?\d+(px|rem|em)\b/.test(stripped) && !/^\s*(--_|--ds)/.test(line)) warns.push(`${loc} raw length: ${line.trim()}`)
   })
 }

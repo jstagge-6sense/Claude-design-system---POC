@@ -11,6 +11,17 @@ describe('Input', () => {
     expect(screen.getByText('(required)')).toBeTruthy()
     expect(screen.getByLabelText(/Email/).getAttribute('aria-required')).toBe('true')
   })
+  it('puts the red required marker in front of the label and optional after it', () => {
+    const { unmount } = render(<Input label="Email" requirement="required" />)
+    expect(screen.getByText('(required)').closest('label')?.textContent?.startsWith('*')).toBe(true)
+    unmount()
+    render(<Input label="Email" requirement="optional" />)
+    expect(screen.getByText('(optional)').closest('label')?.textContent?.endsWith('(optional)')).toBe(true)
+  })
+  it('adds a help icon with a name when help is set', () => {
+    render(<Input label="Email" help="We send sign-in links here." />)
+    expect(screen.getByRole('button', { name: /help for email/i })).toBeTruthy()
+  })
   it('wires the error with aria-describedby and aria-invalid', () => {
     render(<Input label="Email" error="Enter an email address." />)
     const input = screen.getByLabelText('Email')

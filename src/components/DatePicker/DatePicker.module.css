@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--core-dimension-space-compact);
-  min-inline-size: 9rem;
+  min-inline-size: var(--ds-w-144);
   padding-inline-end: var(--core-dimension-space-standard);
   border-inline-end: var(--component-datePicker-all-panel-borderWidth) solid var(--component-datePicker-all-panel-border-default);
 }
@@ -107,8 +107,8 @@
 
 /* ---- With time: date field and TimePicker side by side ---- */
 .withTime { display: flex; align-items: flex-start; flex-wrap: wrap; gap: var(--core-dimension-space-standard); min-inline-size: 0; }
-.withTime > :first-child { flex: 2 1 12rem; }
-.timeField { flex: 1 1 9rem; min-inline-size: 0; }
+.withTime > :first-child { flex: 2 1 var(--ds-w-192); }
+.timeField { flex: 1 1 var(--ds-w-144); min-inline-size: 0; }
 
 @media (max-width: 36rem) {
   .panel { flex-direction: column; }

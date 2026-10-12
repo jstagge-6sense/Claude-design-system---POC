@@ -14,7 +14,13 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   hideLabel?: boolean
   /** Mark the minority case with written text: "(required)" or "(optional)". */
   requirement?: FieldRequirement
+  /** Help text. Adds a "help" button at the end of the label that shows or hides it. */
+  help?: ReactNode
   helperText?: ReactNode
+  /** Status messages with an icon and color. Each replaces the helper text. Precedence: error, warning, success, info. */
+  warning?: string
+  success?: string
+  info?: string
   /** Error message. When set the field is invalid (aria-invalid) and the message is wired via aria-describedby. */
   error?: string
   /** Validate on blur (and on change after the first error). Return a message or undefined. */
@@ -44,7 +50,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
-    label, hideLabel, requirement, helperText, error: errorProp, validate, requiredMessage, size = 'medium', value, defaultValue = '', onValueChange, onChange, onBlur,
+    label, hideLabel, requirement, help, helperText, warning, success, info, error: errorProp, validate, requiredMessage, size = 'medium', value, defaultValue = '', onValueChange, onChange, onBlur,
     leadingIcon, trailingIcon, clearable = false, onClear, passwordToggle = false, loading = false, showCounter, maxLength,
     disabled = false, readOnly = false, required, type = 'text', className, id: idProp, 'data-state': forced, 'aria-describedby': describedByProp, ...rest
   },
@@ -84,7 +90,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       label={label}
       hideLabel={hideLabel}
       requirement={requirement ?? (required ? 'required' : 'none')}
+      help={help}
       helperText={helperText}
+      warning={warning}
+      success={success}
+      info={info}
       error={error}
       counter={hasCounter ? { count: text.length, max: maxLength as number } : undefined}
       disabled={disabled}
@@ -107,7 +117,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           aria-required={required || requirement === 'required' || undefined}
           aria-invalid={error ? true : undefined}
           aria-busy={loading || undefined}
-          aria-describedby={describedBy(ids, { helper: !!helperText, error: !!error, counter: hasCounter }, describedByProp)}
+          aria-describedby={describedBy(ids, { helper: !!(helperText || warning || success || info), error: !!error, counter: hasCounter }, describedByProp)}
           {...rest}
         />
         {(loading || showClear || showToggle || trailingIcon || readOnly) ? (

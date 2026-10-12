@@ -52,6 +52,7 @@ export function buildAnalytics(root, { tokens, gaps, state, modes }) {
     usedDirect, unusedNonPrimitive: unused.length, unusedList: unused,
     byLayerDirect: Object.fromEntries(layers.map((l) => [l, list.filter((t) => t.layer === l && refCount[t.cssVar]).length])),
     mostShared: top(Object.fromEntries(Object.entries(filesPerVar).map(([v, s]) => [list.find((t) => t.cssVar === v)?.name || v, s.size])), 12),
+    usedBy: Object.fromEntries(Object.entries(filesPerVar).map(([v, c]) => [list.find((t) => t.cssVar === v)?.name || v, [...c].sort()])),
     tokensPerComponent: top(Object.fromEntries(Object.entries(perComponent).map(([c, s]) => [c, s.size])), 12),
   }
 

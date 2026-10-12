@@ -9,7 +9,7 @@
   flex: 0 0 auto;
   block-size: 100%;
   min-block-size: 0;
-  inline-size: clamp(16rem, 28%, 22rem);
+  inline-size: clamp(var(--ds-w-256), 28%, var(--ds-w-352));
   background: var(--component-sidePanel-all-container-fill);
   color: var(--core-color-content-primary);
   border: 0 solid var(--core-color-border-standard);

@@ -3,7 +3,7 @@
 .root { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--core-dimension-space-standard); min-inline-size: 0; }
 
 .count { flex: 1 1 auto; margin: 0; color: var(--core-color-content-secondary); font: var(--component-pagination-all-count-typography-font); }
-.size { flex: none; min-inline-size: 10rem; }
+.size { flex: none; min-inline-size: var(--ds-w-160); }
 
 .container {
   display: inline-flex;
