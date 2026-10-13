@@ -1,52 +1,69 @@
 name: share-link
-# Publishes one GitHub Pages site:
-#   /             the full design system preview (components, foundations, guidelines)
-#   /storybook/   Storybook
-# One-time setup: repository Settings > Pages > Build and deployment > Source: GitHub Actions.
-# To drop either part later, delete its marked step below. Nothing else depends on it.
+
+# Publishes Storybook to:
+# /storybook/
+#
+# GitHub setup:
+# Settings > Pages > Build and deployment > Source: GitHub Actions
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm install --no-audit --no-fund
-      - run: mkdir -p _site
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # ---- PART 1: full preview instance. Remove this step to stop publishing the preview. ----
-      - name: Build preview
-        run: |
-          ESBUILD_PATH=$(node -p "require.resolve('esbuild')") node scripts/build-preview.mjs
-          cp preview/design-system-preview.html _site/index.html
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-      # ---- PART 2: Storybook. Remove this step to stop publishing Storybook. ----
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Create Pages directory
+        run: mkdir -p _site
+
       - name: Build Storybook
-        continue-on-error: true   # a Storybook failure never blocks the preview
-        run: |
-          npm run build-storybook
-          cp -r storybook-static _site/storybook
+        run: npm run build-storybook
 
-      - run: test -f _site/index.html || test -f _site/storybook/index.html
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: _site }
+      - name: Add Storybook to Pages
+        run: |
+          mkdir -p _site/storybook
+          cp -r storybook-static/. _site/storybook/
+
+      - name: Verify Storybook
+        run: test -f _site/storybook/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - id: deployment
+      - name: Deploy Pages
+        id: deployment
         uses: actions/deploy-pages@v4
