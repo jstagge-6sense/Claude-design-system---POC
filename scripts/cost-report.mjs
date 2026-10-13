@@ -10,6 +10,7 @@ const taskCfg = existsSync(join(dir, 'tasks.json')) ? JSON.parse(readFileSync(jo
 const segs = taskCfg.segments
 const catOf = (t) => { let c = segs.length ? segs[0][1] : 'All work'; for (const [s0, n] of segs) if (t.slice(0, 16) >= s0) c = n; return c }
 const dropped = new Set(taskCfg.excluded)
+const hidden = new Set(taskCfg.hideFromTime || [])
 const taskUse = {}
 const sessions = []
 if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => f.endsWith('.txt')).sort()) {
@@ -19,12 +20,18 @@ if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => f.endsWith('
 const time = { activeMinutes: 0, windows: 0, firstMessage: null, lastMessage: null, list: [], allList: [] }
 if (existsSync(dir)) for (const f of readdirSync(dir).filter((f) => /^time.*\.json$/.test(f)).sort()) {
   for (const w of (JSON.parse(readFileSync(join(dir, f), 'utf8')).windows || []).filter((w) => !excluded.has(w.start.slice(0, 10)))) {
-    time.allList.push([w.start, w.end]) // all work, including tasks that are not counted in the cost
-    if (dropped.has(catOf(w.start))) continue
-    const a = Date.parse(w.start + 'Z'), b = Date.parse(w.end + 'Z')
-    time.activeMinutes += Math.round((b - a) / 60000); time.windows++; time.list.push([w.start, w.end])
-    if (!time.firstMessage || w.start < time.firstMessage) time.firstMessage = w.start
-    if (!time.lastMessage || w.end > time.lastMessage) time.lastMessage = w.end
+    // A window that runs across a task boundary is cut there, so excluded work (preview, token editor) never leaks into counted hours.
+    const cuts = [w.start, ...segs.map(([t0]) => t0).filter((t0) => t0 > w.start.slice(0, 16) && t0 < w.end.slice(0, 16)).sort(), w.end]
+    for (let i = 0; i < cuts.length - 1; i++) {
+      const s0 = cuts[i], e0 = cuts[i + 1]
+      // Working time shown on the page keeps every task except the preview and token editor ones (taskCfg.hideFromTime).
+      if (!hidden.has(catOf(s0))) time.allList.push([s0, e0])
+      if (dropped.has(catOf(s0))) continue
+      const a = Date.parse(s0 + 'Z'), b = Date.parse(e0 + 'Z')
+      time.activeMinutes += Math.round((b - a) / 60000); time.windows++; time.list.push([s0, e0])
+      if (!time.firstMessage || s0 < time.firstMessage) time.firstMessage = s0
+      if (!time.lastMessage || e0 > time.lastMessage) time.lastMessage = e0
+    }
   }
 }
 const tokens = JSON.parse(readFileSync(join(root, 'dist/tokens.json'), 'utf8'))
