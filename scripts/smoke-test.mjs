@@ -8,7 +8,7 @@ import { createRequire } from 'node:module'
 const root = resolve('.')
 const ESB = process.env.ESBUILD_PATH || '/usr/local/lib/node_modules_global/lib/node_modules/tsx/node_modules/esbuild'
 const esbuild = createRequire(import.meta.url)(ESB)
-const only = process.argv.slice(2)
+const only = process.argv.slice(2).filter((a) => !a.startsWith('--'))
 const compDir = join(root, 'src/components')
 const names = readdirSync(compDir).filter((d) => !d.startsWith('.') && statSync(join(compDir, d)).isDirectory() && (!only.length || only.includes(d)))
 const stories = names.flatMap((d) => readdirSync(join(compDir, d)).filter((f) => f.endsWith('.stories.tsx')).map((f) => ({ d, f })))
@@ -29,6 +29,8 @@ const out = join(tmp, 'bundle.cjs')
 await esbuild.build({ entryPoints: [entry], bundle: true, outfile: out, platform: 'node', format: 'cjs', jsx: 'automatic', loader: { '.module.css': 'local-css', '.css': 'css' }, plugins: [plugin], logLevel: 'error', define: { 'process.env.NODE_ENV': '"development"' } })
 // minimal browser globals so module-level or render-time checks do not crash
 const noop = () => {}
+// NO_BROWSER=1 renders with no window, document or other browser globals, the way server-side rendering does.
+if (!process.env.NO_BROWSER && !process.argv.includes('--no-browser')) {
 globalThis.window = globalThis
 globalThis.document = { body: { style: {}, appendChild: noop }, documentElement: { style: {}, dir: 'ltr' }, addEventListener: noop, removeEventListener: noop, activeElement: null, createElement: () => ({ style: {}, setAttribute: noop }), getElementById: () => null, querySelector: () => null, querySelectorAll: () => [] }
 globalThis.matchMedia = () => ({ matches: false, addEventListener: noop, removeEventListener: noop })
@@ -36,6 +38,7 @@ globalThis.localStorage = { getItem: () => null, setItem: noop, removeItem: noop
 globalThis.IntersectionObserver = class { observe() {} disconnect() {} unobserve() {} }
 globalThis.ResizeObserver = class { observe() {} disconnect() {} unobserve() {} }
 globalThis.requestAnimationFrame = (f) => 0
+}
 const { ALL, expand, stats } = createRequire(import.meta.url)(out)
 let bad = 0, ok = 0
 for (const [folder, mod] of ALL) {

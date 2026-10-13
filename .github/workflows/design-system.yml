@@ -17,6 +17,13 @@ jobs:
       - run: node scripts/lint-tokens.mjs .
       - run: node scripts/check-components.mjs
       - run: node scripts/smoke-test.mjs
+      - run: npm run smoke:ssr                     # renders every story with no window or document
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run test:codemod
+      - run: npm run build                         # tokens + vite library build into dist/
+      - run: npm run verify                        # bundle size, tree-shaking, SSR import, focus ring and full width
+      - run: npm run check:package                 # exports exist, nothing but dist is packed
       - run: ESBUILD_PATH=$(node -p "require.resolve('esbuild')") node scripts/build-preview.mjs
       - uses: actions/upload-artifact@v4
         with:

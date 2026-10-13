@@ -1,0 +1,1235 @@
+{
+ "components": [
+  {
+   "name": "Accordion",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 3,
+   "coreTokens": 18,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Checkbox",
+    "SkeletonLoader"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Avatar",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 22,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "PageHeader",
+    "TopBar"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Badge",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 1,
+   "coreTokens": 15,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "DataTableToolbar",
+    "Dialog",
+    "Nav",
+    "PageHeader",
+    "TopBar"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Banner",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 12,
+   "coreTokens": 12,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Dialog",
+    "Link"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Breadcrumb",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 3,
+   "coreTokens": 9,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "PageHeader"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Button",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 25,
+   "coreTokens": 27,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [
+    "Spinner"
+   ],
+   "usedBy": [
+    "Accordion",
+    "Banner",
+    "Card",
+    "Chip",
+    "DataMetric",
+    "DataTableToolbar",
+    "DatePicker",
+    "Dialog",
+    "Drawer",
+    "EmptyState",
+    "FileUpload",
+    "FormGroup",
+    "InfiniteScroll",
+    "Menu",
+    "MultiSelect",
+    "Nav",
+    "PageHeader",
+    "Popover",
+    "SidePanel",
+    "SplitButton",
+    "Table",
+    "Tabs",
+    "TimePicker",
+    "Toast"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "ButtonGroup",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 26,
+   "coreTokens": 3,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Card",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 4,
+   "coreTokens": 16,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "DataMetric",
+    "SkeletonLoader"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Checkbox",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 7,
+   "coreTokens": 17,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "Accordion",
+    "DataTableToolbar",
+    "Table"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Chip",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 20,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button"
+   ],
+   "usedBy": [
+    "MultiSelect"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "CodeSnippet",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 17,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "DataMetric",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 9,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "SkeletonLoader"
+   ],
+   "usedBy": [
+    "Card"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "DataTableToolbar",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 9,
+   "coreTokens": 9,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Badge",
+    "Button",
+    "Checkbox",
+    "Search",
+    "Sticky"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "DatePicker",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 19,
+   "coreTokens": 12,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Input",
+    "TimePicker"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Dialog",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 5,
+   "coreTokens": 18,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Badge",
+    "Button"
+   ],
+   "usedBy": [
+    "Banner",
+    "Drawer",
+    "SidePanel"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Divider",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 1,
+   "coreTokens": 4,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Drawer",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 16,
+   "coreTokens": 7,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Dialog",
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "EmptyState",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 9,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Link"
+   ],
+   "usedBy": [
+    "Table"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "FileUpload",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 3,
+   "coreTokens": 22,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "ProgressBar"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "FormGroup",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 8,
+   "coreTokens": 17,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Input",
+    "ProgressSteps"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "InfiniteScroll",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 3,
+   "coreTokens": 10,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "SkeletonLoader",
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Input",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 7,
+   "coreTokens": 27,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Popover",
+    "Spinner"
+   ],
+   "usedBy": [
+    "DatePicker",
+    "FormGroup",
+    "Menu",
+    "MultiSelect",
+    "NumberInput",
+    "Search",
+    "Select",
+    "Slider",
+    "TextArea",
+    "TimePicker"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Link",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 10,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "Banner",
+    "EmptyState"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Menu",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 17,
+   "coreTokens": 19,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Input",
+    "Popover",
+    "Spinner"
+   ],
+   "usedBy": [
+    "MultiSelect",
+    "Select",
+    "SplitButton",
+    "Table"
+   ],
+   "runtime": [
+    "react",
+    "react-dom"
+   ]
+  },
+  {
+   "name": "MultiSelect",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 9,
+   "coreTokens": 2,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Chip",
+    "Input",
+    "Menu",
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Nav",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 10,
+   "coreTokens": 20,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Badge",
+    "Button"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "NumberInput",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 8,
+   "coreTokens": 6,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Input"
+   ],
+   "usedBy": [
+    "Slider"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "PageHeader",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 4,
+   "coreTokens": 9,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Avatar",
+    "Badge",
+    "Breadcrumb",
+    "Button",
+    "SkeletonLoader",
+    "TopBar"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Pagination",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 19,
+   "coreTokens": 10,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Select",
+    "SkeletonLoader",
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Popover",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 14,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button"
+   ],
+   "usedBy": [
+    "Input",
+    "Menu"
+   ],
+   "runtime": [
+    "react",
+    "react-dom"
+   ]
+  },
+  {
+   "name": "ProgressBar",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 3,
+   "coreTokens": 12,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "FileUpload",
+    "ProgressCircle"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "ProgressCircle",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 11,
+   "coreTokens": 4,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "ProgressBar"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "ProgressSteps",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 14,
+   "coreTokens": 16,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "FormGroup"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Radio",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 26,
+   "coreTokens": 11,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Search",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 9,
+   "coreTokens": 15,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Input",
+    "Spinner",
+    "TimePicker"
+   ],
+   "usedBy": [
+    "DataTableToolbar",
+    "Table",
+    "TopBar"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Select",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 8,
+   "coreTokens": 0,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Input",
+    "Menu",
+    "Spinner"
+   ],
+   "usedBy": [
+    "Pagination",
+    "Table"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "SidePanel",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 5,
+   "coreTokens": 5,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Dialog",
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "SkeletonLoader",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 5,
+   "coreTokens": 11,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "Accordion",
+    "Card",
+    "DataMetric",
+    "InfiniteScroll",
+    "PageHeader",
+    "Pagination",
+    "Table"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Slider",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 13,
+   "coreTokens": 17,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [
+    "Input",
+    "NumberInput"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Spinner",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 2,
+   "coreTokens": 11,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "Button",
+    "Drawer",
+    "InfiniteScroll",
+    "Input",
+    "Menu",
+    "MultiSelect",
+    "Pagination",
+    "Search",
+    "Select",
+    "SidePanel",
+    "Tabs",
+    "Toggle"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "SplitButton",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 3,
+   "coreTokens": 2,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Menu"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Sticky",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 1,
+   "coreTokens": 3,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "DataTableToolbar",
+    "Table"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Table",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 13,
+   "coreTokens": 24,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Checkbox",
+    "EmptyState",
+    "Menu",
+    "Search",
+    "Select",
+    "SkeletonLoader",
+    "Sticky",
+    "Truncate"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Tabs",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 5,
+   "coreTokens": 24,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "TextArea",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 4,
+   "coreTokens": 6,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [
+    "Input"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "TimePicker",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 6,
+   "coreTokens": 20,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button",
+    "Input"
+   ],
+   "usedBy": [
+    "DatePicker",
+    "Search",
+    "TopBar"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Toast",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 9,
+   "coreTokens": 13,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Button"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Toggle",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 8,
+   "coreTokens": 16,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [
+    "Spinner"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "TopBar",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 12,
+   "coreTokens": 21,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "Avatar",
+    "Badge",
+    "Search",
+    "TimePicker"
+   ],
+   "usedBy": [
+    "PageHeader",
+    "WysiwygToolbar"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "Truncate",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 2,
+   "coreTokens": 5,
+   "usesIcons": false,
+   "usesPrimitives": true,
+   "uses": [],
+   "usedBy": [
+    "Table"
+   ],
+   "runtime": [
+    "react"
+   ]
+  },
+  {
+   "name": "WysiwygToolbar",
+   "files": {
+    "component": true,
+    "cssModule": true,
+    "stories": true,
+    "tests": true,
+    "codeConnect": true
+   },
+   "componentTokens": 16,
+   "coreTokens": 9,
+   "usesIcons": true,
+   "usesPrimitives": true,
+   "uses": [
+    "TopBar"
+   ],
+   "usedBy": [],
+   "runtime": [
+    "react"
+   ]
+  }
+ ],
+ "runtime": {
+  "react": 51,
+  "react-dom": [
+   "Menu",
+   "Popover"
+  ],
+  "primitives": [
+   "Portal"
+  ]
+ }
+}

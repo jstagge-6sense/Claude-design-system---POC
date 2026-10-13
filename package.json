@@ -1,6 +1,6 @@
 {
   "name": "@6sense/design-system",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -9,7 +9,18 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/**/*.d.ts",
+    "dist/styles.css",
+    "dist/tokens.json",
+    "dist/tokens.d.ts",
+    "dist/primitive.css",
+    "dist/semantic.css",
+    "dist/component.css",
+    "dist/modes.css",
+    "dist/modes.json",
+    "README.md"
   ],
   "scripts": {
     "build:tokens": "node scripts/build-tokens.mjs .",
@@ -28,7 +39,13 @@
     "build:modes": "node scripts/build-modes.mjs .",
     "build:lean": "node scripts/lean-tokens.mjs .",
     "publish:approved": "node scripts/publish.mjs",
-    "preview:offline": "node scripts/build-preview.mjs --mini-react"
+    "preview:offline": "node scripts/build-preview.mjs --mini-react",
+    "verify": "node scripts/verify-lib.mjs",
+    "smoke:ssr": "node scripts/smoke-test.mjs --no-browser",
+    "check:package": "node scripts/check-package.mjs",
+    "codemod": "node scripts/codemod-tokens.mjs",
+    "test:codemod": "node scripts/codemod-tokens.test.mjs",
+    "prepublishOnly": "npm run build && npm run verify && npm run smoke:ssr && npm run check:package"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -50,5 +67,34 @@
     "vite-plugin-dts": "latest",
     "vitest": "latest",
     "esbuild": "^0.24.0"
+  },
+  "description": "6sense design system: tokens, React components and charts, driven by one set of design tokens.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstagge-6sense/Claude-design-system---POC.git"
+  },
+  "homepage": "https://github.com/jstagge-6sense/Claude-design-system---POC#readme",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "react",
+    "6sense"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tokens/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

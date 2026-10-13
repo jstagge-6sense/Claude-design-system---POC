@@ -1,0 +1,29 @@
+name: publish
+# Publishes @6sense/design-system to npm when a version tag is pushed (git tag v0.1.0 && git push --tags).
+# Needs the repository secret NPM_TOKEN (an npm automation token with publish rights to the @6sense scope).
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+  id-token: write   # npm provenance
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, registry-url: 'https://registry.npmjs.org' }
+      - run: npm install --no-audit --no-fund
+      - run: node scripts/lint-tokens.mjs .
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run verify
+      - run: npm run smoke:ssr
+      - run: npm run check:package
+      - name: Tag matches package version
+        run: test "v$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME}"
+      - run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

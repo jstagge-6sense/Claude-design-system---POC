@@ -32,3 +32,44 @@ With npm available: `npm install`, then `npm run storybook`, `npm test`, `npm ru
 
 ## Known open items
 See the Gaps and conflicts page in the preview, or `design-system-state.json` and `dist/gaps.json`.
+
+
+## Install and use
+
+```
+npm install @6sense/design-system react react-dom
+```
+
+```tsx
+import '@6sense/design-system/styles.css'
+import { Button, Card } from '@6sense/design-system'
+```
+
+Runtime libraries: React and React DOM (peer dependencies, 18 or newer). The charts in `Data-Viz` also need Highcharts, installed by that package. Nothing else is required at runtime.
+
+Token files for tools: `@6sense/design-system/tokens/tokens.json`, `primitive.css`, `semantic.css`, `component.css`.
+
+## Checks
+
+| Command | What it checks |
+|---|---|
+| `npm run typecheck` | TypeScript |
+| `npm test` | Vitest component tests |
+| `npm run build` | Tokens, then the Vite library build into `dist/` |
+| `npm run verify` | Build with esbuild, bundle size and tree-shaking, SSR import, focus ring, disabled states and full width |
+| `npm run smoke:ssr` | Renders every story with no window or document |
+| `npm run check:package` | Every file the package points at exists, and only `dist` is published |
+| `npm run codemod` | Replaces hard-coded values with tokens in product code (see below) |
+
+## Publishing
+
+Push a version tag that matches `package.json` (`git tag v0.1.0 && git push --tags`). The `publish` workflow runs every check, then `npm publish --provenance` using the `NPM_TOKEN` secret.
+
+## Codemod: raw values to tokens
+
+```
+npm run codemod -- path/to/product/src            dry run: lists every change
+npm run codemod -- path/to/product/src --write    applies them
+```
+
+Exact matches only (colors, spacing, radii and border widths). Anything without an exact token is listed for a person to decide.
