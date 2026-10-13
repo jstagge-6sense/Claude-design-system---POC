@@ -35,3 +35,6 @@ Record every token add, rename, or removal, and the matching Figma change.
 - Not matched, by design: Figma holds `border.destructive`, `action.disabled.fill/border`, `action.tint.hover` and `action.compact.default/pressed` with opacity (4-16%). The repo keeps these semantic tokens solid and composes opacity in about 37 component tokens (`rgba({semantic},{opacity})`). Applying Figma's alpha would double the opacity, so they stay solid.
 - Kept as repo-only (not in Figma): `surface.page`, `surface.card`, `border.group`, `action.selected` (gradients) and `content.brand`.
 - Not updated: `modes/dark.json` overrides for scrim and border.strong.
+
+## Preview edits
+- core.color.action.tertiary.default: "{core.color.sage.200}" -> "{core.color.border.subtle}" (tokens/semantic/color.json)
