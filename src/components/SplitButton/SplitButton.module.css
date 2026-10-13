@@ -1,0 +1,35 @@
+/* SplitButton. Both sections are Buttons, so every fill, shadow and state comes from component.button.*.
+   This file only joins them. Tokens: component.splitButton.* (tokens/component/splitButton.json). */
+.container {
+  --_divider: var(--component-splitButton-primary-divider-color-default);
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  max-inline-size: 100%;
+  isolation: isolate;
+}
+.container[data-priority='secondary'] { --_divider: var(--core-color-border-standard); }
+.menu { display: inline-flex; }
+
+/* Outer corners round, inner corners square. Logical properties, so the chevron mirrors in RTL. */
+.container .primary {
+  border-start-start-radius: var(--component-splitButton-all-container-radius);
+  border-end-start-radius: var(--component-splitButton-all-container-radius);
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.container .trigger {
+  border-start-end-radius: var(--component-splitButton-all-container-radius);
+  border-end-end-radius: var(--component-splitButton-all-container-radius);
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  padding-inline: var(--core-dimension-space-compact);
+  min-inline-size: var(--ds-hit-min);
+  /* Overlap the two 1px borders so one divider line shows. */
+  margin-inline-start: calc(var(--component-splitButton-all-divider-width) * -1);
+}
+.container .trigger:not([aria-disabled='true']) { border-inline-start-color: var(--_divider); }
+
+/* The focused section sits above its neighbour so the whole focus ring is visible. */
+.container .primary:focus-visible, .container .primary[data-state='focus'],
+.container .trigger:focus-visible, .container .trigger[data-state='focus'] { z-index: var(--ds-z-sticky); }
