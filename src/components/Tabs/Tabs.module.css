@@ -38,6 +38,7 @@
   --_badge-color: var(--core-color-content-primary);
   position: relative;
   display: inline-flex;
+  min-inline-size: var(--_h); /* never narrower than tall */
   flex: none;
   align-items: center;
   justify-content: center;
