@@ -2,7 +2,9 @@
   "name": "@6sense/design-system",
   "version": "0.1.0",
   "type": "module",
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -44,7 +46,7 @@
     "check:package": "node scripts/check-package.mjs",
     "codemod": "node scripts/codemod-tokens.mjs",
     "test:codemod": "node scripts/codemod-tokens.test.mjs",
-    "build:pages": "npm run preview && npm run gen:storybook-guidelines && npm run build-storybook && node scripts/build-pages.mjs",
+    "build:pages": "npm run gen:storybook-guidelines && npm run build-storybook && node scripts/build-pages.mjs",
     "serve:pages": "npx serve pages-dist",
     "test:pages": "npm run build:pages && npm run serve:pages",
     "prepublishOnly": "npm run build && npm run verify && npm run smoke:ssr && npm run check:package"
@@ -77,7 +79,12 @@
     "url": "git+https://github.com/jstagge-6sense/Claude-design-system---POC.git"
   },
   "homepage": "https://github.com/jstagge-6sense/Claude-design-system---POC#readme",
-  "keywords": ["design-system", "design-tokens", "react", "6sense"],
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "react",
+    "6sense"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -88,6 +95,10 @@
     "./tokens/*": "./dist/*",
     "./package.json": "./package.json"
   },
-  "publishConfig": { "access": "restricted" },
-  "engines": { "node": ">=18" }
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }
