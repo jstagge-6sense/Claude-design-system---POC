@@ -70,7 +70,7 @@
     "vite": "latest",
     "vite-plugin-dts": "latest",
     "vitest": "latest",
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.28.0"
   },
   "description": "6sense design system: tokens, React components and charts, driven by one set of design tokens.",
   "license": "UNLICENSED",
