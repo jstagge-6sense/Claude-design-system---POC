@@ -1,9 +1,10 @@
 {
- "note": "Task categories by time (UTC). Excluded categories are never counted in the cost, now or in future runs. Edit a segment start to move work between tasks.",
+ "note": "Task categories by time (UTC). Excluded categories are never counted in the cost, now or in future runs. Edit a segment start to move work between tasks. Standing rule: work on the preview app (pages, menu, modals, cost page) and the token editor is never counted, now or in future runs. Add a segment with that name for each new stretch.",
  "excluded": [
   "Demo pages",
-  "Library restore",
   "Cost page",
+  "Library restore",
+  "Preview app and token editor",
   "Token editor and import tools"
  ],
  "segments": [
@@ -102,6 +103,58 @@
   [
    "2026-10-08T22:16",
    "Demo pages"
+  ],
+  [
+   "2026-10-12T00:00",
+   "Library build, guidelines and tooling"
+  ],
+  [
+   "2026-10-12T13:13",
+   "Preview app and token editor"
+  ],
+  [
+   "2026-10-12T13:53",
+   "Library build, guidelines and tooling"
+  ],
+  [
+   "2026-10-12T13:56",
+   "Preview app and token editor"
+  ],
+  [
+   "2026-10-12T15:38",
+   "Library build, guidelines and tooling"
+  ],
+  [
+   "2026-10-12T21:30",
+   "Preview app and token editor"
+  ],
+  [
+   "2026-10-12T21:37",
+   "Library build, guidelines and tooling"
+  ],
+  [
+   "2026-10-13T15:35",
+   "Preview app and token editor"
+  ],
+  [
+   "2026-10-13T15:53",
+   "Library build, guidelines and tooling"
+  ],
+  [
+   "2026-10-13T16:26",
+   "Preview app and token editor"
+  ],
+  [
+   "2026-10-13T16:27",
+   "Library build, guidelines and tooling"
+  ],
+  [
+   "2026-10-13T17:53",
+   "Preview app and token editor"
+  ],
+  [
+   "2026-10-13T18:02",
+   "Library build, guidelines and tooling"
   ]
  ]
 }

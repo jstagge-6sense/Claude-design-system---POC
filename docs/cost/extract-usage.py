@@ -13,7 +13,7 @@ excl = set(_ex['dates'])
 ranges = [(r['start'], r['end']) for r in _ex.get('ranges', [])]  # cost analysis pulling: never counted
 out_of = lambda t: t[:10] in excl or any(a <= t[:16] <= b for a, b in ranges)
 calls, stamps, skip_next = {}, set(), False
-for F in sorted(glob.glob(os.path.join(src, '*.jsonl'))):
+for F in sorted(glob.glob(os.path.join(src, '*.jsonl')) + glob.glob(os.path.join(src, '*', 'subagents', '*.jsonl'))):  # helper agents count for usage; their lines never count for working time
     skip_next = False
     for l in open(F):
         try: o = json.loads(l)
