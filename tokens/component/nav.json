@@ -1,0 +1,72 @@
+{
+  "component": {
+    "nav": {
+      "all": {
+        "container": {
+          "shadow": {
+            "overlay": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Elevation when the nav opens as an overlay on mobile (menu tier)."
+            }
+          }
+        },
+        "item": {
+          "label": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.nav.primary}"
+            },
+            "typographyNested": {
+              "$type": "typography",
+              "$value": "{core.typography.nav.secondary}"
+            }
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%. Decorative consistency device, not an affordance signal (visual-design-decisions 4.5)."
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%. Matches default, not hover (non-monotonic ladder, by design)."
+            }
+          },
+          "shadow": {
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.hover}",
+              "$description": "Insets only. Followed as in the token JSON (the inset order described in visual-design-decisions conflict 1 is reversed)."
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.focus}"
+            }
+          }
+        },
+        "group": {
+          "label": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.label.2}"
+            }
+          }
+        },
+        "tooltip": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

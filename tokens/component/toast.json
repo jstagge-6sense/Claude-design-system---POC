@@ -1,0 +1,63 @@
+{
+  "component": {
+    "toast": {
+      "all": {
+        "container": {
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.300}",
+            "$description": "Floating, non-blocking. One step below Dialog."
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "description": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          }
+        }
+      },
+      "info": {
+        "container": {
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.info},{core.effect.opacity.500})",
+            "$description": "Status info at 48%. Proposal: no documented toast stroke. The icon and text also carry the severity."
+          }
+        }
+      },
+      "success": {
+        "container": {
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.success},{core.effect.opacity.500})",
+            "$description": "Status success at 48%. Proposal: no documented toast stroke. The icon and text also carry the severity."
+          }
+        }
+      },
+      "warning": {
+        "container": {
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.warning},{core.effect.opacity.500})",
+            "$description": "Status warning at 48%. Proposal: no documented toast stroke. The icon and text also carry the severity."
+          }
+        }
+      },
+      "error": {
+        "container": {
+          "border": {
+            "$type": "color",
+            "$value": "rgba({core.color.status.critical},{core.effect.opacity.500})",
+            "$description": "Status critical at 48%. Proposal: no documented toast stroke. The icon and text also carry the severity."
+          }
+        }
+      }
+    }
+  }
+}

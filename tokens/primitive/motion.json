@@ -1,0 +1,59 @@
+{
+  "core": {
+    "motion": {
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "$value": "120ms",
+          "$description": "(Raw value. Do not use directly in components.) Small state changes: hover, press, focus, popups leaving."
+        },
+        "base": {
+          "$type": "duration",
+          "$value": "200ms",
+          "$description": "(Raw value. Do not use directly in components.) Elements entering or moving a short distance."
+        },
+        "slow": {
+          "$type": "duration",
+          "$value": "320ms",
+          "$description": "(Raw value. Do not use directly in components.) Large surfaces crossing the screen, such as a drawer."
+        },
+        "slower": {
+          "$type": "duration",
+          "$value": "480ms",
+          "$description": "(Raw value. Do not use directly in components.) Long, deliberate motion such as progress filling and counting."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0.2, 0, 0, 1)",
+          "$description": "(Raw value. Do not use directly in components.) Default curve. Quick start, soft landing."
+        },
+        "enter": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0, 0, 0, 1)",
+          "$description": "(Raw value. Do not use directly in components.) Decelerate. For elements arriving on screen."
+        },
+        "exit": {
+          "$type": "cubicBezier",
+          "$value": "cubic-bezier(0.3, 0, 1, 1)",
+          "$description": "(Raw value. Do not use directly in components.) Accelerate. For elements leaving the screen."
+        }
+      },
+      "distance": {
+        "short": {
+          "$type": "dimension",
+          "$value": "0.25rem",
+          "$description": "(Raw value. Do not use directly in components.) 4px travel for popups nudging into place."
+        }
+      },
+      "scale": {
+        "subtle": {
+          "$type": "number",
+          "$value": "0.98",
+          "$description": "(Raw value. Do not use directly in components.) Starting scale for a surface growing into place."
+        }
+      }
+    }
+  }
+}

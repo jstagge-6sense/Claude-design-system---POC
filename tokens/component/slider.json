@@ -1,0 +1,86 @@
+{
+  "component": {
+    "slider": {
+      "all": {
+        "track": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "Track thickness, 8px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          },
+          "fillActive": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 32%. Proposal: disabled stroke is documented at 16%, too faint for a filled track."
+            }
+          }
+        },
+        "thumb": {
+          "border": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.300})",
+              "$description": "Ink 900 at 32%."
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.100}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.50}",
+              "$description": "Dragging."
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "tick": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.100}",
+            "$description": "Discrete step marker, 4px.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-100"
+            }
+          }
+        },
+        "valueLabel": {
+          "fill": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%."
+            }
+          }
+        },
+        "readout": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}",
+            "$description": "Current value shown beside the label when there is no value label or synced input, so the value is never hidden."
+          }
+        },
+        "range": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}",
+            "$description": "Min and max end labels."
+          }
+        }
+      }
+    }
+  }
+}

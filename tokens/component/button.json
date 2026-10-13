@@ -1,0 +1,179 @@
+{
+  "component": {
+    "button": {
+      "all": {
+        "container": {
+          "fill": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.fill},{core.effect.opacity.100})",
+              "$description": "Ink 900 at 8%. Semantic token is solid Ink 900, opacity composed here per visual-design-decisions 4.1."
+            }
+          },
+          "border": {
+            "disabled": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.disabled.border},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%."
+            }
+          }
+        },
+        "label": {
+          "typographySmall": {
+            "$type": "typography",
+            "$value": "{core.typography.button.2}"
+          },
+          "typographyLarge": {
+            "$type": "typography",
+            "$value": "{core.typography.button.1}",
+            "$description": "No large button typography style exists. Reuses button.1."
+          }
+        }
+      },
+      "primary": {
+        "container": {
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.0})",
+              "$description": "Transparent. Primary has no documented stroke."
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.primary.default}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.primary.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.primary.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.primary.focus}"
+            }
+          }
+        }
+      },
+      "secondary": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.secondary.default}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.secondary.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.secondary.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.secondary.focus}"
+            }
+          },
+          "fillTint": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.200})",
+              "$description": "Teal 100 at 16%, layered over the Sage 400 fill on hover."
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.brand}",
+              "$description": "Documented as Teal 900 (visual-design-decisions 4.3, 4.4). No semantic content token for it. Nearest semantic: core.color.content.primary."
+            }
+          }
+        },
+        "icon": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.brand}",
+              "$description": "Matches label color."
+            }
+          }
+        }
+      },
+      "tertiary": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.tertiary.default}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.tertiary.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.tertiary.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.tertiary.focus}"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.brand}",
+              "$description": "Documented as Teal 900 (visual-design-decisions 4.3, 4.4). No semantic content token for it. Nearest semantic: core.color.content.primary."
+            }
+          }
+        },
+        "icon": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.brand}",
+              "$description": "Matches label color."
+            }
+          }
+        }
+      },
+      "destructive": {
+        "container": {
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.border.destructive},{core.effect.opacity.100})"
+            }
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.destructive.default}"
+            },
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.destructive.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.destructive.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.destructive.focus}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

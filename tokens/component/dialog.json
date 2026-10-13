@@ -1,0 +1,27 @@
+{
+  "component": {
+    "dialog": {
+      "all": {
+        "container": {
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.400}",
+            "$description": "Highest step of the elevation ladder. A dialog is the top layer that blocks the page."
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.3}"
+          }
+        },
+        "body": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.1}"
+          }
+        }
+      }
+    }
+  }
+}

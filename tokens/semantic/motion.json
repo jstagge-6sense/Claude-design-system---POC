@@ -1,0 +1,121 @@
+{
+  "core": {
+    "motion": {
+      "feedback": {
+        "duration": {
+          "$type": "duration",
+          "$value": "{core.motion.duration.fast}",
+          "$description": "Hover, press and focus changes."
+        },
+        "easing": {
+          "$type": "cubicBezier",
+          "$value": "{core.motion.easing.standard}"
+        }
+      },
+      "popup": {
+        "enter": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{core.motion.duration.base}",
+            "$description": "Menus, dropdowns and popovers opening."
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{core.motion.easing.enter}"
+          }
+        },
+        "exit": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{core.motion.duration.fast}",
+            "$description": "Menus, dropdowns and popovers closing. Shorter than enter."
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{core.motion.easing.exit}"
+          }
+        },
+        "offset": {
+          "$type": "dimension",
+          "$value": "{core.motion.distance.short}",
+          "$description": "How far a popup travels while it fades in, away from its anchor."
+        }
+      },
+      "expand": {
+        "duration": {
+          "$type": "duration",
+          "$value": "{core.motion.duration.base}",
+          "$description": "Accordion panels and other in-flow content growing or shrinking."
+        },
+        "easing": {
+          "$type": "cubicBezier",
+          "$value": "{core.motion.easing.standard}"
+        }
+      },
+      "panel": {
+        "enter": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{core.motion.duration.slow}",
+            "$description": "Drawers and side panels sliding in."
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{core.motion.easing.enter}"
+          }
+        },
+        "exit": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{core.motion.duration.base}",
+            "$description": "Drawers and side panels sliding out. Shorter than enter."
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{core.motion.easing.exit}"
+          }
+        }
+      },
+      "modal": {
+        "enter": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{core.motion.duration.base}",
+            "$description": "Dialogs opening: fade and grow in."
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{core.motion.easing.enter}"
+          }
+        },
+        "exit": {
+          "duration": {
+            "$type": "duration",
+            "$value": "{core.motion.duration.fast}",
+            "$description": "Dialogs closing. Shorter than enter."
+          },
+          "easing": {
+            "$type": "cubicBezier",
+            "$value": "{core.motion.easing.exit}"
+          }
+        },
+        "scale": {
+          "$type": "number",
+          "$value": "{core.motion.scale.subtle}",
+          "$description": "Scale a dialog starts from and returns to."
+        }
+      },
+      "progress": {
+        "duration": {
+          "$type": "duration",
+          "$value": "{core.motion.duration.slower}",
+          "$description": "Progress fill sliding in on mount and following value changes."
+        },
+        "easing": {
+          "$type": "cubicBezier",
+          "$value": "{core.motion.easing.standard}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "component": {
+    "select": {
+      "all": {
+        "value": {
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            },
+            "placeholder": {
+              "$type": "color",
+              "$value": "{core.color.content.placeholder}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{core.color.content.disabled}"
+            }
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.secondary}"
+            }
+          }
+        },
+        "container": {
+          "border": {
+            "open": {
+              "$type": "color",
+              "$value": "{core.color.border.focus}",
+              "$description": "Open state keeps the focus border while focus is inside the panel."
+            }
+          },
+          "shadow": {
+            "open": {
+              "$type": "shadow",
+              "$value": "{component.input.all.container.shadow.focus}"
+            }
+          }
+        },
+        "trigger": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.compact}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "component": {
+    "datePicker": {
+      "all": {
+        "panel": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.surface.overlay}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.border.standard}"
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.thin}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.surface.medium}"
+          },
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{component.timePicker.all.panel.shadow.default}"
+            }
+          },
+          "offset": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.tight}"
+          }
+        },
+        "header": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "day": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.2}"
+          },
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.action.compact.hover}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{component.timePicker.all.option.fill.pressed}"
+            },
+            "range": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.tint.hover},{core.effect.opacity.400})",
+              "$description": "Teal 100 at 32%. Proposal: no documented in-range color. Range also carries start and end marks, not color alone."
+            }
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "preset": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}"
+          },
+          "paddingInline": {
+            "$type": "spacing",
+            "$value": "{core.dimension.space.comfortable}"
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.small}"
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.content.primary}"
+            }
+          },
+          "fill": {
+            "selected": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}"
+            }
+          }
+        }
+      }
+    }
+  }
+}

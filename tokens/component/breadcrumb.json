@@ -1,0 +1,26 @@
+{
+  "component": {
+    "breadcrumb": {
+      "all": {
+        "link": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "current": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+/* ButtonGroup. Segments inherit the secondary Button look. Selected changes fill and border (Tabs use an indicator bar, so the two stay distinct).
+   Tokens: component.buttonGroup.* (tokens/component/buttonGroup.json). No raw colors or primitives. */
+.group { position: relative; display: inline-flex; max-inline-size: 100%; isolation: isolate; }
+.group[data-stack] { flex-direction: column; }
+
+.segment {
+  --_h: var(--component-buttonGroup-all-segment-heightMedium);
+  --_pad: var(--component-buttonGroup-all-segment-paddingInlineMedium);
+  --_type: var(--component-buttonGroup-all-segment-typographyLarge-font);
+  --_fill: var(--component-buttonGroup-all-segment-fill-default);
+  --_border: var(--component-buttonGroup-all-segment-border-default);
+  --_shadow: var(--component-buttonGroup-all-segment-shadow-default);
+  --_label: var(--component-buttonGroup-all-segment-label-color-default);
+
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: var(--component-buttonGroup-all-segment-gap);
+  box-sizing: border-box;
+  min-block-size: var(--_h);
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--_pad);
+  border: var(--component-buttonGroup-all-segment-borderWidth) solid var(--_border);
+  border-radius: 0;
+  background: var(--_fill);
+  box-shadow: var(--_shadow);
+  color: var(--_label);
+  font: var(--_type);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--ds-motion-fast) var(--ds-ease), box-shadow var(--ds-motion-fast) var(--ds-ease), border-color var(--ds-motion-fast) var(--ds-ease);
+}
+@media (prefers-reduced-motion: reduce) { .segment { transition: none; } }
+/* 44px hit area for sizes under 44px, without changing the visual size. */
+.segment::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((var(--_h) - var(--ds-hit-min)) / 2); }
+
+.group[data-size='small'] .segment { --_h: var(--component-buttonGroup-all-segment-heightSmall); --_pad: var(--component-buttonGroup-all-segment-paddingInlineSmall); --_type: var(--component-buttonGroup-all-segment-typographySmall-font); }
+.group[data-size='large'] .segment { --_h: var(--component-buttonGroup-all-segment-heightLarge); --_pad: var(--component-buttonGroup-all-segment-paddingInlineLarge); --_type: var(--component-buttonGroup-all-segment-typographyLarge-font); }
+
+.icon { display: inline-flex; flex: none; inline-size: var(--component-buttonGroup-all-segment-icon-size); block-size: var(--component-buttonGroup-all-segment-icon-size); }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+.label { overflow: hidden; text-overflow: ellipsis; }
+
+/* ---- Joined shape: outer corners round, inner corners square, borders overlap into one line ---- */
+.group:not([data-stack]) .segment:first-child { border-start-start-radius: var(--component-buttonGroup-all-container-radius); border-end-start-radius: var(--component-buttonGroup-all-container-radius); }
+.group:not([data-stack]) .segment:last-child { border-start-end-radius: var(--component-buttonGroup-all-container-radius); border-end-end-radius: var(--component-buttonGroup-all-container-radius); }
+.group:not([data-stack]) .segment + .segment { margin-inline-start: calc(var(--component-buttonGroup-all-segment-borderWidth) * -1); }
+.group[data-stack] .segment:first-child { border-start-start-radius: var(--component-buttonGroup-all-container-radius); border-start-end-radius: var(--component-buttonGroup-all-container-radius); }
+.group[data-stack] .segment:last-child { border-end-start-radius: var(--component-buttonGroup-all-container-radius); border-end-end-radius: var(--component-buttonGroup-all-container-radius); }
+.group[data-stack] .segment + .segment { margin-block-start: calc(var(--component-buttonGroup-all-segment-borderWidth) * -1); }
+
+/* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
+.segment:hover:not([aria-disabled='true']), .segment[data-state='hover'] {
+  --_fill: linear-gradient(var(--component-buttonGroup-all-segment-fillTint-hover), var(--component-buttonGroup-all-segment-fillTint-hover)), var(--component-buttonGroup-all-segment-fill-hover);
+  --_shadow: var(--component-buttonGroup-all-segment-shadow-hover);
+}
+.segment:active:not([aria-disabled='true']), .segment[data-state='pressed'] {
+  --_fill: var(--component-buttonGroup-all-segment-fill-pressed);
+  --_shadow: var(--component-buttonGroup-all-segment-shadow-pressed);
+}
+
+/* Selected is persistent: darker gradient fill and a stronger border, with the recessed shadow as a supporting cue. */
+.segment[data-selected] {
+  --_fill: var(--core-color-action-selected);
+  --_border: var(--core-color-border-control-default);
+  --_shadow: var(--component-buttonGroup-all-segment-shadow-selected);
+  z-index: var(--ds-z-sticky);
+}
+.segment[data-selected]:hover:not([aria-disabled='true']), .segment[data-selected][data-state='hover'] {
+  --_fill: linear-gradient(var(--component-buttonGroup-all-segment-fillTint-hover), var(--component-buttonGroup-all-segment-fillTint-hover)), var(--core-color-action-selected);
+}
+
+.segment:focus-visible, .segment[data-state='focus'] { --_shadow: var(--component-buttonGroup-all-segment-shadow-focus); z-index: var(--ds-z-sticky); }
+
+/* Disabled: one treatment for every segment, no shadows. A disabled selected segment keeps its stronger border so the state is not lost. */
+.segment[aria-disabled='true'] {
+  --_fill: var(--component-buttonGroup-all-segment-fill-disabled);
+  --_label: var(--component-buttonGroup-all-segment-label-color-disabled);
+  --_shadow: none;
+  --_border: var(--component-buttonGroup-all-segment-border-disabled);
+  cursor: not-allowed;
+}
+.segment[aria-disabled='true'][data-selected] { --_border: var(--core-color-border-control-default); }
+.segment[aria-disabled='true']:focus-visible { --_shadow: var(--core-effect-ring-focus); }

@@ -1,0 +1,69 @@
+{
+  "component": {
+    "table": {
+      "all": {
+        "container": {
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.card}"
+          }
+        },
+        "header": {
+          "fill": {
+            "$type": "color",
+            "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.50})",
+            "$description": "Ink 900 at 4% (opacity ladder, header row fill). Layered over the container fill in CSS so a sticky header stays opaque."
+          }
+        },
+        "cellPrimary": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.table.cellPrimary}"
+          }
+        },
+        "cellSecondary": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.table.cellSecondary}"
+          }
+        },
+        "row": {
+          "fill": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%, layered over the default fill."
+            },
+            "error": {
+              "$type": "color",
+              "$value": "rgba({core.color.status.critical},{core.effect.opacity.50})",
+              "$description": "Critical at 4%. Proposal: no tinted status surface is documented."
+            }
+          }
+        },
+        "footer": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.footer.1}"
+          }
+        },
+        "sticky": {
+          "border": {
+            "stuck": {
+              "$type": "color",
+              "$value": "{core.color.border.standard}",
+              "$description": "Boundary under a stuck header or beside a stuck first column. Aliases Sticky."
+            }
+          },
+          "shadow": {
+            "stuck": {
+              "$type": "shadow",
+              "$value": "{component.sticky.all.container.shadow.stuck}",
+              "$description": "Aliases Sticky."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "component": {
+    "topBar": {
+      "all": {
+        "container": {
+          "shadow": {
+            "scrolled": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}",
+              "$description": "Scrolled state: elevation appears when content moves under the bar (requirement: needs a distinct scrolled state)."
+            }
+          }
+        },
+        "link": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.nav.primary}"
+          },
+          "fill": {
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%."
+            }
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "action": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.50})",
+              "$description": "Ink 900 at 4%."
+            }
+          },
+          "shadow": {
+            "hover": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.navigation.focus}"
+            }
+          }
+        },
+        "skipLink": {
+          "label": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.button.1}"
+            }
+          }
+        },
+        "menu": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}"
+            }
+          },
+          "header": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.help.1}"
+            }
+          }
+        },
+        "menuItem": {
+          "fill": {
+            "pressed": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.pressed},{core.effect.opacity.200})",
+              "$description": "Ink 900 at 16%. Proposal: pressed is darker than hover in a list."
+            }
+          }
+        }
+      }
+    }
+  }
+}

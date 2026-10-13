@@ -1,0 +1,41 @@
+{
+  "component": {
+    "input": {
+      "all": {
+        "container": {
+          "border": {
+            "hover": {
+              "$type": "color",
+              "$value": "rgba({core.color.action.compact.default},{core.effect.opacity.700})",
+              "$description": "Ink 900 at 100%. Hover darkens the stroke from 64% to 100%. Proposal: no hover treatment is documented."
+            }
+          },
+          "shadow": {
+            "focus": {
+              "$type": "shadow",
+              "$value": "{core.effect.ring.focus}"
+            }
+          }
+        },
+        "text": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.paragraph.1}"
+          }
+        },
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "helper": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        }
+      }
+    }
+  }
+}

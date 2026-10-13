@@ -1,0 +1,4 @@
+/* Shared focus ring: white 2px gap + Blue 4px ring, from core.effect.ring.focus.
+   Components that carry their own shadow stack should append it after the ring:
+     box-shadow: var(--core-effect-ring-focus), <own shadow>;                                          */
+.ds-focus:focus-visible, .ds-focus[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }

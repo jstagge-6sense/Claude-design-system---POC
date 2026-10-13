@@ -1,0 +1,78 @@
+{
+  "component": {
+    "progressCircle": {
+      "all": {
+        "track": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.border.standard}"
+          },
+          "strokeMedium": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "8px ring for standard.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-200"
+            }
+          },
+          "strokeLarge": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.300}",
+            "$description": "12px ring for large.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-300"
+            }
+          }
+        },
+        "label": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.content.primary}"
+          },
+          "typographySmall": {
+            "$type": "typography",
+            "$value": "{core.typography.label.2}"
+          },
+          "typographyMedium": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          },
+          "typographyLarge": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.3}"
+          }
+        },
+        "icon": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.icon}"
+          }
+        }
+      },
+      "default": {
+        "fill": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.action.primary.default}"
+          }
+        }
+      },
+      "complete": {
+        "fill": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.success}"
+          }
+        }
+      },
+      "error": {
+        "fill": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.status.critical}"
+          }
+        }
+      }
+    }
+  }
+}

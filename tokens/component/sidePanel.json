@@ -1,0 +1,31 @@
+{
+  "component": {
+    "sidePanel": {
+      "all": {
+        "container": {
+          "fill": {
+            "$type": "color",
+            "$value": "{core.color.surface.overlay}",
+            "$description": "Same overlay surface as Dialog and Drawer."
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.thin}"
+          }
+        },
+        "title": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.4}"
+          }
+        },
+        "divider": {
+          "color": {
+            "$type": "color",
+            "$value": "{core.color.border.standard}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$description": "DRAFT density modes. Default = the semantic tokens as authored (no override). Compact and Spacious scale space and control height; type size, radius and icon size stay fixed (cross-cutting spec: fixed type scale). Compact keeps 44px touch hit areas via the component hit-area rule. Selector: :root[data-density=\"compact\"|\"spacious\"].",
+  "modes": {
+    "compact": {
+      "core.dimension.space.tight": "calc(var(--core-dimension-space-100) * 0.75)",
+      "core.dimension.space.compact": "calc(var(--core-dimension-space-200) * 0.75)",
+      "core.dimension.space.comfortable": "calc(var(--core-dimension-space-300) * 0.75)",
+      "core.dimension.space.standard": "calc(var(--core-dimension-space-400) * 0.75)",
+      "core.dimension.space.spacious": "calc(var(--core-dimension-space-500) * 0.75)",
+      "core.dimension.size.control.height.medium": "calc(var(--core-dimension-size-1000) * 0.8)",
+      "core.dimension.size.control.height.small": "calc(var(--core-dimension-size-800) * 0.75)"
+    },
+    "spacious": {
+      "core.dimension.space.tight": "calc(var(--core-dimension-space-100) * 1.25)",
+      "core.dimension.space.compact": "calc(var(--core-dimension-space-200) * 1.25)",
+      "core.dimension.space.comfortable": "calc(var(--core-dimension-space-300) * 1.25)",
+      "core.dimension.space.standard": "calc(var(--core-dimension-space-400) * 1.25)",
+      "core.dimension.space.spacious": "calc(var(--core-dimension-space-500) * 1.25)",
+      "core.dimension.size.control.height.medium": "calc(var(--core-dimension-size-1000) * 1.2)",
+      "core.dimension.size.control.height.small": "calc(var(--core-dimension-size-800) * 1.25)"
+    }
+  }
+}

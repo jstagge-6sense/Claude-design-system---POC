@@ -1,0 +1,203 @@
+{
+  "core": {
+    "effect": {
+      "opacity": {
+        "0": {
+          "$type": "opacity",
+          "$value": "0",
+          "$description": "(Raw value. Do not use directly in components.) 0%\nOpacity primitives use 0 and 1 as explicit endpoints, not just intermediate steps, so fully transparent and fully opaque states can be referenced consistently without conditional logic."
+        },
+        "50": {
+          "$type": "opacity",
+          "$value": "0.04",
+          "$description": "(Raw value. Do not use directly in components.) 4%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "100": {
+          "$type": "opacity",
+          "$value": "0.08",
+          "$description": "(Raw value. Do not use directly in components.) 8%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "200": {
+          "$type": "opacity",
+          "$value": "0.16",
+          "$description": "(Raw value. Do not use directly in components.) 16%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "300": {
+          "$type": "opacity",
+          "$value": "0.24",
+          "$description": "(Raw value. Do not use directly in components.) 24%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "400": {
+          "$type": "opacity",
+          "$value": "0.32",
+          "$description": "(Raw value. Do not use directly in components.) 32%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "500": {
+          "$type": "opacity",
+          "$value": "0.48",
+          "$description": "(Raw value. Do not use directly in components.) 48%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "600": {
+          "$type": "opacity",
+          "$value": "0.64",
+          "$description": "(Raw value. Do not use directly in components.) 64%\nControls transparency for visual layering and effects. Use for shadows, overlays, and transitions. Do not use for disabled or semantic de‑emphasis."
+        },
+        "700": {
+          "$type": "opacity",
+          "$value": "1.0",
+          "$description": "(Raw value. Do not use directly in components.) 100%\nOpacity primitives use 0 and 1 as explicit endpoints, not just intermediate steps, so fully transparent and fully opaque states can be referenced consistently without conditional logic."
+        }
+      },
+      "blur": {
+        "0": {
+          "$type": "dimension",
+          "$value": "0px",
+          "$description": "(Raw value. Do not use directly in components.) \nAll dimension primitive groups include a 0 value to represent the intentional absence of measurement. This avoids conditional logic and allows zero values to be applied consistently using the same token system."
+        },
+        "100": {
+          "$type": "dimension",
+          "$value": "2px",
+          "$description": "(Raw value. Do not use directly in components.) Blur amount used for optical defocus and shadow softness. Do not use for layout or spacing."
+        },
+        "200": {
+          "$type": "dimension",
+          "$value": "4px",
+          "$description": "(Raw value. Do not use directly in components.) Blur amount used for optical defocus and shadow softness. Do not use for layout or spacing."
+        },
+        "300": {
+          "$type": "dimension",
+          "$value": "8px",
+          "$description": "(Raw value. Do not use directly in components.) Blur amount used for optical defocus and shadow softness. Do not use for layout or spacing."
+        },
+        "400": {
+          "$type": "dimension",
+          "$value": "16px",
+          "$description": "(Raw value. Do not use directly in components.) Blur amount used for optical defocus and shadow softness. Do not use for layout or spacing."
+        },
+        "500": {
+          "$type": "dimension",
+          "$value": "24px",
+          "$description": "(Raw value. Do not use directly in components.) Blur amount used for optical defocus and shadow softness. Do not use for layout or spacing."
+        }
+      },
+      "shadow": {
+        "0": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "0",
+            "blur": "0",
+            "spread": "0",
+            "color": "{core.color.ink.900}",
+            "type": "dropShadow"
+          },
+          "$description": "(Raw value. Do not use directly in components.) \nAll boxShadow primitive groups include a 0 value to represent the intentional absence of a shadow. This lets components reference 'no shadow' the same way they reference any other shadow value, avoiding conditional logic."
+        },
+        "50": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "0",
+            "blur": "{core.effect.blur.500}",
+            "spread": "0",
+            "color": "rgba({core.color.ink.900},{core.effect.opacity.50})",
+            "type": "dropShadow"
+          },
+          "$description": "(Raw value. Do not use directly in components.) Defines a shadow rendering recipe composed of offset, blur, and opacity, using maximum blur and minimum opacity for the softest, most diffuse effect in the scale. Used to create visual depth and separation. Does not encode meaning, interaction state, or hierarchy—those are defined by semantic tokens. Shadow colors are derived from the neutral ink palette and composed using opacity tokens."
+        },
+        "100": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "0",
+            "blur": "{core.effect.blur.300}",
+            "spread": "0",
+            "color": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+            "type": "dropShadow"
+          },
+          "$description": "(Raw value. Do not use directly in components.)Defines a shadow rendering recipe composed of offset, blur, and opacity. Used to create visual depth and separation. Does not encode meaning, interaction state, or hierarchy—those are defined by semantic tokens. Shadow colors are derived from the neutral ink palette and composed using opacity tokens."
+        },
+        "200": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "x": "0",
+              "y": "1px",
+              "blur": "{core.effect.blur.200}",
+              "spread": "0",
+              "color": "rgba({core.color.ink.900},{core.effect.opacity.200})",
+              "type": "dropShadow"
+            },
+            {
+              "x": "0",
+              "y": "4px",
+              "blur": "{core.effect.blur.300}",
+              "spread": "0",
+              "color": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+              "type": "dropShadow"
+            }
+          ],
+          "$description": "(Raw value. Do not use directly in components.)Defines a shadow rendering recipe composed of offset, blur, and opacity. Used to create visual depth and separation. Does not encode meaning, interaction state, or hierarchy—those are defined by semantic tokens. Shadow colors are derived from the neutral ink palette and composed using opacity tokens."
+        },
+        "300": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "x": "0",
+              "y": "2px",
+              "blur": "{core.effect.blur.300}",
+              "spread": "0",
+              "color": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+              "type": "dropShadow"
+            },
+            {
+              "x": "0",
+              "y": "8px",
+              "blur": "{core.effect.blur.400}",
+              "spread": "0",
+              "color": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+              "type": "dropShadow"
+            }
+          ],
+          "$description": "(Raw value. Do not use directly in components.)Defines a shadow rendering recipe composed of offset, blur, and opacity. Used to create visual depth and separation. Does not encode meaning, interaction state, or hierarchy—those are defined by semantic tokens. Shadow colors are derived from the neutral ink palette and composed using opacity tokens."
+        },
+        "400": {
+          "$type": "boxShadow",
+          "$value": [
+            {
+              "x": "0",
+              "y": "4px",
+              "blur": "{core.effect.blur.300}",
+              "spread": "0",
+              "color": "rgba({core.color.ink.900},{core.effect.opacity.200})",
+              "type": "dropShadow"
+            },
+            {
+              "x": "0",
+              "y": "16px",
+              "blur": "{core.effect.blur.500}",
+              "spread": "0",
+              "color": "rgba({core.color.ink.900},{core.effect.opacity.100})",
+              "type": "dropShadow"
+            }
+          ],
+          "$description": "(Raw value. Do not use directly in components.)Defines a shadow rendering recipe composed of offset, blur, and opacity. Used to create visual depth and separation. Does not encode meaning, interaction state, or hierarchy—those are defined by semantic tokens. Shadow colors are derived from the neutral ink palette and composed using opacity tokens."
+        }
+      },
+      "glow": {
+        "100": {
+          "$type": "boxShadow",
+          "$value": {
+            "x": "0",
+            "y": "0",
+            "blur": "{core.effect.blur.300}",
+            "spread": "0",
+            "color": "{core.color.white}",
+            "type": "dropShadow"
+          },
+          "$description": "(Raw value. Do not use directly in components.) Defines a shadow rendering recipe composed of offset, blur, and a fixed light color. Distinct from the shadow family, which composes ink-based colors to darken and recede; glow composes a fixed white to lighten and lift. Does not encode meaning, interaction state, or hierarchy—those are defined by semantic tokens."
+        }
+      }
+    }
+  }
+}

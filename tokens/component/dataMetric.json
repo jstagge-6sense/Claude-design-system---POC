@@ -1,0 +1,47 @@
+{
+  "component": {
+    "dataMetric": {
+      "all": {
+        "label": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.label.1}"
+          }
+        },
+        "value": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.metric.1}"
+          },
+          "typographyCompact": {
+            "$type": "typography",
+            "$value": "{core.typography.heading.3}",
+            "$description": "No compact metric style exists. Nearest semantic: heading.3."
+          }
+        },
+        "comparison": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        },
+        "sparkline": {
+          "height": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.800}",
+            "$description": "32px sparkline height.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-800"
+            }
+          }
+        },
+        "error": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        }
+      }
+    }
+  }
+}

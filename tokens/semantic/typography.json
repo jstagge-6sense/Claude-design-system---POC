@@ -1,0 +1,248 @@
+{
+  "core": {
+    "typography": {
+      "heading": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.6}",
+            "fontWeight": "{core.typography.fontWeight.600}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Page title. Used once per page or view to establish top-level content identity."
+        },
+        "2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.5}",
+            "fontWeight": "{core.typography.fontWeight.600}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Section title. Titles a major content area or prominent container such as a modal or drawer."
+        },
+        "3": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.4}",
+            "fontWeight": "{core.typography.fontWeight.600}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Subsection title. Organizes content within a larger section."
+        },
+        "4": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.3}",
+            "fontWeight": "{core.typography.fontWeight.600}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Structural heading for a contained content area, such as a card, widget, or dashboard panel. Uses body-text line height rather than heading.1-3's tighter rhythm, so it stays correct if a wrapped, two-line variant (e.g. a paragraph-style title) is built on this same token later."
+        }
+      },
+      "paragraph": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.3}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Primary body text. Standalone content read as part of normal task flow, general copy, descriptions, empty-state text, input values."
+        },
+        "2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Dense informational body text. Standalone but non-interactive, referenced rather than read continuously, legal or compliance copy, system disclosures."
+        }
+      },
+      "help": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Assistive text dependent on a primary label or control, helper text, inline validation, instructional hints. Not standalone copy."
+        }
+      },
+      "label": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.500}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Structural label. Names or organizes another UI element or group of elements, such as a form field label or a section label within a key-value layout. Appears once per group."
+        },
+        "2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Item or option label. Individual selectable options, values, or repeated items within an existing structure, subordinate to a structural label."
+        }
+      },
+      "table": {
+        "cellPrimary": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.500}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Primary table cell value. The row's human-readable identifier, anchors scanning and comparison across rows."
+        },
+        "cellSecondary": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.1}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Secondary table cell value. Supporting, optional, or technical information that adds context to the primary cell, descriptions, identifiers, counts, or related detail not required for quick scanning. Visual de-emphasis comes from color and placement, not font weight."
+        }
+      },
+      "footer": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.1}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Low-emphasis informational or utility text in a footer, copyright notices, version or environment labels, legal disclaimers. Footer links use the Link family, not this token."
+        }
+      },
+      "button": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.300}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Standard button label. Default typography for action buttons at their normal size, across Primary, Secondary, and Tertiary tiers."
+        },
+        "2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.1}",
+            "fontWeight": "{core.typography.fontWeight.300}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Button label for dense or compact contexts, tables, toolbars, or inline actions. Reflects density, not reduced importance."
+        }
+      },
+      "metric": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.7}",
+            "fontWeight": "{core.typography.fontWeight.600}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Primary metric value. Displays KPIs, statistics, scores, or other quantitative data meant to be scanned and compared quickly. Numbered to allow the family to expand later without tying the token to a specific visualization or component."
+        }
+      },
+      "link": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.3}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.2}"
+          },
+          "$description": "Primary content link. Appears within narrative or explanatory content, paragraphs, help text, documentation, or empty states. Always underlined; color carries default, hover, and visited state, not decoration."
+        },
+        "2": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.2}"
+          },
+          "$description": "UI or contextual link. Appears in structured UI contexts, tables, lists, footers, settings pages, or metadata areas. Always underlined; color carries default, hover, and visited state, not decoration."
+        }
+      },
+      "nav": {
+        "primary": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.500}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Primary navigation text. Top-level items defining the main destinations or sections of the product, main app navigation, primary tabs, top-level sidebar entries."
+        },
+        "secondary": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.sans}",
+            "fontSize": "{core.typography.fontSize.1}",
+            "fontWeight": "{core.typography.fontWeight.500}",
+            "lineHeight": "{core.typography.lineHeight.1}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Secondary navigation text. Items subordinate to primary navigation, nested sidebar items, secondary tabs, breadcrumbs, pagination labels, stepper labels."
+        }
+      },
+      "code": {
+        "1": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{core.typography.fontFamily.mono}",
+            "fontSize": "{core.typography.fontSize.2}",
+            "fontWeight": "{core.typography.fontWeight.400}",
+            "lineHeight": "{core.typography.lineHeight.2}",
+            "textDecoration": "{core.typography.textDecoration.1}"
+          },
+          "$description": "Code and inline technical text. Monospace, same size and line height as dense body text."
+        }
+      }
+    }
+  }
+}

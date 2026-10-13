@@ -1,0 +1,41 @@
+{
+  "component": {
+    "skeletonLoader": {
+      "all": {
+        "shape": {
+          "shimmerStart": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.highlight},{core.effect.opacity.0})",
+            "$description": "White at 0%, outer ends of the shimmer sweep."
+          },
+          "shimmerMid": {
+            "$type": "color",
+            "$value": "rgba({core.color.border.highlight},{core.effect.opacity.500})",
+            "$description": "White at 48%, center of the shimmer sweep."
+          },
+          "heightText": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.300}",
+            "$description": "12px text line.",
+            "$extensions": {
+              "gap": "GAP-dimension-size-300"
+            }
+          },
+          "heightBlock": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.feedback.large}",
+            "$description": "Default block height, 48px."
+          }
+        }
+      },
+      "card": {
+        "container": {
+          "shadow": {
+            "$type": "shadow",
+            "$value": "{core.effect.shadow.card}"
+          }
+        }
+      }
+    }
+  }
+}

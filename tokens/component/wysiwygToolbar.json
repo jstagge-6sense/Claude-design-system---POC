@@ -1,0 +1,104 @@
+{
+  "component": {
+    "wysiwygToolbar": {
+      "all": {
+        "tool": {
+          "size": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.control.height.medium}",
+            "$description": "Square tool. Inline icon action reuses Navigation values (visual-design-decisions 4.6)."
+          },
+          "radius": {
+            "$type": "borderRadius",
+            "$value": "{core.dimension.radius.control.medium}"
+          },
+          "icon": {
+            "size": {
+              "$type": "sizing",
+              "$value": "{core.dimension.size.icon}"
+            },
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.content.secondary}"
+              },
+              "disabled": {
+                "$type": "color",
+                "$value": "{core.color.content.disabled}"
+              }
+            }
+          },
+          "borderWidth": {
+            "$type": "borderWidth",
+            "$value": "{core.dimension.borderWidth.thin}"
+          },
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.fill.default}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.action.compact.hover}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{component.nav.all.item.fill.pressed}"
+            }
+          },
+          "border": {
+            "hover": {
+              "$type": "color",
+              "$value": "{core.color.border.subtle}"
+            }
+          },
+          "shadow": {
+            "hover": {
+              "$type": "shadow",
+              "$value": "{component.nav.all.item.shadow.hover}"
+            },
+            "pressed": {
+              "$type": "shadow",
+              "$value": "{component.nav.all.item.shadow.pressed}"
+            },
+            "focus": {
+              "$type": "shadow",
+              "$value": "{component.nav.all.item.shadow.focus}"
+            }
+          }
+        }
+      },
+      "floating": {
+        "container": {
+          "shadow": {
+            "default": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.300}",
+              "$description": "Floating toolbar sits above the text (menu tier elevation)."
+            }
+          }
+        }
+      },
+      "active": {
+        "tool": {
+          "fill": {
+            "default": {
+              "$type": "color",
+              "$value": "{core.color.action.selected}",
+              "$description": "Active format: a fill change (Nav selected gradient), with aria-pressed. Not shadow alone."
+            }
+          },
+          "icon": {
+            "color": {
+              "default": {
+                "$type": "color",
+                "$value": "{core.color.action.primary.default}",
+                "$description": "Teal icon in addition to the fill."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

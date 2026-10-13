@@ -1,0 +1,17 @@
+{
+  "component": {
+    "sticky": {
+      "all": {
+        "container": {
+          "shadow": {
+            "stuck": {
+              "$type": "shadow",
+              "$value": "{core.effect.shadow.200}",
+              "$description": "Elevation step 200 while stuck, so the element reads as sitting above scrolling content."
+            }
+          }
+        }
+      }
+    }
+  }
+}

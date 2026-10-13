@@ -1,0 +1,28 @@
+{
+  "component": {
+    "fileUpload": {
+      "all": {
+        "error": {
+          "typography": {
+            "$type": "typography",
+            "$value": "{core.typography.help.1}"
+          }
+        },
+        "item": {
+          "name": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.label.1}"
+            }
+          },
+          "meta": {
+            "typography": {
+              "$type": "typography",
+              "$value": "{core.typography.help.1}"
+            }
+          }
+        }
+      }
+    }
+  }
+}
