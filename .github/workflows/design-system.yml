@@ -1,31 +1,56 @@
 name: design-system
+
 on:
   pull_request:
   push:
     branches: [main]
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm install --no-audit --no-fund
-      - run: node scripts/build-tokens.mjs .
-      - run: node scripts/build-modes.mjs .        # dark theme + density, fails on WCAG AA contrast
-      - run: node scripts/lean-tokens.mjs .        # lean set + lint of rewritten CSS
-      - run: node scripts/lint-tokens.mjs .
-      - run: node scripts/check-components.mjs
-      - run: node scripts/smoke-test.mjs
-      - run: npm run smoke:ssr                     # renders every story with no window or document
-      - run: npm run typecheck
-      - run: npm test
-      - run: npm run test:codemod
-      - run: npm run build                         # tokens + vite library build into dist/
-      - run: npm run verify                        # bundle size, tree-shaking, SSR import, focus ring and full width
-      - run: npm run check:package                 # exports exist, nothing but dist is packed
-      - run: ESBUILD_PATH=$(node -p "require.resolve('esbuild')") node scripts/build-preview.mjs
-      - uses: actions/upload-artifact@v4
         with:
-          name: design-system-preview
-          path: preview/design-system-preview.html
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build tokens
+        run: node scripts/build-tokens.mjs .
+
+      - name: Build modes
+        run: node scripts/build-modes.mjs .
+
+      - name: Lint tokens
+        run: node scripts/lint-tokens.mjs .
+
+      - name: Check components
+        run: node scripts/check-components.mjs
+
+      - name: Smoke test
+        run: node scripts/smoke-test.mjs
+
+      - name: SSR smoke test
+        run: npm run smoke:ssr
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+      - name: Test codemods
+        run: npm run test:codemod
+
+      - name: Build library
+        run: npm run build
+
+      - name: Verify library
+        run: npm run verify
+
+      - name: Check package
+        run: npm run check:package
