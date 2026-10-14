@@ -1,17 +1,17 @@
-// Global Storybook styles.
-//
-// Keep these aligned with the standalone design-system preview
-// so Storybook renders components using the same design tokens,
-// reset, focus styles, theme modes, and density modes.
+import type { StorybookConfig } from '@storybook/react-vite'
 
-import '../src/styles/tokens.css'
-import '../src/styles/reset.css'
-import '../src/styles/focus.css'
+const config: StorybookConfig = {
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
 
-// Generated theme and density overrides.
-// Keep this last so the mode overrides take precedence.
-import '../dist/modes.css'
+  addons: [],
 
-const preview = {}
+  framework: {
+    name: '@storybook/react-vite',
+    options: {},
+  },
+}
 
-export default preview
+export default config
