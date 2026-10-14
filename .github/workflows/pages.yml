@@ -1,7 +1,8 @@
 name: share-link
 
-# Publishes Storybook to:
-# /storybook/
+# Publishes:
+# - Design system preview at /design-system-preview.html
+# - Storybook at /storybook/
 #
 # GitHub setup:
 # Settings > Pages > Build and deployment > Source: GitHub Actions
@@ -47,8 +48,14 @@ jobs:
           mkdir -p _site/storybook
           cp -r storybook-static/. _site/storybook/
 
+      - name: Build design system preview
+        run: ESBUILD_PATH=$(node -p "require.resolve('esbuild')") node scripts/build-preview.mjs --copy _site
+
       - name: Verify Storybook
         run: test -f _site/storybook/index.html
+
+      - name: Verify design system preview
+        run: test -f _site/design-system-preview.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
