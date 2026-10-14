@@ -1,35 +1,204 @@
 #!/usr/bin/env node
-// Compile-check components with esbuild (no React install needed): TSX syntax, imports, CSS Modules, stories.
-// Usage: node scripts/check-components.mjs Button Input   (or no args for all)
-import { readdirSync, existsSync } from 'node:fs'
-import { join, resolve } from 'node:path'
-import { createRequire } from 'node:module'
+
+// Compile-check components with esbuild (no React install needed):
+// TSX syntax, imports, CSS Modules, stories.
+//
+// Usage:
+// node scripts/check-components.mjs Button Input
+// or no args for all components.
+
+import {
+  readdirSync,
+  existsSync,
+  readFileSync,
+} from 'node:fs'
+
+import {
+  join,
+  resolve,
+} from 'node:path'
+
+import * as esbuild from 'esbuild'
+
 const root = resolve('.')
-const ESB = process.env.ESBUILD_PATH || '/usr/local/lib/node_modules_global/lib/node_modules/tsx/node_modules/esbuild'
-const esbuild = createRequire(import.meta.url)(ESB)
-const names = process.argv.slice(2).filter((a) => !a.startsWith('--'))
-const all = readdirSync(join(root, 'src/components')).filter((d) => existsSync(join(root, 'src/components', d, 'index.ts')))
-const targets = names.length ? names : all
+
+const names = process.argv
+  .slice(2)
+  .filter((argument) => !argument.startsWith('--'))
+
+const componentsDirectory = join(
+  root,
+  'src/components',
+)
+
+const all = readdirSync(componentsDirectory)
+  .filter((directoryName) =>
+    existsSync(
+      join(
+        componentsDirectory,
+        directoryName,
+        'index.ts',
+      ),
+    ),
+  )
+  .sort()
+
+const targets = names.length
+  ? names
+  : all
+
 let failed = 0
-for (const n of targets) {
-  const dir = join(root, 'src/components', n)
-  if (!existsSync(dir)) { console.error(`✘ ${n}: folder missing`); failed++; continue }
-  const entries = [join(dir, 'index.ts')]
-  for (const f of readdirSync(dir)) if (/\.stories\.tsx$/.test(f)) entries.push(join(dir, f))
+
+for (const componentName of targets) {
+  const componentDirectory = join(
+    componentsDirectory,
+    componentName,
+  )
+
+  if (!existsSync(componentDirectory)) {
+    console.error(
+      `✘ ${componentName}: folder missing`,
+    )
+
+    failed++
+    continue
+  }
+
+  const componentFiles = readdirSync(
+    componentDirectory,
+  )
+
+  const entries = [
+    join(
+      componentDirectory,
+      'index.ts',
+    ),
+  ]
+
+  for (const fileName of componentFiles) {
+    if (/\.stories\.tsx$/.test(fileName)) {
+      entries.push(
+        join(
+          componentDirectory,
+          fileName,
+        ),
+      )
+    }
+  }
+
   try {
     await esbuild.build({
-      entryPoints: entries, bundle: true, write: false, outdir: '/tmp/ds-check', format: 'esm', jsx: 'automatic', logLevel: 'silent',
-      loader: { '.module.css': 'local-css', '.css': 'css' },
-      external: ['react', 'react-dom', 'react/jsx-runtime', '@storybook/react', '@figma/code-connect', 'react-dom/client'],
+      entryPoints: entries,
+
+      bundle: true,
+      write: false,
+
+      outdir: '/tmp/ds-check',
+
+      format: 'esm',
+      jsx: 'automatic',
+      logLevel: 'silent',
+
+      loader: {
+        '.module.css': 'local-css',
+        '.css': 'css',
+      },
+
+      external: [
+        'react',
+        'react-dom',
+        'react-dom/client',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+        '@storybook/react',
+        '@figma/code-connect',
+      ],
     })
-    // syntax-only check of test + figma files
-    for (const f of readdirSync(dir)) if (/\.(test|figma)\.tsx$/.test(f)) {
-      await esbuild.transform((await import('node:fs')).readFileSync(join(dir, f), 'utf8'), { loader: 'tsx', jsx: 'automatic' })
+
+    // Syntax-only check of test and Figma files.
+
+    for (const fileName of componentFiles) {
+      if (
+        /\.(test|figma)\.tsx$/.test(fileName)
+      ) {
+        const filePath = join(
+          componentDirectory,
+          fileName,
+        )
+
+        const source = readFileSync(
+          filePath,
+          'utf8',
+        )
+
+        await esbuild.transform(
+          source,
+          {
+            loader: 'tsx',
+            jsx: 'automatic',
+          },
+        )
+      }
     }
-    console.log(`✔ ${n}`)
-  } catch (e) {
+
+    console.log(
+      `✔ ${componentName}`,
+    )
+  } catch (error) {
     failed++
-    console.error(`✘ ${n}\n${(e.errors || [e]).map((x) => x.text ? `${x.location?.file}:${x.location?.line} ${x.text}` : String(x)).join('\n')}`)
+
+    const errors =
+      error &&
+      typeof error === 'object' &&
+      'errors' in error &&
+      Array.isArray(error.errors)
+        ? error.errors
+        : [error]
+
+    const output = errors
+      .map((buildError) => {
+        if (
+          buildError &&
+          typeof buildError === 'object' &&
+          'text' in buildError
+        ) {
+          const location =
+            'location' in buildError
+              ? buildError.location
+              : undefined
+
+          const file =
+            location?.file ||
+            'unknown file'
+
+          const line =
+            location?.line ||
+            0
+
+          return (
+            `${file}:${line} ` +
+            `${buildError.text}`
+          )
+        }
+
+        return String(buildError)
+      })
+      .join('\n')
+
+    console.error(
+      `✘ ${componentName}\n${output}`,
+    )
   }
 }
-if (failed) process.exit(1)
+
+if (failed) {
+  console.error(
+    `\n${failed} component check(s) failed.`,
+  )
+
+  process.exit(1)
+}
+
+console.log(
+  `\nAll ${targets.length} component check(s) passed.`,
+)
