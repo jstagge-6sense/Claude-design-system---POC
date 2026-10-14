@@ -1,13 +1,26 @@
 // Global Storybook styles.
 //
-// Keep these aligned with the standalone design-system preview
-// so Storybook renders components using the same design tokens,
-// reset, focus styles, theme modes, and density modes.
+// Load the generated design-system stylesheet so Storybook uses
+// the same tokens and component styles as the built library.
+import '../dist/styles.css'
 
-import '../src/styles/tokens.css'
+// Global reset and focus styles used by the design system.
 import '../src/styles/reset.css'
 import '../src/styles/focus.css'
 
 // Generated theme and density overrides.
-// This must remain last so the mode overrides take precedence.
+// Keep this last so mode overrides take precedence.
 import '../dist/modes.css'
+
+const preview = {
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
+}
+
+export default preview
