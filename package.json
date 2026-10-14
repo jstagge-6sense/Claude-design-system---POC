@@ -30,7 +30,7 @@
     "build": "npm run build:tokens && vite build",
     "storybook": "storybook dev -p 6006",
     "gen:storybook-guidelines": "node scripts/gen-storybook-guidelines.mjs",
-    "build-storybook": "npm run build:tokens && storybook build -o storybook-static",
+    "build-storybook": "npm run build:tokens && npm run build:modes && storybook build -o storybook-static",
     "new:component": "node scripts/new-component.mjs",
     "check:components": "node scripts/check-components.mjs",
     "smoke": "node scripts/smoke-test.mjs",
