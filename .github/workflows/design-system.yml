@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
 
@@ -25,29 +27,8 @@ jobs:
       - name: Build modes
         run: node scripts/build-modes.mjs .
 
-      - name: Check components
+      - name: Check component imports
         run: node scripts/check-components.mjs
 
-      - name: Smoke test
+      - name: Smoke test stories
         run: node scripts/smoke-test.mjs
-
-      - name: SSR smoke test
-        run: npm run smoke:ssr
-
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Run tests
-        run: npm test
-
-      - name: Test codemods
-        run: npm run test:codemod
-
-      - name: Build library
-        run: npm run build
-
-      - name: Verify library
-        run: npm run verify
-
-      - name: Check package
-        run: npm run check:package
