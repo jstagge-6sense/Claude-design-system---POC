@@ -2,41 +2,37 @@ import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
   stories: [
-    '../src/components/Button/Button.stories.tsx',
-  ],
+    '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',***],
 
   framework: {
-    name: '@storybook/react-vite',
-    options: {},
+    name: '@s***ybook/react-vite',
+    options: ***
   },
 
-  async viteFinal(viteConfig) {
-    // Declaration files are part of the library build, not Storybook.
-    // Remove vite-plugin-dts so Storybook does not type-check the
-    // entire component library or fail on unrelated source files.
-    viteConfig.plugins = viteConfig.plugins?.filter((plugin) => {
-      if (!plugin) {
+  async viteFinal(viteCon***) {
+    // Declaration files are***rt of the library build, not Sto***ook.
+    // Remove vite-plugin-d***so Storybook does not type-check***e
+    // entire component librar***uring the Storybook build.
+    v***Config.plugins = viteConfig.plug***?.filter((plugin) => {
+      if ***lugin) {
         return false
-      }
+  *** }
 
-      if (Array.isArray(plugin)) {
+      if (Array.isArray(plug***) {
         return true
       }
-
-      const pluginName =
-        typeof plugin === 'object' &&
-        'name' in plugin
-          ? String(plugin.name)
+***    const pluginName =
+        t***of plugin === 'object' &&
+      ***name' in plugin
+          ? Stri***plugin.name)
           : ''
 
-      return (
-        !pluginName.includes('dts') &&
-        !pluginName.includes('unplugin-dts')
+   ***return (
+        !pluginName.inc***es('dts') &&
+        !pluginName***cludes('unplugin-dts')
       )
-    })
+ ***})
 
     return viteConfig
   },
-}
-
-export default config
+}***xport default config
