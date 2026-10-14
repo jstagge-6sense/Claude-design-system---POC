@@ -14,7 +14,7 @@ const preview: Preview = {
       document.documentElement.setAttribute('data-theme', 'light')
       document.documentElement.setAttribute('data-density', 'default')
 
-      return <Story />
+      return Story()
     },
   ],
 
