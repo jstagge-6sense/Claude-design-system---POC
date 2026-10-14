@@ -58,19 +58,20 @@
   "devDependencies": {
     "@figma/code-connect": "latest",
     "@storybook/react-vite": "latest",
-    "storybook": "latest",
     "@testing-library/react": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@typescript/typescript6": "latest",
     "@vitejs/plugin-react": "latest",
+    "esbuild": "^0.28.0",
     "jsdom": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "storybook": "latest",
     "typescript": "latest",
     "vite": "latest",
     "vite-plugin-dts": "latest",
-    "vitest": "latest",
-    "esbuild": "^0.28.0"
+    "vitest": "latest"
   },
   "description": "6sense design system: tokens, React components and charts, driven by one set of design tokens.",
   "license": "UNLICENSED",
