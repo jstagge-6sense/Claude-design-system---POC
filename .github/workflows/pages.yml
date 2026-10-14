@@ -1,8 +1,11 @@
 name: share-link
 
 # Publishes:
-# - Design system preview at /design-system-preview.html
+# - Existing design-system-preview.html at /design-system-preview.html
 # - Storybook at /storybook/
+#
+# GitHub setup:
+# Settings > Pages > Build and deployment > Source: GitHub Actions
 
 on:
   push:
@@ -34,27 +37,27 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Create build directories
+      - name: Create Pages directories
         run: |
           mkdir -p _site
-          mkdir -p src/preview
+          mkdir -p _site/storybook
 
       - name: Build Storybook
         run: npm run build-storybook
 
       - name: Add Storybook to Pages
+        run: cp -r storybook-static/. _site/storybook/
+
+      - name: Add existing design system preview to Pages
+        run: cp design-system-preview.html _site/design-system-preview.html
+
+      - name: Verify Pages files
         run: |
-          mkdir -p _site/storybook
-          cp -r storybook-static/. _site/storybook/
+          test -f _site/storybook/index.html
+          test -f _site/design-system-preview.html
 
-      - name: Build design system preview
-        run: ESBUILD_PATH=$(node -p "require.resolve('esbuild')") node scripts/build-preview.mjs --copy _site
-
-      - name: Verify Storybook
-        run: test -f _site/storybook/index.html
-
-      - name: Verify design system preview
-        run: test -f _site/design-system-preview.html
+      - name: Add no-Jekyll marker
+        run: touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
