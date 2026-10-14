@@ -4,11 +4,11 @@
   container: pageheader / inline-size;
   display: flex;
   flex-direction: column;
-  gap: var(--core-dimension-space-compact);
+  gap: var(--component-pageHeader-all-container-gap);
   box-sizing: border-box;
   inline-size: 100%;
-  padding-block: var(--core-dimension-space-spacious);
-  padding-inline: var(--core-dimension-space-spacious);
+  padding-block: var(--component-pageHeader-all-container-paddingBlock);
+  padding-inline: var(--component-pageHeader-all-container-paddingInline);
 }
 /* With tabs the tab list sits flush with the bottom edge. */
 .root[data-has-tabs] { padding-block-end: 0; }
@@ -17,17 +17,17 @@
   position: sticky;
   inset-block-start: 0;
   z-index: var(--ds-z-sticky);
-  background: var(--core-color-surface-overlay);
-  border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
+  background: var(--component-pageHeader-all-container-fill-sticky);
+  border-block-end: var(--component-pageHeader-all-container-borderWidth) solid var(--component-pageHeader-all-container-border-sticky);
 }
 .root[data-stuck] { box-shadow: var(--component-pageHeader-all-container-shadow-sticky); }
 
-.row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--core-dimension-space-standard); }
-.titleBlock { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); flex: 1 1 auto; min-inline-size: 0; }
-.title { margin: 0; font: var(--component-pageHeader-all-title-typography-font); color: var(--core-color-content-primary); overflow-wrap: anywhere; }
-.description { margin: 0; max-inline-size: 70ch; font: var(--component-pageHeader-all-description-typography-font); color: var(--core-color-content-secondary); }
+.row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--component-pageHeader-all-container-gapRow); }
+.titleBlock { display: flex; flex-direction: column; gap: var(--component-pageHeader-all-container-gap); flex: 1 1 auto; min-inline-size: 0; }
+.title { margin: 0; font: var(--component-pageHeader-all-title-typography-font); color: var(--component-pageHeader-all-title-color-default); overflow-wrap: anywhere; }
+.description { margin: 0; max-inline-size: 70ch; font: var(--component-pageHeader-all-description-typography-font); color: var(--component-pageHeader-all-description-color-default); }
 
-.actions { display: flex; align-items: center; flex: none; gap: var(--core-dimension-space-compact); }
+.actions { display: flex; align-items: center; flex: none; gap: var(--component-pageHeader-all-actions-gap); }
 .overflowWide, .overflowNarrow { display: inline-flex; }
 .overflowNarrow { display: none; }
 
@@ -35,16 +35,16 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--core-dimension-space-standard);
+  gap: var(--component-pageHeader-all-metadata-gap);
   margin: 0;
   padding: 0;
   list-style: none;
   font: var(--component-pageHeader-all-metadata-typography-font);
-  color: var(--core-color-content-secondary);
+  color: var(--component-pageHeader-all-metadata-color-default);
 }
-.owner { display: inline-flex; align-items: center; gap: var(--core-dimension-space-tight); }
+.owner { display: inline-flex; align-items: center; gap: var(--component-pageHeader-all-metadata-itemGap); }
 
-.tabs { margin-block-start: var(--core-dimension-space-compact); min-inline-size: 0; }
+.tabs { margin-block-start: var(--component-pageHeader-all-tabs-marginBlockStart); min-inline-size: 0; }
 
 @container pageheader (max-width: 767px) {
   .row { flex-direction: column; align-items: stretch; }

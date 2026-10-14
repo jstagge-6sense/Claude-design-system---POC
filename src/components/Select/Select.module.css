@@ -30,7 +30,7 @@
 .chevron, .spinner { display: inline-flex; flex: none; align-items: center; }
 .chevron { inline-size: var(--component-select-all-icon-size); block-size: var(--component-select-all-icon-size); color: var(--component-select-all-icon-color-default); }
 .chevron > svg { inline-size: 100%; block-size: 100%; }
-.trigger:disabled .chevron { color: var(--component-select-all-value-color-disabled); }
+.trigger:disabled .chevron { color: var(--component-select-all-icon-color-disabled); }
 
 /* Open: keep the focus border while focus is in the panel. An error border still wins (it is more specific). */
 .field .boxOpen { --_border: var(--component-select-all-container-border-open); --_shadow: var(--component-select-all-container-shadow-open); }
