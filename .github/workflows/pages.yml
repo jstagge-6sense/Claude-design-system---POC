@@ -3,9 +3,6 @@ name: share-link
 # Publishes:
 # - Design system preview at /design-system-preview.html
 # - Storybook at /storybook/
-#
-# GitHub setup:
-# Settings > Pages > Build and deployment > Source: GitHub Actions
 
 on:
   push:
@@ -37,8 +34,10 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Create Pages directory
-        run: mkdir -p _site
+      - name: Create build directories
+        run: |
+          mkdir -p _site
+          mkdir -p src/preview
 
       - name: Build Storybook
         run: npm run build-storybook
