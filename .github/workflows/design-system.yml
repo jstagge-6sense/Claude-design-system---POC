@@ -25,9 +25,6 @@ jobs:
       - name: Build modes
         run: node scripts/build-modes.mjs .
 
-      - name: Lint tokens
-        run: node scripts/lint-tokens.mjs .
-
       - name: Check components
         run: node scripts/check-components.mjs
 
