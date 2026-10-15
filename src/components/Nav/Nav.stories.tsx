@@ -83,6 +83,16 @@ function Frame({ children, dir }: { children: ReactNode; dir?: 'rtl' | 'ltr' }) 
   )
 }
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Nav.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Nav" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Fixed: Story = {
   args: { groups: GROUPS, currentId: 'segments' },
   render: (args) => <Frame><Nav {...args} /></Frame>,
@@ -150,13 +160,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Nav.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Nav" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

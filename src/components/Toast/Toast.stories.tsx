@@ -26,6 +26,16 @@ const Stage = ({ toasts, children, height = 420, max }: { toasts: ToastOptions[]
   </Frame>
 )
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Toast.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Toast" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Severities: Story = {
   render: () => (
     <Stage height={460} toasts={[
@@ -87,13 +97,3 @@ export const ControlStates: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Toast.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Toast" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

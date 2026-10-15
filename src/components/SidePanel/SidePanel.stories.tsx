@@ -36,6 +36,16 @@ const Row = ({ children, height = 460 }: { children: ReactNode; height?: number 
   <Frame height={height}><div style={{ display: 'flex', blockSize: '100%' }}>{children}</div></Frame>
 )
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './SidePanel.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="SidePanel" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Fixed: Story = {
   render: (args) => (
     <Row>
@@ -128,13 +138,3 @@ export const ToggleStates: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './SidePanel.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="SidePanel" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

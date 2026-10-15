@@ -13,6 +13,16 @@ type Story = StoryObj<typeof meta>
 
 const col = { display: 'grid', gap: 32, maxInlineSize: 420 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Slider.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Slider" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Continuous: Story = { args: { helperText: 'Drag, or use the arrow keys. Home and End jump to the ends, Page Up and Page Down move by 10%.' } }
 export const Discrete: Story = {
   args: { label: 'Refresh frequency', discrete: true, min: 1, max: 7, step: 1, defaultValue: 3, unit: 'days', helperText: 'Snaps to whole days.' },
@@ -52,13 +62,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Slider.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Slider" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

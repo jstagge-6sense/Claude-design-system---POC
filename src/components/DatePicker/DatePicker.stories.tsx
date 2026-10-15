@@ -16,6 +16,16 @@ type Story = StoryObj<typeof meta>
 
 const wide = (Story: () => JSX.Element) => <div style={{ maxInlineSize: 560, minBlockSize: 540 }}><Story /></div>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './DatePicker.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="DatePicker" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const SingleDate: Story = { args: { defaultOpen: true, defaultValue: '2026-10-14' } }
 export const Closed: Story = { args: { defaultValue: '2026-10-14', helperText: 'Type a date, or press the down arrow to open the calendar.' } }
 export const DateRangeWithApply: Story = {
@@ -82,13 +92,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './DatePicker.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="DatePicker" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

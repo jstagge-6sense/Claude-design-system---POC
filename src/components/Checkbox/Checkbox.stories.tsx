@@ -11,6 +11,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Checkbox.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Checkbox" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Single: Story = {}
 export const Checked: Story = { args: { defaultChecked: true } }
 export const Indeterminate: Story = { args: { indeterminate: true, label: 'Select all segments' } }
@@ -98,13 +108,3 @@ export const GroupDisabled: Story = {
     </CheckboxGroup>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Checkbox.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Checkbox" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

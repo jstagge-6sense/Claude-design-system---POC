@@ -13,6 +13,16 @@ type Story = StoryObj<typeof meta>
 
 const stack = { display: 'grid', gap: 32 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Pagination.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Pagination" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const FirstPage: Story = {}
 export const MiddlePage: Story = { args: { defaultPage: 12 } }
 export const LastPage: Story = { args: { defaultPage: 25 } }
@@ -66,13 +76,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Pagination.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Pagination" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

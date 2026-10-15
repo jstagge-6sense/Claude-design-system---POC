@@ -14,6 +14,16 @@ type Story = StoryObj<typeof meta>
 const PRIORITIES = ['primary', 'secondary', 'tertiary', 'destructive'] as const
 const STATES = [undefined, 'hover', 'pressed', 'focus'] as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Button.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Button" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Priorities: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -53,13 +63,3 @@ export const WithIcons: Story = {
 }
 export const Loading: Story = { args: { loading: true, children: 'Saving' } }
 export const Disabled: Story = { args: { disabled: true, unavailableReason: 'Add a segment name first.' } }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Button.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Button" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

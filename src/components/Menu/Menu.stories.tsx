@@ -40,6 +40,16 @@ type Story = StoryObj<typeof meta>
 /** Docs frame: positioned and tall enough for the open panel, so the overlay renders in place. */
 const frame = { position: 'relative', minBlockSize: 340, padding: 16 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Menu.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Menu" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const ActionMenu: Story = { render: (args) => <div style={frame}><Menu {...args} /></div> }
 export const IconOnlyTrigger: Story = {
   render: (args) => (
@@ -101,13 +111,3 @@ export const Interactive: Story = {
   args: { defaultOpen: false, portal: true },
   render: (args) => <div style={{ padding: 16 }}><Menu {...args} /></div>,
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Menu.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Menu" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

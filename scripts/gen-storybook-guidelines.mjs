@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Adds a "Guidelines" story to the END of each component's own stories file (src/components/<Name>/<Name>.stories.tsx),
+// Adds a "Guidelines" story as the FIRST story of each component's own stories file (src/components/<Name>/<Name>.stories.tsx),
 // inside a generated block between BEGIN/END markers. Safe to re-run. The text lives only in src/preview/guidelines*.
-// Storybook sorts the Guidelines story first (see .storybook/preview.ts storySort).
+// Storybook lists stories in export order, so it appears first in the sidebar.
 import { readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { createRequire } from 'node:module'
@@ -20,9 +20,10 @@ for (const name of Object.keys(GUIDELINES).sort()) {
   const f = join(root, 'src/components', name, `${name}.stories.tsx`)
   if (!existsSync(f)) continue
   let s = readFileSync(f, 'utf8')
-  const i = s.indexOf(BEGIN)
-  if (i >= 0) s = s.slice(0, i).trimEnd() + '\n'
-  s += `\n${BEGIN}
+  // Drop any previous generated block.
+  const i = s.indexOf(BEGIN), j = s.indexOf(END)
+  if (i >= 0 && j > i) s = (s.slice(0, i).trimEnd() + '\n\n' + s.slice(j + END.length).trimStart()).trimEnd() + '\n'
+  const block = `${BEGIN}
 import { GuidelinesStory } from '../../storybook/GuidelinesStory'
 import * as self from './${name}.stories'
 export const Guidelines: StoryObj = {
@@ -31,7 +32,12 @@ export const Guidelines: StoryObj = {
   render: () => <GuidelinesStory folder="${name}" mod={self as unknown as Record<string, unknown>} />,
 }
 ${END}
+
 `
+  // Insert before the first story export, i.e. right after "export default meta".
+  const m = /^export const /m.exec(s)
+  if (!m) continue
+  s = s.slice(0, m.index) + block + s.slice(m.index)
   writeFileSync(f, s)
   n++
 }

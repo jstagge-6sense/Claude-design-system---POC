@@ -37,6 +37,16 @@ function Interactive(args: Parameters<typeof ProgressSteps>[0]) {
 }
 
 /** Horizontal: desktop workflows, checkout and setup flows. Click a completed step to go back. */
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './ProgressSteps.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="ProgressSteps" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Horizontal: Story = { args: { steps: STEPS, orientation: 'horizontal' }, render: (a) => <Interactive {...a} /> }
 
 /** Vertical: long processes, mobile and sidebars. */
@@ -106,13 +116,3 @@ export const AllStatuses: Story = {
 }
 
 export const RightToLeft: Story = { name: 'RTL (direction reverses)', args: { steps: STEPS, current: 2 }, render: (a) => <div dir="rtl"><ProgressSteps {...a} /></div> }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './ProgressSteps.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="ProgressSteps" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

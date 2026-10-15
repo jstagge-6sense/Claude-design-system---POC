@@ -13,6 +13,16 @@ type Story = StoryObj<typeof meta>
 const box = { inlineSize: 280, display: 'grid', gap: 16 } as const
 const LONG = 'Q3 enterprise expansion campaign for accounts in the late buying stage across North America and EMEA, including renewals and partner-sourced opportunities.'
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Truncate.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Truncate" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const SingleLine: Story = { render: () => <div style={box}><Truncate>{LONG}</Truncate></div> }
 export const MultiLine: Story = { render: () => <div style={box}><Truncate lines={3}>{LONG}</Truncate></div> }
 export const Middle: Story = {
@@ -36,13 +46,3 @@ export const Matrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Truncate.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Truncate" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

@@ -11,6 +11,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Toggle.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Toggle" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Off: Story = {}
 export const On: Story = { args: { defaultChecked: true } }
 export const WithDescription: Story = {
@@ -70,13 +80,3 @@ function Optimistic() {
   )
 }
 export const AsyncChange: Story = { render: () => <Optimistic /> }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Toggle.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Toggle" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

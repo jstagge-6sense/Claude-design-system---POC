@@ -17,6 +17,16 @@ type Story = StoryObj<typeof meta>
 /** Docs-only props: render in place and do not trap focus, lock scroll or move focus. */
 const INLINE = { portal: false, trapFocus: false, lockScroll: false, autoFocus: false } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Dialog.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Dialog" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const ConfirmationDestructive: Story = {
   name: 'Confirmation (destructive)',
   render: (args) => (
@@ -153,13 +163,3 @@ export const WithTrigger: Story = {
     return <Demo />
   },
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Dialog.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Dialog" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

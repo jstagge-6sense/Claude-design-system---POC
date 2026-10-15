@@ -14,6 +14,16 @@ type Story = StoryObj<typeof meta>
 
 const col = { display: 'grid', gap: 24, maxInlineSize: 320 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './NumberInput.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="NumberInput" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const WithSteppers: Story = { args: { helperText: 'Use the arrow keys, or Shift plus arrow to step by 10.' } }
 export const TypeOnly: Story = { args: { steppers: false, label: 'Seats', defaultValue: 12, helperText: 'Type a whole number. Letters, e, + and - are rejected.' } }
 export const MinMaxConstrained: Story = {
@@ -78,13 +88,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './NumberInput.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="NumberInput" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

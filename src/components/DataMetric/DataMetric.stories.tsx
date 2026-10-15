@@ -13,6 +13,16 @@ type Story = StoryObj<typeof meta>
 const SERIES = [820, 870, 860, 910, 990, 970, 1040, 1120, 1180, 1250]
 const row = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(14rem, 1fr))', gap: 32, alignItems: 'start' } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './DataMetric.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="DataMetric" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Simple: Story = {}
 export const WithTrend: Story = { args: { trend: 'up', trendValue: 12, comparison: 'vs last period' } }
 export const WithComparison: Story = {
@@ -60,13 +70,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './DataMetric.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="DataMetric" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

@@ -20,6 +20,16 @@ const COLUMNS: ToolbarColumn[] = [
   { id: 'arr', label: 'ARR', visible: false },
 ]
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './DataTableToolbar.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="DataTableToolbar" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Default: Story = {
   render: () => {
     const [d, setD] = useState<'default' | 'dense'>('default')
@@ -90,13 +100,3 @@ export const ColumnPanel: Story = {
 export const ExportLoading: Story = {
   render: () => <DataTableToolbar searchPlaceholder="Search accounts" exportLoading onExport={() => undefined} />,
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './DataTableToolbar.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="DataTableToolbar" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

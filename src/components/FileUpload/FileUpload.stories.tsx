@@ -19,6 +19,16 @@ const FILES: FileUploadItem[] = [
   { id: '4', name: 'renewals.csv', size: 120_000, status: 'queued' },
 ]
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './FileUpload.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="FileUpload" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Dropzone: Story = {}
 export const ButtonOnly: Story = { name: 'Browse button', args: { variant: 'button' } }
 export const DragOver: Story = { name: 'Drag over', args: { 'data-state': 'dragOver' } }
@@ -58,13 +68,3 @@ function Interactive() {
   )
 }
 export const TryIt: Story = { name: 'Validation (try it)', render: () => <Interactive /> }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './FileUpload.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="FileUpload" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

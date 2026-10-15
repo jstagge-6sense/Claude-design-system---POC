@@ -64,6 +64,16 @@ const LiveDemo = ({ failFirst = false, withFooter = true }: { failFirst?: boolea
   )
 }
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './InfiniteScroll.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="InfiniteScroll" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Interactive: Story = { render: () => <LiveDemo />, parameters: { description: 'Scroll the frame or use Load more. 40 of 200 items start loaded. The footer slot stays pinned so it remains reachable.' } }
 export const ErrorThenRetry: Story = { name: 'Error then retry', render: () => <LiveDemo failFirst /> }
 
@@ -104,13 +114,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './InfiniteScroll.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="InfiniteScroll" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

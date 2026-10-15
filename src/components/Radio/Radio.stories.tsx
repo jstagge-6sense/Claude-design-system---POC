@@ -19,6 +19,16 @@ const Options = () => (
   </>
 )
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Radio.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Radio" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Vertical: Story = { render: (args) => <RadioGroup {...args}><Options /></RadioGroup> }
 export const Horizontal: Story = {
   render: (args) => (
@@ -103,13 +113,3 @@ function Controlled() {
   )
 }
 export const ControlledGroup: Story = { render: () => <Controlled /> }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Radio.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Radio" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

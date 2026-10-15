@@ -15,6 +15,16 @@ type Story = StoryObj<typeof meta>
 /** Docs frame: roomy and positioned, so overlays render in place. */
 const frame = { position: 'relative', display: 'grid', placeItems: 'center', minBlockSize: 200, padding: 64 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Popover.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Popover" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Simple: Story = {
   render: (args) => (
     <div style={frame}>
@@ -88,13 +98,3 @@ export const Interactive: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Popover.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Popover" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

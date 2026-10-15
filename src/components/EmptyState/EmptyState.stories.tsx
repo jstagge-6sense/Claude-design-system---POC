@@ -13,6 +13,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './EmptyState.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="EmptyState" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const NoData: Story = {
   args: {
     variant: 'noData',
@@ -97,13 +107,3 @@ export const VariantMatrix: Story = {
     )
   },
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './EmptyState.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="EmptyState" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

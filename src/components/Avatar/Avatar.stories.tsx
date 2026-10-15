@@ -18,6 +18,16 @@ const PHOTO = 'data:image/svg+xml;utf8,' + encodeURIComponent(
 const row = { display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' } as const
 const SIZES = ['small', 'medium', 'large', 'xl'] as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Avatar.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Avatar" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Image: Story = { args: { src: PHOTO } }
 export const Initials: Story = {
   render: () => (
@@ -74,13 +84,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Avatar.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Avatar" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

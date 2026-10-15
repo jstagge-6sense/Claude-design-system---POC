@@ -13,6 +13,16 @@ type Story = StoryObj<typeof meta>
 
 const frame = { inlineSize: 420 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './SkeletonLoader.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="SkeletonLoader" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Text: Story = { render: () => <div style={frame}><SkeletonLoader variant="text" lines={4} /></div> }
 export const Card: Story = { render: () => <div style={frame}><SkeletonLoader variant="card" lines={3} label="Loading account summary" /></div> }
 export const Table: Story = { render: () => <div style={{ inlineSize: 560 }}><SkeletonLoader variant="table" rows={5} columns={4} label="Loading accounts" /></div> }
@@ -57,13 +67,3 @@ export const Variants: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './SkeletonLoader.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="SkeletonLoader" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

@@ -9,6 +9,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Spinner.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Spinner" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
@@ -25,13 +35,3 @@ export const Overlay: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Spinner.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Spinner" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

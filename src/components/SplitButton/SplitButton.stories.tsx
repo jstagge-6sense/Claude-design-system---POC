@@ -21,6 +21,16 @@ type Story = StoryObj<typeof meta>
 
 const frame = { position: 'relative', minBlockSize: 200, padding: 16 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './SplitButton.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="SplitButton" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Primary: Story = { render: (args) => <div style={frame}><SplitButton {...args} priority="primary" /></div> }
 export const Secondary: Story = { render: (args) => <div style={frame}><SplitButton {...args} priority="secondary" /></div> }
 export const WithIcon: Story = { render: (args) => <div style={frame}><SplitButton {...args} priority="secondary" icon={<Icon name="download" />} items={[{ value: 'csv', label: 'Export as CSV' }, { value: 'xlsx', label: 'Export as Excel' }]}>Export</SplitButton></div> }
@@ -70,13 +80,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './SplitButton.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="SplitButton" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

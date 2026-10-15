@@ -16,6 +16,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './WysiwygToolbar.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="WysiwygToolbar" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Full: Story = { args: { variant: 'full', active: ['bold', 'alignLeft'] } }
 export const Minimal: Story = { args: { variant: 'minimal', active: ['italic'] } }
 
@@ -95,13 +105,3 @@ function Pairing() {
   )
 }
 export const PairedWithTextArea: Story = { name: 'Paired with TextArea', render: () => <Pairing /> }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './WysiwygToolbar.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="WysiwygToolbar" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

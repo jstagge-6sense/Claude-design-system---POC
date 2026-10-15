@@ -22,6 +22,16 @@ const DATA: SearchResult[] = [
 ]
 const col = { display: 'grid', gap: 24, maxInlineSize: 420 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Search.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Search" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Basic: Story = {}
 export const WithClearButton: Story = { args: { defaultValue: 'enterprise' } }
 export const WithResults: Story = {
@@ -106,13 +116,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Search.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Search" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

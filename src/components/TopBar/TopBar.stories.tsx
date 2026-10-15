@@ -43,6 +43,16 @@ const Page = ({ children, minHeight = '16rem' }: { children: ReactNode; minHeigh
 
 const base: Partial<TopBarProps> = { logo: <Logo />, navItems: NAV, user: USER, sticky: false, scrolled: false }
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './TopBar.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="TopBar" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = {
   args: { logo: <Logo /> },
   render: () => (
@@ -165,13 +175,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './TopBar.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="TopBar" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

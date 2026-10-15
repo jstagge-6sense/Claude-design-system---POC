@@ -21,6 +21,16 @@ console.log(segment.id)`,
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './CodeSnippet.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="CodeSnippet" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const MultiLine: Story = {}
 export const WithoutLineNumbers: Story = { args: { lineNumbers: false } }
 export const SingleLineBlock: Story = {
@@ -61,13 +71,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './CodeSnippet.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="CodeSnippet" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

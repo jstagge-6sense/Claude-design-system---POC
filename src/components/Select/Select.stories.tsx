@@ -27,6 +27,16 @@ const col = { display: 'grid', gap: 24, maxInlineSize: 360 } as const
 const open = { defaultOpen: true, portal: false } as const
 const tall = { minBlockSize: 380 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Select.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Select" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = { render: (args) => <div style={tall}><Select {...args} {...open} defaultValue="consideration" /></div> }
 export const Closed: Story = { args: { defaultValue: 'decision' } }
 export const Searchable: Story = { render: (args) => <div style={tall}><Select {...args} {...open} searchable label="Country" items={GROUPED} placeholder="Search countries" /></div> }
@@ -72,13 +82,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Select.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Select" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

@@ -41,6 +41,16 @@ function SingleForm({ preview }: { preview?: { status?: FormStatus; errors?: Rec
     </FormGroup>
   )
 }
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './FormGroup.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="FormGroup" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const SingleSection: Story = { name: 'Single section', render: () => <div style={{ maxInlineSize: '32rem' }}><SingleForm /></div> }
 
 /* ---- Multi-section, 6 fields: the validation summary is required ---- */
@@ -210,13 +220,3 @@ function RtlForm() {
     </FormGroup>
   )
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './FormGroup.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="FormGroup" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

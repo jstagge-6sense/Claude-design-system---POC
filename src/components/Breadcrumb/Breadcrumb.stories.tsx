@@ -23,6 +23,16 @@ const DEEP: BreadcrumbItem[] = [
   { label: 'Q4 expansion targets' },
 ]
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Breadcrumb.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Breadcrumb" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = { args: { items: SHORT } }
 export const WithHomeIcon: Story = { args: { items: [{ label: 'Home', href: '#home' }, ...SHORT], homeIcon: true } }
 export const Truncated: Story = { args: { items: DEEP, truncate: true } }
@@ -54,13 +64,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Breadcrumb.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Breadcrumb" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

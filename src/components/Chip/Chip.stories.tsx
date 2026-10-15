@@ -12,6 +12,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Chip.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Chip" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Dismissible: Story = { args: { variant: 'dismissible' } }
 export const Choice: Story = { args: { variant: 'choice' } }
 export const ChoiceSelected: Story = { args: { variant: 'choice', defaultSelected: true } }
@@ -90,13 +100,3 @@ function ChoiceGroup() {
   )
 }
 export const ChoiceSet: Story = { render: () => <ChoiceGroup /> }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Chip.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Chip" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

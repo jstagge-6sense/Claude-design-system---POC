@@ -23,12 +23,7 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
 
-    // Guidelines first in every component, then the other stories.
-    options: {
-      storySort: (a, b) =>
-        a.title === b.title ? (a.name === 'Guidelines' ? -1 : b.name === 'Guidelines' ? 1 : 0) : 0,
-    },
-
+    // Guidelines is the first export in each component's stories file, so it lists first.
     backgrounds: {
       default: 'white',
       values: [

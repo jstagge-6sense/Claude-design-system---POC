@@ -15,6 +15,16 @@ type Story = StoryObj<typeof meta>
 
 const LONG = 'Accounts with 500 to 5,000 employees in the EMEA region that visited the pricing page twice in the last 14 days.\nExclude existing customers and open opportunities.\nRefresh weekly and notify the regional owner when an account enters the segment.\nReview the match criteria each quarter.\nShare the results with sales development.\nCheck overlaps with the APAC segment.\nConfirm the intent keywords.\nArchive when the campaign ends.'
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './TextArea.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="TextArea" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = { args: { rows: 4, helperText: 'Fixed height. Scrolls when the text is longer.' } }
 export const WithCharacterCounter: Story = { args: { maxLength: 200, defaultValue: 'Mid-market SaaS accounts showing late-stage buying intent.', rows: 3, helperText: 'Visible in segment lists.' } }
 export const AutoResize: Story = { args: { autoResize: true, rows: 2, maxRows: 5, defaultValue: LONG, helperText: 'Grows to 5 rows, then scrolls.' } }
@@ -68,13 +78,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './TextArea.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="TextArea" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

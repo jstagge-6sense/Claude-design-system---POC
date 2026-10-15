@@ -27,6 +27,16 @@ const ACTIONS: PageAction[] = [
 ]
 const DESC = 'Accounts with rising intent in the last 30 days that are not in an open opportunity.'
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './PageHeader.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="PageHeader" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Simple: Story = {}
 
 export const WithBreadcrumb: Story = { args: { breadcrumb: CRUMBS, description: DESC } }
@@ -96,13 +106,3 @@ export const RightToLeft: Story = {
   args: { breadcrumb: CRUMBS, description: DESC, actions: ACTIONS.slice(0, 2), status: { label: 'Active', tone: 'success' }, owner: { name: 'Priya Raman' } },
   render: (args) => <div dir="rtl"><PageHeader {...args} /></div>,
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './PageHeader.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="PageHeader" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

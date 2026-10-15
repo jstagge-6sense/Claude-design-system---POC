@@ -26,6 +26,16 @@ const items = (
   </>
 )
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Accordion.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Accordion" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const MultiExpand: Story = { name: 'Multi expand (default)', render: (args) => <Accordion {...args}>{items}</Accordion> }
 export const SingleExpand: Story = { name: 'Single expand', args: { type: 'single', defaultValue: ['technographics'] }, render: (args) => <Accordion {...args}>{items}</Accordion> }
 export const ExpandCollapseAll: Story = { name: 'Expand and collapse all', args: { expandAll: true }, render: (args) => <Accordion {...args}>{items}</Accordion> }
@@ -67,13 +77,3 @@ export const StateMatrix: Story = {
     </Accordion>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Accordion.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Accordion" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

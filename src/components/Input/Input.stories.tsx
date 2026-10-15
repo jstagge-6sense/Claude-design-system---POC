@@ -15,6 +15,16 @@ type Story = StoryObj<typeof meta>
 
 const col = { display: 'grid', gap: 24, maxInlineSize: 360 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Input.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Input" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Default: Story = {}
 export const WithHelperText: Story = { args: { helperText: 'Shown in lists and reports. Use 3 to 40 characters.' } }
 export const RequiredAndOptional: Story = {
@@ -123,13 +133,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Input.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Input" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

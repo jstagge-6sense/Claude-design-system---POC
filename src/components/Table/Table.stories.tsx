@@ -43,6 +43,16 @@ function sortRows(rows: Account[], sort: TableSort | null) {
 const footer = (n: number) => <span>Showing 1 to {n} of 240 accounts</span>
 const PagePlaceholder = () => <div style={{ display: 'flex', gap: 8, justifyContent: 'space-between', alignItems: 'center' }}><span>Showing 1 to 8 of 240 accounts</span><span style={{ display: 'flex', gap: 8 }}><Button size="small" priority="secondary" disabled>Previous</Button><Button size="small" priority="secondary">Next</Button></span></div>
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Table.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Table" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = {
   args: { caption: 'Accounts', columns: COLUMNS as TableColumn<unknown>[], rows: [], getRowId: () => '' },
   render: () => <Table caption="Accounts" columns={COLUMNS} rows={ACCOUNTS.slice(0, 8)} getRowId={(r) => r.id} footer={footer(8)} />,
@@ -311,13 +321,3 @@ export const ForcedStates: Story = {
     />
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Table.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Table" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

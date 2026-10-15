@@ -26,6 +26,16 @@ type Story = StoryObj<typeof meta>
 const open = { defaultOpen: true, portal: false } as const
 const tall = { minBlockSize: 460 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './MultiSelect.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="MultiSelect" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = { render: (args) => <div style={tall}><MultiSelect {...args} {...open} defaultValue={['saas', 'health']} /></div> }
 export const Closed: Story = { args: { defaultValue: ['saas', 'fin'] } }
 export const Empty: Story = { args: {} }
@@ -60,13 +70,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './MultiSelect.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="MultiSelect" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

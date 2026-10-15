@@ -26,6 +26,16 @@ const Media = () => (
 )
 const grid = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(18rem, 1fr))', gap: 24, alignItems: 'start', maxInlineSize: 'none' } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Card.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Card" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Basic: Story = {
   args: { footer: 'Owner: Priya Raman' },
 }
@@ -115,13 +125,3 @@ export const MetricGrid: Story = {
     </CardGrid>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Card.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Card" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

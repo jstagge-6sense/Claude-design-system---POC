@@ -14,6 +14,16 @@ type Story = StoryObj<typeof meta>
 
 const tall = { display: 'grid', gap: 24, maxInlineSize: 360, minBlockSize: 440 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './TimePicker.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="TimePicker" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Default: Story = { args: { defaultOpen: true, defaultValue: '09:30', helperText: 'Type a time such as 930, 2:30pm or 1430.' } }
 export const Closed: Story = { args: { defaultValue: '14:30' } }
 export const SlotStep15: Story = { name: 'Slot step (15 minutes)', args: { defaultOpen: true, step: 15, min: '09:00', max: '12:00', defaultValue: '10:15' } }
@@ -51,13 +61,3 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './TimePicker.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="TimePicker" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

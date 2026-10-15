@@ -12,6 +12,16 @@ type Story = StoryObj<typeof meta>
 
 const frame = { inlineSize: 420, display: 'grid', gap: 24 } as const
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './ProgressBar.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="ProgressBar" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Determinate: Story = { render: (args) => <div style={frame}><ProgressBar {...args} /></div> }
 export const Indeterminate: Story = {
   render: () => <div style={frame}><ProgressBar label="Syncing with your CRM" statusText="This can take a few minutes." value={undefined} /></div>,
@@ -46,13 +56,3 @@ export const Matrix: Story = {
     </div>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './ProgressBar.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="ProgressBar" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines

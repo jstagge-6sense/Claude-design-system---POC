@@ -29,6 +29,16 @@ const Basic = (props: TabsArgs) => (
   </Tabs>
 )
 
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Tabs.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Tabs" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
+
 export const Standard: Story = { render: (args) => <Basic {...args} variant="standard" /> }
 export const Filled: Story = { render: (args) => <Basic {...args} variant="filled" /> }
 export const Compact: Story = { render: (args) => <Basic {...args} variant="compact" /> }
@@ -157,13 +167,3 @@ export const LazyPanels: Story = {
     </Tabs>
   ),
 }
-
-// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
-import { GuidelinesStory } from '../../storybook/GuidelinesStory'
-import * as self from './Tabs.stories'
-export const Guidelines: StoryObj = {
-  name: 'Guidelines',
-  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
-  render: () => <GuidelinesStory folder="Tabs" mod={self as unknown as Record<string, unknown>} />,
-}
-// END generated guidelines
