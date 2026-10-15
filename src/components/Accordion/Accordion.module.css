@@ -2,16 +2,14 @@
 .root { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); min-inline-size: 0; }
 .toolbar { display: flex; justify-content: flex-end; gap: var(--core-dimension-space-compact); }
 
-/* Grouped container: shared group surface, border gradient and form-section shadow. */
+/* Grouped container: same surface, border, radius and shadow as Card. */
 .group {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: var(--core-dimension-borderWidth-thin) solid transparent;
-  border-radius: var(--core-dimension-radius-surface-medium);
-  background:
-    linear-gradient(var(--core-color-surface-group), var(--core-color-surface-group)) padding-box,
-    var(--core-color-border-group) border-box;
+  border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle);
+  border-radius: var(--core-dimension-radius-surface-large);
+  background: var(--core-color-surface-card);
   box-shadow: var(--component-accordion-all-container-shadow);
 }
 .item + .item { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); }
@@ -42,8 +40,8 @@
   text-align: start;
   cursor: pointer;
 }
-.item:first-child .trigger { border-start-start-radius: var(--core-dimension-radius-surface-medium); border-start-end-radius: var(--core-dimension-radius-surface-medium); }
-.item:last-child:not([data-open]) .trigger { border-end-start-radius: var(--core-dimension-radius-surface-medium); border-end-end-radius: var(--core-dimension-radius-surface-medium); }
+.item:first-child .trigger { border-start-start-radius: var(--core-dimension-radius-surface-large); border-start-end-radius: var(--core-dimension-radius-surface-large); }
+.item:last-child:not([data-open]) .trigger { border-end-start-radius: var(--core-dimension-radius-surface-large); border-end-end-radius: var(--core-dimension-radius-surface-large); }
 .item:has(.check) .trigger { padding-inline-start: 0; }
 .check + .trigger { margin-inline-start: var(--core-dimension-space-comfortable); }
 

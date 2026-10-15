@@ -7,7 +7,7 @@ interface Meta { component?: (p: Record<string, unknown>) => ReactNode; args?: R
 /** Storybook page for one component's guidelines. `mod` is the component's own stories module, used to draw the live anatomy diagram. */
 export function GuidelinesStory({ folder, mod }: { folder: string; mod: Record<string, unknown> }) {
   const meta = (mod.default || {}) as Meta
-  const keys = Object.keys(mod).filter((k) => k !== 'default' && !k.startsWith('__'))
+  const keys = Object.keys(mod).filter((k) => k !== 'default' && k !== 'Guidelines' && !k.startsWith('__'))
   const renderPreview = (key?: string): ReactNode => {
     const k = key && keys.includes(key) ? key : keys[0]
     if (!k) return null

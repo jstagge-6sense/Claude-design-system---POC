@@ -21,6 +21,9 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
 
+    // Guidelines first in every component, then the other stories.
+    options: { storySort: { order: ['Guidelines'] } },
+
     backgrounds: {
       default: 'page',
       values: [

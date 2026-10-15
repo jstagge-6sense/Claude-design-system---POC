@@ -396,7 +396,7 @@ for (
     ] of Object.entries(storyModule)
   ) {
     if (
-      exportName === 'default' ||
+      exportName === 'default' || exportName === 'Guidelines' ||
       exportName.startsWith('__') ||
       !storyExport
     ) {

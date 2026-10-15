@@ -60,3 +60,13 @@ export const StateMatrix: Story = {
     </div>
   ),
 }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './DataMetric.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="DataMetric" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines

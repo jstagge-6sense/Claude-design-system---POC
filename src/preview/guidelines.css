@@ -1,0 +1,30 @@
+/* Guidelines modal, Storybook guidelines page and anatomy diagrams. Used by GuidelinesContent.tsx. */
+.pv-guide-btn { margin-inline-start: auto; }
+div.pv-guide-dialog > [role="dialog"][data-size] { inline-size: 80vw; block-size: 80vh; max-inline-size: none; max-block-size: none; }
+.pv-guide-purpose { margin-block: 0 var(--core-dimension-space-standard); padding: var(--core-dimension-space-standard) var(--core-dimension-space-comfortable); background: var(--core-color-surface-group); border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); border-radius: var(--core-dimension-radius-surface-medium); color: var(--core-color-content-primary); }
+.pv-guide-purpose h5 { margin: 0 0 4px; font: var(--core-typography-heading-4-font); color: var(--core-color-content-primary); }
+.pv-guide-purpose p { margin: 0; }
+.pv-guide-purpose dl { margin: var(--core-dimension-space-standard) 0 0; display: grid; gap: var(--core-dimension-space-compact); }
+.pv-guide-purpose dt { font-weight: 600; } .pv-guide-purpose dd { margin: 0 0 var(--core-dimension-space-compact); color: var(--core-color-content-secondary); }
+.pv-guide-sec { color: var(--core-color-content-primary); }
+.pv-guide-dialog div:has(> .pv-guide-sec) { padding-block-start: 0; }
+.pv-guide-intro { font-style: italic; color: var(--core-color-content-secondary); margin: 0 0 var(--core-dimension-space-compact); }
+.pv-guide-sec h4 { font: var(--core-typography-heading-4-font); color: var(--core-color-content-primary); margin: var(--core-dimension-space-standard) 0 2px; }
+.pv-guide-sec ul { margin: 0 0 var(--core-dimension-space-compact); padding-inline-start: 18px; } .pv-guide-sec li { margin-block: 3px; }
+.pv-guide-sec table { inline-size: 100%; border-collapse: collapse; font-size: 13px; } .pv-guide-sec th, .pv-guide-sec td { text-align: start; padding: 6px 8px 6px 0; border-block-end: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); vertical-align: top; } .pv-guide-sec th { color: var(--core-color-content-secondary); font-weight: 600; }
+.pv-guide-sec code { font-size: 12px; margin-inline-end: 6px; }
+.pv-guide-src { font-size: 12px; color: var(--core-color-content-secondary); margin: var(--core-dimension-space-standard) 0 0; }
+.pv-anat-stage { display: flex; justify-content: center; padding: 72px 96px; margin-block-end: var(--core-dimension-space-standard); background: var(--core-color-surface-group); border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); border-radius: var(--core-dimension-radius-surface-medium); overflow-x: auto; }
+.pv-anat-wrap { position: relative; display: inline-block; }
+.pv-anat-lines { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; overflow: visible; pointer-events: none; }
+.pv-anat-lines line { stroke: var(--core-color-content-secondary); stroke-width: 1; }
+.pv-anat-badge, .pv-anat-n { display: inline-flex; align-items: center; justify-content: center; inline-size: 22px; block-size: 22px; border-radius: 50%; border: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-strong); background: var(--core-color-surface-card); color: var(--core-color-content-primary); font-size: 12px; font-weight: 600; }
+.pv-anat-badge { position: absolute; transform: translate(-50%, -50%); }
+.pv-anat-list { list-style: none; margin: 0 0 var(--core-dimension-space-compact); padding: 0; display: grid; gap: var(--core-dimension-space-standard); }
+.pv-anat-list li { display: flex; gap: var(--core-dimension-space-standard); align-items: flex-start; }
+.pv-anat-list .pv-anat-n { flex: none; margin-block-start: 2px; }
+.pv-anat-list h4 { margin: 0; font: var(--core-typography-heading-4-font); color: var(--core-color-content-primary); }
+.pv-anat-list p { margin: 2px 0 0; color: var(--core-color-content-secondary); }
+.pv-anat-live { display: inline-block; }
+
+.pv-guide-btn { display: inline-flex; gap: 8px; align-items: center; }

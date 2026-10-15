@@ -115,3 +115,13 @@ export const MetricGrid: Story = {
     </CardGrid>
   ),
 }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Card.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Card" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines

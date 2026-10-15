@@ -64,7 +64,7 @@ export function buildAnalytics(root, { tokens, gaps, state, modes }) {
     const files = walk(dir)
     const stories = files.find((f) => f.endsWith('.stories.tsx'))
     const storyText = stories ? readFileSync(stories, 'utf8') : ''
-    const storyCount = (storyText.match(/^export const [A-Z]/gm) || []).length
+    const storyCount = (storyText.match(/^export const [A-Z]/gm) || []).length - (/^export const Guidelines\b/m.test(storyText) ? 1 : 0)
     const tier = Number((/tier:\s*(\d)/.exec(storyText) || [])[1] ?? 0)
     const main = files.find((f) => f.endsWith(`/${name}.tsx`))
     const tsx = main ? readFileSync(main, 'utf8') : ''

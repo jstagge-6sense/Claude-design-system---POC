@@ -98,3 +98,13 @@ export const GroupDisabled: Story = {
     </CheckboxGroup>
   ),
 }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Checkbox.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Checkbox" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines

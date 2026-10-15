@@ -106,3 +106,13 @@ export const AllStatuses: Story = {
 }
 
 export const RightToLeft: Story = { name: 'RTL (direction reverses)', args: { steps: STEPS, current: 2 }, render: (a) => <div dir="rtl"><ProgressSteps {...a} /></div> }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './ProgressSteps.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="ProgressSteps" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines

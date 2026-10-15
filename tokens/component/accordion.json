@@ -5,7 +5,7 @@
         "container": {
           "shadow": {
             "$type": "shadow",
-            "$value": "{core.effect.shadow.formSection}"
+            "$value": "{core.effect.shadow.card}"
           }
         },
         "header": {

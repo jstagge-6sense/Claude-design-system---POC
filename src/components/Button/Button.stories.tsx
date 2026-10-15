@@ -53,3 +53,13 @@ export const WithIcons: Story = {
 }
 export const Loading: Story = { args: { loading: true, children: 'Saving' } }
 export const Disabled: Story = { args: { disabled: true, unavailableReason: 'Add a segment name first.' } }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Button.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Button" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines

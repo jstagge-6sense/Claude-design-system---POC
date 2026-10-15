@@ -67,3 +67,13 @@ export const StateMatrix: Story = {
     </Accordion>
   ),
 }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Accordion.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Accordion" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines

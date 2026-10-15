@@ -82,3 +82,13 @@ export const StuckMatrix: Story = {
     </div>
   ),
 }
+
+// BEGIN generated guidelines (scripts/gen-storybook-guidelines.mjs)
+import { GuidelinesStory } from '../../storybook/GuidelinesStory'
+import * as self from './Sticky.stories'
+export const Guidelines: StoryObj = {
+  name: 'Guidelines',
+  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  render: () => <GuidelinesStory folder="Sticky" mod={self as unknown as Record<string, unknown>} />,
+}
+// END generated guidelines
