@@ -54,3 +54,11 @@ test('never maps to primitive tokens', () => {
   assert.ok(all.length > 20)
   assert.ok(all.every((t) => !/-(100|200|300|400|500|600|700|800|900)$/.test(t.cssVar) || t.name.startsWith('core.')))
 })
+test('skips lines marked codemod-ignore', () => {
+  const css1 = css('.a { padding: 16px; } /* codemod-ignore: intentional */\n.b { padding: 16px; }')
+  assert.match(css1.text, /\.a \{ padding: 16px; \}/)
+  assert.match(css1.text, /\.b \{ padding: var\(--core-dimension-space-standard\)/)
+  const t = tsx("const a = { padding: '16px' } // codemod-ignore\nconst b = { padding: '16px' }")
+  assert.match(t.text, /const a = \{ padding: '16px' \}/)
+  assert.match(t.text, /const b = \{ padding: 'var\(/)
+})

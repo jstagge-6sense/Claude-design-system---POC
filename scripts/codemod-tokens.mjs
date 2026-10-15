@@ -2,6 +2,7 @@
 // Codemod: replaces hard-coded colors, spacing, radii and border widths with 6sense design system tokens.
 //   node scripts/codemod-tokens.mjs <folder or file> [...]            dry run: lists every change and every value left alone
 //   node scripts/codemod-tokens.mjs <folder or file> --write          applies the changes
+// Intentional exceptions: put `codemod-ignore` in a comment on the same line (e.g. /* codemod-ignore: 1px hairline offset */) and that line is skipped.
 // Flags: --tokens <path to tokens.json>   --json   (machine-readable report)
 // Rules: exact matches only, and only semantic tokens (never primitives). A value is replaced when exactly one semantic
 // token in the right family matches: colors by property (color -> content, background/fill -> surface or action, border -> border),
@@ -105,16 +106,18 @@ export function convertValue(prop, value, maps) {
 export function transform(source, ext, maps) {
   const events = []
   const lineOf = (idx) => source.slice(0, idx).split('\n').length
+  const ignored = (idx) => { const a = source.lastIndexOf('\n', idx) + 1; let b = source.indexOf('\n', idx); if (b < 0) b = source.length; return source.slice(a, b).includes('codemod-ignore') }
   const css = ['.css', '.scss', '.less'].includes(ext)
   const re = css ? /([\w-]+)\s*:\s*([^;{}]+)(?=;|\})/g : /(['"`])((?:(?!\1)[^\\\n])*?)\1/g
   const next = css
     ? source.replace(re, (all, prop, value, idx) => {
-        if (prop.startsWith('--')) return all
+        if (prop.startsWith('--') || ignored(idx)) return all
         const r = convertValue(prop.toLowerCase(), value, maps)
         r.events.forEach((e) => events.push({ ...e, prop, line: lineOf(idx) }))
         return r.value === value ? all : all.replace(value, r.value)
       })
     : source.replace(re, (all, q, body, idx) => {
+        if (ignored(idx)) return all
         // CSS strings inside js, jsx, ts and tsx: "padding: 16px; color: #fff" and style-object strings such as { padding: '16px' }
         const decl = body.match(/^\s*([\w-]+)\s*:\s*(.+?)\s*;?\s*$/)
         if (decl) { const r = convertValue(decl[1].toLowerCase(), decl[2], maps); r.events.forEach((e) => events.push({ ...e, prop: decl[1], line: lineOf(idx) })); return r.value === decl[2] ? all : all.replace(decl[2], r.value) }
@@ -122,6 +125,7 @@ export function transform(source, ext, maps) {
       })
   // Style objects: { padding: '16px', borderRadius: '8px', color: '#fff' }
   const next2 = css ? next : next.replace(/\b([a-z][a-zA-Z]*)\s*:\s*(['"])([^'"\n]+)\2/g, (all, key, q, value, idx) => {
+    if (ignored(idx)) return all
     const prop = key.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase())
     if (!/^(color|background|border|outline|fill|stroke|padding|margin|gap|inset|top|right|bottom|left|row-gap|column-gap)/.test(prop)) return all
     const r = convertValue(prop, value, maps)

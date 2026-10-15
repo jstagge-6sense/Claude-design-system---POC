@@ -98,7 +98,7 @@ th.td { font-weight: inherit; }
 /* Selection and expand columns. The checkbox's 44px hit row is pulled in so dense rows keep their height. */
 .ctrl { inline-size: var(--_ctrl-w); min-inline-size: var(--_ctrl-w); max-inline-size: var(--_ctrl-w); padding-inline: 0; text-align: center; }
 .ctrl > * { margin-inline: auto; margin-block: calc((var(--_row-h) - var(--ds-hit-min)) / 2); inline-size: max-content; }
-.ctrl > :global(.ds-visually-hidden) { margin: -1px; }
+.ctrl > :global(.ds-visually-hidden) { margin: -1px; } /* codemod-ignore: 1px hairline offset, no token */
 
 .expandBtn {
   position: relative;
@@ -171,7 +171,7 @@ th.td { font-weight: inherit; }
 }
 
 /* ---- Sticky header and pinned first column ---- */
-.root[data-sticky-header] .th { position: sticky; inset-block-start: -1px; z-index: var(--ds-z-sticky); }
+.root[data-sticky-header] .th { position: sticky; inset-block-start: -1px; z-index: var(--ds-z-sticky); } /* codemod-ignore: 1px hairline offset, no token */
 .root[data-sticky-header][data-stuck] .th { box-shadow: var(--component-table-all-sticky-shadow-stuck); border-block-end-color: var(--component-table-all-sticky-border-stuck); }
 
 [data-pin] { position: sticky; z-index: var(--ds-z-base); }

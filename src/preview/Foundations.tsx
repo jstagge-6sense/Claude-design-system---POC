@@ -78,7 +78,7 @@ export function SpacingPage() {
       <Section title="Radius">
         <div className="pv-swgrid">
           {g('core.dimension.radius.').map((t) => (
-            <div key={t.name} className="pv-sw"><span style={{ borderRadius: `var(${t.cssVar})`, background: 'var(--core-color-surface-card)', border: '1px solid var(--core-color-ink-700)' }} /><code>{tail(t.name, 'core.dimension.radius.')} · {t.value}</code></div>
+            <div key={t.name} className="pv-sw"><span style={{ borderRadius: `var(${t.cssVar})`, background: 'var(--core-color-surface-card)', border: 'var(--core-dimension-borderWidth-thin) solid var(--core-color-ink-700)' }} /><code>{tail(t.name, 'core.dimension.radius.')} · {t.value}</code></div>
           ))}
         </div>
       </Section>
@@ -176,10 +176,10 @@ export function MotionPage() {
             <Button priority="secondary">Popover</Button>
           </Popover>
         </div>
-        <div style={{ display: 'flex', blockSize: 240, marginBlockStart: 16, border: '1px solid var(--core-color-border-standard)', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', blockSize: 240, marginBlockStart: 16, border: 'var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard)', overflow: 'hidden' }}>
           <div style={{ flex: '1 1 0', minInlineSize: 0, padding: 16 }}>
             <strong>Page content</strong>
-            <p style={{ margin: '8px 0 0' }}>The push drawer takes width from this area instead of covering it.</p>
+            <p style={{ margin: 'var(--core-dimension-space-compact) 0 0' }}>The push drawer takes width from this area instead of covering it.</p>
           </div>
           <Drawer open={push} onOpenChange={setPush} behavior="push" size="small" title="Push drawer">
             <p>Sits in the layout. No scrim.</p>
@@ -214,14 +214,14 @@ export function MotionPage() {
 
 export function ScrollbarsPage() {
   const rows = Array.from({ length: 14 }, (_, i) => `Row ${i + 1}: scrollable content`)
-  const box = { border: '1px solid var(--pv-line)', borderRadius: 8, background: 'var(--pv-panel)', padding: 12 } as const
+  const box = { border: 'var(--core-dimension-borderWidth-thin) solid var(--pv-line)', borderRadius: 8, background: 'var(--pv-panel)', padding: 12 } as const
   return (
     <>
       <Section title="Scroll bars" note="Every scroll bar in the preview uses one custom style instead of the browser default: a slim rounded thumb on a transparent track. The thumb turns the accent color on hover and while dragging. Scroll the areas below to try it.">
         <div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))' }}>
-          <div><strong>Vertical</strong><div style={{ ...box, blockSize: 160, overflowY: 'auto' }}>{rows.map((r) => <p key={r} style={{ margin: '0 0 8px' }}>{r}</p>)}</div></div>
+          <div><strong>Vertical</strong><div style={{ ...box, blockSize: 160, overflowY: 'auto' }}>{rows.map((r) => <p key={r} style={{ margin: '0 0 var(--core-dimension-space-compact)' }}>{r}</p>)}</div></div>
           <div><strong>Horizontal</strong><div style={{ ...box, overflowX: 'auto' }}><p style={{ margin: 0, whiteSpace: 'nowrap' }}>{rows.join('  ·  ')}</p></div></div>
-          <div><strong>Both directions</strong><div style={{ ...box, blockSize: 160, overflow: 'auto' }}><div style={{ inlineSize: 600 }}>{rows.map((r) => <p key={r} style={{ margin: '0 0 8px' }}>{r}</p>)}</div></div></div>
+          <div><strong>Both directions</strong><div style={{ ...box, blockSize: 160, overflow: 'auto' }}><div style={{ inlineSize: 600 }}>{rows.map((r) => <p key={r} style={{ margin: '0 0 var(--core-dimension-space-compact)' }}>{r}</p>)}</div></div></div>
         </div>
       </Section>
       <Section title="Spec">

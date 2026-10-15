@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react'
+import { Badge } from '../components/Badge'
+import { Icon } from '../icons'
 import { DATA, EXTRA_COMPONENTS, PRODUCT_COMPONENTS } from './data'
-import { STACK_IN_USE } from './TechStack'
 
-function Section({ title, children }: { title: string; children: ReactNode }) {
+function Section({ title, children }: { title: ReactNode; children: ReactNode }) {
   return <section className="pv-section"><h2>{title}</h2>{children}</section>
 }
 function Stat({ label, value, note }: { label: string; value: ReactNode; note?: string }) {
@@ -23,14 +24,19 @@ export function WelcomePage() {
           </div>
         ) : null}
       </Section>
-      <Section title="Components hold no values of their own">
-        <p>No component carries unique properties. Every color, space, size, radius, border, type style, effect and motion setting in a component refers to a token, so one change to a token updates every component that uses it. That is what makes the library easy to control: change a primitive to restyle everything, a semantic token to change a role, or a component token to adjust one component. The token lint blocks hard-coded colors, direct use of primitive tokens and token names that do not exist. A few raw minimum and maximum width limits (44 lint warnings) are still in component CSS and are tracked for conversion to tokens.</p>
-      </Section>
-      <Section title="A full React library, not a single React file">
-        <p>This is a complete, installable React library. It is not one React file or one example screen. It ships {EXTRA_COMPONENTS.length + 51} typed components, charts, icons and shared pieces, each with its own styling, stories and tests, all driven by one set of design tokens, with build scripts, checks and a publish flow around them. The {STACK_IN_USE.length} tech stacks in use are below. <a href="#/i/stack">Tech stack created and used</a> has the full detail. They have all been created, but not all are connected to outputs yet. The header count of {EXTRA_COMPONENTS.length + 51 + PRODUCT_COMPONENTS.length} also includes {PRODUCT_COMPONENTS.length} product components from the DS component sheet (Revvy, explainability and shared pieces) that live in product code, not in this repo.</p>
-        <ul className="pv-notes">
-          {STACK_IN_USE.map(([name, role]) => <li key={name}><strong>{name}</strong>: {role}</li>)}
-        </ul>
+      <Section title={<>Codemod check <Badge kind="status" tone="success" icon={<Icon name="check" />}>Passed</Badge></>}>
+        <p>We ran the token codemod (<code>scripts/codemod-tokens.mjs</code>) as a dry run over the code that ships in the package. It looks for hard-coded colors, spacing, radii and border widths that should be tokens, and changes nothing unless told to.</p>
+        <table className="pv-table">
+          <caption className="pv-sr">Codemod dry run results by folder</caption>
+          <thead><tr><th scope="col">Folder</th><th scope="col">To replace</th><th scope="col">To decide</th><th scope="col">No token</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">src/components (51 components)</th><td>0</td><td>0</td><td>0</td><td><Icon name="check" label="Pass" /></td></tr>
+            <tr><th scope="row">src/primitives</th><td>0</td><td>0</td><td>0</td><td><Icon name="check" label="Pass" /></td></tr>
+            <tr><th scope="row">src/foundations</th><td>0</td><td>0</td><td>0</td><td><Icon name="check" label="Pass" /></td></tr>
+            <tr><th scope="row">src/icons</th><td>0</td><td>0</td><td>0</td><td><Icon name="check" label="Pass" /></td></tr>
+          </tbody>
+        </table>
+        <p>Why it passes: every color, space, radius and border width in these folders already refers to a token, so there is nothing left for the codemod to swap. A related check confirms that every CSS variable used in component CSS is defined. Six one-pixel alignment offsets in Table, Sticky and DataTableToolbar have no matching token on purpose. They are marked <code>codemod-ignore</code> as intentional exceptions and the codemod skips them. The codemod also passes its own 10 tests.</p>
       </Section>
       <Section title="Index">
         <ul className="pv-notes">

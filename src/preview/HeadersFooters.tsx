@@ -10,7 +10,7 @@ function Section({ title, note, children }: { title: string; note?: string; chil
   return <section className="pv-section"><h2>{title}</h2>{note ? <p className="pv-muted">{note}</p> : null}<div style={{ display: 'grid', gap: 24 }}>{children}</div></section>
 }
 const Frame = ({ label, children }: { label: string; children: ReactNode }) => (
-  <div><small className="pv-muted">{label}</small><div style={{ border: '1px solid var(--pv-line)', borderRadius: 8, overflow: 'hidden', background: 'var(--pv-panel)', marginBlockStart: 4 }}>{children}</div></div>
+  <div><small className="pv-muted">{label}</small><div style={{ border: 'var(--core-dimension-borderWidth-thin) solid var(--pv-line)', borderRadius: 8, overflow: 'hidden', background: 'var(--pv-panel)', marginBlockStart: 4 }}>{children}</div></div>
 )
 
 const NAV = [{ id: 'a', label: 'Accounts', href: '#', current: true }, { id: 'b', label: 'Segments', href: '#' }, { id: 'c', label: 'Campaigns', href: '#' }, { id: 'd', label: 'Reports', href: '#' }]

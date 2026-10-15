@@ -7,9 +7,9 @@
   border: 0 solid transparent;
 }
 /* The inset is offset minus 1px so that useStuck can detect the stuck state without a sentinel. */
-.root[data-edge='top'] { inset-block-start: calc(var(--_offset) - 1px); }
-.root[data-edge='bottom'] { inset-block-end: calc(var(--_offset) - 1px); }
-.root[data-edge='start'] { inset-inline-start: calc(var(--_offset) - 1px); }
+.root[data-edge='top'] { inset-block-start: calc(var(--_offset) - 1px); } /* codemod-ignore: 1px hairline offset, no token */
+.root[data-edge='bottom'] { inset-block-end: calc(var(--_offset) - 1px); } /* codemod-ignore: 1px hairline offset, no token */
+.root[data-edge='start'] { inset-inline-start: calc(var(--_offset) - 1px); } /* codemod-ignore: 1px hairline offset, no token */
 
 /* Visible boundary only while stuck: a rule on the open edge plus an elevation shadow. */
 .root[data-stuck] { box-shadow: var(--component-sticky-all-container-shadow-stuck); }

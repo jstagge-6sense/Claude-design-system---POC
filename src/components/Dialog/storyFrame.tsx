@@ -10,7 +10,7 @@ export function Frame({ children, height = 520, width, style }: { children: Reac
     <div
       style={{
         position: 'relative', overflow: 'hidden', isolation: 'isolate', blockSize: height, inlineSize: width ?? '100%',
-        border: '1px solid var(--core-color-border-standard)', borderRadius: 'var(--core-dimension-radius-surface-medium)',
+        border: 'var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard)', borderRadius: 'var(--core-dimension-radius-surface-medium)',
         background: 'var(--core-color-surface-page)', ...style,
       }}
     >

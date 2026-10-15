@@ -8,7 +8,7 @@
   box-sizing: border-box;
   min-inline-size: 0;
 }
-.root[data-sticky] { position: sticky; inset-block-start: -1px; z-index: var(--ds-z-sticky); }
+.root[data-sticky] { position: sticky; inset-block-start: -1px; z-index: var(--ds-z-sticky); } /* codemod-ignore: 1px hairline offset, no token */
 .root[data-stuck] {
   box-shadow: var(--component-table-all-sticky-shadow-stuck);
   border-block-end: var(--component-dataTableToolbar-all-container-borderWidth) solid var(--component-table-all-sticky-border-stuck);
