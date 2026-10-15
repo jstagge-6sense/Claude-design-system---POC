@@ -1,3 +1,4 @@
+import { createElement } from 'react'
 import type { Preview } from '@storybook/react'
 
 import '../src/styles/tokens.css'
@@ -14,12 +15,13 @@ const preview: Preview = {
       document.documentElement.setAttribute('data-theme', 'light')
       document.documentElement.setAttribute('data-density', 'default')
 
-      return Story()
+      // Centered, responsive column: fills the canvas up to 60rem, never shrinks to content width.
+      return createElement('div', { style: { inlineSize: '100%', maxInlineSize: '60rem', marginInline: 'auto', boxSizing: 'border-box' } }, createElement(Story))
     },
   ],
 
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
 
     // Guidelines first in every component, then the other stories.
     options: {
