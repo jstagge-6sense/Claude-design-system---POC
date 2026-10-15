@@ -66,7 +66,7 @@ import { GuidelinesStory } from '../../storybook/GuidelinesStory'
 import * as self from './MultiSelect.stories'
 export const Guidelines: StoryObj = {
   name: 'Guidelines',
-  parameters: { layout: 'padded', controls: { disable: true }, actions: { disable: true } },
+  parameters: { layout: 'fullscreen', controls: { disable: true }, actions: { disable: true } },
   render: () => <GuidelinesStory folder="MultiSelect" mod={self as unknown as Record<string, unknown>} />,
 }
 // END generated guidelines

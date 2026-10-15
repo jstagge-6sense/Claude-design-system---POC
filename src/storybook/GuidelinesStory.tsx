@@ -18,5 +18,5 @@ export function GuidelinesStory({ folder, mod }: { folder: string; mod: Record<s
     const C = meta.component
     return render ? render(args, {}) : C ? <C {...args} /> : null
   }
-  return <div style={{ maxInlineSize: '56rem' }}><GuidelinesContent folder={folder} renderPreview={renderPreview} /></div>
+  return <div style={{ maxInlineSize: '56rem', marginInline: 'auto', inlineSize: '100%', boxSizing: 'border-box', padding: '32px 24px' }}><GuidelinesContent folder={folder} renderPreview={renderPreview} /></div>
 }
