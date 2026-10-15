@@ -14,7 +14,7 @@
 }
 .item + .item { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle); }
 
-.heading { margin: 0; display: flex; align-items: center; }
+.heading { --_hfill: transparent; margin: 0; display: flex; align-items: center; background: var(--_hfill); }
 .check { flex: none; display: inline-flex; padding-inline-start: var(--core-dimension-space-standard); }
 
 .trigger {
@@ -40,8 +40,8 @@
   text-align: start;
   cursor: pointer;
 }
-.item:first-child .trigger { border-start-start-radius: var(--core-dimension-radius-surface-large); border-start-end-radius: var(--core-dimension-radius-surface-large); }
-.item:last-child:not([data-open]) .trigger { border-end-start-radius: var(--core-dimension-radius-surface-large); border-end-end-radius: var(--core-dimension-radius-surface-large); }
+.item:first-child .heading { border-start-start-radius: var(--core-dimension-radius-surface-large); border-start-end-radius: var(--core-dimension-radius-surface-large); }
+.item:last-child:not([data-open]) .heading { border-end-start-radius: var(--core-dimension-radius-surface-large); border-end-end-radius: var(--core-dimension-radius-surface-large); }
 .item:has(.check) .trigger { padding-inline-start: 0; }
 .check + .trigger { margin-inline-start: var(--core-dimension-space-comfortable); }
 
@@ -61,7 +61,8 @@
 .item[data-open] .indicator > svg { transform: rotate(180deg); }
 
 /* States. Real pseudo-classes plus [data-state] twins for forced previews. */
-.trigger:hover:not([aria-disabled='true']), .item[data-state='hover'] .trigger { --_fill: var(--core-color-action-compact-hover); }
+/* The hover fill covers the whole header row (checkbox included), so it sits on .heading. */
+.item:not([data-disabled]) .heading:hover, .item[data-state='hover'] .heading { --_hfill: var(--core-color-action-compact-hover); }
 .trigger:focus-visible, .item[data-state='focus'] .trigger { outline: none; box-shadow: var(--core-effect-ring-focus); }
 .item[data-disabled] .trigger { --_color: var(--core-color-content-disabled); --_indicator: var(--core-color-content-disabled); cursor: not-allowed; }
 .item[data-disabled] .description { color: var(--core-color-content-disabled); }
