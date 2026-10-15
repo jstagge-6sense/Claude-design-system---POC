@@ -11,12 +11,17 @@ import '../dist/modes.css'
 
 const preview: Preview = {
   decorators: [
-    (Story) => {
+    (Story, context) => {
       document.documentElement.setAttribute('data-theme', 'light')
       document.documentElement.setAttribute('data-density', 'default')
 
-      // Centered, responsive column: fills the canvas up to 60rem, never shrinks to content width.
-      return createElement('div', { style: { inlineSize: '100%', maxInlineSize: '60rem', marginInline: 'auto', boxSizing: 'border-box' } }, createElement(Story))
+      // Every story and guidelines page fills the canvas up to 1400px. Samples narrower than that are centered (see .ds-sb-center in preview-head.html).
+      const isGuidelines = context.name === 'Guidelines'
+      return createElement(
+        'div',
+        { style: { inlineSize: '100%', maxInlineSize: '1400px', marginInline: 'auto', boxSizing: 'border-box' } },
+        isGuidelines ? createElement(Story) : createElement('div', { className: 'ds-sb-center' }, createElement(Story)),
+      )
     },
   ],
 
