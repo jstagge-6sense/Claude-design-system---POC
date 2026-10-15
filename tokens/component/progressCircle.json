@@ -9,19 +9,13 @@
           },
           "strokeMedium": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.200}",
-            "$description": "8px ring for standard.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-200"
-            }
+            "$value": "{core.dimension.size.indicator.medium}",
+            "$description": "8px ring for standard."
           },
           "strokeLarge": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.300}",
-            "$description": "12px ring for large.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-300"
-            }
+            "$value": "{core.dimension.size.indicator.large}",
+            "$description": "12px ring for large."
           }
         },
         "label": {

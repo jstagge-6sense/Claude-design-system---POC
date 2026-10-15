@@ -5,11 +5,8 @@
         "track": {
           "height": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.200}",
-            "$description": "8px track.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-200"
-            }
+            "$value": "{core.dimension.size.indicator.medium}",
+            "$description": "8px track."
           }
         },
         "label": {

@@ -63,6 +63,35 @@
             "$value": "{core.dimension.size.1200}",
             "$description": "48px. Page-level loading and large progress indicators."
           }
+        },
+        "indicator": {
+          "small": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.100}",
+            "$description": "4px. Discrete step markers such as slider ticks."
+          },
+          "medium": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.200}",
+            "$description": "8px. Status dots, thin track thickness (slider, progress bar, circular progress medium stroke) and popover arrows."
+          },
+          "large": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.300}",
+            "$description": "12px. Large status dots, thick circular progress strokes, text skeleton lines and small toggle thumbs."
+          }
+        },
+        "element": {
+          "small": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.800}",
+            "$description": "32px. Fixed small element dimensions such as sparklines, steppers, step markers and the small toggle width."
+          },
+          "medium": {
+            "$type": "sizing",
+            "$value": "{core.dimension.size.1000}",
+            "$description": "40px. Fixed medium element dimensions such as the medium toggle width."
+          }
         }
       },
       "space": {

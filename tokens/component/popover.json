@@ -14,11 +14,8 @@
         "arrow": {
           "size": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.200}",
-            "$description": "Side of the rotated square that forms the arrow (8px). No semantic size token exists.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-200"
-            }
+            "$value": "{core.dimension.size.indicator.medium}",
+            "$description": "Side of the rotated square that forms the arrow (8px). No semantic size token exists."
           }
         }
       },

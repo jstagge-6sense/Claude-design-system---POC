@@ -5,11 +5,8 @@
         "track": {
           "height": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.200}",
-            "$description": "Track thickness, 8px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-200"
-            }
+            "$value": "{core.dimension.size.indicator.medium}",
+            "$description": "Track thickness, 8px."
           },
           "fillActive": {
             "disabled": {
@@ -50,11 +47,8 @@
         "tick": {
           "size": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.100}",
-            "$description": "Discrete step marker, 4px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-100"
-            }
+            "$value": "{core.dimension.size.indicator.small}",
+            "$description": "Discrete step marker, 4px."
           }
         },
         "valueLabel": {

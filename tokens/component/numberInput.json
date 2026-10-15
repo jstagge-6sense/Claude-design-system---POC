@@ -5,11 +5,8 @@
         "stepper": {
           "width": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.800}",
-            "$description": "Stepper button width, 32px.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-800"
-            }
+            "$value": "{core.dimension.size.element.small}",
+            "$description": "Stepper button width, 32px."
           },
           "fill": {
             "pressed": {

@@ -28,11 +28,8 @@
         "sparkline": {
           "height": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.800}",
-            "$description": "32px sparkline height.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-800"
-            }
+            "$value": "{core.dimension.size.element.small}",
+            "$description": "32px sparkline height."
           }
         },
         "error": {

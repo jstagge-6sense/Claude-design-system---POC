@@ -15,11 +15,8 @@
           },
           "heightText": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.300}",
-            "$description": "12px text line.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-300"
-            }
+            "$value": "{core.dimension.size.indicator.large}",
+            "$description": "12px text line."
           },
           "heightBlock": {
             "$type": "sizing",

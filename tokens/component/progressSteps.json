@@ -5,11 +5,8 @@
         "marker": {
           "size": {
             "$type": "sizing",
-            "$value": "{core.dimension.size.800}",
-            "$description": "32px. No semantic size.",
-            "$extensions": {
-              "gap": "GAP-dimension-size-800"
-            }
+            "$value": "{core.dimension.size.element.small}",
+            "$description": "32px. No semantic size."
           },
           "typography": {
             "$type": "typography",
