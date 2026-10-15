@@ -28,3 +28,16 @@ div.pv-guide-dialog > [role="dialog"][data-size] { inline-size: 80vw; block-size
 .pv-anat-live { display: inline-block; }
 
 .pv-guide-btn { display: inline-flex; gap: 8px; align-items: center; }
+
+/* Responsive: guidelines content adapts from phone to wide screens (modal and Storybook). */
+.pv-guide-sec, .pv-guide-purpose { min-inline-size: 0; overflow-wrap: anywhere; }
+.pv-guide-sec table { display: block; overflow-x: auto; max-inline-size: 100%; }
+.pv-anat-stage { max-inline-size: 100%; overflow-x: auto; box-sizing: border-box; }
+@media (max-width: 760px) {
+  div.pv-guide-dialog > [role="dialog"][data-size] { inline-size: 100vw; block-size: 100vh; }
+  .pv-anat-stage { padding: 48px 32px; }
+}
+@media (max-width: 480px) {
+  .pv-anat-stage { padding: 40px 16px; }
+  .pv-guide-btn { flex-wrap: wrap; }
+}
