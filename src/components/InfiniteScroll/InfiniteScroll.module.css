@@ -7,39 +7,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--component-infiniteScroll-all-status-gap);
-  padding-block: var(--component-infiniteScroll-all-status-paddingBlock);
-  font: var(--component-infiniteScroll-all-status-typography-font);
-  text-decoration: var(--component-infiniteScroll-all-status-typography-text-decoration);
-  color: var(--component-infiniteScroll-all-status-color-default);
+  gap: var(--core-dimension-space-compact);
+  padding-block: var(--core-dimension-space-standard);
+  font: var(--component-infiniteScroll-all-count-typography-font);
+  text-decoration: var(--component-infiniteScroll-all-count-typography-text-decoration);
+  color: var(--core-color-content-secondary);
   text-align: center;
 }
-.skeleton { display: grid; gap: var(--component-infiniteScroll-all-skeleton-gap); inline-size: 100%; }
-.icon { display: inline-flex; flex: none; inline-size: var(--component-infiniteScroll-all-status-icon-size); block-size: var(--component-infiniteScroll-all-status-icon-size); }
+.skeleton { display: grid; gap: var(--core-dimension-space-comfortable); inline-size: 100%; }
+.icon { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 .icon > svg { inline-size: 100%; block-size: 100%; }
 
-.errorRow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--component-infiniteScroll-all-status-gap); color: var(--component-infiniteScroll-all-status-color-error); }
-.errorText { display: inline-flex; align-items: flex-start; gap: var(--component-infiniteScroll-all-status-gap); text-align: start; }
+.errorRow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--core-dimension-space-compact); color: var(--core-color-status-critical); }
+.errorText { display: inline-flex; align-items: flex-start; gap: var(--core-dimension-space-compact); text-align: start; }
 
 /* End of content: icon plus text, with a hairline above. Receives focus only after Load more was used and disappears. */
 .end {
   display: inline-flex;
   align-items: center;
-  gap: var(--component-infiniteScroll-all-status-gap);
+  gap: var(--core-dimension-space-compact);
   margin: 0;
-  padding-block-start: var(--component-infiniteScroll-all-status-gap);
-  border-block-start: var(--component-infiniteScroll-all-end-borderWidth) solid var(--component-infiniteScroll-all-end-border-default);
+  padding-block-start: var(--core-dimension-space-compact);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-subtle);
   color: inherit;
 }
 .end:focus-visible { outline: none; box-shadow: var(--component-infiniteScroll-all-end-shadow-focus); }
-.count { margin: 0; font: var(--component-infiniteScroll-all-count-typography-font); text-decoration: var(--component-infiniteScroll-all-count-typography-text-decoration); color: var(--component-infiniteScroll-all-count-color-default); font-variant-numeric: tabular-nums; }
+.count { margin: 0; font: var(--component-infiniteScroll-all-count-typography-font); text-decoration: var(--component-infiniteScroll-all-count-typography-text-decoration); color: var(--core-color-content-secondary); font-variant-numeric: tabular-nums; }
 
 /* Footer slot: pinned to the end of the scroll area so it stays reachable while the list keeps growing. */
 .footer {
   position: sticky;
   inset-block-end: 0;
   z-index: var(--ds-z-sticky);
-  padding: var(--component-infiniteScroll-all-footer-padding);
-  border-block-start: var(--component-infiniteScroll-all-footer-borderWidth) solid var(--component-infiniteScroll-all-footer-border-default);
-  background: var(--component-infiniteScroll-all-footer-fill-default);
+  padding: var(--core-dimension-space-standard);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
+  background: var(--core-color-surface-overlay);
 }

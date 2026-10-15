@@ -24,6 +24,7 @@
   ],
   "scripts": {
     "build:tokens": "node scripts/build-tokens.mjs .",
+    "lint:css-vars": "node scripts/check-css-vars.mjs .",
     "lint:tokens": "node scripts/lint-tokens.mjs .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

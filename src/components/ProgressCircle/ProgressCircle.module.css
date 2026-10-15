@@ -1,7 +1,7 @@
 /* ProgressCircle. Tokens: component.progressCircle.* (aliases component.progressBar.*). Non-interactive. */
 .root {
-  --_size: var(--component-progressCircle-all-container-sizeSmall);
-  --_stroke: var(--component-progressCircle-all-track-strokeSmall);
+  --_size: var(--core-dimension-size-feedback-large);
+  --_stroke: var(--core-dimension-borderWidth-thick);
   --_type: var(--component-progressCircle-all-label-typographySmall-font);
   --_fill: var(--component-progressCircle-default-fill-color);
 
@@ -14,8 +14,8 @@
   color: var(--component-progressCircle-all-label-color);
   font: var(--_type);
 }
-.root[data-size='medium'] { --_size: calc(var(--component-progressCircle-all-container-scaleMedium) * 1.5); --_stroke: var(--component-progressCircle-all-track-strokeMedium); --_type: var(--component-progressCircle-all-label-typographyMedium-font); }
-.root[data-size='large'] { --_size: calc(var(--component-progressCircle-all-container-scaleLarge) * 2); --_stroke: var(--component-progressCircle-all-track-strokeLarge); --_type: var(--component-progressCircle-all-label-typographyLarge-font); }
+.root[data-size='medium'] { --_size: calc(var(--core-dimension-size-feedback-large) * 1.5); --_stroke: var(--component-progressCircle-all-track-strokeMedium); --_type: var(--component-progressCircle-all-label-typographyMedium-font); }
+.root[data-size='large'] { --_size: calc(var(--core-dimension-size-feedback-large) * 2); --_stroke: var(--component-progressCircle-all-track-strokeLarge); --_type: var(--component-progressCircle-all-label-typographyLarge-font); }
 .root[data-state-kind='complete'] { --_fill: var(--component-progressCircle-complete-fill-color); }
 .root[data-state-kind='error'] { --_fill: var(--component-progressCircle-error-fill-color); }
 
@@ -29,9 +29,10 @@
 .track { stroke: var(--component-progressCircle-all-track-color); }
 .arc { stroke: var(--_fill); stroke-linecap: butt; }
 
-/* Smooth sweep normally; four discrete steps under reduced motion. */
-@media (prefers-reduced-motion: no-preference) { .arc { transition: stroke-dasharray var(--ds-motion-slow) var(--ds-ease); } }
-@media (prefers-reduced-motion: reduce) { .arc { transition: stroke-dasharray var(--ds-motion-base) steps(4, end); } }
+/* Motion: tokens core.motion.progress.*. The arc sweeps in from empty on mount and eases to each new value; the number counts up in step.
+   Reduced motion zeroes the duration at the token level. */
+.arc { animation: arcIn var(--core-motion-progress-duration) var(--core-motion-progress-easing) both; transition: stroke-dasharray var(--core-motion-progress-duration) var(--core-motion-progress-easing); }
+@keyframes arcIn { from { stroke-dasharray: 0 100; } }
 
 .center { position: relative; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
 .center > svg { inline-size: var(--component-progressCircle-all-icon-size); block-size: var(--component-progressCircle-all-icon-size); color: var(--_fill); }

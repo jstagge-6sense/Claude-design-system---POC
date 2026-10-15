@@ -1,13 +1,13 @@
 /* Checkbox. Tokens: component.checkbox.* (tokens/component/checkbox.json). No raw colors or primitives. */
 .root {
-  --_size: var(--component-checkbox-all-container-size);
+  --_size: var(--core-dimension-size-icon);
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--component-checkbox-all-container-gap);
-  color: var(--component-checkbox-all-label-color-default);
+  gap: var(--core-dimension-space-comfortable);
+  color: var(--core-color-content-primary);
 }
-.row { display: flex; align-items: flex-start; gap: var(--component-checkbox-all-container-gap); min-block-size: var(--ds-hit-min); }
+.row { display: flex; align-items: flex-start; gap: var(--core-dimension-space-comfortable); min-block-size: var(--ds-hit-min); }
 
 /* The control cell is 44px tall so the row meets the hit area. The native input is stretched to a 44px square over the box. */
 .control { position: relative; display: grid; place-items: center; flex: none; inline-size: var(--_size); block-size: var(--ds-hit-min); }
@@ -21,14 +21,14 @@
 
 .box {
   /* Unchecked mapping. Checked and indeterminate override the *0 values below. */
-  --_f0: var(--component-checkbox-unchecked-container-fill-default);
-  --_fh: linear-gradient(var(--component-checkbox-unchecked-container-fillTint-hover), var(--component-checkbox-unchecked-container-fillTint-hover)), var(--component-checkbox-unchecked-container-fill-default);
-  --_fd: var(--component-checkbox-unchecked-container-fill-disabled);
-  --_b0: var(--component-checkbox-unchecked-container-border-default);
+  --_f0: var(--core-color-surface-control-default);
+  --_fh: linear-gradient(var(--component-checkbox-unchecked-container-fillTint-hover), var(--component-checkbox-unchecked-container-fillTint-hover)), var(--core-color-surface-control-default);
+  --_fd: var(--core-color-surface-control-disabled);
+  --_b0: var(--core-color-border-control-default);
   --_bh: var(--component-checkbox-unchecked-container-border-hover);
-  --_bd: var(--component-checkbox-unchecked-container-border-disabled);
-  --_be: var(--component-checkbox-unchecked-container-border-error);
-  --_m: var(--component-checkbox-checked-mark-color-default);
+  --_bd: var(--core-color-border-disabled);
+  --_be: var(--core-color-status-critical);
+  --_m: var(--core-color-content-inverse);
   --_f: var(--_f0);
   --_b: var(--_b0);
   display: grid;
@@ -36,8 +36,8 @@
   inline-size: var(--_size);
   block-size: var(--_size);
   box-sizing: border-box;
-  border-radius: var(--component-checkbox-all-container-radius);
-  border: var(--component-checkbox-all-container-borderWidth) solid var(--_b);
+  border-radius: var(--core-dimension-radius-control-small);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_b);
   background: var(--_f);
   color: var(--_m);
   pointer-events: none;
@@ -52,18 +52,18 @@
 
 /* Checked and indeterminate: color and border change, never shadow alone. */
 .input:checked + .box, .input:indeterminate + .box {
-  --_f0: var(--component-checkbox-checked-container-fill-default);
-  --_fh: var(--component-checkbox-checked-container-fill-hover);
+  --_f0: var(--core-color-action-primary-default);
+  --_fh: var(--core-color-action-primary-hover);
   --_fd: var(--component-checkbox-checked-container-fill-disabled);
-  --_b0: var(--component-checkbox-checked-container-border-default);
-  --_bh: var(--component-checkbox-checked-container-border-hover);
-  --_bd: var(--component-checkbox-checked-container-border-disabled);
-  --_be: var(--component-checkbox-checked-container-border-error);
+  --_b0: var(--core-color-action-primary-default);
+  --_bh: var(--core-color-action-primary-hover);
+  --_bd: var(--core-color-border-disabled);
+  --_be: var(--core-color-status-critical);
 }
 
-.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-checkbox-all-label-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
-.label { font: var(--component-checkbox-all-label-typography-font); color: var(--component-checkbox-all-label-color-default); cursor: pointer; overflow-wrap: anywhere; }
-.description { font: var(--component-checkbox-all-description-typography-font); color: var(--component-checkbox-all-description-color-default); }
+.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-checkbox-all-description-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
+.label { font: var(--component-checkbox-all-description-typography-font); color: var(--core-color-content-primary); cursor: pointer; overflow-wrap: anywhere; }
+.description { font: var(--component-checkbox-all-description-typography-font); color: var(--core-color-content-secondary); }
 
 /* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
 .root:hover:not([data-disabled]) .box, .root[data-state='hover'] .box { --_f: var(--_fh); --_b: var(--_bh); }
@@ -71,23 +71,23 @@
 .root:has(.input:focus-visible) .box, .root[data-state='focus'] .box { box-shadow: var(--component-checkbox-all-container-shadow-focus); }
 
 /* Disabled: native disabled input, disabled tokens, no shadow. */
-.root[data-disabled] .box { --_f: var(--_fd); --_b: var(--_bd); --_m: var(--component-checkbox-checked-mark-color-disabled); box-shadow: none; }
+.root[data-disabled] .box { --_f: var(--_fd); --_b: var(--_bd); --_m: var(--core-color-content-disabled); box-shadow: none; }
 .root[data-disabled] .input, .root[data-disabled] .label { cursor: not-allowed; }
-.root[data-disabled] .label { color: var(--component-checkbox-all-label-color-disabled); }
-.root[data-disabled] .description { color: var(--component-checkbox-all-description-color-disabled); }
+.root[data-disabled] .label { color: var(--core-color-content-disabled); }
+.root[data-disabled] .description { color: var(--core-color-content-disabled); }
 
 .error {
-  display: flex; align-items: center; gap: var(--component-checkbox-all-container-gap);
+  display: flex; align-items: center; gap: var(--core-dimension-space-comfortable);
   margin: 0;
   font: var(--component-checkbox-all-error-typography-font);
-  color: var(--component-checkbox-all-error-color-default);
+  color: var(--core-color-status-critical);
 }
-.error > svg { inline-size: var(--component-checkbox-all-container-size); block-size: var(--component-checkbox-all-container-size); }
+.error > svg { inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
 
 /* ---- Group ---- */
-.group { margin: 0; padding: 0; border: 0; min-inline-size: 0; display: flex; flex-direction: column; gap: var(--component-checkbox-all-group-gapVertical); }
-.legend { padding: 0; font: var(--component-checkbox-all-legend-typography-font); color: var(--component-checkbox-all-legend-color-default); }
-.groupDescription { margin: 0; font: var(--component-checkbox-all-description-typography-font); color: var(--component-checkbox-all-description-color-default); }
-.items { display: flex; flex-direction: column; gap: var(--component-checkbox-all-group-gapVertical); }
-.group[data-orientation='horizontal'] .items { flex-direction: row; flex-wrap: wrap; column-gap: var(--component-checkbox-all-group-gapHorizontal); }
-.group[disabled] .legend { color: var(--component-checkbox-all-label-color-disabled); }
+.group { margin: 0; padding: 0; border: 0; min-inline-size: 0; display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); }
+.legend { padding: 0; font: var(--component-checkbox-all-legend-typography-font); color: var(--core-color-content-primary); }
+.groupDescription { margin: 0; font: var(--component-checkbox-all-description-typography-font); color: var(--core-color-content-secondary); }
+.items { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); }
+.group[data-orientation='horizontal'] .items { flex-direction: row; flex-wrap: wrap; column-gap: var(--core-dimension-space-spacious); }
+.group[disabled] .legend { color: var(--core-color-content-disabled); }

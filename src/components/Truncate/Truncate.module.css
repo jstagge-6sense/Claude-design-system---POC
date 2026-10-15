@@ -24,18 +24,18 @@
 .root[data-mode='expanded'] .body { white-space: normal; overflow-wrap: anywhere; }
 
 .toggle {
-  margin-block-start: var(--component-truncate-all-container-gap);
+  margin-block-start: var(--core-dimension-space-tight);
   padding: 0;
   border: 0;
   background: none;
   font: var(--component-truncate-all-toggle-typography-font);
   text-decoration: var(--component-truncate-all-toggle-typography-text-decoration);
-  color: var(--component-truncate-all-toggle-color-default);
-  border-radius: var(--component-truncate-all-toggle-radius);
+  color: var(--core-color-content-link-default);
+  border-radius: var(--core-dimension-radius-control-small);
   cursor: pointer;
   position: relative;
 }
 /* 44px hit area without changing the visual size. */
 .toggle::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((1lh - var(--ds-hit-min)) / 2); }
-.toggle:hover, .toggle[data-state='hover'] { color: var(--component-truncate-all-toggle-color-hover); }
+.toggle:hover, .toggle[data-state='hover'] { color: var(--core-color-content-link-hover); }
 .toggle:focus-visible, .toggle[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }

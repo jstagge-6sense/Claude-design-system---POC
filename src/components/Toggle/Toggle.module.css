@@ -1,18 +1,18 @@
 /* Toggle. Tokens: component.toggle.* (tokens/component/toggle.json). No raw colors or primitives. */
 .root {
   --_w: var(--component-toggle-all-container-widthMedium);
-  --_h: var(--component-toggle-all-container-heightMedium);
-  --_thumb: var(--component-toggle-all-thumb-sizeMedium);
-  --_bw: var(--component-toggle-all-container-borderWidth);
+  --_h: var(--core-dimension-size-feedback-medium);
+  --_thumb: var(--core-dimension-size-icon);
+  --_bw: var(--core-dimension-borderWidth-thin);
   display: flex;
   align-items: flex-start;
-  gap: var(--component-toggle-all-container-gap);
+  gap: var(--core-dimension-space-comfortable);
   min-block-size: var(--ds-hit-min);
-  color: var(--component-toggle-all-label-color-default);
+  color: var(--core-color-content-primary);
 }
 .root[data-size='small'] {
   --_w: var(--component-toggle-all-container-widthSmall);
-  --_h: var(--component-toggle-all-container-heightSmall);
+  --_h: var(--core-dimension-size-icon);
   --_thumb: var(--component-toggle-all-thumb-sizeSmall);
 }
 
@@ -20,14 +20,14 @@
 
 .track {
   /* Off mapping. The on state overrides the *0 values. */
-  --_f0: var(--component-toggle-off-container-fill-default);
-  --_fh: linear-gradient(var(--component-toggle-off-container-fillTint-hover), var(--component-toggle-off-container-fillTint-hover)), var(--component-toggle-off-container-fill-default);
-  --_fd: var(--component-toggle-off-container-fill-disabled);
-  --_b0: var(--component-toggle-off-container-border-default);
+  --_f0: var(--core-color-surface-group);
+  --_fh: linear-gradient(var(--component-toggle-off-container-fillTint-hover), var(--component-toggle-off-container-fillTint-hover)), var(--core-color-surface-group);
+  --_fd: var(--core-color-surface-control-disabled);
+  --_b0: var(--core-color-border-control-default);
   --_bh: var(--component-toggle-off-container-border-hover);
-  --_bd: var(--component-toggle-off-container-border-disabled);
-  --_t0: var(--component-toggle-off-thumb-fill-default);
-  --_td: var(--component-toggle-off-thumb-fill-disabled);
+  --_bd: var(--core-color-border-disabled);
+  --_t0: var(--core-color-border-control-default);
+  --_td: var(--core-color-content-disabled);
   --_f: var(--_f0);
   --_b: var(--_b0);
   --_t: var(--_t0);
@@ -37,7 +37,7 @@
   block-size: var(--_h);
   margin: 0;
   padding: 0;
-  border-radius: var(--component-toggle-all-container-radius);
+  border-radius: var(--core-dimension-radius-pill);
   border: var(--_bw) solid var(--_b);
   background: var(--_f);
   cursor: pointer;
@@ -48,14 +48,14 @@
 
 /* On: the track changes color and the thumb moves. Never shadow alone. */
 .root[data-on] .track {
-  --_f0: var(--component-toggle-on-container-fill-default);
-  --_fh: var(--component-toggle-on-container-fill-hover);
+  --_f0: var(--core-color-action-primary-default);
+  --_fh: var(--core-color-action-primary-hover);
   --_fd: var(--component-toggle-on-container-fill-disabled);
-  --_b0: var(--component-toggle-on-container-border-default);
-  --_bh: var(--component-toggle-on-container-border-hover);
-  --_bd: var(--component-toggle-on-container-border-disabled);
-  --_t0: var(--component-toggle-on-thumb-fill-default);
-  --_td: var(--component-toggle-on-thumb-fill-disabled);
+  --_b0: var(--core-color-action-primary-default);
+  --_bh: var(--core-color-action-primary-hover);
+  --_bd: var(--core-color-border-disabled);
+  --_t0: var(--core-color-content-inverse);
+  --_td: var(--core-color-surface-control-default);
 }
 
 .thumb {
@@ -78,9 +78,9 @@
 .spinner { display: grid; place-items: center; inline-size: 100%; block-size: 100%; }
 .root[data-size='small'] .spinner { scale: 0.75; }
 
-.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-toggle-all-label-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
-.label { font: var(--component-toggle-all-label-typography-font); color: var(--component-toggle-all-label-color-default); cursor: pointer; overflow-wrap: anywhere; }
-.description { font: var(--component-toggle-all-description-typography-font); color: var(--component-toggle-all-description-color-default); }
+.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-toggle-all-description-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
+.label { font: var(--component-toggle-all-description-typography-font); color: var(--core-color-content-primary); cursor: pointer; overflow-wrap: anywhere; }
+.description { font: var(--component-toggle-all-description-typography-font); color: var(--core-color-content-secondary); }
 
 /* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
 .root:not([data-disabled]) .track:hover, .root[data-state='hover'] .track { --_f: var(--_fh); --_b: var(--_bh); }
@@ -91,5 +91,5 @@
 
 /* Disabled (off and on): native disabled, disabled tokens, no shadow. */
 .root[data-disabled] .track { --_f: var(--_fd); --_b: var(--_bd); --_t: var(--_td); cursor: not-allowed; box-shadow: none; }
-.root[data-disabled] .label { color: var(--component-toggle-all-label-color-disabled); cursor: not-allowed; }
-.root[data-disabled] .description { color: var(--component-toggle-all-description-color-disabled); }
+.root[data-disabled] .label { color: var(--core-color-content-disabled); cursor: not-allowed; }
+.root[data-disabled] .description { color: var(--core-color-content-disabled); }

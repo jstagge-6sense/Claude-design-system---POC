@@ -8,7 +8,7 @@
   max-inline-size: 100%;
   isolation: isolate;
 }
-.container[data-priority='secondary'] { --_divider: var(--component-splitButton-secondary-divider-color-default); }
+.container[data-priority='secondary'] { --_divider: var(--core-color-border-standard); }
 .menu { display: inline-flex; }
 
 /* Outer corners round, inner corners square. Logical properties, so the chevron mirrors in RTL. */
@@ -23,7 +23,7 @@
   border-end-end-radius: var(--component-splitButton-all-container-radius);
   border-start-start-radius: 0;
   border-end-start-radius: 0;
-  padding-inline: var(--component-splitButton-all-trigger-paddingInline);
+  padding-inline: var(--core-dimension-space-compact);
   min-inline-size: var(--ds-hit-min);
   /* Overlap the two 1px borders so one divider line shows. */
   margin-inline-start: calc(var(--component-splitButton-all-divider-width) * -1);

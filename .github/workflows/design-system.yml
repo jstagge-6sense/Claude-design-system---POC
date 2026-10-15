@@ -27,6 +27,9 @@ jobs:
       - name: Build modes
         run: node scripts/build-modes.mjs .
 
+      - name: Check CSS variables are defined
+        run: node scripts/check-css-vars.mjs .
+
       - name: Check component imports
         run: node scripts/check-components.mjs
 

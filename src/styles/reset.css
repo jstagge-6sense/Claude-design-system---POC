@@ -1,6 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; font: var(--core-typography-paragraph-1-font); color: var(--core-color-content-primary); background: var(--core-color-surface-page); }
+html { -webkit-text-size-adjust: 100%; min-height: 100%; }
+body { min-height: 100vh; margin: 0; font: var(--core-typography-paragraph-1-font); color: var(--core-color-content-primary); background: var(--core-color-surface-page); }
 button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 button { cursor: pointer; }
 button[aria-disabled='true'], button:disabled { cursor: not-allowed; }

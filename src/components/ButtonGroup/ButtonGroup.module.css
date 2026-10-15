@@ -6,7 +6,7 @@
 .segment {
   --_h: var(--component-buttonGroup-all-segment-heightMedium);
   --_pad: var(--component-buttonGroup-all-segment-paddingInlineMedium);
-  --_type: var(--component-buttonGroup-all-segment-typographyMedium-font);
+  --_type: var(--component-buttonGroup-all-segment-typographyLarge-font);
   --_fill: var(--component-buttonGroup-all-segment-fill-default);
   --_border: var(--component-buttonGroup-all-segment-border-default);
   --_shadow: var(--component-buttonGroup-all-segment-shadow-default);
@@ -65,13 +65,13 @@
 
 /* Selected is persistent: darker gradient fill and a stronger border, with the recessed shadow as a supporting cue. */
 .segment[data-selected] {
-  --_fill: var(--component-buttonGroup-all-segment-fill-selected);
-  --_border: var(--component-buttonGroup-all-segment-border-selected);
+  --_fill: var(--core-color-action-selected);
+  --_border: var(--core-color-border-control-default);
   --_shadow: var(--component-buttonGroup-all-segment-shadow-selected);
   z-index: var(--ds-z-sticky);
 }
 .segment[data-selected]:hover:not([aria-disabled='true']), .segment[data-selected][data-state='hover'] {
-  --_fill: linear-gradient(var(--component-buttonGroup-all-segment-fillTint-hover), var(--component-buttonGroup-all-segment-fillTint-hover)), var(--component-buttonGroup-all-segment-fill-selected);
+  --_fill: linear-gradient(var(--component-buttonGroup-all-segment-fillTint-hover), var(--component-buttonGroup-all-segment-fillTint-hover)), var(--core-color-action-selected);
 }
 
 .segment:focus-visible, .segment[data-state='focus'] { --_shadow: var(--component-buttonGroup-all-segment-shadow-focus); z-index: var(--ds-z-sticky); }
@@ -84,5 +84,5 @@
   --_border: var(--component-buttonGroup-all-segment-border-disabled);
   cursor: not-allowed;
 }
-.segment[aria-disabled='true'][data-selected] { --_border: var(--component-buttonGroup-all-segment-border-selected); }
+.segment[aria-disabled='true'][data-selected] { --_border: var(--core-color-border-control-default); }
 .segment[aria-disabled='true']:focus-visible { --_shadow: var(--core-effect-ring-focus); }

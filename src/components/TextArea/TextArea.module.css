@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: stretch;
   gap: 0;
-  padding-block: var(--component-textArea-all-container-paddingBlock);
-  min-block-size: var(--component-textArea-all-container-minHeight);
+  padding-block: var(--core-dimension-space-compact);
+  min-block-size: var(--core-dimension-size-feedback-large);
 }
 .areaWrap { position: relative; display: block; inline-size: 100%; min-inline-size: 0; }
 .area {
@@ -37,7 +37,7 @@
 
 /* Slots. Fieldsets let `disabled` disable every child (tags, action buttons) natively. */
 .slot { margin: 0; padding: 0; border: 0; min-inline-size: 0; }
-.tags { display: flex; flex-wrap: wrap; gap: var(--component-textArea-all-tags-gap); padding-block-end: var(--component-textArea-all-tags-gap); }
+.tags { display: flex; flex-wrap: wrap; gap: var(--core-dimension-space-tight); padding-block-end: var(--core-dimension-space-tight); }
 .actions {
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
   gap: var(--component-textArea-all-actions-gap);
   margin-block-start: var(--component-textArea-all-actions-gap);
   padding-block-start: var(--component-textArea-all-actions-gap);
-  border-block-start: var(--component-input-all-container-borderWidth) solid var(--component-textArea-all-actions-border-default);
+  border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);
 }
 /* Disabled fieldsets disable every child control natively; dim them with the opacity primitive (allowed for opacity). */
 .slot[disabled] { opacity: var(--core-effect-opacity-500); cursor: not-allowed; }
