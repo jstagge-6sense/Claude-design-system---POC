@@ -47,7 +47,7 @@
     "jsdom": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "typescript": "latest",
+    "typescript": "~5.9.3",
     "vite": "latest",
     "vite-plugin-dts": "latest",
     "vitest": "latest",
