@@ -26,6 +26,12 @@ export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
   size?: 'small' | 'medium' | 'large'
   /** Edge it slides from. Logical, so `start` is the left edge in LTR and the right edge in RTL. */
   side?: 'start' | 'end'
+  /**
+   * overlay (default): floats above the page, with an optional scrim.
+   * push: sits in the layout and squeezes the content beside it. Place it as a sibling of the content inside a flex row
+   * (`display: flex`). Always non-modal, rendered in place, no scrim, no focus trap and no scroll lock.
+   */
+  behavior?: 'overlay' | 'push'
   /** Content area is loading. The body stays mounted and is marked `aria-busy`. */
   loading?: boolean
   loadingLabel?: string
@@ -57,12 +63,13 @@ export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
 }
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(function Drawer(props, ref) {
-  const { open, defaultOpen = false, onOpenChange, portal = true, container } = props
+  const { open, defaultOpen = false, onOpenChange, portal: portalProp = true, container, behavior = 'overlay' } = props
+  const portal = behavior === 'push' ? false : portalProp
   const [isOpen, setOpen] = useControllableState<boolean>(open, defaultOpen, onOpenChange)
   const reduced = usePrefersReducedMotion()
   const { mounted, closing } = useExitTransition(isOpen, reduced, 320)
   if (!mounted) return null
-  const layer = <DrawerLayer {...props} ref={ref} isOpen={isOpen} closing={closing} setOpen={setOpen} />
+  const layer = <DrawerLayer {...props} portal={portal} ref={ref} isOpen={isOpen} closing={closing} setOpen={setOpen} />
   return portal ? <Portal container={container}>{layer}</Portal> : layer
 })
 
@@ -74,13 +81,15 @@ interface LayerProps extends DrawerProps {
 
 const DrawerLayer = forwardRef<HTMLDivElement, LayerProps>(function DrawerLayer(
   {
-    isOpen, closing, setOpen, onDismiss, title, icon, headerActions, size = 'medium', side = 'end', loading = false,
+    isOpen, closing, setOpen, onDismiss, title, icon, headerActions, size = 'medium', side = 'end', behavior = 'overlay', loading = false,
     loadingLabel = 'Loading', modal = true, trapFocus, closeOnOverlayClick = true, closeOnEscape = true,
     closeLabel = 'Close drawer', primaryAction, secondaryAction, tertiaryAction, footer, portal = true, autoFocus = true,
     lockScroll, closeButtonProps, children, className, container: _c, open: _o, defaultOpen: _d, onOpenChange: _oc, ...rest
   },
   ref,
 ) {
+  const push = behavior === 'push'
+  if (push) modal = false
   const titleId = useId()
   const surfaceRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -118,6 +127,7 @@ const DrawerLayer = forwardRef<HTMLDivElement, LayerProps>(function DrawerLayer(
       data-inline={!portal || undefined}
       data-modal={modal || undefined}
       data-side={side}
+      data-push={push || undefined}
       data-phase={closing ? 'closing' : 'open'}
       {...rest}
     >

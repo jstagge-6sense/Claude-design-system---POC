@@ -63,7 +63,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       {!iconOnly && children != null ? <span className={styles.label}>{children}</span> : null}
       {iconOnly && !icon && children != null ? <span className={styles.icon} aria-hidden="true">{children}</span> : null}
       {trailingIcon && !iconOnly ? <span className={styles.icon} aria-hidden="true">{trailingIcon}</span> : null}
-      {loading ? <span className={styles.spinner}><Spinner size="small" accessibleLabel="Loading" /></span> : null}
+      {loading ? <span className={styles.spinner}><Spinner size="small" tone={effective === 'primary' || effective === 'destructive' ? 'onColor' : 'default'} accessibleLabel="Loading" /></span> : null}
       {disabled && unavailableReason && reasonId ? <VisuallyHidden id={reasonId}>{unavailableReason}</VisuallyHidden> : null}
     </button>
   )

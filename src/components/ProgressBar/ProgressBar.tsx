@@ -1,6 +1,7 @@
 import { forwardRef, useId, type HTMLAttributes, type ReactNode } from 'react'
 import { cx } from '../../primitives/cx'
 import { Icon } from '../../icons'
+import { useCountUp } from '../../primitives/useCountUp'
 import styles from './ProgressBar.module.css'
 
 export type ProgressState = 'default' | 'complete' | 'error'
@@ -41,6 +42,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(function
   const statusText: ReactNode = statusIn ?? (resolved === 'complete' ? 'Complete' : resolved === 'error' ? 'Something went wrong' : undefined)
   const indeterminate = overall == null && resolved === 'default'
   const fill = resolved === 'complete' ? 100 : overall ?? 0
+  const counted = useCountUp(fill)
   const stepText = stepped ? `Step ${step} of ${steps}` : undefined
   const valueText = [overall != null ? `${overall}%` : undefined, stepText, typeof statusText === 'string' ? statusText : undefined].filter(Boolean).join(', ') || undefined
 
@@ -48,7 +50,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(function
     <div ref={ref} className={cx(styles.root, className)} data-state-kind={resolved} data-indeterminate={indeterminate || undefined} {...rest}>
       <div className={styles.header}>
         <span id={labelId} className={styles.label}>{label}</span>
-        {showValue && overall != null ? <span className={styles.value}>{resolved === 'complete' ? 100 : overall}%</span> : null}
+        {showValue && overall != null ? <span className={styles.value}>{counted}%</span> : null}
       </div>
       <div
         role="progressbar"
