@@ -23,7 +23,7 @@ const preview: Preview = {
 
     // Guidelines first in every component, then the other stories.
     options: {
-      storySort: (a: { title: string; name: string }, b: { title: string; name: string }) =>
+      storySort: (a, b) =>
         a.title === b.title ? (a.name === 'Guidelines' ? -1 : b.name === 'Guidelines' ? 1 : 0) : 0,
     },
 
