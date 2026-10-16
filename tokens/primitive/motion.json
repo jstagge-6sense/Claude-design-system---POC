@@ -21,6 +21,11 @@
           "$type": "duration",
           "$value": "480ms",
           "$description": "(Raw value. Do not use directly in components.) Long, deliberate motion such as progress filling and counting."
+        },
+        "rotation": {
+          "$type": "duration",
+          "$value": "800ms",
+          "$description": "(Raw value. Do not use directly in components.) One full turn of a continuously rotating indicator such as a spinner."
         }
       },
       "easing": {
@@ -38,6 +43,11 @@
           "$type": "cubicBezier",
           "$value": "cubic-bezier(0.3, 0, 1, 1)",
           "$description": "(Raw value. Do not use directly in components.) Accelerate. For elements leaving the screen."
+        },
+        "linear": {
+          "$type": "cubicBezier",
+          "$value": "linear",
+          "$description": "(Raw value. Do not use directly in components.) Constant speed. For continuous rotation, where easing would make the loop pulse."
         }
       },
       "distance": {

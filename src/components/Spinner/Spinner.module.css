@@ -13,7 +13,7 @@
   border-radius: 50%;
   border: var(--_stroke) solid var(--core-color-border-standard);
   border-block-start-color: var(--core-color-action-primary-default);
-  animation: spin 800ms linear infinite;
+  animation: spin var(--core-motion-spin-duration) var(--core-motion-spin-easing) infinite;
 }
 .root[data-tone='onColor'] .ring { border-color: var(--component-spinner-onColor-track-color); border-block-start-color: var(--core-color-content-inverse); }
 .root[data-size='small'] { flex-direction: row; }
