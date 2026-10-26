@@ -1,0 +1,109 @@
+/* Radio. Tokens: component.radio.* (aliases component.checkbox.* for shared parts). No raw colors or primitives. */
+.root {
+  --_size: var(--core-dimension-size-icon);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--core-dimension-space-comfortable);
+  min-block-size: var(--ds-hit-min);
+  color: var(--core-color-content-primary);
+}
+.control { position: relative; display: grid; place-items: center; flex: none; inline-size: var(--_size); block-size: var(--ds-hit-min); }
+.input {
+  position: absolute;
+  inset: calc((var(--_size) - var(--ds-hit-min)) / 2) calc((var(--_size) - var(--ds-hit-min)) / 2);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.box {
+  --_f0: var(--core-color-surface-control-default);
+  --_fh: linear-gradient(var(--component-radio-unchecked-container-fillTint-hover), var(--component-radio-unchecked-container-fillTint-hover)), var(--core-color-surface-control-default);
+  --_fd: var(--core-color-surface-control-disabled);
+  --_b0: var(--core-color-border-control-default);
+  --_bh: var(--component-radio-unchecked-container-border-hover);
+  --_bd: var(--core-color-border-disabled);
+  --_be: var(--core-color-status-critical);
+  --_m: var(--core-color-content-inverse);
+  --_f: var(--_f0);
+  --_b: var(--_b0);
+  display: grid;
+  place-items: center;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  box-sizing: border-box;
+  border-radius: var(--core-dimension-radius-pill);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_b);
+  background: var(--_f);
+  color: var(--_m);
+  pointer-events: none;
+  transition: background-color var(--ds-motion-fast) var(--ds-ease), border-color var(--ds-motion-fast) var(--ds-ease);
+}
+@media (prefers-reduced-motion: reduce) { .box { transition: none; } }
+
+.dot { display: none; inline-size: 50%; block-size: 50%; border-radius: inherit; background: currentColor; }
+.input:checked + .box .dot { display: block; }
+
+/* Selected: fill and border change color, plus the inner dot. Never shadow alone. */
+.input:checked + .box {
+  --_f0: var(--core-color-action-primary-default);
+  --_fh: var(--core-color-action-primary-hover);
+  --_fd: var(--component-radio-checked-container-fill-disabled);
+  --_b0: var(--core-color-action-primary-default);
+  --_bh: var(--core-color-action-primary-hover);
+  --_bd: var(--core-color-border-disabled);
+  --_be: var(--core-color-status-critical);
+}
+
+.text { display: flex; flex-direction: column; min-inline-size: 0; font: var(--component-radio-all-description-typography-font); padding-block: calc((var(--ds-hit-min) - 1lh) / 2); }
+.label { font: var(--component-radio-all-description-typography-font); color: var(--core-color-content-primary); cursor: pointer; overflow-wrap: anywhere; }
+.description { font: var(--component-radio-all-description-typography-font); color: var(--core-color-content-secondary); }
+
+/* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
+.root:hover:not([data-disabled]) .box, .root[data-state='hover'] .box { --_f: var(--_fh); --_b: var(--_bh); }
+.root[data-error] .box { --_b: var(--_be); }
+.root:has(.input:focus-visible) .box, .root[data-state='focus'] .box { box-shadow: var(--component-radio-all-container-shadow-focus); }
+
+.root[data-disabled] .box { --_f: var(--_fd); --_b: var(--_bd); --_m: var(--core-color-content-disabled); box-shadow: none; }
+.root[data-disabled] .input, .root[data-disabled] .label { cursor: not-allowed; }
+.root[data-disabled] .label { color: var(--core-color-content-disabled); }
+.root[data-disabled] .description { color: var(--core-color-content-disabled); }
+
+/* ---- Radio card: the whole card is the target. The label stretches over the card. ---- */
+.card {
+  --_cf: var(--core-color-surface-control-default);
+  --_cb: var(--core-color-border-standard);
+  box-sizing: border-box;
+  padding-inline: var(--core-dimension-space-comfortable);
+  border-radius: var(--core-dimension-radius-control-medium);
+  border: var(--core-dimension-borderWidth-thin) solid var(--_cb);
+  background: var(--_cf);
+}
+.card .label::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.card[data-checked] { --_cf: var(--core-color-surface-group); --_cb: var(--core-color-action-primary-default); }
+.card:hover:not([data-disabled]), .card[data-state='hover'] { --_cb: var(--core-color-border-control-default); }
+.card[data-checked]:hover:not([data-disabled]), .card[data-checked][data-state='hover'] { --_cb: var(--core-color-action-primary-hover); }
+.card[data-error] { --_cb: var(--core-color-status-critical); }
+.card[data-checked][data-error] { --_cb: var(--core-color-status-critical); }
+.card:has(.input:focus-visible), .card[data-state='focus'] { box-shadow: var(--component-radio-all-container-shadow-focus); }
+.card[data-disabled] { --_cf: var(--core-color-surface-control-disabled); --_cb: var(--core-color-border-disabled); box-shadow: none; }
+.card[data-checked][data-disabled] { --_cf: var(--core-color-surface-control-disabled); --_cb: var(--core-color-border-disabled); }
+/* The card carries the focus ring, so the box does not repeat it. */
+.card:has(.input:focus-visible) .box, .card[data-state='focus'] .box { box-shadow: none; }
+
+.error {
+  display: flex; align-items: center; gap: var(--core-dimension-space-comfortable);
+  margin: 0;
+  font: var(--component-radio-all-error-typography-font);
+  color: var(--core-color-status-critical);
+}
+
+/* ---- Group ---- */
+.group { margin: 0; padding: 0; border: 0; min-inline-size: 0; display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); }
+.legend { padding: 0; font: var(--component-radio-all-legend-typography-font); color: var(--core-color-content-primary); }
+.groupDescription { margin: 0; font: var(--component-radio-all-description-typography-font); color: var(--core-color-content-secondary); }
+.items { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); }
+.group[data-orientation='horizontal'] .items { flex-direction: row; flex-wrap: wrap; column-gap: var(--core-dimension-space-spacious); }
+.group[data-variant='card'] .items { gap: var(--core-dimension-space-compact); }
+.group[disabled] .legend { color: var(--core-color-content-disabled); }

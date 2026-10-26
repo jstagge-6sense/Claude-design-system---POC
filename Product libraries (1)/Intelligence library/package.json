@@ -1,0 +1,28 @@
+{
+  "name": "@6sense/intelligence-library",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Intelligence and Revvy AI components. Builds on the 6sense design system in this repo and adds no tokens of its own.",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check && vite build",
+    "check": "node scripts/check-base-only.mjs",
+    "typecheck": "tsc --noEmit",
+    "tokens": "npm --prefix ../.. run build:tokens",
+    "build:revvy-explainability": "node samples/revvy-explainability/build-revvy-explainability.mjs"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}

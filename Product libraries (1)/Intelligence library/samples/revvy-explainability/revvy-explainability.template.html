@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B05SLKHK7R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B05SLKHK7R');
+</script>
+<title>RevvyAI + Explainability – 6sense design system</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==== 6sense design system: tokens, foundations and component CSS, read from the parent repo by build-revvy-explainability.mjs. Not edited. ==== */
+/*__DS_CSS__*/
+</style>
+<style>
+/* ==== Page glue. Only parent tokens (--core-*, --component-*, --ds-*) and local --_* variables. No raw colors. ==== */
+html,body{height:100%}
+body{overflow:auto}
+svg.ds-icon{inline-size:var(--core-dimension-size-icon);block-size:var(--core-dimension-size-icon);flex:none}
+[hidden]{display:none!important}
+
+/* Responsive: breakpoints from the foundation spec (mobile < 768, tablet 768-1023, desktop 1024-1439, wide >= 1440).
+   Wide and desktop show cards | markdown | RevvyAI. Below 1024 one pane shows at a time, chosen from the switcher. */
+.shell{display:flex;flex-direction:column;block-size:100vh;block-size:100dvh}
+.stage{flex:1;min-block-size:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr) minmax(var(--ds-w-352),1fr)}
+@media (min-width:90rem){.stage{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr) minmax(var(--ds-w-416),var(--ds-w-448))}}
+.col{min-block-size:0;min-inline-size:0}
+.panes-nav{display:none;padding:var(--core-dimension-space-compact) var(--core-dimension-space-standard);background:var(--core-color-surface-overlay);border-block-end:var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);flex:none}
+@media (max-width:63.99rem){
+  .panes-nav{display:block}
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .stage>.col{display:none}
+  .stage[data-pane='cards']>.cards-col,.stage[data-pane='md']>.mdpane,.stage[data-pane='revvy']>.companion{display:flex}
+  .companion,.mdpane{border-inline-start:0}
+}
+@media (max-width:47.99rem){
+  .cards-col{padding:var(--core-dimension-space-standard)}
+  .Card_root{--_pad:var(--core-dimension-space-standard)}
+  .story-ft{align-items:flex-start}
+}
+.mdhead{display:flex;align-items:center;justify-content:space-between;gap:var(--core-dimension-space-compact);flex-wrap:wrap}
+.mdhead .Chip_group{flex:none}
+.mb.src{font:var(--core-typography-code-1-font);white-space:pre-wrap}
+.cards-col{overflow:auto;padding:var(--core-dimension-space-spacious);display:flex;flex-direction:column;gap:var(--core-dimension-space-spacious);padding-block-end:var(--core-dimension-space-spacious)}
+.sample{display:flex;flex-direction:column;gap:var(--core-dimension-space-compact)}
+.sample-cap{font:var(--core-typography-label-2-font);color:var(--core-color-content-secondary)}
+.slot{max-inline-size:var(--ds-w-576);border-radius:var(--core-dimension-radius-surface-large);cursor:pointer;outline:var(--core-dimension-borderWidth-medium) solid transparent;outline-offset:var(--core-dimension-space-tight)}
+.sample:hover .slot{outline-color:var(--core-color-border-standard)}
+.sample.sel .slot{outline-color:var(--core-color-border-focus)}
+
+/* markdown column */
+.mdpane{background:var(--core-color-surface-group);border-inline-start:var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);display:flex;flex-direction:column;min-block-size:0}
+.mdhead{padding:var(--core-dimension-space-comfortable) var(--core-dimension-space-standard);border-block-end:var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);background:var(--core-color-surface-overlay);flex:none}
+.mdhead b{font:var(--core-typography-label-1-font);color:var(--core-color-content-primary);display:block}
+.mdhead small{font:var(--core-typography-help-1-font);color:var(--core-color-content-secondary)}
+.mdbody{flex:1;overflow:auto;padding:var(--core-dimension-space-standard);font:var(--core-typography-paragraph-1-font);color:var(--core-color-content-primary);display:flex;flex-direction:column;gap:var(--core-dimension-space-standard)}
+.mb{overflow-wrap:anywhere;padding:var(--core-dimension-space-tight) var(--core-dimension-space-compact);border-inline-start:var(--core-dimension-borderWidth-medium) solid transparent;border-radius:var(--core-dimension-radius-control-small)}
+.mb p{margin:0}
+.mb ul{margin:0;padding-inline-start:var(--core-dimension-space-spacious);display:flex;flex-direction:column;gap:var(--core-dimension-space-compact)}
+.mb strong{font-weight:var(--core-typography-fontWeight-600)}
+.mb em{font-style:italic}
+.mb code{font:var(--core-typography-code-1-font);background:var(--core-color-surface-chip);border-radius:var(--core-dimension-radius-control-small);padding:0 var(--core-dimension-space-tight)}
+.mb a{color:var(--core-color-content-link-default);text-decoration:underline;text-underline-offset:var(--ds-underline-offset)}
+.mb.hl{background:var(--core-color-action-selected);border-inline-start-color:var(--core-color-action-primary-default)}
+.mdempty{font:var(--core-typography-paragraph-1-font);color:var(--core-color-content-secondary);text-align:center;padding:var(--core-dimension-space-spacious)}
+.mr.hl{outline:var(--core-dimension-borderWidth-medium) solid var(--core-color-border-focus);outline-offset:var(--core-dimension-space-tight);border-radius:var(--core-dimension-radius-control-small)}
+
+/* explainability content built on Card, Badge, Link, Button */
+.xb{inline-size:100%}
+.x-body{display:flex;flex-direction:column;gap:var(--core-dimension-space-compact)}
+.x-p{margin:0;font:var(--core-typography-paragraph-1-font);color:var(--core-color-content-primary)}
+.x-intro{display:flex;flex-direction:column;gap:var(--core-dimension-space-tight)}
+.x-intro b{font:var(--core-typography-label-1-font);color:var(--core-color-content-primary)}
+.x-list{margin:0;padding-inline-start:var(--core-dimension-space-spacious);display:flex;flex-direction:column;gap:var(--core-dimension-space-compact);font:var(--core-typography-paragraph-1-font);color:var(--core-color-content-primary)}
+.x-l1{display:flex;align-items:center;flex-wrap:wrap;gap:var(--core-dimension-space-compact)}
+.x-l2{color:var(--core-color-content-secondary)}
+.x-foot-left{display:flex;align-items:center}
+.x-vote{display:flex;align-items:center;gap:var(--core-dimension-space-compact);font:var(--component-card-all-body-typography-font);color:var(--core-color-content-secondary)}
+.Button_root[aria-pressed='true']{--_fill:var(--core-color-action-selected);--_label:var(--core-color-action-primary-default)}
+.Card_root[data-tone='callout']{--_border:var(--core-color-content-brand)}
+.Card_root[data-tone='callout'] .Card_title{color:var(--core-color-content-brand)}
+/* story variants: no container (Card always has one), same type tokens */
+.story{display:flex;flex-direction:column;gap:var(--core-dimension-space-standard)}
+.story-hdr{display:flex;align-items:flex-start;gap:var(--core-dimension-space-compact);flex-wrap:wrap}
+.story-hdr .t{display:flex;flex-direction:column;flex:1;min-inline-size:0}
+.story-ft{display:flex;align-items:center;justify-content:space-between;gap:var(--core-dimension-space-compact);flex-wrap:wrap}
+
+/* RevvyAI companion */
+.companion{background:var(--core-color-surface-page);border-inline-start:var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);display:flex;flex-direction:column;min-block-size:0;position:relative}
+.chdr{background:var(--core-color-surface-overlay);border-block-end:var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard);padding:var(--core-dimension-space-compact) var(--core-dimension-space-standard);flex:none}
+.chdr-row{display:flex;align-items:center;justify-content:space-between;gap:var(--core-dimension-space-compact)}
+.chdr-label{display:flex;align-items:center;gap:var(--core-dimension-space-compact);font:var(--core-typography-label-1-font);color:var(--core-color-content-secondary)}
+.chdr-label svg{color:var(--core-color-content-brand)}
+.chdr-icons{display:flex;align-items:center;gap:var(--core-dimension-space-tight);position:relative}
+.subrow{display:flex;align-items:center;gap:var(--core-dimension-space-tight);margin-block-start:var(--core-dimension-space-tight)}
+.subrow h2{margin:0;font:var(--core-typography-label-1-font);color:var(--core-color-content-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.menu-pop{position:absolute;inset-block-start:100%;inset-inline-end:0;z-index:var(--ds-z-menu);margin-block-start:var(--core-dimension-space-tight)}
+.menu-pop .Menu_panel{min-inline-size:var(--ds-w-192)}
+.cbody{flex:1;overflow-y:auto;min-block-size:0;display:flex;flex-direction:column}
+.view{display:none;flex:1;flex-direction:column;min-block-size:0}
+.view.on{display:flex}
+.orient{padding:var(--core-dimension-space-spacious) var(--core-dimension-space-standard) var(--core-dimension-space-standard);justify-content:flex-end;gap:var(--core-dimension-space-spacious);margin-block-start:auto}
+.greet{margin:0;font:var(--core-typography-heading-2-font);color:var(--core-color-content-brand)}
+.sec-title{margin:0 0 var(--core-dimension-space-compact);font:var(--core-typography-label-1-font);color:var(--core-color-content-primary)}
+.stack{display:flex;flex-direction:column;gap:var(--core-dimension-space-compact)}
+.last-meta{font:var(--core-typography-help-1-font);color:var(--core-color-content-secondary)}
+.chat{padding:var(--core-dimension-space-standard);gap:var(--core-dimension-space-spacious)}
+.stamp{display:flex;align-items:center;gap:var(--core-dimension-space-standard);font:var(--core-typography-help-1-font);color:var(--core-color-content-secondary)}
+.stamp::before,.stamp::after{content:"";flex:1;block-size:var(--core-dimension-borderWidth-thin);background:var(--core-color-border-standard)}
+.user{display:flex;justify-content:flex-end;padding-inline-start:var(--core-dimension-space-spacious)}
+.bubble{background:var(--core-color-surface-chip);color:var(--core-color-content-primary);border-radius:var(--core-dimension-radius-control-medium);padding:var(--core-dimension-space-tight) var(--core-dimension-space-compact);font:var(--core-typography-paragraph-1-font);overflow-wrap:anywhere}
+.thinking{display:flex;align-items:center;gap:var(--core-dimension-space-compact);color:var(--core-color-content-secondary);font:var(--core-typography-paragraph-1-font)}
+.pad{padding:var(--core-dimension-space-standard);display:flex;flex-direction:column;gap:var(--core-dimension-space-spacious)}
+.group{display:flex;flex-direction:column;gap:var(--core-dimension-space-compact)}
+.group .more{align-self:flex-end}
+.hist{background:var(--core-color-surface-overlay);flex:1;padding:var(--core-dimension-space-standard);display:flex;flex-direction:column;gap:var(--core-dimension-space-standard)}
+.hist h3{margin:0 0 var(--core-dimension-space-tight);padding-inline:var(--core-dimension-space-comfortable);font:var(--core-typography-label-2-font);color:var(--core-color-content-primary)}
+.empty{font:var(--core-typography-paragraph-1-font);color:var(--core-color-content-secondary);text-align:center;padding:var(--core-dimension-space-spacious)}
+.inputwrap{flex:none;padding:0 var(--core-dimension-space-standard) var(--core-dimension-space-standard);position:relative}
+.inputwrap .Search_results{position:absolute;inset-inline:var(--core-dimension-space-standard);inset-block:auto 100%;margin:0 0 var(--core-dimension-space-tight)}
+.actions-row{display:flex;align-items:center;justify-content:space-between;gap:var(--core-dimension-space-compact)}
+.disc{margin:var(--core-dimension-space-compact) 0 0;font:var(--core-typography-help-1-font);color:var(--core-color-content-secondary);text-align:center}
+.Search_option b{font-weight:var(--core-typography-fontWeight-600)}
+
+/* Feedback popover (Popover rich surface + Checkbox + TextArea). Opens only after thumbs down in RevvyAI. */
+.fb-pop{position:fixed;inline-size:min(var(--ds-w-416),100vw);max-inline-size:100vw;z-index:var(--ds-z-menu)}
+.fb-pop .Popover_surface{gap:var(--core-dimension-space-standard);inline-size:100%}
+.fb-pop .Popover_body{display:flex;flex-direction:column;gap:var(--core-dimension-space-standard)}
+.fb-list{margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:0}
+.fb-list legend{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.fb-pop .Field_labelRow{align-items:center}
+.fb-actions{display:flex;justify-content:flex-end;gap:var(--core-dimension-space-comfortable)}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="panes-nav" aria-label="Panes"><div class="Chip_group" role="group" aria-label="Show pane" id="paneChips"></div></nav>
+<div class="stage" id="stage" data-pane="cards">
+  <section class="col cards-col" id="cardsCol" aria-label="Explainability card samples"></section>
+
+  <aside class="col mdpane" aria-label="Markdown">
+    <div class="mdhead"><div><b>Markdown</b><small>Claude markdown style. Feeds the cards and RevvyAI.</small></div><div class="Chip_group" role="group" aria-label="Markdown view" id="mdModes"></div></div>
+    <div class="mdbody" id="mdbody"></div>
+  </aside>
+
+  <aside class="col companion" aria-label="RevvyAI companion">
+    <div class="chdr">
+      <div class="chdr-row">
+        <div class="chdr-label"><span data-ic="sparkle"></span>RevvyAI</div>
+        <div class="chdr-icons">
+          <button type="button" class="Button_root Button_tertiary" data-size="small" data-icon-only id="bNew" aria-label="Start new chat"><span class="Button_icon" data-ic="plus"></span></button>
+          <button type="button" class="Button_root Button_tertiary" data-size="small" data-icon-only id="bLib" aria-label="Prompt library"><span class="Button_icon" data-ic="list"></span></button>
+          <button type="button" class="Button_root Button_tertiary" data-size="small" data-icon-only id="bHist" aria-label="Chat history"><span class="Button_icon" data-ic="clock"></span></button>
+          <button type="button" class="Button_root Button_tertiary" data-size="small" data-icon-only id="bMenu" aria-label="More options" aria-haspopup="menu" aria-expanded="false"><span class="Button_icon" data-ic="moreVertical"></span></button>
+          <div class="menu-pop" id="menu" hidden><div class="Menu_panel"><ul class="MenuList_list" role="menu">
+            <li class="MenuList_item" role="menuitem" tabindex="0" data-act="clear"><span class="MenuList_text"><span class="MenuList_label">Clear conversation</span></span></li>
+            <li class="MenuList_item" role="menuitem" tabindex="0" data-act="copy"><span class="MenuList_text"><span class="MenuList_label">Copy Markdown</span></span></li>
+          </ul></div></div>
+        </div>
+      </div>
+      <div class="subrow" id="subrow" hidden>
+        <button type="button" class="Button_root Button_tertiary" data-size="small" data-icon-only id="bBack" aria-label="Back"><span class="Button_icon" data-ic="arrowLeft"></span></button>
+        <h2 id="subTitle"></h2>
+      </div>
+    </div>
+
+    <div class="cbody" id="body">
+      <section class="view on orient" id="vOrient">
+        <h2 class="greet">Hi, John.</h2>
+        <div><p class="sec-title">Suggestions</p><div class="stack" id="smart"></div></div>
+        <div id="lastConv"></div>
+        <div>
+          <p class="sec-title">I can help you with the following</p>
+          <div class="Chip_group" role="group" aria-label="Topics" id="chips"></div>
+          <div class="stack" id="jtbdPrompts" hidden style="margin-block-start:var(--core-dimension-space-standard)"></div>
+        </div>
+      </section>
+      <section class="view chat" id="vChat"></section>
+      <section class="view" id="vLib"><div class="pad">
+        <div class="Field_shell"><span class="ds-visually-hidden"><label for="libSearch">Search prompts</label></span>
+          <div class="Field_box Search_contextual" data-size="medium"><span class="Field_icon" data-ic="search"></span><input id="libSearch" class="Field_control" type="search" placeholder="Search"></div></div>
+        <div id="libList" class="pad" style="padding:0"></div>
+      </div></section>
+      <section class="view" id="vHist"><div class="hist">
+        <div class="Field_shell"><span class="ds-visually-hidden"><label for="histSearch">Search chat history</label></span>
+          <div class="Field_box Search_contextual" data-size="medium"><span class="Field_icon" data-ic="search"></span><input id="histSearch" class="Field_control" type="search" placeholder="Search"></div></div>
+        <div id="histList" style="display:flex;flex-direction:column;gap:var(--core-dimension-space-standard)"></div>
+      </div></section>
+    </div>
+
+    <div class="inputwrap" id="inputwrap">
+      <ul class="Search_results" id="ac" role="listbox" hidden></ul>
+      <div class="Field_shell">
+        <div class="Field_box TextArea_box" id="box">
+          <span class="TextArea_areaWrap"><textarea id="inp" class="Field_control TextArea_area" data-autoresize rows="1" placeholder="Ask RevvyAI anything" aria-label="Message RevvyAI" style="--_max-rows:4"></textarea></span>
+          <div class="TextArea_actions">
+            <button type="button" class="Button_root Button_secondary" data-size="small" data-icon-only id="bAttach" aria-label="Attach file"><span class="Button_icon" data-ic="attachment"></span></button>
+            <span style="flex:1"></span>
+            <button type="button" class="Button_root Button_primary" data-size="small" id="bSend" aria-disabled="true"><span class="Button_icon" data-ic="arrowUp"></span><span class="Button_label">Send</span></button>
+          </div>
+        </div>
+      </div>
+      <p class="disc">This feature uses generative AI and may make mistakes. Use at your discretion and verify as needed.</p>
+    </div>
+  </aside>
+</div>
+</div>
+
+<script>
+/* ======================= Icons: the parent icon set (src/icons/paths.ts) + two local SVGs ======================= */
+/*__ICON_PATHS__*/
+/* Not in the parent set (flagged as a gap in the build report): thumbs. Local SVG, same 24px / 2px stroke style. */
+ICON_PATHS.thumbUp='<path d="M7 10v12"/><path d="M15 5.9 14 10h5.8a2 2 0 0 1 1.9 2.5l-2.3 8a2 2 0 0 1-1.9 1.5H7V10l4.3-8a3.1 3.1 0 0 1 3.700 3.900Z"/>';
+ICON_PATHS.thumbDown='<path d="M17 14V2"/><path d="M9 18.100 10 14H4.200a2 2 0 0 1-1.900-2.500l2.300-8A2 2 0 0 1 6.500 2H17v12l-4.300 8a3.100 3.100 0 0 1-3.700-3.900Z"/>';
+const ic=n=>`<svg class="ds-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">${ICON_PATHS[n]}</svg>`;
+function hydrate(root=document){root.querySelectorAll('[data-ic]').forEach(e=>{e.innerHTML=ic(e.dataset.ic)})}
+
+/* ======================= Component markup helpers (mirror the parent React components) ======================= */
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function Button({priority='primary',size='medium',icon,label,iconOnly=false,aria,attrs=''}){
+  return `<button type="button" class="Button_root Button_${priority}" data-size="${size}"${iconOnly?' data-icon-only':''}${aria?` aria-label="${esc(aria)}"`:''} ${attrs}>${icon?`<span class="Button_icon" aria-hidden="true">${ic(icon)}</span>`:''}${!iconOnly&&label?`<span class="Button_label">${esc(label)}</span>`:''}</button>`;
+}
+function Badge(text,{kind='category',tone}={}){return `<span class="Badge_root" data-kind="${kind}" data-tone="${tone||'neutral'}"><span class="Badge_label">${esc(text)}</span></span>`}
+function Link(text,{icon='externalLink',attrs=''}={}){return `<a class="Link_root Link_standalone" data-variant="standalone" href="#" ${attrs}>${esc(text)}<span class="Link_icon" aria-hidden="true">${ic(icon)}</span></a>`}
+function Chip(text,pressed,attrs=''){return `<button type="button" class="Chip_root" data-variant="choice" aria-pressed="${pressed}"${pressed?' data-selected':''} ${attrs}>${pressed?`<span class="Chip_leading" data-type="icon" aria-hidden="true">${ic('check')}</span>`:''}<span class="Chip_label">${esc(text)}</span></button>`}
+/* Card: header (title, subtitle, header action), body, footer (meta + actions). Clickable cards use the stretch button. */
+function Card({title,subtitle,headerAction='',body='',footerMeta='',actions='',compact=false,onClickAttr='',tone='',expandable=false,open=true,details='',attrs=''}){
+  const stretch=onClickAttr?`<button type="button" class="Card_stretch" aria-pressed="false" ${onClickAttr}>${title}</button>`:title;
+  const hasHeader=title||subtitle||headerAction||expandable;
+  return `<div class="Card_root" data-variant="basic"${compact?' data-compact':''}${onClickAttr?' data-interactive':''}${expandable&&open?' data-expanded':''}${tone?` data-tone="${tone}"`:''} ${attrs}><div class="Card_content">
+    ${hasHeader?`<div class="Card_header"><div class="Card_headings">${title?`<h3 class="Card_title">${stretch}</h3>`:''}${subtitle?`<div class="Card_subtitle">${subtitle}</div>`:''}</div>${headerAction?`<div class="Card_above">${headerAction}</div>`:''}${expandable?`<span class="Card_above">${Button({priority:'tertiary',size:'small',iconOnly:true,icon:open?'chevronUp':'chevronDown',aria:'Details',attrs:`data-act="toggle" aria-expanded="${open}"`})}</span>`:''}</div>`:''}
+    ${body?`<div class="Card_body">${body}</div>`:''}
+    ${expandable?`<div class="Card_details Card_above"${open?'':' hidden'}>${details}</div>`:''}
+    ${footerMeta||actions?`<div class="Card_footer Card_above">${footerMeta?`<div class="Card_footerMeta">${footerMeta}</div>`:''}${actions?`<div class="Card_actions">${actions}</div>`:''}</div>`:''}
+  </div></div>`;
+}
+
+/* ======================= Shared markdown pipeline =======================
+   data -> Markdown (single source of truth) -> parsed blocks -> Card UI. Cards, Markdown column and RevvyAI all use it. */
+const PLACEHOLDER={
+  title:'Model',badge:'Score',updated:'Last updated on Month DD, YYYY',
+  thesis:"Add a brief introduction here (max 150 characters) that summarizes the topic, provides context, and prepares users for what's next.",
+  factors:'Top [factors]',
+  intro:"Add a brief introduction here (max 150 characters) that summarizes the topic, provides context, and prepares users for what's next.",
+  items:[0,1,2].map(()=>({driver:'Driver: Top driver',label:'Label',desc:'Description'})),
+  cta:'Add a concise, action-oriented CTA here (max 100 characters) that encourages users to learn more.',
+  link:'Talk with RevvyAI'
+};
+const VARIANTS={
+  'Expandable / Expand=True': {shell:'card',badge:true, collapsible:true,start:true},
+  'Expandable / Expand=False':{shell:'card',badge:true, collapsible:true,start:false},
+  'Card / Base':              {shell:'card',badge:true},
+  'Card / Callout':           {shell:'callout',badge:false},
+  'Story / Page':             {shell:'story',badge:true},
+  'Story / Inline':           {shell:'story',badge:false,inline:true}
+};
+const CHAT_CFG={shell:'card',badge:true};
+
+function toMd(d,cfg,open=true){
+  const b=[];
+  if(!cfg.inline)b.push(`**${d.title}**${cfg.badge&&d.badge?` \`${d.badge}\``:''}\n_${d.updated}_`);
+  if(cfg.collapsible&&!open)return b.join('\n\n');
+  if(!cfg.inline)b.push(d.thesis);
+  b.push(`**${d.factors}**\n${d.intro}`);
+  b.push(d.items.map(i=>`- ${i.driver} \`${i.label}\`\n  ${i.desc}`).join('\n'));
+  if(!cfg.inline)b.push(d.cta);
+  b.push(`[${d.link}](#)`);
+  return b.join('\n\n');
+}
+function parseMd(md){
+  const out=[];let seenList=false;
+  md.split('\n\n').forEach((t,i)=>{
+    const L=t.split('\n');
+    if(L[1]&&L[1].startsWith('_')&&t.startsWith('**'))out.push({role:'header',md:t,i});
+    else if(t.startsWith('- ')){seenList=true;out.push({role:'list',md:t,i})}
+    else if(t.startsWith('['))out.push({role:'link',md:t,i});
+    else if(t.startsWith('**')&&L[1])out.push({role:'intro',md:t,i});
+    else out.push({role:seenList?'cta':'thesis',md:t,i});
+  });
+  return out;
+}
+const inl=s=>esc(s).replace(/`([^`]+)`/g,(m,x)=>Badge(x,{kind:'category',tone:'info'})).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+/* each rendered piece carries data-b so it maps one to one onto a Markdown block */
+const mr=(i,cls,inner,tag='div')=>`<${tag} class="mr ${cls}" data-b="${i}">${inner}</${tag}>`;
+function renderParts(blocks){
+  const P={};
+  blocks.forEach(b=>{
+    const L=b.md.split('\n');
+    if(b.role==='header'){
+      const m=L[0].match(/^\*\*(.+?)\*\*\s*(?:`(.+?)`)?$/);
+      P.header={i:b.i,title:esc(m[1]),badge:m[2]?Badge(m[2],{kind:'category'}):'',sub:esc(L[1].replace(/^_|_$/g,''))};
+    }else if(b.role==='intro')P.intro=mr(b.i,'x-intro',`<b>${esc(L[0].replace(/\*\*/g,''))}</b><p class="x-p">${esc(L.slice(1).join(' '))}</p>`);
+    else if(b.role==='list'){
+      const items=b.md.split(/\n(?=- )/).map(x=>x.split('\n'));
+      P.list=mr(b.i,'x-list',items.map(it=>`<li><div class="x-l1">${inl(it[0].slice(2))}</div><div class="x-l2">${esc((it[1]||'').trim())}</div></li>`).join(''),'ul');
+    }else if(b.role==='link')P.link={i:b.i,html:Link(b.md.match(/\[(.+?)\]/)[1],{attrs:`data-act="link" data-b="${b.i}"`})};
+    else P[b.role]=mr(b.i,'x-p',esc(b.md),'p');
+  });
+  return P;
+}
+function voteButtons(st){
+  return `<span class="x-vote">${st.fbSent?'Thanks for the feedback':'Was this helpful?'}${Button({priority:'tertiary',size:'small',iconOnly:true,icon:'thumbUp',aria:'Helpful',attrs:`data-act="up" aria-pressed="${st.vote==='up'}"`})}${Button({priority:'tertiary',size:'small',iconOnly:true,icon:'thumbDown',aria:'Not helpful',attrs:`data-act="down" aria-pressed="${st.vote==='down'}"`})}</span>`;
+}
+function buildCard(md,cfg,st,id){
+  const P=renderParts(parseMd(md));
+  const bodyHtml=[P.thesis,P.intro&&P.list?`<div class="x-body">${P.intro}${P.list}</div>`:'',P.cta].filter(Boolean).join('');
+  const meta=P.link?P.link.html:'';
+  const open=cfg.collapsible?st.open:true;
+  if(cfg.shell==='story'){
+    return `<div class="xb xcard" data-card="${id}"><div class="story">
+      ${P.header?`<div class="story-hdr mr" data-b="${P.header.i}"><div class="t"><h3 class="Card_title">${P.header.title}</h3><div class="Card_subtitle">${P.header.sub}</div></div>${P.header.badge}</div>`:''}
+      <div class="x-body">${bodyHtml}</div>
+      <div class="story-ft">${meta}${voteButtons(st)}</div></div></div>`;
+  }
+  const h=P.header;
+  const title=h?`<span class="mr" data-b="${h.i}">${h.title}</span>`:'';
+  const common={title,subtitle:h?h.sub:'',headerAction:h?h.badge:'',tone:cfg.shell==='callout'?'callout':''};
+  if(cfg.collapsible){
+    return `<div class="xb xcard" data-card="${id}">${Card({...common,expandable:true,open,details:`<div class="x-body">${bodyHtml}<div class="Card_footer" style="display:flex;justify-content:space-between;align-items:center">${meta}${voteButtons(st)}</div></div>`})}</div>`;
+  }
+  return `<div class="xb xcard" data-card="${id}">${Card({...common,body:`<div class="x-body">${bodyHtml}</div>`,footerMeta:meta,actions:voteButtons(st)})}</div>`;
+}
+
+/* ======================= Markdown column ======================= */
+let currentMd='';
+/* Minimal Markdown renderer for the output column: bold, italic, inline code, links, bullet lists, line breaks. */
+function mdInline(s){
+  return esc(s)
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/(^|[\s(])_(.+?)_(?=[\s).,]|$)/g,'$1<em>$2</em>')
+    .replace(/\[([^\]]+)\]\(([^)]*)\)/g,'<a href="$2">$1</a>');
+}
+function mdBlockHtml(t){
+  if(t.startsWith('- ')){
+    const items=t.split(/\n(?=- )/).map(x=>x.slice(2).split('\n').map(l=>l.trim()).map(mdInline).join('<br>'));
+    return `<ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  }
+  return `<p>${t.split('\n').map(mdInline).join('<br>')}</p>`;
+}
+let mdMode='rendered';
+function setMd(md){
+  currentMd=md;
+  $('#mdbody').innerHTML=md
+    ?md.split('\n\n').map((t,i)=>mdMode==='source'?`<div class="mb src" data-b="${i}">${esc(t)}</div>`:`<div class="mb" data-b="${i}">${mdBlockHtml(t)}</div>`).join('')
+    :'<div class="mdempty">Select a card or ask RevvyAI to see its Markdown.</div>';
+  $('#mdbody').querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+}
+function renderModes(){
+  $('#mdModes').innerHTML=[['rendered','Rendered'],['source','Source']].map(([k,l])=>Chip(l,mdMode===k,`data-md-mode="${k}"`)).join('');
+}
+function renderPanes(){
+  const cur=$('#stage').dataset.pane;
+  $('#paneChips').innerHTML=[['cards','Cards'],['md','Markdown'],['revvy','RevvyAI']].map(([k,l])=>Chip(l,cur===k,`data-pane-btn="${k}"`)).join('');
+}
+document.addEventListener('click',e=>{
+  const m=e.target.closest('[data-md-mode]');if(m){mdMode=m.dataset.mdMode;renderModes();setMd(currentMd);return}
+  const p=e.target.closest('[data-pane-btn]');if(p){$('#stage').dataset.pane=p.dataset.paneBtn;renderPanes()}
+});
+function liveViews(){return [$('#mdbody'),document.querySelector('.sample.sel'),[...document.querySelectorAll('#vChat .xcard')].pop()].filter(Boolean)}
+document.addEventListener('mouseover',e=>{
+  document.querySelectorAll('.hl').forEach(x=>x.classList.remove('hl'));
+  const el=e.target.closest('[data-b]');if(!el)return;
+  const views=liveViews();if(!views.some(v=>v.contains(el)))return;
+  views.forEach(v=>v.querySelectorAll(`[data-b="${el.dataset.b}"]`).forEach(x=>x.classList.add('hl')));
+});
+
+/* ======================= Cards column (left) ======================= */
+const cardState={};let selected=null;
+const mdOf=name=>{const c=VARIANTS[name],s=cardState[name];return toMd(PLACEHOLDER,c,c.collapsible?s.open:true)};
+function renderSample(name){
+  const sec=document.querySelector(`.sample[data-name="${name}"]`);
+  sec.querySelector('.slot').innerHTML=buildCard(mdOf(name),VARIANTS[name],cardState[name],name);
+}
+function select(name,feed=true){
+  selected=name;
+  document.querySelectorAll('.sample').forEach(s=>s.classList.toggle('sel',s.dataset.name===name));
+  const md=mdOf(name);setMd(md);
+  if(feed)feedRevvy(name,md);
+}
+(function initCards(){
+  const col=$('#cardsCol');
+  Object.keys(VARIANTS).forEach(name=>{
+    cardState[name]={open:VARIANTS[name].start!==false,vote:null};
+    const sec=document.createElement('div');sec.className='sample';sec.dataset.name=name;
+    sec.innerHTML=`<div class="sample-cap">${name}</div><div class="slot"></div>`;
+    col.appendChild(sec);renderSample(name);
+    sec.addEventListener('click',e=>{
+      const a=e.target.closest('[data-act]');
+      if(a&&a.dataset.act==='link')e.preventDefault();
+      if(a&&a.dataset.act==='toggle')cardState[name].open=!cardState[name].open;
+      else if(a&&(a.dataset.act==='up'||a.dataset.act==='down'))cardState[name].vote=cardState[name].vote===a.dataset.act?null:a.dataset.act;
+      renderSample(name);select(name);
+    });
+  });
+})();
+
+/* ======================= Thumbs-down feedback (RevvyAI only) =======================
+   Popover (rich) + Checkbox x5 + TextArea with counter (max 100) + Cancel / Submit.
+   Shown only when a user clicks thumbs down on a RevvyAI response. Thumbs up never opens it. */
+const FB_REASONS=['Data is wrong','Hard to read','Isn’t behaving as expected','Taking too long to load','Too wordy/technical'];
+const FB_MAX=100;
+let fb=null; // { mi, btn }
+function CheckboxField(label,i){
+  const id=`fb-r${i}`;
+  return `<div class="Checkbox_root"><span class="Checkbox_row"><span class="Checkbox_control"><input class="Checkbox_input" type="checkbox" id="${id}" value="${esc(label)}"><span class="Checkbox_box" aria-hidden="true">${ic('check').replace('class="ds-icon"','class="ds-icon Checkbox_check"')}</span></span><span class="Checkbox_text"><label class="Checkbox_label" for="${id}">${esc(label)}</label></span></span></div>`;
+}
+function placeFeedback(pop,btn){
+  const rem=parseFloat(getComputedStyle(document.documentElement).fontSize)||16,gap=rem*.5,margin=rem;
+  const r=btn.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight;
+  const below=innerHeight-r.bottom,above=r.top;
+  const top=(h+gap>below&&above>below)?Math.max(margin,r.top-h-gap):Math.min(innerHeight-h-margin,r.bottom+gap);
+  pop.dataset.side=(h+gap>below&&above>below)?'top':'bottom';
+  pop.style.top=`${Math.max(margin,top)}px`;
+  pop.style.left=`${Math.min(Math.max(margin,r.right-w),Math.max(margin,innerWidth-w-margin))}px`;
+}
+function closeFeedback(restore=false){
+  const pop=document.getElementById('fbPop');if(pop)pop.remove();
+  if(restore&&fb&&fb.btn&&fb.btn.isConnected)fb.btn.focus();
+  fb=null;
+}
+function openFeedback(mi,btn){
+  closeFeedback();
+  fb={mi,btn};
+  const pop=document.createElement('div');
+  pop.id='fbPop';pop.className='Popover_positioner fb-pop';pop.dataset.mode='rich';pop.dataset.side='bottom';pop.dataset.ready='';
+  pop.innerHTML=`<div class="Popover_surface" data-mode="rich" role="dialog" aria-modal="false" aria-labelledby="fbTitle" tabindex="-1">
+    <div class="Popover_header"><div class="Popover_title" id="fbTitle">What went wrong?</div></div>
+    <div class="Popover_body">
+      <fieldset class="fb-list"><legend>What went wrong?</legend>${FB_REASONS.map(CheckboxField).join('')}</fieldset>
+      <div class="Field_shell">
+        <div class="Field_labelRow"><span class="Field_labelText"><label class="Field_label" for="fbText">Description <span class="Field_indicator">(optional)</span></label></span><span class="Field_counter" id="fbCount">0/${FB_MAX}</span></div>
+        <div class="Field_box TextArea_box"><span class="TextArea_areaWrap"><textarea id="fbText" class="Field_control TextArea_area" data-resize="none" rows="5" maxlength="${FB_MAX}" placeholder="Enter a description" style="--_rows:5"></textarea></span></div>
+      </div>
+      <div class="fb-actions">${Button({priority:'secondary',size:'small',label:'Cancel',attrs:'data-fb="cancel"'})}${Button({priority:'primary',size:'small',label:'Submit',attrs:'data-fb="submit"'})}</div>
+    </div></div>`;
+  document.body.appendChild(pop);
+  placeFeedback(pop,btn);
+  const ta=pop.querySelector('#fbText');
+  ta.addEventListener('input',()=>{pop.querySelector('#fbCount').textContent=`${ta.value.length}/${FB_MAX}`;pop.querySelector('#fbCount').toggleAttribute('data-limit',ta.value.length>=FB_MAX)});
+  const first=pop.querySelector('input');if(first)first.focus({preventScroll:true});
+}
+function submitFeedback(){
+  const pop=document.getElementById('fbPop');if(!pop||!fb)return;
+  const m=st.chat[fb.mi];
+  m.fbSent=true;
+  m.feedback={reasons:[...pop.querySelectorAll('input:checked')].map(i=>i.value),text:pop.querySelector('#fbText').value.trim()};
+  const ai=document.querySelector(`#vChat .ai[data-m="${fb.mi}"]`);
+  if(ai)ai.innerHTML=buildCard(m.md,CHAT_CFG,m,'chat'+fb.mi);
+  const btn=ai&&ai.querySelector('[data-act="down"]');
+  closeFeedback();if(btn)btn.focus();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fb)closeFeedback(true)});
+document.addEventListener('mousedown',e=>{if(fb&&!e.target.closest('#fbPop')&&!e.target.closest('[data-act="down"]'))closeFeedback()});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('#fbPop [data-fb]');if(!b)return;
+  if(b.dataset.fb==='cancel')closeFeedback(true);else submitFeedback();
+});
+window.addEventListener('resize',()=>{const pop=document.getElementById('fbPop');if(pop&&fb&&fb.btn.isConnected)placeFeedback(pop,fb.btn);else if(fb)closeFeedback()});
+
+/* ======================= RevvyAI companion ======================= */
+const SUGGESTIONS=["What are high-intent keywords for my website?","How are my new advertising campaigns doing?","How are my keywords performing?","How many accounts should I have in a segment?"];
+const JTBD={
+  "Discovery":["What are high-intent keywords for my website?","How are my new advertising campaigns doing?","How are my keywords performing?"],
+  "Prioritization":["Which accounts should I prioritize this week?","How are my keywords performing?","How many accounts should I have in a segment?"],
+  "Analysis":["How are my new advertising campaigns doing?","How many accounts did I engage in the last 30 days","Analyze keyword trends over the past quarter"],
+  "Optimization":["List keywords that improve ad click-through rates","How are my keywords performing?","Identify seasonal keywords for upcoming promotions"],
+  "Show value":["How many accounts did I engage through advertising campaigns","What pipeline did my campaigns influence?","How are my new advertising campaigns doing?"],
+  "Data management":["How many accounts should I have in a segment?","Which CRM fields are missing the most data?","What keywords are competitors targeting now?"]
+};
+const HISTORY=[
+ ["Today",["Suggest top-performing keywords for product launches","Which leads have the highest conversion potential?","Recommend keywords with strong buyer intent"]],
+ ["July 25, 2026",["Can you review my latest ad campaign results?","Analyze keyword trends over the past quarter"]],
+ ["July 24, 2026",["Find keywords driving the most traffic this month","What keywords are competitors targeting now?","Identify seasonal keywords for upcoming promotions","Show me keywords with rising search volume","Suggest keywords for expanding into new markets","List keywords that improve ad click-through rates"]]
+];
+const AC_POOL=["How many accounts did I engage in the last 30 days","How many accounts did I engage through email campaigns","How many accounts did I engage through advertising campaigns","How many accounts did I engage for 6sense product","How many accounts should I have in a segment?","How are my keywords performing?","How are my new advertising campaigns doing?","What are high-intent keywords for my website?"];
+const st={view:'orient',chat:[],title:null,sel:null,jtbd:null,expanded:{}};
+let acIdx=-1;
+const promptCard=q=>Card({title:esc(q),compact:true,onClickAttr:`data-q="${esc(q)}"`});
+
+function answerData(q){
+  const l=q.toLowerCase();
+  const base={title:'Model',badge:'Score',updated:'Last updated on Oct 12, 2026',link:'Talk with RevvyAI'};
+  if(l.includes('keyword'))return {...base,title:'Keyword performance',thesis:'Buyer-intent keywords are driving most of your qualified traffic this period.',factors:'Top drivers',intro:'These keywords contributed most to engaged-account growth.',
+    items:[{driver:'Keyword: account based marketing',label:'High intent',desc:'+18% engaged accounts vs. the prior 30 days'},{driver:'Keyword: intent data platform',label:'Rising',desc:'Search volume up 24% quarter over quarter'},{driver:'Keyword: predictive lead scoring',label:'Stable',desc:'Consistent conversion across segments'}],cta:'Want me to build a segment from these keywords?'};
+  if(l.includes('campaign')||l.includes('advertising'))return {...base,title:'Campaign performance',thesis:'Your newest campaigns are trending upward, led by account-based programs.',factors:'Top drivers',intro:'These campaigns lifted engagement the most.',
+    items:[{driver:'Campaign: Q4 ABM Launch',label:'Top performer',desc:'412 accounts engaged, +12% vs. plan'},{driver:'Campaign: Product Webinar Series',label:'On track',desc:'Steady registrations across target tiers'},{driver:'Campaign: Retargeting Wave 2',label:'Needs review',desc:'Click-through is below the 30-day average'}],cta:'Want me to compare these against last quarter?'};
+  if(l.includes('segment')||l.includes('accounts'))return {...base,title:'Segment guidance',thesis:'Smaller, well-defined segments tend to convert better and are easier to action.',factors:'Top factors',intro:'Use these factors when sizing a segment.',
+    items:[{driver:'Fit: firmographic match',label:'Strong',desc:'Keep segments tied to a single ideal profile'},{driver:'Intent: recent engagement',label:'Rising',desc:'Aim for 200 to 500 accounts you can work this quarter'},{driver:'Coverage: contact data',label:'Review',desc:'Verify at least 3 buying-group contacts per account'}],cta:'Want me to size a segment for you?'};
+  return {...base,title:'Summary',thesis:'Here is what I found based on your connected data.',factors:'Top factors',intro:'These factors had the biggest effect on the result.',
+    items:[{driver:'Factor: engagement trend',label:'Up',desc:'Increasing over the last 30 days'},{driver:'Factor: account fit',label:'Strong',desc:'Most accounts match your ideal profile'},{driver:'Factor: data coverage',label:'Review',desc:'Some fields are missing for newer accounts'}],cta:'Want me to dig into any of these?'};
+}
+
+function setView(v){
+  closeFeedback();
+  st.view=v;
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));
+  $({orient:'#vOrient',chat:'#vChat',lib:'#vLib',hist:'#vHist'}[v]).classList.add('on');
+  const titles={lib:'Prompt library',hist:'Chat history',chat:st.title};
+  $('#subrow').hidden=!(v in titles);$('#subTitle').textContent=titles[v]||'';
+  $('#bBack').style.display=(v==='lib'||v==='hist')?'':'none';
+  $('#bLib').dataset.state=v==='lib'?'pressed':'';$('#bHist').dataset.state=v==='hist'?'pressed':'';
+  $('#inputwrap').style.display=(v==='lib'||v==='hist')?'none':'';
+  if(v==='chat'){const b=$('#body');b.scrollTop=b.scrollHeight}
+  if(v==='lib')renderLib();if(v==='hist')renderHist();
+}
+function renderSmart(){
+  $('#smart').innerHTML=SUGGESTIONS.map(promptCard).join('');
+  $('#lastConv').innerHTML=Card({title:'6QA insights Apr-May 2025',subtitle:'Continue last conversation',compact:true,onClickAttr:'data-h="6QA insights Apr-May 2025"',headerAction:ic('chevronRight')});
+  $('#chips').innerHTML=Object.keys(JTBD).map(k=>Chip(k,st.jtbd===k,`data-j="${k}"`)).join('');
+  const jp=$('#jtbdPrompts');
+  if(st.jtbd){jp.hidden=false;jp.innerHTML=`<p class="sec-title" style="margin:0">${st.jtbd}</p>`+JTBD[st.jtbd].map(promptCard).join('')}else jp.hidden=true;
+}
+function renderLib(){
+  const q=$('#libSearch').value.trim().toLowerCase();
+  const cats=[["Discovery","Discovery"],["Prioritize","Prioritization"],["Analysis","Analysis"],["Optimize","Optimization"],["Show value","Show value"],["Data management","Data management"]];
+  let html='';
+  cats.forEach(([label,key])=>{
+    const all=JTBD[key].filter(p=>!q||p.toLowerCase().includes(q));if(!all.length)return;
+    const open=st.expanded[key];const list=open||q?all:all.slice(0,3);
+    html+=`<div class="group"><p class="sec-title" style="margin:0">${label}</p>${list.map(promptCard).join('')}${!q?`<span class="more">${Button({priority:'tertiary',size:'small',label:open?'View less':'View more',attrs:`data-more="${key}"`})}</span>`:''}</div>`;
+  });
+  $('#libList').innerHTML=html||'<div class="empty">No prompts match your search.</div>';
+}
+function renderHist(){
+  const q=$('#histSearch').value.trim().toLowerCase();let html='';
+  HISTORY.forEach(([d,items])=>{const f=items.filter(i=>!q||i.toLowerCase().includes(q));
+    if(f.length)html+=`<div><h3>${d}</h3><ul class="MenuList_list" style="padding:0;max-block-size:none">${f.map(i=>`<li class="MenuList_item" role="button" tabindex="0"${st.sel===i?' data-selected':''} data-h="${esc(i)}"><span class="MenuList_text"><span class="MenuList_label">${esc(i)}</span></span></li>`).join('')}</ul></div>`});
+  $('#histList').innerHTML=html||'<div class="empty">No conversations found.</div>';
+}
+
+/* chat: every AI message is a card rendered from Markdown */
+function renderChat(){
+  $('#vChat').innerHTML=`<div class="stamp">Today</div>`+st.chat.map((m,i)=>
+    m.role==='user'?`<div class="user"><div class="bubble">${esc(m.text)}</div></div>`:
+    m.loading?`<div class="thinking" role="status"><span class="Spinner_root" role="status" aria-label="Loading" data-size="small" data-tone="default"><span class="Spinner_ring" aria-hidden="true"></span></span>Thinking</div>`:
+    `<div class="ai" data-m="${i}">${buildCard(m.md,CHAT_CFG,m,'chat'+i)}</div>`).join('');
+  const b=$('#body');b.scrollTop=b.scrollHeight;
+  const last=[...st.chat].reverse().find(m=>m.md);
+  if(last&&!(selected&&last.fromCard===selected))setMd(last.md);
+}
+function clearSel(){selected=null;document.querySelectorAll('.sample').forEach(s=>s.classList.remove('sel'))}
+function ask(q){
+  q=q.trim();if(!q)return;
+  if(!st.chat.length||st.view!=='chat')st.title=q.length>40?q.slice(0,40)+'…':q;
+  clearSel();
+  st.chat.push({role:'user',text:q});
+  const m={role:'ai',loading:true};st.chat.push(m);
+  setView('chat');renderChat();
+  clearTimeout(ask.t);
+  ask.t=setTimeout(()=>{m.loading=false;m.vote=null;m.md=toMd(answerData(q),CHAT_CFG);renderChat();setMd(m.md)},1200+Math.random()*500);
+  $('#inp').value='';resize();hideAc();upd();
+}
+function feedRevvy(name,md){
+  st.title=name;st.sel=null;
+  st.chat=[{role:'user',text:`Show me the ${name} card`},{role:'ai',md,vote:null,fromCard:name}];
+  setView('chat');renderChat();
+}
+function newChat(){st.chat=[];st.title=null;st.sel=null;st.jtbd=null;clearSel();setMd('');renderSmart();setView('orient')}
+function openHistory(q){
+  st.sel=q;st.title=q.length>40?q.slice(0,40)+'…':q;clearSel();
+  const md=toMd(answerData(q),CHAT_CFG);st.chat=[{role:'user',text:q},{role:'ai',md,vote:null}];
+  setView('chat');renderChat();setMd(md);
+}
+
+/* input + autosuggest (Search results listbox styles) */
+const inp=$('#inp');
+function resize(){inp.style.height='auto';inp.style.height=inp.scrollHeight+'px'}
+function upd(){$('#bSend').setAttribute('aria-disabled',!inp.value.trim())}
+function hideAc(){$('#ac').hidden=true;acIdx=-1}
+function showAc(){
+  const v=inp.value;if(v.trim().length<3){hideAc();return}
+  const l=v.toLowerCase();const m=AC_POOL.filter(s=>s.toLowerCase().startsWith(l)&&s.length>v.length).slice(0,4);
+  if(!m.length){hideAc();return}
+  $('#ac').innerHTML=m.map((s,i)=>`<li class="Search_option" role="option" data-ac="${esc(s)}"${i===acIdx?' data-active':''}><span class="Search_optionText"><span class="Search_optionLabel">${esc(s.slice(0,v.length))}<b>${esc(s.slice(v.length))}</b></span></span></li>`).join('');
+  $('#ac').hidden=false;
+}
+inp.addEventListener('input',()=>{resize();upd();acIdx=-1;showAc()});
+inp.addEventListener('keydown',e=>{
+  const items=[...document.querySelectorAll('#ac li')];
+  if(!$('#ac').hidden&&(e.key==='ArrowDown'||e.key==='ArrowUp')){e.preventDefault();acIdx=(acIdx+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;items.forEach((b,i)=>b.toggleAttribute('data-active',i===acIdx));return}
+  if(e.key==='Tab'&&!$('#ac').hidden){e.preventDefault();inp.value=items[Math.max(acIdx,0)].dataset.ac;hideAc();resize();upd();return}
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();if(acIdx>=0&&items[acIdx]){inp.value=items[acIdx].dataset.ac;hideAc();return}ask(inp.value)}
+  if(e.key==='Escape')hideAc();
+});
+$('#ac').addEventListener('mousedown',e=>{const b=e.target.closest('[data-ac]');if(b){e.preventDefault();inp.value=b.dataset.ac;hideAc();resize();upd();inp.focus()}});
+$('#bSend').onclick=()=>{if($('#bSend').getAttribute('aria-disabled')!=='true')ask(inp.value)};
+
+/* header + events */
+$('#bNew').onclick=newChat;
+$('#bLib').onclick=()=>setView(st.view==='lib'?(st.chat.length?'chat':'orient'):'lib');
+$('#bHist').onclick=()=>setView(st.view==='hist'?(st.chat.length?'chat':'orient'):'hist');
+$('#bBack').onclick=()=>setView(st.chat.length?'chat':'orient');
+$('#bMenu').onclick=e=>{e.stopPropagation();const m=$('#menu');m.hidden=!m.hidden;$('#bMenu').setAttribute('aria-expanded',!m.hidden)};
+document.addEventListener('click',e=>{if(!e.target.closest('#menu')&&!e.target.closest('#bMenu')){$('#menu').hidden=true;$('#bMenu').setAttribute('aria-expanded','false')}});
+$('#menu').addEventListener('click',e=>{const a=e.target.closest('[data-act]');if(!a)return;$('#menu').hidden=true;
+  if(a.dataset.act==='clear')newChat();
+  if(a.dataset.act==='copy'&&currentMd&&navigator.clipboard)navigator.clipboard.writeText(currentMd).catch(()=>{});});
+$('#libSearch').oninput=renderLib;$('#histSearch').oninput=renderHist;
+document.addEventListener('click',e=>{
+  const q=e.target.closest('[data-q]');if(q){ask(q.dataset.q);return}
+  const j=e.target.closest('[data-j]');if(j){st.jtbd=st.jtbd===j.dataset.j?null:j.dataset.j;renderSmart();return}
+  const mo=e.target.closest('[data-more]');if(mo){const k=mo.dataset.more;st.expanded[k]=!st.expanded[k];renderLib();return}
+  const h=e.target.closest('[data-h]');if(h){openHistory(h.dataset.h);return}
+  const ai=e.target.closest('#vChat .ai');
+  if(ai){
+    const a=e.target.closest('[data-act]');if(!a)return;
+    if(a.dataset.act==='link')e.preventDefault();
+    if(a.dataset.act==='up'||a.dataset.act==='down'){
+      const m=st.chat[+ai.dataset.m];m.vote=m.vote===a.dataset.act?null:a.dataset.act;
+      if(m.vote!=='down')m.fbSent=false;
+      closeFeedback();
+      ai.innerHTML=buildCard(m.md,CHAT_CFG,m,'chat'+ai.dataset.m);
+      // Feedback form: only after thumbs down, never for thumbs up.
+      if(m.vote==='down'&&!m.fbSent)openFeedback(+ai.dataset.m,ai.querySelector('[data-act="down"]'));
+    }
+    if(a.dataset.act==='toggle'){/* chat cards are not collapsible */}
+  }
+});
+
+/* init: cards, Markdown and companion in sync */
+hydrate();renderModes();renderPanes();renderSmart();setView('orient');$('#bBack').style.display='none';
+select('Card / Base',true);
+</script>
+</body>
+</html>

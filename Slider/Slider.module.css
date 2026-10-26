@@ -1,0 +1,122 @@
+/* Slider. Tokens: component.slider.* (tokens/component/slider.json). Label, helper and error layout come from the shared field shell. */
+.root {
+  --_rail: var(--component-slider-all-track-fill-default);
+  --_active: var(--component-slider-all-track-fillActive-default);
+  --_thumb-border: var(--component-slider-all-thumb-border-default);
+  --_thumb-shadow: var(--component-slider-all-thumb-shadow-default);
+  --_tick: var(--component-slider-all-tick-color-default);
+  --_label-fill: var(--component-slider-all-valueLabel-fill-default);
+  --_label-text: var(--component-slider-all-valueLabel-color-default);
+  --_readout: var(--component-slider-all-readout-color-default);
+  --_range: var(--component-slider-all-range-color-default);
+  gap: var(--component-slider-all-container-gap);
+}
+.row { display: flex; align-items: center; gap: var(--component-slider-all-container-gap); min-inline-size: 0; }
+.main { display: flex; flex: 1 1 auto; flex-direction: column; min-inline-size: 0; }
+.input { flex: none; inline-size: calc(var(--ds-hit-min) * 2); }
+.readout {
+  font: var(--component-slider-all-readout-typography-font);
+  text-decoration: var(--component-slider-all-readout-typography-text-decoration);
+  color: var(--_readout);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hit area: 44px tall full-width strip. The visible rail is much thinner. */
+.hit {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  block-size: var(--ds-hit-min);
+  padding-inline: calc(var(--component-slider-all-thumb-size) / 2);
+  touch-action: none;
+  cursor: pointer;
+}
+.hit[data-with-label] { margin-block-start: calc(var(--component-slider-all-valueLabel-offset) + var(--ds-hit-min) / 2); }
+.track { position: relative; flex: 1 1 auto; min-inline-size: 0; }
+.rail, .fill {
+  position: absolute;
+  inset-block: 0;
+  margin-block: auto;
+  block-size: var(--component-slider-all-track-height);
+  border-radius: var(--component-slider-all-track-radius);
+}
+.rail { inset-inline: 0; background: var(--_rail); }
+.fill { inset-inline-start: 0; inline-size: var(--_p); background: var(--_active); }
+.tick {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--_p);
+  margin-block: auto;
+  margin-inline-start: calc(var(--component-slider-all-tick-size) / -2);
+  inline-size: var(--component-slider-all-tick-size);
+  block-size: var(--component-slider-all-tick-size);
+  border-radius: 50%;
+  background: var(--_tick);
+}
+.thumb {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--_p);
+  margin-block: auto;
+  margin-inline-start: calc(var(--component-slider-all-thumb-size) / -2);
+  box-sizing: border-box;
+  inline-size: var(--component-slider-all-thumb-size);
+  block-size: var(--component-slider-all-thumb-size);
+  border: var(--component-slider-all-thumb-borderWidth) solid var(--_thumb-border);
+  border-radius: 50%;
+  background: var(--component-slider-all-thumb-fill-default);
+  box-shadow: var(--_thumb-shadow);
+  outline: none;
+  cursor: grab;
+}
+/* 44px hit area around the 24px thumb. */
+.thumb::after { content: ''; position: absolute; inset: calc((100% - var(--ds-hit-min)) / 2); }
+@media (prefers-reduced-motion: no-preference) {
+  .thumb { transition: box-shadow var(--ds-motion-fast) var(--ds-ease); }
+}
+
+/* Value label above the thumb. A zero-width anchor keeps it centered in both reading directions. */
+.labelAnchor { position: absolute; inset-block-end: calc(100% + var(--component-slider-all-valueLabel-offset)); inset-inline-start: 50%; inline-size: 0; display: flex; justify-content: center; pointer-events: none; }
+.valueLabel {
+  flex: none;
+  padding-block: var(--component-slider-all-valueLabel-paddingBlock);
+  padding-inline: var(--component-slider-all-valueLabel-paddingInline);
+  border-radius: var(--component-slider-all-valueLabel-radius);
+  background: var(--_label-fill);
+  color: var(--_label-text);
+  font: var(--component-slider-all-valueLabel-typography-font);
+  text-decoration: var(--component-slider-all-valueLabel-typography-text-decoration);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.range {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--component-slider-all-container-gap);
+  font: var(--component-slider-all-range-typography-font);
+  text-decoration: var(--component-slider-all-range-typography-text-decoration);
+  color: var(--_range);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- States: real pseudo-classes plus [data-state] twins on the root ---- */
+.thumb:hover, .root[data-state='hover'] .thumb { --_thumb-shadow: var(--component-slider-all-thumb-shadow-hover); }
+.thumb:focus-visible, .root[data-state='focus'] .thumb { --_thumb-shadow: var(--component-slider-all-thumb-shadow-focus), var(--component-slider-all-thumb-shadow-default); }
+.root[data-dragging] .thumb, .root[data-state='pressed'] .thumb { --_thumb-border: var(--component-slider-all-thumb-border-pressed); --_thumb-shadow: var(--component-slider-all-thumb-shadow-pressed); cursor: grabbing; }
+.root[data-dragging] .hit { cursor: grabbing; }
+
+/* Disabled: non-interactive, no shadow. */
+.root[data-disabled] {
+  --_rail: var(--component-slider-all-track-fill-disabled);
+  --_active: var(--component-slider-all-track-fillActive-disabled);
+  --_thumb-border: var(--component-slider-all-thumb-border-disabled);
+  --_thumb-shadow: none;
+  --_tick: var(--component-slider-all-tick-color-disabled);
+  --_label-fill: var(--component-slider-all-valueLabel-fill-disabled);
+  --_label-text: var(--component-slider-all-valueLabel-color-disabled);
+  --_readout: var(--component-slider-all-readout-color-disabled);
+  --_range: var(--component-slider-all-range-color-disabled);
+}
+.root[data-disabled] .hit, .root[data-disabled] .thumb { cursor: not-allowed; }
+.root[data-disabled] .thumb { --_thumb-shadow: none; --_thumb-border: var(--component-slider-all-thumb-border-disabled); }

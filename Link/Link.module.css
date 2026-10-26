@@ -1,0 +1,64 @@
+/* Link. Tokens: component.link.* (tokens/component/link.json). Underline always on: color alone never carries state. */
+.root {
+  --_type: var(--component-link-all-label-typographyStandalone-font);
+  --_deco: var(--component-link-all-label-typographyStandalone-text-decoration);
+  --_color: var(--_color-default);
+  --_fill: none;
+
+  display: inline;
+  color: var(--_color);
+  font: var(--_type);
+  text-decoration: var(--_deco);
+  text-underline-offset: 0.15em;
+  background: var(--_fill);
+  border-radius: var(--component-link-all-container-radius);
+  cursor: pointer;
+  transition: color var(--ds-motion-fast) var(--ds-ease), background-color var(--ds-motion-fast) var(--ds-ease);
+}
+@media (prefers-reduced-motion: reduce) { .root { transition: none; } }
+
+/* Icons make the link a row so icon and label stay aligned. Inline links with icons wrap as one unit. */
+.root:has(.icon) { display: inline-flex; align-items: center; gap: var(--component-link-all-container-gap); vertical-align: bottom; }
+.icon { display: inline-flex; inline-size: var(--component-link-all-icon-size); block-size: var(--component-link-all-icon-size); flex: none; }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+
+.inline {
+  --_type: var(--component-link-all-label-typographyInline-font);
+  --_deco: var(--component-link-all-label-typographyInline-text-decoration);
+}
+.standalone {
+  --_type: var(--component-link-all-label-typographyStandalone-font);
+  --_deco: var(--component-link-all-label-typographyStandalone-text-decoration);
+}
+
+/* ---- Variants: map tokens once. ---- */
+.inline, .standalone {
+  --_color-default: var(--component-link-default-label-color-default);
+  --_color-hover: var(--component-link-default-label-color-hover);
+  --_color-pressed: var(--component-link-default-label-color-pressed);
+  --_color-visited: var(--component-link-default-label-color-visited);
+  --_fill-pressed: var(--component-link-default-container-fill-pressed);
+}
+.destructive {
+  --_type: var(--component-link-all-label-typographyStandalone-font);
+  --_deco: var(--component-link-all-label-typographyStandalone-text-decoration);
+  --_color-default: var(--component-link-destructive-label-color-default);
+  --_color-hover: var(--component-link-destructive-label-color-hover);
+  --_color-pressed: var(--component-link-destructive-label-color-pressed);
+  --_color-visited: var(--component-link-destructive-label-color-default);
+  --_fill-pressed: var(--component-link-destructive-container-fill-pressed);
+}
+
+/* ---- States. Order matters: visited, hover, pressed, focus, disabled. ---- */
+.root:visited, .root[data-state='visited'] { --_color: var(--_color-visited); }
+.root:hover:not([aria-disabled='true']), .root[data-state='hover'] { --_color: var(--_color-hover); }
+.root:active:not([aria-disabled='true']), .root[data-state='pressed'] { --_color: var(--_color-pressed); --_fill: var(--_fill-pressed); }
+.root:focus-visible, .root[data-state='focus'] { outline: none; box-shadow: var(--core-effect-ring-focus); }
+
+.root[aria-disabled='true'] { --_color: var(--component-link-all-label-color-disabled); --_fill: none; cursor: not-allowed; box-shadow: none; }
+.root[aria-disabled='true']:focus-visible { box-shadow: var(--core-effect-ring-focus); }
+.root[aria-disabled='true']:visited { --_color: var(--component-link-all-label-color-disabled); }
+
+/* 44px hit area for standalone links shorter than the minimum. Pseudo-element keeps layout unchanged. */
+.standalone, .destructive { position: relative; }
+.standalone::after, .destructive::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((1lh - var(--ds-hit-min)) / 2); }

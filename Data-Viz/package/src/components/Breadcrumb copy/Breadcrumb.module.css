@@ -1,0 +1,60 @@
+/* Breadcrumb. Tokens: component.breadcrumb.* (tokens/component/breadcrumb.json). No raw colors or primitives. */
+/* The nav is a size container so the responsive variant reacts to its own width, not the viewport. */
+.root { container-type: inline-size; min-inline-size: 0; }
+.list { display: flex; flex-wrap: wrap; align-items: center; margin: 0; padding: 0; list-style: none; row-gap: 0; }
+.item { display: inline-flex; align-items: center; gap: var(--component-breadcrumb-all-container-gap); min-inline-size: 0; }
+
+/* Decorative separator. The chevron mirrors in RTL through Icon. */
+.separator { display: inline-flex; flex: none; color: var(--component-breadcrumb-all-separator-color-default); }
+.separator > svg { inline-size: var(--component-breadcrumb-all-separator-size); block-size: var(--component-breadcrumb-all-separator-size); }
+
+.icon { display: inline-flex; flex: none; inline-size: var(--component-breadcrumb-all-icon-size); block-size: var(--component-breadcrumb-all-icon-size); }
+.icon > svg { inline-size: 100%; block-size: 100%; }
+.text { overflow: hidden; text-overflow: ellipsis; }
+
+/* Links and the ellipsis button share one treatment. */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--component-breadcrumb-all-container-gap);
+  box-sizing: border-box;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: var(--component-breadcrumb-all-link-paddingInline);
+  border: 0;
+  border-radius: var(--component-breadcrumb-all-link-radius);
+  background: transparent;
+  color: var(--component-breadcrumb-all-link-color-default);
+  font: var(--component-breadcrumb-all-link-typography-font);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+/* 44px hit area around the text line. */
+.link::after { content: ''; position: absolute; inset-inline: 0; inset-block: calc((1lh - var(--ds-hit-min)) / 2); }
+.link > svg { inline-size: var(--component-breadcrumb-all-icon-size); block-size: var(--component-breadcrumb-all-icon-size); }
+
+.current {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--component-breadcrumb-all-container-gap);
+  min-inline-size: 0;
+  padding-inline: var(--component-breadcrumb-all-link-paddingInline);
+  color: var(--component-breadcrumb-all-current-color-default);
+  font: var(--component-breadcrumb-all-current-typography-font);
+}
+
+/* ---- States. Real pseudo-classes plus [data-state] twins for forced states. ---- */
+.link:hover, .link[data-state='hover'] {
+  background: var(--component-breadcrumb-all-link-fill-hover);
+  color: var(--component-breadcrumb-all-link-color-hover);
+  text-decoration: underline;
+}
+.link:focus-visible, .link[data-state='focus'] { outline: none; box-shadow: var(--component-breadcrumb-all-link-shadow-focus); }
+
+/* ---- Responsive: in a narrow container show only the parent and the current page. ---- */
+@container (max-width: 30rem) {
+  .root[data-responsive] .item:not(:nth-last-child(-n + 2)) { display: none; }
+  .root[data-responsive] .item:nth-last-child(2) > .separator { display: none; }
+}

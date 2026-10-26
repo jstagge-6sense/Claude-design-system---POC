@@ -1,0 +1,85 @@
+/* Form Group. Tokens: component.formGroup.* (tokens/component/formGroup.json). Single column by default; two columns only for paired fields. */
+.root {
+  container: formgroup / inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--core-dimension-space-spacious);
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+/* The lock fieldset is a layout-neutral wrapper: it disables its controls while submitting. */
+.lock { margin: 0; padding: 0; border: 0; min-inline-size: 0; }
+.content { display: flex; flex-direction: column; gap: var(--core-dimension-space-spacious); min-inline-size: 0; }
+/* Direct children of a section body or the content stack that are fields stack with the field gap. */
+.sectionBody { display: flex; flex-direction: column; gap: var(--core-dimension-space-standard); clear: both; }
+.root[data-variant='single'] .content, .root[data-variant='wizard'] .content { gap: var(--core-dimension-space-standard); }
+
+/* ---- Section (fieldset + legend) ---- */
+.section {
+  margin: 0;
+  min-inline-size: 0;
+  box-sizing: border-box;
+  padding: var(--core-dimension-space-spacious);
+  border: var(--core-dimension-borderWidth-thin) solid transparent;
+  border-radius: var(--core-dimension-radius-surface-medium);
+  background: linear-gradient(var(--core-color-surface-card), var(--core-color-surface-card)) padding-box, var(--core-color-border-group) border-box;
+  box-shadow: var(--component-formGroup-all-section-shadow-default);
+}
+.legend {
+  float: inline-start;
+  inline-size: 100%;
+  margin: 0 0 var(--core-dimension-space-standard);
+  padding: 0;
+  font: var(--component-formGroup-all-legend-typography-font);
+  color: var(--core-color-content-primary);
+}
+.sectionDescription { margin: 0; font: var(--component-formGroup-all-sectionDescription-typography-font); color: var(--core-color-content-secondary); }
+
+/* ---- Paired fields ---- */
+.row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--core-dimension-space-standard); align-items: start; }
+@container formgroup (max-width: 479px) {
+  .row { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- Inline: settings rows in page content, separated by a rule instead of cards ---- */
+.root[data-variant='inline'] .content { gap: 0; }
+.root[data-variant='inline'] .content > * { padding-block: var(--core-dimension-space-standard); }
+.root[data-variant='inline'] .content > * + * { border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+
+/* ---- Wizard ---- */
+.wizardSteps { padding-block-end: var(--core-dimension-space-spacious); }
+
+/* ---- Validation summary ---- */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--core-dimension-space-compact);
+  box-sizing: border-box;
+  padding: var(--core-dimension-space-standard);
+  border: var(--core-dimension-borderWidth-medium) solid var(--core-color-status-critical);
+  border-radius: var(--core-dimension-radius-control-medium);
+  background: var(--component-formGroup-all-summary-fill-default);
+}
+.summaryTitle { display: flex; align-items: center; gap: var(--core-dimension-space-compact); margin: 0; font: var(--component-formGroup-all-summary-title-typography-font); color: var(--core-color-content-primary); }
+.summaryText { margin: 0; font: var(--component-formGroup-all-sectionDescription-typography-font); color: var(--core-color-content-secondary); }
+.summaryIcon { display: inline-flex; flex: none; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); color: var(--core-color-status-critical); }
+.summaryIcon > svg { inline-size: 100%; block-size: 100%; }
+.summaryList { display: flex; flex-direction: column; gap: var(--core-dimension-space-compact); margin: 0; padding-inline-start: calc(var(--core-dimension-size-icon) + var(--core-dimension-space-compact)); list-style: disc; }
+.summaryLink { font: var(--component-formGroup-all-summary-link-typography-font); color: var(--core-color-content-link-default); text-decoration: var(--component-formGroup-all-summary-link-typography-text-decoration); border-radius: var(--core-dimension-radius-control-medium); }
+.summaryLink:hover { color: var(--core-color-content-link-hover); }
+.summaryLink:focus-visible { outline: none; box-shadow: var(--component-formGroup-all-summary-link-shadow-focus); }
+
+/* ---- Footer: the same placement in every form ---- */
+.footer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--core-dimension-space-compact); padding-block-start: var(--core-dimension-space-standard); border-block-start: var(--core-dimension-borderWidth-thin) solid var(--core-color-border-standard); }
+.root[data-variant='inline'] .footer { border-block-start: 0; }
+.footer[data-align='start'] { flex-direction: row; justify-content: flex-start; }
+/* End alignment puts the buttons at the end edge and the status at the start edge. Logical, so it mirrors in RTL. */
+.footer[data-align='end'] { flex-direction: row-reverse; justify-content: space-between; }
+.buttons { display: flex; flex-wrap: wrap; align-items: center; gap: var(--core-dimension-space-compact); }
+.status { display: inline-flex; align-items: center; gap: var(--core-dimension-space-compact); margin: 0; font: var(--component-formGroup-all-sectionDescription-typography-font); color: var(--core-color-content-secondary); min-block-size: 1lh; }
+.status[data-status='success'] { color: var(--core-color-status-success); }
+.status[data-status='submitting'], .status[data-status='validating'] { color: var(--core-color-content-secondary); }
+.statusIcon { display: inline-flex; inline-size: var(--core-dimension-size-icon); block-size: var(--core-dimension-size-icon); }
+.statusIcon > svg { inline-size: 100%; block-size: 100%; }

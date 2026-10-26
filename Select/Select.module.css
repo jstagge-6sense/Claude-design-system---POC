@@ -1,0 +1,36 @@
+/* Select (single). The box, label and messages come from Input's FieldShell and FieldBox. The list is a Menu in selection mode.
+   Tokens: component.select.* (tokens/component/select.json). No raw colors or primitives. */
+.field { min-inline-size: 0; }
+.menu { display: flex; inline-size: 100%; }
+.box { flex: 1 1 auto; min-inline-size: 0; }
+
+.trigger {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--component-select-all-trigger-gap);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--component-select-all-value-color-default);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  outline: none;
+}
+.trigger:disabled { color: var(--component-select-all-value-color-disabled); cursor: not-allowed; }
+
+.value { flex: 1 1 auto; min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.value[data-placeholder] { color: var(--component-select-all-value-color-placeholder); }
+.trigger:disabled .value[data-placeholder] { color: var(--component-select-all-value-color-disabled); }
+
+.chevron, .spinner { display: inline-flex; flex: none; align-items: center; }
+.chevron { inline-size: var(--component-select-all-icon-size); block-size: var(--component-select-all-icon-size); color: var(--component-select-all-icon-color-default); }
+.chevron > svg { inline-size: 100%; block-size: 100%; }
+.trigger:disabled .chevron { color: var(--component-select-all-icon-color-disabled); }
+
+/* Open: keep the focus border while focus is in the panel. An error border still wins (it is more specific). */
+.field .boxOpen { --_border: var(--component-select-all-container-border-open); --_shadow: var(--component-select-all-container-shadow-open); }
