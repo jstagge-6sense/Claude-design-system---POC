@@ -198,6 +198,7 @@ export function CostPage() {
           <li><strong>Measured:</strong> The Claude work behind this library ({nf(m.s.calls)} requests) and the time we spent on it, all work included: {hrs(m.allPeopleH)} from {dt(START)} to the last update on {dt((COST as { builtAt?: string }).builtAt || COST.time.lastMessage)}. This includes all work, even tasks not counted in the cost (demo pages, cost page, token editor and library restore), and {v.review}% extra for reviewing the outputs. About 2 hours went to learning skills in the library.</li>
           <li><strong>Not measured:</strong> Time it took Jessica and Vivek to get tokens set up.</li>
           <li><strong>Not included:</strong> Figma seats and credits, and hosting.</li>
+          <li><strong>Note:</strong> JStagge was out of office for 1 week during this period. No work was done in that time, so it is not counted.</li>
           <li><strong>Estimate:</strong> If we pay a flat monthly plan instead of per use, read this as the value of the usage, not a bill.</li>
         </ul>
       </Section>
