@@ -1,7 +1,7 @@
 name: share-link
 
 # Publishes:
-# - Existing design-system-preview.html at /design-system-preview.html
+# - Existing design-system-preview.html at /design-system-preview.html (also served at / as index.html)
 # - Storybook at /storybook/
 #
 # GitHub setup:
@@ -49,7 +49,9 @@ jobs:
         run: cp -r storybook-static/. _site/storybook/
 
       - name: Add existing design system preview to Pages
-        run: cp design-system-preview.html _site/design-system-preview.html
+        run: |
+          cp design-system-preview.html _site/design-system-preview.html
+          cp design-system-preview.html _site/index.html
 
       - name: Verify Pages files
         run: |
